@@ -56,7 +56,7 @@ const MenuItem = ({ text, link }: { text: string; link: string }) => (
 const Logo = () => (
   <Link href="/" className="mr-4 flex">
     <Image
-      src={`/images/${IMAGES.LOGO}`}
+      src={`/image/${IMAGES.LOGO}`}
       alt="FlowBite Logo"
       width={100}
       height={50}
