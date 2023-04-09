@@ -1,7 +1,14 @@
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IMAGES } from '../../constants';
+
+import { IMAGES } from 'constants/index';
+import { CtaButton } from 'components/Common/styled';
 
 const Nav = tw.nav`
   bg-white 
@@ -38,25 +45,6 @@ const End = tw.div`
   items-center
 `;
 
-const CtaButton = tw.button`
-  mr-2 
-  px-3 
-  py-1.5
-  h-10
-  bg-primary 
-  items-center 
-  justify-center 
-  rounded-lg 
-  text-xs 
-  font-medium 
-  text-white 
-  transition
-  hover:brightness-150
-  hover:-translate-y-1
-  focus:outline-none 
-  focus:ring-4 
-`;
-
 const MenuItem = ({ text, link }: { text: string; link: string }) => (
   <Link href={link}>
     <span className="mx-6 text-black hover:text-primary dark:text-white">
@@ -86,13 +74,21 @@ export const Navbar = () => (
         <MenuItem text={'Jak to działa?'} link={'/'} />
       </Start>
       <End>
-        <Link href="/src/pages/pricing">
-          <CtaButton type="button">Zaloguj się</CtaButton>
-        </Link>
-
-        <Link href="/">
+        <Link href="/list">
           <CtaButton type="button">Znajdź specjalistę</CtaButton>
         </Link>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <Link href='/sign-up'>
+            <CtaButton type="button">Zarejestruj się</CtaButton>
+          </Link>
+          <Link href='/sign-in'>
+            <CtaButton type="button">Zaloguj się</CtaButton>
+          </Link>
+        </SignedOut>
       </End>
     </Container>
   </Nav>

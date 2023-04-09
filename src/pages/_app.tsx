@@ -1,6 +1,7 @@
 import type { AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import 'tailwindcss/tailwind.css';
 
@@ -16,7 +17,10 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+
+      <ClerkProvider {...pageProps} >
+        <Component {...pageProps} />
+      </ClerkProvider>
     </>
   );
 };
