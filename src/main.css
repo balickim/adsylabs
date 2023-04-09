@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'IBMPlexSans', sans-serif;
+        src: url('./fonts/IBMPlexSans-Italic.ttf');
+    }
+    html {
+        @apply font-sans;
+    }
+}

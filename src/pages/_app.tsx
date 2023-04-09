@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ClerkProvider } from '@clerk/nextjs';
 
-import 'tailwindcss/tailwind.css';
+import 'main.css';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (

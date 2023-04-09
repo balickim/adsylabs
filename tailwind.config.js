@@ -9,6 +9,9 @@ module.exports = {
         tertiary: '#AD4200',
       },
     },
+    fontFamily: {
+      sans: ['IBMPlexSans', 'sans-serif'],
+    },
   },
   plugins: [],
 };
