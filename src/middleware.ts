@@ -5,7 +5,6 @@ import type { NextRequest } from 'next/server';
 // Set the paths that don't require the user to be signed in
 const publicPaths = [
   '/',
-  '/images/*',
   '/sign-in*',
   '/sign-up*',
   '/pricing',
@@ -34,4 +33,4 @@ export default withClerkMiddleware((request: NextRequest) => {
   return NextResponse.next();
 });
 
-export const config = { matcher:  '/((?!_next/image|_next/static|favicon.ico).*)' };
+export const config = { matcher:  ['/((?!.*\\.).*)', '/favicon.ico'] };
