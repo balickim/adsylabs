@@ -6,6 +6,7 @@ export default withClerkMiddleware((request: NextRequest) => {
   if (isPublic(request.nextUrl.pathname)) {
     return NextResponse.next();
   }
+
   const { userId } = getAuth(request);
   if (!userId) {
     const signInUrl = new URL('/sign-in', request.url);
@@ -16,4 +17,4 @@ export default withClerkMiddleware((request: NextRequest) => {
   return NextResponse.next();
 });
 
-export const config = { matcher:  '/((?!_next/image|_next/static|favicon.ico).*)' };
+export const config = { matcher:  '/((?!_next/image|_next/static|favicon.ico|api).*)' };
