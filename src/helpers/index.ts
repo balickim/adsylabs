@@ -4,8 +4,8 @@ export const publicPaths = [
   '/',
   '/sign-in*',
   '/sign-up*',
-  `/image/${IMAGES.LOGO}`,
-  `/image/${IMAGES.ROB_KATARZYNA}`,
+  `/static/${IMAGES.LOGO}`,
+  `/static/${IMAGES.ROB_KATARZYNA}`,
 ];
 
 export const isPublic = (path: string) => {

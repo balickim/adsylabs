@@ -98,7 +98,7 @@ const Top = () => {
           <Image
             fill
             priority
-            src={`/image/${IMAGES.ROB_KATARZYNA}`}
+            src={`/static/${IMAGES.ROB_KATARZYNA}`}
             alt="how it works"
             style={{ objectFit: 'cover', overflow: 'visible' }}
           />
