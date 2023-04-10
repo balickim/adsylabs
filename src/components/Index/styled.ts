@@ -20,7 +20,7 @@ export const TitleLeft = tw.h1`
 `;
 
 export const SubTitle = tw.h2`
-  text-center font-light text-gray-500 dark:text-gray-400 sm:text-xl
+  text-center font-light text-gray-500 sm:text-xl
 `;
 export const SubTitleLeftShadow = styled.h3`
   ${tw`text-sm font-bold`}

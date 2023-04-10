@@ -12,7 +12,7 @@ export const StyledSection = tw.section`flex flex-col gap-8`;
 export const StyledStepsContainer = tw.div`grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center`;
 export const StyledStep = tw.div`flex flex-col gap-2`;
 export const StyledIconContainer = tw.div`flex justify-center`;
-export const StyledText = tw.div`font-light text-gray-500 dark:text-gray-400`;
+export const StyledText = tw.div`font-light text-gray-500`;
 
 const Central = () => {
   return (

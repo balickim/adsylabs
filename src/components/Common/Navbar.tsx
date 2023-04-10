@@ -15,7 +15,6 @@ const Nav = tw.nav`
   px-4 
   lg:px-6 
   py-2.5 
-  dark:bg-gray-800
   border-b-2
 `;
 
@@ -46,7 +45,7 @@ const End = tw.div`
 
 const MenuItem = ({ text, link }: { text: string; link: string }) => (
   <Link href={link}>
-    <span className="mx-6 text-black hover:text-primary dark:text-white">
+    <span className="mx-6 text-black hover:text-primary">
       {text}
     </span>
   </Link>
