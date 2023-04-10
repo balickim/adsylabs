@@ -1,6 +1,5 @@
 import {
-  SignedIn,
-  SignedOut,
+  useAuth,
   UserButton,
 } from '@clerk/nextjs';
 import tw from 'twin.macro';
@@ -8,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { IMAGES } from 'constants/index';
-import { CtaButton } from 'components/Common/styled';
+import { Spinner, StyledCtaButton } from 'components/Common/styled';
 
 const Nav = tw.nav`
   bg-white 
@@ -60,36 +59,50 @@ const Logo = () => (
       alt="FlowBite Logo"
       width={100}
       height={50}
+      priority
     />
   </Link>
 );
 
-export const Navbar = () => (
-  <Nav>
+const LoginButton = () => (
+  <Link href="/sign-in">
+    <StyledCtaButton
+      version={'secondary'}
+      type="button"
+    >
+      Zaloguj się
+    </StyledCtaButton>
+  </Link>
+);
+
+export const Navbar = () => {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  return <Nav>
     <Container>
       <Start>
         <Logo />
         <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-        <MenuItem text={'Cennik'} link={'/pricing'} />
+        <MenuItem text={'Cennik'} link={'#pricing'} />
         <MenuItem text={'Jak to działa?'} link={'/'} />
       </Start>
       <End>
-        <Link href="/list">
-          <CtaButton type="button">Znajdź specjalistę</CtaButton>
-        </Link>
+        {!isLoaded
+          ? <Spinner />
+          : isSignedIn
+            ? <UserButton />
+            : <LoginButton />
+        }
 
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-        <SignedOut>
-          <Link href='/sign-up'>
-            <CtaButton type="button">Zarejestruj się</CtaButton>
-          </Link>
-          <Link href='/sign-in'>
-            <CtaButton type="button">Zaloguj się</CtaButton>
-          </Link>
-        </SignedOut>
+        <Link href="/list">
+          <StyledCtaButton
+            version={'primary'}
+            type="button"
+          >
+            Znajdź specjalistę
+          </StyledCtaButton>
+        </Link>
       </End>
     </Container>
-  </Nav>
-);
+  </Nav>;
+};

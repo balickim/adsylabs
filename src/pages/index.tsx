@@ -23,6 +23,17 @@ const introHeaderVariants: Variants = {
   },
 };
 
+export const Motion = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial="hide"
+    whileInView="show"
+    variants={introHeaderVariants}
+    viewport={{ once: true }}
+  >
+    {children}
+  </motion.div>
+);
+
 const HomePage: NextPage = () => {
   return (
     <Layout
@@ -32,23 +43,13 @@ const HomePage: NextPage = () => {
       }}
     >
       <Main>
-        <motion.div
-          initial="hide"
-          whileInView="show"
-          exit="hide"
-          variants={introHeaderVariants}
-        >
+        <Motion>
           <Top />
-        </motion.div>
+        </Motion>
 
-        <motion.div
-          initial="hide"
-          whileInView="show"
-          exit="hide"
-          variants={introHeaderVariants}
-        >
+        <Motion>
           <Central />
-        </motion.div>
+        </Motion>
       </Main>
       <Footer />
     </Layout>

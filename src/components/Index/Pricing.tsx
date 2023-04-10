@@ -1,6 +1,6 @@
 const PricingComponent = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section id={'pricing'} className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-screen-xl py-8 px-4 lg:py-16 lg:px-6">
         <div className="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
           <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">

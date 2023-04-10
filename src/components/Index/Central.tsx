@@ -5,8 +5,8 @@ import {
   TbSquareRoundedNumber3Filled,
 } from 'react-icons/tb';
 
-import { SubTitle, Title } from 'components/Common/styled';
 import { twConfig } from 'helpers/tailwind';
+import { SubTitle, Title } from './styled';
 
 export const StyledSection = tw.section`flex flex-col gap-8`;
 export const StyledStepsContainer = tw.div`grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center`;
@@ -16,7 +16,7 @@ export const StyledText = tw.div`font-light text-gray-500 dark:text-gray-400`;
 
 const Central = () => {
   return (
-    <StyledSection>
+    <StyledSection id={'central'}>
       <Title>
         Zweryfikowani specjaliści marketingu w zasięgu ręki
       </Title>
