@@ -14,9 +14,9 @@ export const StyledStep = tw.div`flex flex-col gap-2`;
 export const StyledIconContainer = tw.div`flex justify-center`;
 export const StyledText = tw.div`font-light text-gray-500`;
 
-const Central = () => {
+const HowItWorks = () => {
   return (
-    <StyledSection id={'central'}>
+    <StyledSection id={'how-it-works'}>
       <Title>
         Zweryfikowani specjaliści marketingu w zasięgu ręki
       </Title>
@@ -66,4 +66,4 @@ const Central = () => {
   );
 };
 
-export default Central;
+export default HowItWorks;

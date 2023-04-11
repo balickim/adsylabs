@@ -13,3 +13,5 @@ export const isPublic = (path: string) => {
     path.match(new RegExp(`^${x}$`.replace('*$', '($|/)')))
   );
 };
+
+export const isBrowser = () => typeof window !== 'undefined';

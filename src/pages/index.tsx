@@ -7,7 +7,7 @@ import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
 import Top from 'components/Index/Top';
 import { Main } from 'components/Index/styled';
-import Central from 'components/Index/Central';
+import HowItWorks from 'components/Index/HowItWorks';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -48,7 +48,7 @@ const HomePage: NextPage = () => {
         </Motion>
 
         <Motion>
-          <Central />
+          <HowItWorks />
         </Motion>
       </Main>
       <Footer />
