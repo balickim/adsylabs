@@ -4,12 +4,12 @@ import { STATIC } from 'constants/index';
 import styled from 'styled-components';
 import { StyledCtaButton } from '../Common/styled';
 
-const StyledSection = tw.section`grid grid-cols-1 sm:grid-cols-2 gap-10`;
-const TextContainer = tw.div`flex flex-col justify-center gap-6`;
-const Title = tw.h1`text-5xl tracking-tight text-gray-900 text-center md:text-left`;
+const StyledSection = tw.section`grid grid-cols-1 xl:grid-cols-2 gap-10`;
+const TextContainer = tw.div`flex flex-col text-center justify-center gap-6`;
+const Title = tw.h1`text-5xl tracking-tight xl:text-left text-gray-900 text-center`;
 
 export const SubTitle = styled.h3`
-  ${tw`text-sm text-gray-500 text-lg text-center md:text-left`}
+  ${tw`text-sm text-gray-500 text-lg text-center xl:text-left`}
   text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.1);
 `;
 
@@ -55,7 +55,7 @@ const Video = () => {
           strategie marketingowe, metodologię testów A/B i wiele innych kryteriów. Tylko eksperci,
           którzy osiągnęli ponadprzeciętne wyniki mają szansę zostać członkami platformy AdsBridge.
         </SubTitle>
-        <div className={'flex justify-center md:justify-start'}>
+        <div className={'flex justify-center xl:justify-start'}>
           <StyledCtaButton
             version={'primary'}
             type={'button'}

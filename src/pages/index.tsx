@@ -10,6 +10,7 @@ import { Main } from 'components/Index/styled';
 import HowItWorks from 'components/Index/HowItWorks';
 import Statistics from 'components/Index/Statistics';
 import Video from 'components/Index/Video';
+import ExpertSocialMedia from '../components/Index/ExpertSocialMedia';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -55,6 +56,10 @@ const HomePage: NextPage = () => {
 
         <Motion>
           <HowItWorks />
+        </Motion>
+
+        <Motion>
+          <ExpertSocialMedia />
         </Motion>
 
         <Motion>
