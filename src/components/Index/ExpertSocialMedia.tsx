@@ -13,8 +13,8 @@ const ImageComponent = ({ src, alt }: { src: string, alt: string }) => (
   <Image
     src={src}
     alt={alt}
-    width={40}
-    height={40}
+    width={60}
+    height={60}
   />
 );
 
