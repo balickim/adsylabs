@@ -24,7 +24,6 @@ export const config = {
      * - static (static files)
      * - favicon.ico (favicon file)
      * - public folder
-     * - public folder
      */
     '/((?!static|.*\\..*|_next|favicon.ico).*)',
     '/',

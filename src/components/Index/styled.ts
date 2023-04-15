@@ -1,5 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 export const Main = tw.main`
   min-h-screen
@@ -9,7 +10,8 @@ export const Main = tw.main`
   py-8
   flex
   flex-col
-  gap-32
+  gap-24
+  md:gap-32
 `;
 
 export const Title = tw.h1`
@@ -23,13 +25,18 @@ export const SubTitle = tw.h2`
   text-center font-light text-gray-500 sm:text-xl
 `;
 export const SubTitleLeftShadow = styled.h3`
-  ${tw`text-sm font-bold`}
-  text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+  ${tw`text-sm text-gray-500`}
+  text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.1);
 `;
 
 export const StyledImageContainer = styled.div`
   position: relative;
+  width: 500px;
+  height: 500px;
+`;
+
+export const StyledImage = styled(Image)`
+  position: absolute;
   width: 400px;
   height: 400px;
-  margin-top: 5rem;
 `;

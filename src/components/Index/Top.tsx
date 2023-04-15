@@ -1,14 +1,17 @@
 import { AiFillCheckCircle } from 'react-icons/ai';
 import Image from 'next/image';
+import tw from 'twin.macro';
 
-import { IMAGES } from 'constants/index';
+import { STATIC } from 'constants/index';
 import { StyledImageContainer, SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { twConfig } from 'helpers/tailwind';
 import { SearchInput } from '../Common/styled';
 
+const StyledSection = tw.section`grid grid-cols-1 gap-24 mt-8 md:grid-cols-2 md:mt-24`;
+
 const Top = () => {
   return (
-    <section id={'top'} className="grid grid-cols-1 sm:mt-4 md:grid-cols-2">
+    <StyledSection id={'top'}>
       <div className="flex flex-col justify-center gap-10">
         <TitleLeft>
           Zatrudnij specjalistów marketingu, bez ryzyka
@@ -40,18 +43,26 @@ const Top = () => {
           </span>
         </div>
       </div>
-      <div className='flex justify-center'>
+      <div className='flex justify-center relative'>
+        <Image
+          fill
+          priority
+          src={`${STATIC.STAIN_1}`}
+          alt="stain"
+          className={'absolute scale-150 !top-8'}
+          style={{ objectFit: 'cover', left: '-4rem !important' }}
+        />
         <StyledImageContainer>
           <Image
             fill
             priority
-            src={`/static/${IMAGES.ROB_KATARZYNA}`}
+            src={`${STATIC.ROB_KATARZYNA}`}
             alt="how it works"
             style={{ objectFit: 'cover', overflow: 'visible' }}
           />
         </StyledImageContainer>
       </div>
-    </section>
+    </StyledSection>
   );
 };
 

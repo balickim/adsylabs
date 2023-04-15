@@ -8,11 +8,11 @@ import {
 import { twConfig } from 'helpers/tailwind';
 import { SubTitle, Title } from './styled';
 
-export const StyledSection = tw.section`flex flex-col gap-8`;
-export const StyledStepsContainer = tw.div`grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center`;
-export const StyledStep = tw.div`flex flex-col gap-2`;
-export const StyledIconContainer = tw.div`flex justify-center`;
-export const StyledText = tw.div`font-light text-gray-500`;
+const StyledSection = tw.section`flex flex-col gap-8`;
+const StyledStepsContainer = tw.div`grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center`;
+const StyledStep = tw.div`flex flex-col gap-2`;
+const StyledIconContainer = tw.div`flex justify-center`;
+const StyledText = tw.div`font-light text-gray-500`;
 
 const HowItWorks = () => {
   return (

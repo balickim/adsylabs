@@ -11,15 +11,6 @@ const List = ({ __clerk_ssr_state }: { __clerk_ssr_state: Clerk}) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
-  // if (!userId) {
-  //   return {
-  //     redirect: {
-  //       permanent: false,
-  //       destination: '/sign-in',
-  //     },
-  //     props:{},
-  //   };
-  // }
   const { userId } = getAuth(ctx.req);
 
   const user = userId ? await clerkClient.users.getUser(userId) : undefined;

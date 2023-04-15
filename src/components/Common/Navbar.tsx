@@ -6,7 +6,7 @@ import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMAGES } from 'constants/index';
+import { STATIC } from 'constants/index';
 import { Spinner, StyledCtaButton } from 'components/Common/styled';
 
 const Nav = tw.nav`
@@ -54,7 +54,7 @@ const MenuItem = ({ text, link }: { text: string; link: string }) => (
 const Logo = () => (
   <Link href="/" className="mr-4 flex">
     <Image
-      src={`/static/${IMAGES.LOGO}`}
+      src={`${STATIC.LOGO}`}
       alt="FlowBite Logo"
       width={100}
       height={50}

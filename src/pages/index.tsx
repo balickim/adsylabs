@@ -8,6 +8,8 @@ import Footer from 'components/Common/Footer';
 import Top from 'components/Index/Top';
 import { Main } from 'components/Index/styled';
 import HowItWorks from 'components/Index/HowItWorks';
+import Statistics from 'components/Index/Statistics';
+import Video from 'components/Index/Video';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -48,8 +50,17 @@ const HomePage: NextPage = () => {
         </Motion>
 
         <Motion>
+          <Statistics />
+        </Motion>
+
+        <Motion>
           <HowItWorks />
         </Motion>
+
+        <Motion>
+          <Video />
+        </Motion>
+
       </Main>
       <Footer />
     </Layout>
