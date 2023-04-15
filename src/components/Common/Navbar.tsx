@@ -82,8 +82,8 @@ export const Navbar = () => {
       <Start>
         <Logo />
         <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-        <MenuItem text={'Cennik'} link={'#pricing'} />
-        <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
+        <MenuItem text={'Cennik'} link={'/#pricing'} />
+        <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
       </Start>
       <End>
         {!isLoaded
