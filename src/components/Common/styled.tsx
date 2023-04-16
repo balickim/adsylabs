@@ -16,8 +16,7 @@ export const StyledCtaButton = styled.button<IStyledCtaButton>(
       py-1.5
       h-10
       text-sm
-      items-center 
-      justify-center 
+      text-center
       rounded-3xl 
       transition
       hover:-translate-y-1

@@ -68,9 +68,9 @@ const Statistics = () => {
           <StyledCtaButton
             version={'primary'}
             type={'button'}
-            className={'w-3/5'}
+            className={'w-3/5 !h-auto md:!h-10'}
           >
-          Znajdź specjalistę
+            Znajdź specjalistę
           </StyledCtaButton>
         </div>
       </TextContainer>
