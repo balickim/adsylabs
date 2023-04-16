@@ -3,20 +3,29 @@ import Image from 'next/image';
 
 import { SubTitle, Title } from './styled';
 import { STATIC } from 'constants/index';
+import { twConfig } from 'helpers/tailwind';
+import useWindowDimension from 'hooks/useWindowDimension';
 
 const StyledSection = tw.section`flex flex-col gap-8`;
 const SocialMediaContainer = tw.div`grid grid-cols-2 md:grid-cols-12 gap-6 rounded-sm border-2 shadow-xl px-16 py-8`;
 const ImageContainer = tw.div`flex flex-col items-center md:col-span-4`;
-const ImageLabel = tw.div`text-center text-2xl`;
+const ImageLabel = tw.div`text-center text-lg lg:text-2xl`;
 
-const ImageComponent = ({ src, alt }: { src: string, alt: string }) => (
-  <Image
+const ImageComponent = ({ src, alt }: { src: string, alt: string }) => {
+  const { width } = useWindowDimension();
+
+  {/*@ts-ignore*/}
+  const calculatedWidth = width < twConfig.theme.screens.lg.slice(0, -2)
+    ? 40
+    : 60;
+  
+  return <Image
     src={src}
     alt={alt}
-    width={60}
-    height={60}
-  />
-);
+    width={calculatedWidth}
+    height={calculatedWidth}
+  />;
+};
 
 const ExpertSocialMedia = () => {
   return (

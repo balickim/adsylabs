@@ -2,17 +2,17 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import Image from 'next/image';
 import tw from 'twin.macro';
 
-import { STATIC } from 'constants/index';
-import { StyledImageContainer, SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
+import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { twConfig } from 'helpers/tailwind';
-import { SearchInput } from '../Common/styled';
+import { SearchInput } from 'components/Common/styled';
+import { STATIC } from 'constants/index';
 
-const StyledSection = tw.section`grid grid-cols-1 gap-24 mt-8 md:grid-cols-2 md:mt-24`;
+const StyledSection = tw.section`px-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 md:pt-8`;
 
 const Top = () => {
   return (
     <StyledSection id={'top'}>
-      <div className="flex flex-col justify-center gap-10">
+      <div className="flex flex-col justify-center gap-10 md:min-h-[40rem]">
         <TitleLeft>
           Zatrudnij specjalistów marketingu, bez ryzyka
         </TitleLeft>
@@ -43,24 +43,21 @@ const Top = () => {
           </span>
         </div>
       </div>
-      <div className='flex justify-center relative'>
+      <div className='flex justify-center relative h-96 md:h-auto'>
         <Image
           fill
           priority
           src={`${STATIC.STAIN_1}`}
           alt="stain"
-          className={'absolute scale-150 !top-8'}
-          style={{ objectFit: 'cover', left: '-4rem !important' }}
+          style={{ objectFit: 'contain', overflow: 'visible' }}
         />
-        <StyledImageContainer>
-          <Image
-            fill
-            priority
-            src={`${STATIC.ROB_KATARZYNA}`}
-            alt="how it works"
-            style={{ objectFit: 'cover', overflow: 'visible' }}
-          />
-        </StyledImageContainer>
+        <Image
+          fill
+          priority
+          src={`${STATIC.ROB_KATARZYNA}`}
+          alt="how it works"
+          style={{ objectFit: 'contain' }}
+        />
       </div>
     </StyledSection>
   );

@@ -3,13 +3,11 @@ import styled from 'styled-components';
 
 import { SubTitleLeftShadow } from './styled';
 import { StyledCtaButton } from 'components/Common/styled';
-import { STATIC } from 'constants/index';
-import Image from 'next/image';
 
-const StyledSection = tw.section`grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-52 relative`;
+const StyledSection = tw.section`px-12 lg:px-36 grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
 const StatsItem = tw.div`flex flex-col text-center md:text-left bg-white border p-8 z-1`;
-const TitleLeft = tw.h1`text-6xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-gray-900`;
+const TitleLeft = tw.h1`text-4xl lg:text-5xl xl:text-6xl tracking-tight text-gray-900`;
 const TextContainer = tw.div`flex flex-col justify-center gap-6`;
 const Title = tw.h1`text-5xl tracking-tight text-gray-900 text-center md:text-left`;
 
@@ -48,14 +46,14 @@ const Statistics = () => {
             </SubTitleLeftShadow>
           </StatsItem>
         </StatsContainer>
-        <Image
-          fill
-          priority
-          src={`${STATIC.STAIN_2}`}
-          alt="stain"
-          className={'absolute !top-16 z-0'}
-          style={{ objectFit: 'cover', transform: 'scale(3)' }}
-        />
+        {/*<Image*/}
+        {/*  fill*/}
+        {/*  priority*/}
+        {/*  src={`${STATIC.STAIN_2}`}*/}
+        {/*  alt="stain"*/}
+        {/*  className={'absolute !top-16 z-0'}*/}
+        {/*  style={{ objectFit: 'cover', transform: 'scale(3)' }}*/}
+        {/*/>*/}
       </div>
 
       <TextContainer>

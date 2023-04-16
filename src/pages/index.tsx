@@ -1,16 +1,17 @@
+import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
+import tw from 'twin.macro';
 
 import type { NextPage } from 'next';
-import type { Variants } from 'framer-motion';
 
 import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
 import Top from 'components/Index/Top';
-import { Main } from 'components/Index/styled';
 import HowItWorks from 'components/Index/HowItWorks';
 import Statistics from 'components/Index/Statistics';
 import Video from 'components/Index/Video';
-import ExpertSocialMedia from '../components/Index/ExpertSocialMedia';
+import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
+import Pricing from 'components/Index/Pricing';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -36,6 +37,15 @@ export const Motion = ({ children }: { children: React.ReactNode }) => (
     {children}
   </motion.div>
 );
+
+export const Main = tw.main`
+  min-h-screen
+  p-8
+  flex
+  flex-col
+  gap-36
+  md:gap-24
+`;
 
 const HomePage: NextPage = () => {
   return (
@@ -64,6 +74,10 @@ const HomePage: NextPage = () => {
 
         <Motion>
           <Video />
+        </Motion>
+
+        <Motion>
+          <Pricing />
         </Motion>
 
       </Main>
