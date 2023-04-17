@@ -39,7 +39,7 @@ export const Motion = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-export const Main = tw.main`min-h-screen p-8 flex flex-col`;
+export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 
 const HomePage: NextPage = () => {
   return (
