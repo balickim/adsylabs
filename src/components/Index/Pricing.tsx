@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 
-const StyledSection = tw.section`md:px-12 lg:px-6 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3`;
+const StyledSection = tw.section`md:px-12 mt-16 lg:px-6 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3`;
 const TextContainer = tw.div`flex flex-col gap-6 lg:pt-32`;
 const Title = tw.div`text-3xl text-center xl:text-left`;
 const SubTitle = styled.h3`
@@ -11,15 +11,62 @@ const SubTitle = styled.h3`
 `;
 
 interface IPricingItem {
-  type: 'primary' | 'secondary';
+  variant: 'primary' | 'secondary';
   title: string;
   subtitle: string;
   price: string;
   children: React.ReactNode;
 }
 
+interface IVariant {
+  variant: IPricingItem['variant']
+}
+
+const PricingContainer = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`pt-10 pb-4 border rounded-lg`,
+    variant === 'primary'
+      ? tw`bg-primary`
+      : tw`bg-white`,
+  ]
+);
+const TitleContainer = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`flex justify-center text-center text-2xl mb-6`,
+    variant === 'primary'
+      ? tw`text-white`
+      : tw`text-black`,
+  ]
+);
+const Text = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`flex justify-center text-center`,
+    variant === 'primary'
+      ? tw`text-gray-100`
+      : tw`text-gray-500`,
+  ]
+);
+const Price = styled.span<IVariant>(
+  ({ variant }) => [
+    tw`text-5xl font-bold`,
+    variant === 'primary'
+      ? tw`text-white`
+      : tw`text-black`,
+  ]
+);
+const Button = styled.button<IVariant>(
+  ({ variant }) => [
+    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
+    variant === 'primary'
+      ? tw`bg-white text-primary`
+      : tw`bg-primary text-white hover:brightness-150`,
+  ]
+);
+const PriceContainer = tw.div`flex justify-center items-end gap-2`;
+const ButtonContainer = tw.div`flex flex-col justify-center px-16 mt-8`;
+
 const PricingItem = ({
-  type,
+  variant,
   title,
   subtitle,
   price,
@@ -27,52 +74,19 @@ const PricingItem = ({
 }: IPricingItem) => {
   const arrayChildren = Children.toArray(children);
 
-  const PricingContainer = styled.div(
-    tw`pt-10 pb-4 border rounded-lg`,
-    type === 'primary'
-      ? tw`bg-primary`
-      : tw`bg-white`
-  );
-  const TitleContainer = styled.div(
-    tw`flex justify-center text-center text-2xl mb-6`,
-    type === 'primary'
-      ? tw`text-white`
-      : tw`text-black`
-  );
-  const Text = styled.div(
-    tw`flex justify-center text-center`,
-    type === 'primary'
-      ? tw`text-gray-100`
-      : tw`text-gray-500`
-  );
-  const PriceContainer = tw.div`flex justify-center items-end gap-2`;
-  const Price = styled.span(
-    tw`text-5xl font-bold`,
-    type === 'primary'
-      ? tw`text-white`
-      : tw`text-black`
-  );
-  const ButtonContainer = tw.div`flex flex-col justify-center px-16 mt-8`;
-  const Button = styled.button(
-    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
-    type === 'primary'
-      ? tw`bg-white text-primary`
-      : tw`bg-primary text-white hover:brightness-150`
-  );
-
   return (
-    <PricingContainer>
+    <PricingContainer variant={variant}>
       <div className={'flex flex-col gap-6'}>
         <div className={'px-16'}>
-          <TitleContainer>{title}</TitleContainer>
+          <TitleContainer variant={variant}>{title}</TitleContainer>
           <div className={'h-28 lg:h-36 xl:h-20'}>
-            <Text>{subtitle}</Text>
+            <Text variant={variant}>{subtitle}</Text>
           </div>
           <PriceContainer>
-            <Price>
+            <Price variant={variant}>
               {price}zł
             </Price>
-            <Text>/Miesięcznie</Text>
+            <Text variant={variant}>/Miesięcznie</Text>
           </PriceContainer>
         </div>
 
@@ -82,7 +96,7 @@ const PricingItem = ({
           {Children.map(arrayChildren, (child, index) => {
             return (
               <div className={'px-16 my-6 lg:my-4'}>
-                <Text key={index}>
+                <Text variant={variant} key={index}>
                   {child}
                 </Text>
               </div>
@@ -92,7 +106,7 @@ const PricingItem = ({
       </div>
 
       <ButtonContainer>
-        <Button>
+        <Button variant={variant}>
           Zarejestruj się za darmo
         </Button>
       </ButtonContainer>
@@ -114,7 +128,7 @@ const Pricing = () => {
       </TextContainer>
 
       <PricingItem
-        type={'secondary'}
+        variant={'secondary'}
         title={'Plan Basic'}
         subtitle={'Dla mniejszych przedsiębiorstw'}
         price={'199'}
@@ -125,7 +139,7 @@ const Pricing = () => {
         <p>1 godzina wsparcia eksperta w budowaniu strategii marketingowej</p>
       </PricingItem>
       <PricingItem
-        type={'primary'}
+        variant={'primary'}
         title={'Plan Premium'}
         subtitle={'Dla szybko rozwijających się i średnich przedsiębiorstw'}
         price={'399'}

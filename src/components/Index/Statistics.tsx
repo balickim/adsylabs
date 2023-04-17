@@ -1,8 +1,10 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 import { SubTitleLeftShadow } from './styled';
 import { StyledCtaButton } from 'components/Common/styled';
+import { STATIC } from 'constants/index';
 
 const StyledSection = tw.section`px-12 lg:px-36 grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
@@ -23,37 +25,37 @@ const Statistics = () => {
         <StatsContainer>
           <StatsItem className={'rounded-t-lg'}>
             <TitleLeft>
-            10,5 mld zł
+              10,5 mld zł
             </TitleLeft>
             <SubTitleLeftShadow>
-            wartość rynku reklamowego w Polsce w 2021 roku.
+              wartość rynku reklamowego w Polsce w 2021 roku.
             </SubTitleLeftShadow>
           </StatsItem>
           <StatsItem>
             <TitleLeft>
-            803,6 mln zł
+              803,6 mln zł
             </TitleLeft>
             <SubTitleLeftShadow>
-            o tyle wzrosły wydatki na reklamę w Internecie w 2021 r.
+              o tyle wzrosły wydatki na reklamę w Internecie w 2021 r.
             </SubTitleLeftShadow>
           </StatsItem>
           <StatsItem className={'rounded-b-lg'}>
             <TitleLeft>
-            16%
+              16%
             </TitleLeft>
             <SubTitleLeftShadow>
-            o tyle wzrosła wartość rynku reklamowego w Polsce w ciągu 10 lat.
+              o tyle wzrosła wartość rynku reklamowego w Polsce w ciągu 10 lat.
             </SubTitleLeftShadow>
           </StatsItem>
         </StatsContainer>
-        {/*<Image*/}
-        {/*  fill*/}
-        {/*  priority*/}
-        {/*  src={`${STATIC.STAIN_2}`}*/}
-        {/*  alt="stain"*/}
-        {/*  className={'absolute !top-16 z-0'}*/}
-        {/*  style={{ objectFit: 'cover', transform: 'scale(3)' }}*/}
-        {/*/>*/}
+        <div className={'absolute h-full w-full left-0 top-0'}>
+          <Image
+            fill
+            src={`${STATIC.STAIN_2}`}
+            alt="stain"
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
       </div>
 
       <TextContainer>

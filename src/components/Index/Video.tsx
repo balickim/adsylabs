@@ -4,7 +4,7 @@ import { STATIC } from 'constants/index';
 import styled from 'styled-components';
 import { StyledCtaButton } from '../Common/styled';
 
-const StyledSection = tw.section`md:px-6 grid grid-cols-1 xl:grid-cols-2 gap-10`;
+const StyledSection = tw.section`md:px-6 mt-16 grid grid-cols-1 xl:grid-cols-2 gap-10`;
 const TextContainer = tw.div`flex flex-col text-center justify-center gap-6`;
 const Title = tw.h1`text-5xl tracking-tight xl:text-left text-gray-900 text-center`;
 
@@ -37,6 +37,8 @@ const Video = () => {
         <StyledVideo
           title="how we verify"
           loop
+          // @ts-ignore
+          playsinline
           autoPlay
           muted
         >
