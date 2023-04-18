@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { SubTitleLeftShadow } from './styled';
 import { StyledCtaButton } from 'components/Common/styled';
@@ -66,15 +67,17 @@ const Statistics = () => {
           Gwałtowny wzrost branży marketingu Internetowego w Polsce sprawia, że konkurencja staje się co raz silniejsza.
           Nie trać czasu i pieniędzy na niesprawadzone metody - zainwestuj w zweryfikowanego specjalistę marketingu.
         </SubTitle>
-        <div className={'flex justify-center md:justify-start'}>
-          <StyledCtaButton
-            version={'primary'}
-            type={'button'}
-            className={'w-3/5 !h-auto md:!h-10'}
-          >
+        <Link href="/#pricing">
+          <div className={'flex justify-center md:justify-start'}>
+            <StyledCtaButton
+              version={'primary'}
+              type={'button'}
+              className={'w-3/5 !h-auto md:!h-10'}
+            >
             Znajdź specjalistę
-          </StyledCtaButton>
-        </div>
+            </StyledCtaButton>
+          </div>
+        </Link>
       </TextContainer>
     </StyledSection>
   );

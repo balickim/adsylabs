@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import 'main.css';
+import { twConfig } from 'helpers/tailwind';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
@@ -18,7 +19,14 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ClerkProvider {...pageProps} >
+      <ClerkProvider
+        appearance={{
+          variables: {
+            colorPrimary: twConfig?.theme?.colors?.primary,
+          },
+        }}
+        {...pageProps}
+      >
         <Component {...pageProps} />
       </ClerkProvider>
     </>

@@ -1,8 +1,9 @@
 import { AiFillCheckCircle } from 'react-icons/ai';
+import Link from 'next/link';
 
 import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { twConfig } from 'helpers/tailwind';
-import { SearchInput } from 'components/Common/styled';
+import { StyledCtaButton } from 'components/Common/styled';
 
 const TopText = () => {
   return (
@@ -15,10 +16,23 @@ const TopText = () => {
           specjalistami ds. marketingu i reklamy
       </SubTitleLeftShadow>
 
-      <SearchInput
-        label={'ZNAJDŹ SPECJALISTĘ'}
-        placeholder={'Wyszukaj Specjalista Facebook Ads etc.'}
-      />
+      {/*<SearchInput*/}
+      {/*  label={'ZNAJDŹ SPECJALISTĘ'}*/}
+      {/*  placeholder={'Wyszukaj Specjalista Facebook Ads etc.'}*/}
+      {/*/>*/}
+
+      <Link href="/#pricing">
+        <div className={'flex justify-center md:justify-start'}>
+          <StyledCtaButton
+            version={'primary'}
+            type={'button'}
+            className={'w-3/5 !h-auto md:!h-10'}
+          >
+          Znajdź specjalistę
+          </StyledCtaButton>
+        </div>
+      </Link>
+        
 
       <div className="flex gap-3 text-xs">
         <span className="flex items-center gap-1">

@@ -93,7 +93,7 @@ export const Navbar = () => {
             : <LoginButton />
         }
 
-        <Link href="/">
+        <Link href="/#pricing">
           <StyledCtaButton
             version={'primary'}
             type="button"

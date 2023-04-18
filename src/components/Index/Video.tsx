@@ -1,10 +1,11 @@
 import tw from 'twin.macro';
+import Link from 'next/link';
 
 import { STATIC } from 'constants/index';
 import styled from 'styled-components';
 import { StyledCtaButton } from '../Common/styled';
 
-const StyledSection = tw.section`md:px-6 mt-16 grid grid-cols-1 xl:grid-cols-2 gap-10`;
+const StyledSection = tw.section`md:px-6 mt-16 md:mt-32 grid grid-cols-1 xl:grid-cols-2 gap-10`;
 const TextContainer = tw.div`flex flex-col text-center justify-center gap-6`;
 const Title = tw.h1`text-5xl tracking-tight xl:text-left text-gray-900 text-center`;
 
@@ -57,15 +58,17 @@ const Video = () => {
           strategie marketingowe, metodologię testów A/B i wiele innych kryteriów. Tylko eksperci,
           którzy osiągnęli ponadprzeciętne wyniki mają szansę zostać członkami platformy AdsBridge.
         </SubTitle>
-        <div className={'flex justify-center xl:justify-start'}>
-          <StyledCtaButton
-            version={'primary'}
-            type={'button'}
-            className={'w-3/5 md:!h-12 md:!text-xl'}
-          >
+        <Link href="/#pricing">
+          <div className={'flex justify-center xl:justify-start'}>
+            <StyledCtaButton
+              version={'primary'}
+              type={'button'}
+              className={'w-3/5 md:!h-12 md:!text-xl'}
+            >
             Znajdź specjalistę
-          </StyledCtaButton>
-        </div>
+            </StyledCtaButton>
+          </div>
+        </Link>
       </TextContainer>
     </StyledSection>
   );

@@ -1,9 +1,10 @@
 import React, { Children } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import Link from 'next/link';
 
-const StyledSection = tw.section`md:px-12 mt-16 lg:px-6 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3`;
-const TextContainer = tw.div`flex flex-col gap-6 lg:pt-32`;
+const StyledSection = tw.section`md:px-12 mt-16 md:mt-32 lg:px-6 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3`;
+const TextContainer = tw.div`flex flex-col gap-6 xl:pt-32`;
 const Title = tw.div`text-3xl text-center xl:text-left`;
 const SubTitle = styled.h3`
   ${tw`text-sm text-gray-500 text-lg text-center xl:text-left`}
@@ -114,9 +115,11 @@ const PricingItem = ({
         </ChildrenContainer>
       </div>
       <ButtonContainer variant={variant}>
-        <Button variant={variant}>
+        <Link href="/sign-up">
+          <Button variant={variant}>
           Zarejestruj się za darmo
-        </Button>
+          </Button>
+        </Link>
       </ButtonContainer>
     </PricingContainer>
   );

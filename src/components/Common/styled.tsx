@@ -1,9 +1,6 @@
 import tw from 'twin.macro';
-import { AiOutlineSearch } from 'react-icons/ai';
 import styled from 'styled-components';
 
-import useWindowDimension from 'hooks/useWindowDimension';
-import { twConfig } from 'helpers/tailwind';
 
 interface IStyledCtaButton {
   version: 'primary' | 'secondary'
@@ -64,51 +61,3 @@ export const Spinner = () => (
     <span className="sr-only">Loading...</span>
   </div>
 );
-
-interface ISearchInput {
-  placeholder: string,
-  label: string
-}
-export const SearchInput = ({ placeholder, label }: ISearchInput) => {
-  const { width } = useWindowDimension();
-
-  return <form>
-    <label
-      htmlFor="search"
-      className="mb-2 text-sm font-medium text-gray-900 sr-only"
-    >
-      {label}
-    </label>
-    <div className="relative">
-      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <svg aria-hidden="true" className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-      </div>
-
-      <div className={'flex items-center'}>
-        <input
-          type="search"
-          id="search"
-          className="block h-16 w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50
-          focus:ring-primary focus:border-primary"
-          placeholder={placeholder}
-          required
-        />
-        <StyledCtaButton
-          version={'primary'}
-          type={'submit'}
-          className={'absolute right-2.5 !text-xs'}
-        >
-          {/*@ts-ignore*/}
-          {width < twConfig.theme.screens.xl.slice(0, -2)
-            ? <AiOutlineSearch size={20} />
-            : label
-          }
-        </StyledCtaButton>
-      </div>
-    </div>
-  </form>;
-};
