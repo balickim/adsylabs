@@ -24,7 +24,7 @@ interface IVariant {
 
 const PricingContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`pt-10 pb-4 border rounded-lg`,
+    tw`pt-10 pb-4 border rounded-lg relative`,
     variant === 'primary'
       ? tw`bg-primary`
       : tw`bg-white`,
@@ -63,7 +63,18 @@ const Button = styled.button<IVariant>(
   ]
 );
 const PriceContainer = tw.div`flex justify-center items-end gap-2`;
-const ButtonContainer = tw.div`flex flex-col justify-center px-16 mt-8`;
+const ButtonContainer = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`flex justify-center px-16 mt-4 relative`,
+    variant === 'primary'
+      ? tw``
+      : tw`lg:absolute lg:bottom-4 lg:left-0 lg:right-0 lg:m-0 lg:text-center lg:mx-auto`,
+  ]
+);
+
+const ChildrenContainer = styled.div`
+  ${tw`flex flex-col grow px-16 space-y-8`}
+`;
 
 const PricingItem = ({
   variant,
@@ -76,7 +87,7 @@ const PricingItem = ({
 
   return (
     <PricingContainer variant={variant}>
-      <div className={'flex flex-col gap-6'}>
+      <div className={'flex flex-col gap-6 relative'}>
         <div className={'px-16'}>
           <TitleContainer variant={variant}>{title}</TitleContainer>
           <div className={'h-28 lg:h-36 xl:h-20'}>
@@ -92,20 +103,17 @@ const PricingItem = ({
 
         <hr/>
 
-        <div className={'h-84 md:h-72 xl:h-80'}>
+        <ChildrenContainer>
           {Children.map(arrayChildren, (child, index) => {
             return (
-              <div className={'px-16 my-6 lg:my-4'}>
-                <Text variant={variant} key={index}>
-                  {child}
-                </Text>
-              </div>
+              <Text variant={variant} key={index}>
+                {child}
+              </Text>
             );
           })}
-        </div>
+        </ChildrenContainer>
       </div>
-
-      <ButtonContainer>
+      <ButtonContainer variant={variant}>
         <Button variant={variant}>
           Zarejestruj się za darmo
         </Button>
