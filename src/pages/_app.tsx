@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 
 import 'main.css';
 import { twConfig } from 'helpers/tailwind';
+import { pl } from 'locale/clerk/pl';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
@@ -20,6 +21,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <ClerkProvider
+        localization={pl}
         appearance={{
           variables: {
             colorPrimary: twConfig?.theme?.colors?.primary,

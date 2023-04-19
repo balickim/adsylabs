@@ -89,7 +89,11 @@ export const Navbar = () => {
         {!isLoaded
           ? <Spinner />
           : isSignedIn
-            ? <UserButton />
+            ? <UserButton appearance={{
+              elements: {
+                userButtonAvatarBox: 'scale-125',
+              } }}
+            />
             : <LoginButton />
         }
 
