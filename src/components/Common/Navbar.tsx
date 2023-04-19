@@ -5,9 +5,11 @@ import {
 import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 import { STATIC } from 'constants/index';
 import { Spinner, StyledCtaButton } from 'components/Common/styled';
+import React from 'react';
 
 const Nav = tw.nav`
   bg-white 
@@ -20,42 +22,36 @@ const Nav = tw.nav`
 
 const Container = tw.div`
   flex
-  flex-col
-  sm:flex-wrap
-  sm:flex-row 
-  sm:justify-between 
-  sm:items-center
+  flex-wrap
+  justify-between 
+  items-center
 `;
 
 const Start = tw.div`
   flex
-  flex-col
-  sm:flex-row
   justify-start 
   items-center
 `;
 
 const End = tw.div`
   flex 
-  flex-col
-  sm:flex-row
-  gap-2
+  gap-6
   items-center
 `;
 
 const MenuItem = ({ text, link }: { text: string; link: string }) => (
   <Link href={link}>
-    <span className="mx-6 text-black hover:text-primary">
+    <span className="text-black hover:text-primary">
       {text}
     </span>
   </Link>
 );
 
 const Logo = () => (
-  <Link href="/" className="mr-4 flex">
+  <Link href="/" className="hidden md:flex mr-4">
     <Image
       src={`${STATIC.LOGO}`}
-      alt="FlowBite Logo"
+      alt="AdsBridge Logo"
       width={100}
       height={50}
       priority
@@ -76,14 +72,50 @@ const LoginButton = () => (
 
 export const Navbar = () => {
   const { isLoaded, isSignedIn } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const MobileButton = () => (
+    <button
+      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      className={'md:hidden'}
+    >
+      <AiOutlineMenu size={24} />
+    </button>
+  );
+
+  const MenuItems = () => (
+    <div className="hidden md:flex flex-row gap-6 w-auto">
+      <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
+      <MenuItem text={'Cennik'} link={'/#pricing'} />
+      <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+    </div>
+  );
+
+  const MobileMenuItems = () => (
+    <div className="md:hidden absolute left-4 top-12 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
+      <div className={'flex justify-center'}>
+        <Image
+          src={`${STATIC.LOGO}`}
+          alt="AdsBridge Logo"
+          width={100}
+          height={50}
+        />
+      </div>
+      <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
+      <MenuItem text={'Cennik'} link={'/#pricing'} />
+      <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+    </div>
+  );
 
   return <Nav>
+    {isMobileMenuOpen ? <MobileMenuItems /> : null}
     <Container>
       <Start>
         <Logo />
-        <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-        <MenuItem text={'Cennik'} link={'/#pricing'} />
-        <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+
+        <MenuItems />
+
+        <MobileButton />
       </Start>
       <End>
         {!isLoaded
