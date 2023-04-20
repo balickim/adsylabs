@@ -1,4 +1,4 @@
-import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai';
+import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 
 const Footer = () => {
   return (
@@ -13,16 +13,28 @@ const Footer = () => {
         </span>
         <div className="py-4 flex justify-center space-x-6">
           <a
-            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://www.facebook.com/profile.php?id=100090247710645'}
             className="text-gray-500 hover:text-gray-900"
           >
             <AiFillFacebook />
           </a>
           <a
-            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://instagram.com/adsbridge_pl?igshid=YmMyMTA2M2Y='}
             className="text-gray-500 hover:text-gray-900"
           >
             <AiFillInstagram />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://www.linkedin.com/company/ads-bridge/'}
+            className="text-gray-500 hover:text-gray-900"
+          >
+            <AiFillLinkedin />
           </a>
         </div>
       </div>

@@ -1,5 +1,5 @@
 export const STATIC = {
-  LOGO: '/static/assets/logo.webp',
+  LOGO: '/static/assets/logo.png',
   ROB_KATARZYNA: '/static/assets/rob_katarzyna.png',
   STAIN_1: '/static/assets/stain_1.png',
   STAIN_2: '/static/assets/stain_2.png',

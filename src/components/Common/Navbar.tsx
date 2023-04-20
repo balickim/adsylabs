@@ -35,7 +35,8 @@ const Start = tw.div`
 
 const End = tw.div`
   flex 
-  gap-6
+  gap-2
+  md:gap-2
   items-center
 `;
 
@@ -47,8 +48,39 @@ const MenuItem = ({ text, link }: { text: string; link: string }) => (
   </Link>
 );
 
+const MenuItems = () => (
+  <>
+    <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
+    <MenuItem text={'Cennik'} link={'/#pricing'} />
+    <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+  </>
+);
+
+const DesktopMenuItems = () => (
+  <div className="hidden md:flex flex-row gap-6 w-auto">
+    <MenuItems />
+  </div>
+);
+
+const MobileMenuItems = () => (
+  <div className="md:hidden absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
+    <MenuItems />
+  </div>
+);
+
+const StyledUserButton = () => (
+  <div className={'mr-2'}>
+    <UserButton
+      appearance={{
+        elements: {
+          userButtonAvatarBox: 'scale-125',
+        } }}
+    />
+  </div>
+);
+
 const Logo = () => (
-  <Link href="/" className="hidden md:flex mr-4">
+  <Link href="/" className="flex mr-4">
     <Image
       src={`${STATIC.LOGO}`}
       alt="AdsBridge Logo"
@@ -83,60 +115,32 @@ export const Navbar = () => {
     </button>
   );
 
-  const MenuItems = () => (
-    <div className="hidden md:flex flex-row gap-6 w-auto">
-      <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-      <MenuItem text={'Cennik'} link={'/#pricing'} />
-      <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
-    </div>
-  );
-
-  const MobileMenuItems = () => (
-    <div className="md:hidden absolute left-4 top-12 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
-      <div className={'flex justify-center'}>
-        <Image
-          src={`${STATIC.LOGO}`}
-          alt="AdsBridge Logo"
-          width={100}
-          height={50}
-        />
-      </div>
-      <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-      <MenuItem text={'Cennik'} link={'/#pricing'} />
-      <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
-    </div>
-  );
-
   return <Nav>
-    {isMobileMenuOpen ? <MobileMenuItems /> : null}
     <Container>
       <Start>
         <Logo />
 
-        <MenuItems />
-
-        <MobileButton />
+        <DesktopMenuItems />
       </Start>
       <End>
         {!isLoaded
           ? <Spinner />
           : isSignedIn
-            ? <UserButton appearance={{
-              elements: {
-                userButtonAvatarBox: 'scale-125',
-              } }}
-            />
+            ? <StyledUserButton />
             : <LoginButton />
         }
-
         <Link href="/#pricing">
           <StyledCtaButton
+            className={'hidden md:block'}
             version={'primary'}
             type="button"
           >
             Znajdź specjalistę
           </StyledCtaButton>
         </Link>
+
+        <MobileButton />
+        {isMobileMenuOpen ? <MobileMenuItems /> : null}
       </End>
     </Container>
   </Nav>;
