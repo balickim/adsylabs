@@ -134,7 +134,7 @@ const Pricing = () => {
         </Title>
         <SubTitle>
           Szybko i bezpiecznie znajdż i zatrudnij utalentowanych ekspertów, którzy rozwiną Twój biznes i otrzymaj
-          od nas 60 dniową gwarancję całkowitego zwrotu pieniędzy*.
+          od nas 60 dniową gwarancję całkowitego zwrotu pieniędzy.
         </SubTitle>
       </TextContainer>
 

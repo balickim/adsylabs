@@ -13,6 +13,7 @@ import HowItWorks from 'components/Index/HowItWorks';
 import Video from 'components/Index/Video';
 import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
 import Pricing from 'components/Index/Pricing';
+import Comparison from 'components/Index/Comparison';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -68,6 +69,10 @@ const HomePage: NextPage = () => {
 
         <Motion>
           <Video />
+        </Motion>
+
+        <Motion>
+          <Comparison />
         </Motion>
 
         <Motion>
