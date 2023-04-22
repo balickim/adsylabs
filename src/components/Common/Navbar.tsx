@@ -53,6 +53,15 @@ const MenuItems = () => (
     <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
     <MenuItem text={'Cennik'} link={'/#pricing'} />
     <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+    <Link href="/#pricing">
+      <StyledCtaButton
+        version={'primary'}
+        type="button"
+        className={'p-3 md:hidden'}
+      >
+        Znajdź specjalistę
+      </StyledCtaButton>
+    </Link>
   </>
 );
 
@@ -96,6 +105,7 @@ const LoginButton = () => (
     <StyledCtaButton
       version={'secondary'}
       type="button"
+      className={'p-3'}
     >
       Zaloguj się
     </StyledCtaButton>
@@ -131,7 +141,7 @@ export const Navbar = () => {
         }
         <Link href="/#pricing">
           <StyledCtaButton
-            className={'hidden md:block'}
+            className={'p-3 hidden md:block'}
             version={'primary'}
             type="button"
           >

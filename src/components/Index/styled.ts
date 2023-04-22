@@ -2,10 +2,10 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 export const Title = tw.h1`
-  text-center text-5xl tracking-tight text-gray-900
+  text-center text-2xl lg:text-3xl xl:text-5xl tracking-tight text-gray-900
 `;
 export const TitleLeft = tw.h1`
-  text-5xl tracking-tight text-gray-900
+  text-2xl lg:text-3xl xl:text-5xl tracking-tight text-gray-900
 `;
 
 export const SubTitle = tw.h2`

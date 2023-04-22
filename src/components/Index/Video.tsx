@@ -7,7 +7,7 @@ import { StyledCtaButton } from '../Common/styled';
 
 const StyledSection = tw.section`md:px-6 mt-16 md:mt-32 grid grid-cols-1 xl:grid-cols-2 gap-10`;
 const TextContainer = tw.div`flex flex-col text-center justify-center gap-6`;
-const Title = tw.h1`text-5xl tracking-tight xl:text-left text-gray-900 text-center`;
+const Title = tw.h1`text-2xl lg:text-3xl xl:text-5xl tracking-tight xl:text-left text-gray-900 text-center`;
 
 const SubTitle = styled.h3`
   ${tw`text-sm text-gray-500 text-lg text-center xl:text-left`}
@@ -63,7 +63,7 @@ const Video = () => {
             <StyledCtaButton
               version={'primary'}
               type={'button'}
-              className={'w-3/5 md:!h-12 md:!text-xl'}
+              className={'p-3 !h-auto'}
             >
             Znajdź specjalistę
             </StyledCtaButton>

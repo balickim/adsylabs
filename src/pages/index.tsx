@@ -14,6 +14,8 @@ import Video from 'components/Index/Video';
 import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
 import Pricing from 'components/Index/Pricing';
 import Comparison from 'components/Index/Comparison';
+import FloatingButton from 'components/Common/FloatingButton';
+import { useRect } from 'hooks/useRect';
 
 const introHeaderVariants: Variants = {
   hide: {
@@ -43,6 +45,8 @@ export const Motion = ({ children }: { children: React.ReactNode }) => (
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 
 const HomePage: NextPage = () => {
+  const [rect, ref] = useRect<HTMLDivElement>();
+
   return (
     <Layout
       meta={{
@@ -76,11 +80,12 @@ const HomePage: NextPage = () => {
         </Motion>
 
         <Motion>
-          <Pricing />
+          <Pricing innerRef={ref} />
         </Motion>
 
       </Main>
       <Footer />
+      <FloatingButton pricingPosition={rect} />
     </Layout>
   );
 };

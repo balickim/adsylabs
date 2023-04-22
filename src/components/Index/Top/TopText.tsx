@@ -7,7 +7,7 @@ import { StyledCtaButton } from 'components/Common/styled';
 
 const TopText = () => {
   return (
-    <div className="flex flex-col justify-center gap-10 md:min-h-[40rem]">
+    <div className="flex flex-col justify-center gap-4 md:gap-10 md:min-h-[40rem]">
       <TitleLeft>
           Zatrudnij specjalistów marketingu, bez ryzyka
       </TitleLeft>
@@ -16,19 +16,14 @@ const TopText = () => {
           specjalistami ds. marketingu i reklamy
       </SubTitleLeftShadow>
 
-      {/*<SearchInput*/}
-      {/*  label={'ZNAJDŹ SPECJALISTĘ'}*/}
-      {/*  placeholder={'Wyszukaj Specjalista Facebook Ads etc.'}*/}
-      {/*/>*/}
-
       <Link href="/#pricing">
-        <div className={'flex justify-center md:justify-start'}>
+        <div className={'flex justify-start'}>
           <StyledCtaButton
             version={'primary'}
             type={'button'}
-            className={'w-3/5 !h-auto md:!h-10'}
+            className={'p-3 !h-auto'}
           >
-          Znajdź specjalistę
+            Znajdź specjalistę
           </StyledCtaButton>
         </div>
       </Link>

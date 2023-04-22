@@ -7,6 +7,7 @@ import Layout from 'components/Common/Layout';
 const List = ({ __clerk_ssr_state }: { __clerk_ssr_state: Clerk}) => {
   return <Layout>
     protected list
+    <pre>{JSON.stringify(__clerk_ssr_state.user?.publicMetadata, null, 4)}</pre>
   </Layout>;
 };
 

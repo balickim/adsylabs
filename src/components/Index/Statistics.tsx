@@ -12,7 +12,7 @@ const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
 const StatsItem = tw.div`flex flex-col text-center md:text-left bg-white border p-8 z-1`;
 const TitleLeft = tw.h1`text-4xl lg:text-5xl xl:text-6xl tracking-tight text-gray-900`;
 const TextContainer = tw.div`flex flex-col justify-center gap-6`;
-const Title = tw.h1`text-5xl tracking-tight text-gray-900 text-center md:text-left`;
+const Title = tw.h1`text-3xl xl:text-5xl tracking-tight text-gray-900 text-center md:text-left`;
 
 const SubTitle = styled.h3`
   ${tw`text-sm text-gray-500 text-lg text-center md:text-left`}
@@ -72,7 +72,7 @@ const Statistics = () => {
             <StyledCtaButton
               version={'primary'}
               type={'button'}
-              className={'w-3/5 !h-auto md:!h-10'}
+              className={'p-3 !h-auto'}
             >
             Znajdź specjalistę
             </StyledCtaButton>

@@ -9,10 +9,6 @@ interface IStyledCtaButton {
 export const StyledCtaButton = styled.button<IStyledCtaButton>(
   ({ version }) => [
     tw`
-      px-5 
-      py-1.5
-      h-10
-      text-sm
       text-center
       rounded-3xl 
       transition

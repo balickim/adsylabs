@@ -16,15 +16,15 @@ const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center 
 const PinkText = tw.p`text-pink-400`;
 const ColumnAsset = tw.div`flex justify-center items-center`;
 const ColumnText = tw.p`flex justify-center items-center`;
-const LeftColumnText = tw.p`flex items-center text-sm xl:text-base`;
+const LeftColumnText = tw.p`flex items-center text-xs xl:text-base`;
 const Grid = styled.div`
   ${tw`grid gap-x-4 h-[34rem] grid-rows-6 overflow-x-auto`}
   grid-template-columns:
-    minmax(8rem, 10rem)
-    minmax(11rem, 15rem) 
-    minmax(11rem, 15rem) 
-    minmax(11rem, 15rem) 
-    minmax(11rem, 15rem)
+    minmax(5rem, 10rem)
+    minmax(9rem, 15rem) 
+    minmax(9rem, 15rem) 
+    minmax(9rem, 15rem) 
+    minmax(9rem, 15rem)
   ;
 `;
 
@@ -34,7 +34,7 @@ const Comparison = () => {
   return (
     <StyledSection id={'comparison'}>
       <Title>
-          AdsBridge vs tradycyjne rozwiązania
+        AdsBridge vs tradycyjne rozwiązania
       </Title>
 
       <div className={'flex justify-center'}>
@@ -62,7 +62,7 @@ const Comparison = () => {
           </HeaderContainer>
 
           <LeftColumnText>
-          Gwarancja efektów kampanii lub zwrot pieniędzy za usługę
+            Gwarancja efektów kampanii lub zwrot pieniędzy za usługę
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
             <TfiCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
@@ -78,23 +78,23 @@ const Comparison = () => {
           </ColumnAsset>
 
           <LeftColumnText>
-          Czas zatrudnienia specjalisty
+            Czas zatrudnienia specjalisty
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
-          3-4 dni
+            3-4 dni
           </ColumnAsset>
           <ColumnText>
-          kilka tygodni
+            kilka tygodni
           </ColumnText>
           <ColumnText>
-          nawet do 8 tygodni
+            nawet do 8 tygodni
           </ColumnText>
           <ColumnText>
-          3-4 dni
+            3-4 dni
           </ColumnText>
 
           <LeftColumnText>
-          Dedykowany ekspert strategii marketingowej
+            Dedykowany ekspert strategii marketingowej
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
             <TfiCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
@@ -110,19 +110,19 @@ const Comparison = () => {
           </ColumnAsset>
 
           <LeftColumnText>
-          Cena
+            Cena
           </LeftColumnText>
           <ColumnText className={'border-primary border-l-4 border-r-4 '}>
-          $$
+            $$
           </ColumnText>
           <ColumnText>
-          $$$
+            $$$
           </ColumnText>
           <ColumnText>
-          $$$
+            $$$
           </ColumnText>
           <ColumnText>
-          $
+            $
           </ColumnText>
 
           <div></div>
@@ -131,8 +131,9 @@ const Comparison = () => {
               <StyledCtaButton
                 version={'primary'}
                 type="button"
+                className={'p-3 text-xs xl:p-4 xl:text-lg'}
               >
-              Znajdź specjalistę
+                Znajdź specjalistę
               </StyledCtaButton>
             </Link>
           </ColumnAsset>

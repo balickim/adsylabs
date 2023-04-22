@@ -9,10 +9,11 @@ import { twConfig } from 'helpers/tailwind';
 import { SubTitle, Title } from './styled';
 
 const StyledSection = tw.section`px-6 mt-16 md:mt-32 md:px-24 flex flex-col gap-8`;
-const StyledStepsContainer = tw.div`grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-6 text-center`;
+const StyledStepsContainer = tw.div`grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-6 text-center`;
 const StyledStep = tw.div`flex flex-col gap-2`;
 const StyledIconContainer = tw.div`flex justify-center`;
-const StyledText = tw.div`font-light text-gray-500`;
+const StyledText = tw.div`font-light text-gray-500 text-base lg:text-xl`;
+const StyledHeaderText = tw.span`text-lg lg:text-2xl`;
 
 const HowItWorks = () => {
   return (
@@ -32,7 +33,7 @@ const HowItWorks = () => {
               color={twConfig?.theme?.colors?.primary as string}
             />
           </StyledIconContainer>
-          <span>Zdefiniuj cele</span>
+          <StyledHeaderText>Zdefiniuj cele</StyledHeaderText>
           <StyledText>
             Określ swój budżet reklamowy, kanały komunikacji i pozostałe wymagania. Nie jesteś pewny/a? Chętnie pomożemy!
           </StyledText>
@@ -44,7 +45,7 @@ const HowItWorks = () => {
               color={twConfig?.theme?.colors?.primary as string}
             />
           </StyledIconContainer>
-          <span>Przeprowadź rekrutację</span>
+          <StyledHeaderText>Przeprowadź rekrutację</StyledHeaderText>
           <StyledText>
             Szybko znajdź grono specjalistów i zacznij współpracę.
           </StyledText>
@@ -56,7 +57,7 @@ const HowItWorks = () => {
               color={twConfig?.theme?.colors?.primary as string}
             />
           </StyledIconContainer>
-          <span>Osiągnij sukces</span>
+          <StyledHeaderText>Osiągnij sukces</StyledHeaderText>
           <StyledText>
             Rozwiń swój marketing z naszymi zweryfikowanymi specjalistami lub otrzymaj całkowity zwrot pieniędzy.
           </StyledText>

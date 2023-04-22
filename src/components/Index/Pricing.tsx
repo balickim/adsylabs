@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, LegacyRef } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -25,18 +25,18 @@ interface IVariant {
 
 const PricingContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`pt-10 pb-4 border rounded-lg relative`,
+    tw`pb-4 border rounded-lg relative`,
     variant === 'primary'
-      ? tw`bg-primary`
-      : tw`bg-white`,
+      ? tw`bg-primary pt-10`
+      : tw`bg-white pt-4 md:pt-10`,
   ]
 );
 const TitleContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`flex justify-center text-center text-2xl mb-6`,
+    tw`flex justify-center text-center text-2xl`,
     variant === 'primary'
-      ? tw`text-white`
-      : tw`text-black`,
+      ? tw`text-white mb-6`
+      : tw`text-black md:mb-6`,
   ]
 );
 const Text = styled.div<IVariant>(
@@ -73,9 +73,23 @@ const ButtonContainer = styled.div<IVariant>(
   ]
 );
 
-const ChildrenContainer = styled.div`
-  ${tw`flex flex-col grow px-16 space-y-8`}
-`;
+const ChildrenContainer = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`flex flex-col grow px-16 space-y-8`,
+    variant === 'primary'
+      ? tw``
+      : tw`space-y-4 md:space-y-8`,
+  ]
+);
+
+const SubtitleContainer = styled.div<IVariant>(
+  ({ variant }) => [
+    tw`lg:h-24`,
+    variant === 'primary'
+      ? tw`h-28`
+      : tw`h-12 my-2 md:my-0 md:h-28 lg:h-24`,
+  ]
+);
 
 const PricingItem = ({
   variant,
@@ -91,9 +105,9 @@ const PricingItem = ({
       <div className={'flex flex-col gap-6 relative'}>
         <div className={'px-16'}>
           <TitleContainer variant={variant}>{title}</TitleContainer>
-          <div className={'h-28 lg:h-36 xl:h-20'}>
+          <SubtitleContainer variant={variant}>
             <Text variant={variant}>{subtitle}</Text>
-          </div>
+          </SubtitleContainer>
           <PriceContainer>
             <Price variant={variant}>
               {price}zł
@@ -104,7 +118,7 @@ const PricingItem = ({
 
         <hr/>
 
-        <ChildrenContainer>
+        <ChildrenContainer variant={variant}>
           {Children.map(arrayChildren, (child, index) => {
             return (
               <Text variant={variant} key={index}>
@@ -117,7 +131,7 @@ const PricingItem = ({
       <ButtonContainer variant={variant}>
         <Link href="/sign-up">
           <Button variant={variant}>
-          Zarejestruj się za darmo
+            Zarejestruj się za darmo
           </Button>
         </Link>
       </ButtonContainer>
@@ -125,9 +139,9 @@ const PricingItem = ({
   );
 };
 
-const Pricing = () => {
+const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
   return (
-    <StyledSection id={'pricing'}>
+    <StyledSection id={'pricing'} ref={innerRef}>
       <TextContainer className={'col-span-1 lg:col-span-2 xl:col-span-1'}>
         <Title>
           Postaw na sprawdzonych specjalistów
