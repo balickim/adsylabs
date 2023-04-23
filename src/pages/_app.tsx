@@ -1,6 +1,7 @@
 import type { AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import 'main.css';
@@ -20,6 +21,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Analytics />
       <ClerkProvider
         localization={pl}
         appearance={{
