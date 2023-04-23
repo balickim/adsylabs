@@ -1,6 +1,4 @@
 import React from 'react';
-import type { Variants } from 'framer-motion';
-import { motion } from 'framer-motion';
 import tw from 'twin.macro';
 
 import type { NextPage } from 'next';
@@ -16,31 +14,7 @@ import Pricing from 'components/Index/Pricing';
 import Comparison from 'components/Index/Comparison';
 import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'hooks/useRect';
-
-const introHeaderVariants: Variants = {
-  hide: {
-    opacity: 0,
-    y: -40,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-    },
-  },
-};
-
-export const Motion = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial="hide"
-    whileInView="show"
-    variants={introHeaderVariants}
-    viewport={{ once: true }}
-  >
-    {children}
-  </motion.div>
-);
+import { Motion } from 'helpers/framerMotion';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 

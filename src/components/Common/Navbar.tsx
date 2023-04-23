@@ -50,7 +50,7 @@ const MenuItem = ({ text, link }: { text: string; link: string }) => (
 
 const MenuItems = () => (
   <>
-    <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
+    <MenuItem text={'Dołącz jako specjalista'} link={'/become-a-specialist'} />
     <MenuItem text={'Cennik'} link={'/#pricing'} />
     <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
     <Link href="/#pricing">
