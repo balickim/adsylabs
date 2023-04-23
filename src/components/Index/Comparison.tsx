@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { twConfig } from 'helpers/tailwind';
 
 const StyledSection = tw.section`mt-16 md:mt-32`;
-const Title = tw.h1`text-5xl tracking-tight text-gray-900 text-center mb-16`;
+const Title = tw.h1`text-2xl lg:text-3xl xl:text-5xl tracking-tight text-gray-900 text-center mb-16`;
 const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center text-sm xl:text-base`;
 const PinkText = tw.p`text-pink-400`;
 const ColumnAsset = tw.div`flex justify-center items-center`;
