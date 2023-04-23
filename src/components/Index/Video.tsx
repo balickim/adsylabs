@@ -38,8 +38,7 @@ const Video = () => {
         <StyledVideo
           title="how we verify"
           loop
-          // @ts-ignore
-          playsinline
+          playsInline
           autoPlay
           muted
         >
