@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { CtaButton } from './styled';
 
 const Container = styled.div`
-  ${tw`fixed z-50`}
-  bottom: 2em;
+  ${tw`fixed z-50 md:hidden`}
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
@@ -25,9 +25,9 @@ const FloatingButton = ({ pricingPosition }: IFloatingButton) => {
       <Link href="/#pricing">
         <CtaButton
           version={'primary'}
-          className={`${rect && pricingPosition && rect.y > pricingPosition.y ? 'hidden' : null}`}
+          className={`w-52 ${rect && pricingPosition && rect.y > pricingPosition.y ? 'hidden' : null}`}
         >
-            Znajdź specjalistę
+          Znajdź specjalistę ➜
         </CtaButton>
       </Link>
     </Container>
