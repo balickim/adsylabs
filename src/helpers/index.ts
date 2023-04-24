@@ -2,7 +2,7 @@ export const publicPaths = [
   '/',
   '/sign-in*',
   '/sign-up*',
-  '/become-a-specialist',
+  '/join-us',
 ];
 
 export const isPublic = (path: string) => {

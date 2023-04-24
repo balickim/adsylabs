@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { SubTitleLeftShadow } from './styled';
-import { StyledCtaButton } from 'components/Common/styled';
+import { CtaButton } from 'components/Common/styled';
 import { STATIC } from 'constants/index';
 
 const StyledSection = tw.section`px-12 lg:px-36 grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
@@ -69,13 +69,12 @@ const Statistics = () => {
         </SubTitle>
         <Link href="/#pricing">
           <div className={'flex justify-center md:justify-start'}>
-            <StyledCtaButton
+            <CtaButton
               version={'primary'}
               type={'button'}
-              className={'p-3 !h-auto'}
             >
-            Znajdź specjalistę
-            </StyledCtaButton>
+              Znajdź specjalistę
+            </CtaButton>
           </div>
         </Link>
       </TextContainer>

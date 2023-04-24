@@ -6,7 +6,7 @@ import { CgClose } from 'react-icons/cg';
 import Link from 'next/link';
 
 import { STATIC } from 'constants/index';
-import { StyledCtaButton } from 'components/Common/styled';
+import { CtaButton } from 'components/Common/styled';
 import styled from 'styled-components';
 import { twConfig } from 'helpers/tailwind';
 
@@ -128,13 +128,13 @@ const Comparison = () => {
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-r-4 border-b-4 rounded-b-xl'}>
             <Link href="/#pricing">
-              <StyledCtaButton
+              <CtaButton
                 version={'primary'}
                 type="button"
-                className={'p-3 text-xs xl:p-4 xl:text-lg'}
+                className={'text-xs xl:p-4 xl:text-lg'}
               >
                 Znajdź specjalistę
-              </StyledCtaButton>
+              </CtaButton>
             </Link>
           </ColumnAsset>
           <div></div>

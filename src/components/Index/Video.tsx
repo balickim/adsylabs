@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { STATIC } from 'constants/index';
 import styled from 'styled-components';
-import { StyledCtaButton } from '../Common/styled';
+import { CtaButton, StyledVideo, VideoContainer } from 'components/Common/styled';
 
 const StyledSection = tw.section`md:px-6 mt-16 md:mt-32 grid grid-cols-1 xl:grid-cols-2 gap-10`;
 const TextContainer = tw.div`flex flex-col text-center justify-center gap-6`;
@@ -12,23 +12,6 @@ const Title = tw.h1`text-2xl lg:text-3xl xl:text-5xl tracking-tight xl:text-left
 const SubTitle = styled.h3`
   ${tw`text-sm text-gray-500 text-lg text-center xl:text-left`}
   text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.1);
-`;
-
-const VideoContainer = styled('div')`
-  position: relative;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-`;
-
-const StyledVideo = styled('video')`
-  overflow: hidden;
-  border: 0;
-  align-self: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 `;
 
 const Video = () => {
@@ -59,13 +42,12 @@ const Video = () => {
         </SubTitle>
         <Link href="/#pricing">
           <div className={'flex justify-center xl:justify-start'}>
-            <StyledCtaButton
+            <CtaButton
               version={'primary'}
               type={'button'}
-              className={'p-3 !h-auto'}
             >
             Znajdź specjalistę
-            </StyledCtaButton>
+            </CtaButton>
           </div>
         </Link>
       </TextContainer>

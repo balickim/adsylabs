@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 
 import { useRect } from 'hooks/useRect';
 import Link from 'next/link';
-import { StyledCtaButton } from './styled';
+import { CtaButton } from './styled';
 
 const Container = styled.div`
   ${tw`fixed z-50`}
@@ -23,12 +23,12 @@ const FloatingButton = ({ pricingPosition }: IFloatingButton) => {
   return (
     <Container ref={ref}>
       <Link href="/#pricing">
-        <StyledCtaButton
+        <CtaButton
           version={'primary'}
-          className={`p-3 ${rect && pricingPosition && rect.y > pricingPosition.y ? 'hidden' : null}`}
+          className={`${rect && pricingPosition && rect.y > pricingPosition.y ? 'hidden' : null}`}
         >
             Znajdź specjalistę
-        </StyledCtaButton>
+        </CtaButton>
       </Link>
     </Container>
   );

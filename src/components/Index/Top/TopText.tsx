@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { twConfig } from 'helpers/tailwind';
-import { StyledCtaButton } from 'components/Common/styled';
+import { CtaButton } from 'components/Common/styled';
 
 const TopText = () => {
   return (
@@ -18,13 +18,12 @@ const TopText = () => {
 
       <Link href="/#pricing">
         <div className={'flex justify-start'}>
-          <StyledCtaButton
+          <CtaButton
             version={'primary'}
             type={'button'}
-            className={'p-3 !h-auto'}
           >
             Znajdź specjalistę
-          </StyledCtaButton>
+          </CtaButton>
         </div>
       </Link>
         

@@ -1,14 +1,16 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 
+export const BasicTitle = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900`;
 
-interface IStyledCtaButton {
+interface ICtaButton {
   version: 'primary' | 'secondary'
 }
 
-export const StyledCtaButton = styled.button<IStyledCtaButton>(
+export const CtaButton = styled.button<ICtaButton>(
   ({ version }) => [
     tw`
+      p-3
       text-center
       rounded-3xl 
       transition
@@ -57,3 +59,20 @@ export const Spinner = () => (
     <span className="sr-only">Loading...</span>
   </div>
 );
+
+export const VideoContainer = styled('div')`
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+`;
+
+export const StyledVideo = styled('video')`
+  overflow: hidden;
+  border: 0;
+  align-self: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;

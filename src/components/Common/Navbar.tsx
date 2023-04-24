@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 import { STATIC } from 'constants/index';
-import { Spinner, StyledCtaButton } from 'components/Common/styled';
+import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
 
 const Nav = tw.nav`
@@ -50,17 +50,17 @@ const MenuItem = ({ text, link }: { text: string; link: string }) => (
 
 const MenuItems = () => (
   <>
-    <MenuItem text={'Dołącz jako specjalista'} link={'/become-a-specialist'} />
+    <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
     <MenuItem text={'Cennik'} link={'/#pricing'} />
     <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
     <Link href="/#pricing">
-      <StyledCtaButton
+      <CtaButton
         version={'primary'}
         type="button"
-        className={'p-3 md:hidden'}
+        className={'md:hidden'}
       >
         Znajdź specjalistę
-      </StyledCtaButton>
+      </CtaButton>
     </Link>
   </>
 );
@@ -102,13 +102,12 @@ const Logo = () => (
 
 const LoginButton = () => (
   <Link href="/sign-in">
-    <StyledCtaButton
+    <CtaButton
       version={'secondary'}
       type="button"
-      className={'p-3'}
     >
       Zaloguj się
-    </StyledCtaButton>
+    </CtaButton>
   </Link>
 );
 
@@ -140,13 +139,13 @@ export const Navbar = () => {
             : <LoginButton />
         }
         <Link href="/#pricing">
-          <StyledCtaButton
-            className={'p-3 hidden md:block'}
+          <CtaButton
+            className={'hidden md:block'}
             version={'primary'}
             type="button"
           >
             Znajdź specjalistę
-          </StyledCtaButton>
+          </CtaButton>
         </Link>
 
         <MobileButton />

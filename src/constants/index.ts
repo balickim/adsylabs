@@ -4,6 +4,7 @@ export const STATIC = {
   STAIN_1: '/static/assets/stain_1.png',
   STAIN_2: '/static/assets/stain_2.png',
   HOW_WE_VERIFY: '/static/media/how_we_verify.mp4',
+  SPECIALISTS: '/static/media/specialists.mp4',
   BRAND_ICON: '/static/assets/brand_icon.png',
   COPY_ICON: '/static/assets/copy_icon.png',
   FACEBOOK_ICON: '/static/assets/facebook_icon.png',
@@ -12,4 +13,5 @@ export const STATIC = {
   INSTAGRAM_ICON: '/static/assets/instagram_icon.png',
   TIKTOK_ICON: '/static/assets/tiktok_icon.png',
   YOUTUBE_ICON: '/static/assets/youtube_icon.png',
+  MOBILE_STOCK: '/static/assets/mobile_stock.png',
 } as const;
