@@ -1,17 +1,11 @@
 import React from 'react';
 import tw from 'twin.macro';
-import {
-  TbSquareRoundedNumber1Filled,
-  TbSquareRoundedNumber2Filled,
-  TbSquareRoundedNumber3Filled,
-  TbSquareRoundedNumber4Filled,
-} from 'react-icons/tb';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
 
+import { Number } from 'components/Common/styled';
 import { BasicTitle } from 'components/Common/styled';
-import { twConfig } from 'helpers/tailwind';
 import { STATIC } from 'constants/index';
 
 const StyledSection = tw.section`grid grid-cols-1 items-center mt-16`;
@@ -19,7 +13,7 @@ const StyledBasicTitle = tw(BasicTitle)`text-center mb-8`;
 const Grid = tw.div`grid grid-cols-1 lg:grid-cols-2`;
 const Container = tw.div`flex flex-col gap-6`;
 const ItemContainer = styled.div`
-  ${tw`grid gap-y-2`}
+  ${tw`grid gap-y-2 gap-x-3`}
   grid-template-columns:
     minmax(7%)
     minmax(93%) 
@@ -32,13 +26,10 @@ const ItemContainer = styled.div`
 const ItemTop = tw.div`flex font-bold items-center`;
 const ItemTitle = tw.h3`text-lg`;
 const ItemText = tw.p`col-start-2`;
-const ItemLink = tw.div`flex font-bold text-primary text-lg items-center col-start-2 hover:underline`;
+const ItemLink = tw.div`flex font-bold text-primary text-base md:text-lg items-center hover:underline whitespace-nowrap`;
 const ImageContainer = tw.div`relative hidden lg:block`;
 
 const HowItWorks = () => {
-  const ICON_SIZE = 40;
-  const COLOR = twConfig?.theme?.colors?.primary as string;
-
   return (
     <StyledSection id={'how-it-works'}>
       <StyledBasicTitle>
@@ -49,7 +40,7 @@ const HowItWorks = () => {
         <Container>
           <ItemContainer>
             <ItemTop>
-              <TbSquareRoundedNumber1Filled size={ICON_SIZE} color={COLOR} />
+              <Number>1</Number>
             </ItemTop>
             <ItemTop>
               <ItemTitle>Zostań zweryfikowanym specjalistą</ItemTitle>
@@ -61,7 +52,7 @@ const HowItWorks = () => {
           </ItemContainer>
           <ItemContainer>
             <ItemTop>
-              <TbSquareRoundedNumber2Filled size={ICON_SIZE} color={COLOR} />
+              <Number>2</Number>
             </ItemTop>
             <ItemTop>
               <ItemTitle>Poznaj swoich nowych Klientów</ItemTitle>
@@ -72,7 +63,7 @@ const HowItWorks = () => {
           </ItemContainer>
           <ItemContainer>
             <ItemTop>
-              <TbSquareRoundedNumber3Filled size={ICON_SIZE} color={COLOR} />
+              <Number>3</Number>
             </ItemTop>
             <ItemTop>
               <ItemTitle>Przeprowadź onboarding, łatwiej niż zawsze</ItemTitle>
@@ -83,7 +74,7 @@ const HowItWorks = () => {
           </ItemContainer>
           <ItemContainer>
             <ItemTop>
-              <TbSquareRoundedNumber4Filled size={ICON_SIZE} color={COLOR} />
+              <Number>4</Number>
             </ItemTop>
             <ItemTop>
               <ItemTitle>Zarządzaj projektem i śledź wyniki</ItemTitle>
@@ -94,11 +85,14 @@ const HowItWorks = () => {
             </ItemText>
           </ItemContainer>
           <ItemContainer>
-            <ItemLink>
-              <Link href={'/sign-up'}>
-                Aplikuj teraz i przetestuj za darmo →
-              </Link>
-            </ItemLink>
+            <ItemTop>
+              <div className='w-10'></div>
+              <ItemLink>
+                <Link href={'/sign-up'}>
+                  Aplikuj teraz i przetestuj za darmo →
+                </Link>
+              </ItemLink>
+            </ItemTop>
           </ItemContainer>
         </Container>
 

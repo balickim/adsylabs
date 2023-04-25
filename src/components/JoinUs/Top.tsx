@@ -7,7 +7,7 @@ import { BasicTitle, CtaButton } from 'components/Common/styled';
 
 const StyledSection = tw.section`px-10 gap-4 flex flex-col items-center`;
 const StarsContainer = tw.div`flex`;
-const StyledBasicTitle = tw(BasicTitle)`text-center`;
+const StyledBasicTitle = tw(BasicTitle)`text-center whitespace-nowrap`;
 const Text = tw.p`text-center`;
 
 const Top = () => {
@@ -23,7 +23,7 @@ const Top = () => {
         <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
       </StarsContainer>
       <StyledBasicTitle>
-        Powiększ dochód, oszczędź czas, <br/>buduj silną markę
+        Powiększ dochód, <wbr /> oszczędź czas, <wbr /> buduj silną markę
       </StyledBasicTitle>
       <Text>
         Uzyskaj dostęp do ekscytujących współprac z Klientami w towarzystwie najlepszych specjalistów marketingu
@@ -32,6 +32,7 @@ const Top = () => {
         <CtaButton
           version={'primary'}
           type={'button'}
+          className={'w-64 !py-2'}
         >
           Aplikuj teraz
         </CtaButton>

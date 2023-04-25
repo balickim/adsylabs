@@ -9,26 +9,10 @@ interface ICtaButton {
 
 export const CtaButton = styled.button<ICtaButton>(
   ({ version }) => [
-    tw`
-      p-3
-      text-center
-      rounded-3xl 
-      transition
-      hover:-translate-y-1
-      focus:outline-none 
-      focus:ring-4 
-  `,
+    tw`p-3 text-center transition  rounded-3xl hover:-translate-y-1 focus:outline-none focus:ring-4`,
     version === 'primary'
-      ? tw`
-          bg-primary
-          text-white 
-          hover:brightness-150
-      `
-      : tw`
-          bg-white
-          border
-          text-black
-      `,
+      ? tw`text-white  bg-primary hover:brightness-150`
+      : tw`text-black bg-white border `,
   ]
 );
 
@@ -76,3 +60,5 @@ export const StyledVideo = styled('video')`
   width: 100%;
   height: 100%;
 `;
+
+export const Number = tw.p`flex items-center justify-center text-2xl rounded-full bg-primary w-8 h-8 text-white`;
