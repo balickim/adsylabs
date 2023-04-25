@@ -1,7 +1,7 @@
 import React from 'react';
 import tw from 'twin.macro';
 import Image from 'next/image';
-import { TfiCheck } from 'react-icons/tfi';
+import { FaCheck } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
 import Link from 'next/link';
 
@@ -65,7 +65,7 @@ const Comparison = () => {
             Gwarancja efektów kampanii lub zwrot pieniędzy za usługę
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
-            <TfiCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
+            <FaCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
           </ColumnAsset>
           <ColumnAsset>
             <CgClose size={ICON_SIZE} />
@@ -97,7 +97,7 @@ const Comparison = () => {
             Dedykowany ekspert strategii marketingowej
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
-            <TfiCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
+            <FaCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
           </ColumnAsset>
           <ColumnAsset>
             <CgClose size={ICON_SIZE} />
