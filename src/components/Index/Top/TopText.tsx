@@ -32,14 +32,14 @@ const TopText = () => {
         <span className="flex items-center gap-1">
           <AiFillCheckCircle
             size={20}
-            color={twConfig?.theme?.colors?.secondary as string}
+            color={twConfig?.theme?.colors?.tertiary as string}
           />
             Nie znajdziesz kandydata? Nie płacisz.
         </span>
         <span className="flex items-center gap-1">
           <AiFillCheckCircle
             size={20}
-            color={twConfig?.theme?.colors?.secondary as string}
+            color={twConfig?.theme?.colors?.tertiary as string}
           />
             60 dniowa gwarancja
         </span>

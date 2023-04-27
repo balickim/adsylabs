@@ -10,6 +10,7 @@ import Top from 'components/JoinUs/Top';
 import Why from 'components/JoinUs/Why';
 import MoreBenefits from 'components/JoinUs/MoreBenefits';
 import HowItWorks from 'components/JoinUs/HowItWorks';
+import Comparison from 'components/JoinUs/Comparison';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 
@@ -36,6 +37,10 @@ const JoinUsPage: NextPage = () => {
 
         <Motion>
           <HowItWorks />
+        </Motion>
+
+        <Motion>
+          <Comparison />
         </Motion>
       </Main>
       <Footer />
