@@ -16,14 +16,14 @@ const Why = () => {
       </StyledBasicTitle>
 
       <VideoWrapper>
-        <VideoContainer className={'!pb-[30%]'}>
+        <VideoContainer className={'!pb-[30%] 2xl:!pb-[25%]'}>
           <StyledVideo
             title="why us"
             loop
             playsInline
             autoPlay
             muted
-            className={'!h-auto'}
+            className={'!h-auto max-w-[1000px] ml-auto mr-auto left-0 right-0'}
           >
             <source src={`${STATIC.SPECIALISTS}`} type={'video/mp4'} />
             Your browser does not support the video tag.
