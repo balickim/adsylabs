@@ -8,7 +8,7 @@ import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 import { twConfig } from 'helpers/tailwind';
 
-const StyledSection = tw.section`px-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0`;
+const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:mt-0 lg:gap-0`;
 
 const Top = () => {
   return (
