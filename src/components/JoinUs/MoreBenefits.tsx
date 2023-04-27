@@ -5,7 +5,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { BasicTitle } from 'components/Common/styled';
 import { twConfig } from 'helpers/tailwind';
 
-const StyledSection = tw.section`grid grid-cols-1 items-center mt-16 lg:px-40 xl:px-56 2xl:px-80`;
+const StyledSection = tw.section`grid grid-cols-1 items-center mt-16`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-8`;
 const Grid = tw.div`grid gap-4 grid-cols-1 md:grid-cols-2`;
 const ItemContainer = tw.div`rounded-2xl border p-6 flex gap-2`;

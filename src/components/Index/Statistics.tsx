@@ -7,7 +7,7 @@ import { SubTitleLeftShadow } from './styled';
 import { CtaButton } from 'components/Common/styled';
 import { STATIC } from 'constants/index';
 
-const StyledSection = tw.section`px-12 lg:px-36 grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
+const StyledSection = tw.section`grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
 const StatsItem = tw.div`flex flex-col text-center md:text-left bg-white border p-8 z-1`;
 const TitleLeft = tw.h1`text-4xl lg:text-5xl xl:text-6xl tracking-tight text-gray-900`;

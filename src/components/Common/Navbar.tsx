@@ -25,6 +25,7 @@ const Container = tw.div`
   flex-wrap
   justify-between 
   items-center
+  2xl:max-w-[1200px] 2xl:ml-auto 2xl:mr-auto 2xl:left-0 2xl:right-0
 `;
 
 const Start = tw.div`
