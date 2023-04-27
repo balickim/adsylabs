@@ -8,12 +8,12 @@ import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 import { twConfig } from 'helpers/tailwind';
 
-const StyledSection = tw.section`px-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-24 md:pt-8 lg:gap-0`;
+const StyledSection = tw.section`px-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0`;
 
 const Top = () => {
   return (
     <StyledSection id={'top'}>
-      <div className="flex flex-col justify-center gap-4 md:gap-10 md:min-h-[40rem]">
+      <div className="flex flex-col justify-center gap-4 lg:gap-10 lg:min-h-[40rem]">
         <TitleLeft>
           Zatrudnij specjalistów marketingu, bez ryzyka
         </TitleLeft>
@@ -50,7 +50,7 @@ const Top = () => {
           </span>
         </div>
       </div>
-      <div className='flex justify-center relative h-96 md:h-auto'>
+      <div className='flex my-6 justify-center relative h-96 lg:h-auto lg:scale-75 lg:mt-20'>
         <Image
           fill
           priority

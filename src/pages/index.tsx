@@ -16,7 +16,7 @@ import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'hooks/useRect';
 import { Motion } from 'helpers/framerMotion';
 
-export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
+export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 
 const HomePage: NextPage = () => {
   const [rect, ref] = useRect<HTMLDivElement>();
