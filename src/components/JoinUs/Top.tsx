@@ -7,23 +7,27 @@ import { BasicTitle, CtaButton } from 'components/Common/styled';
 
 const StyledSection = tw.section`px-10 gap-4 flex flex-col items-center`;
 const StarsContainer = tw.div`flex`;
-const StyledBasicTitle = tw(BasicTitle)`text-center whitespace-nowrap`;
+const StyledBasicTitle = tw(BasicTitle)`flex flex-col text-center md:flex-row md:text-left`;
+const TitleText = tw.p`md:mx-1`;
 const Text = tw.p`text-center`;
 
 const Top = () => {
   const ICON_SIZE = 24;
+  const COLOR = twConfig?.theme?.colors?.primary as string;
   
   return (
     <StyledSection id={'top'}>
       <StarsContainer>
-        <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
-        <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
-        <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
-        <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
-        <AiFillStar size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
+        <AiFillStar size={ICON_SIZE} color={COLOR} />
+        <AiFillStar size={ICON_SIZE} color={COLOR} />
+        <AiFillStar size={ICON_SIZE} color={COLOR} />
+        <AiFillStar size={ICON_SIZE} color={COLOR} />
+        <AiFillStar size={ICON_SIZE} color={COLOR} />
       </StarsContainer>
       <StyledBasicTitle>
-        Powiększ dochód, <wbr /> oszczędź czas, <wbr /> buduj silną markę
+        <TitleText>Powiększ dochód,</TitleText>
+        <TitleText>{' '}oszczędź czas,</TitleText>
+        <TitleText>{' '}buduj silną markę</TitleText>
       </StyledBasicTitle>
       <Text>
         Uzyskaj dostęp do ekscytujących współprac z Klientami w towarzystwie najlepszych specjalistów marketingu

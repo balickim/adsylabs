@@ -53,7 +53,7 @@ const MenuItems = () => (
   <>
     <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
     <MenuItem text={'Cennik'} link={'/#pricing'} />
-    <MenuItem text={'Jak to działa?'} link={'/#how-it-works'} />
+    <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
     <Link href="/#pricing">
       <CtaButton
         version={'primary'}
