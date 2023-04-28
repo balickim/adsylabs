@@ -14,4 +14,7 @@ export const STATIC = {
   TIKTOK_ICON: '/static/assets/tiktok_icon.png',
   YOUTUBE_ICON: '/static/assets/youtube_icon.png',
   MOBILE_STOCK: '/static/assets/mobile_stock.png',
+  SPECIALISTS_CTA_1: '/static/assets/specialists-cta-1.png',
+  SPECIALISTS_CTA_2: '/static/assets/specialists-cta-2.png',
+  SPECIALISTS_CTA_3: '/static/assets/specialists-cta-3.png',
 } as const;

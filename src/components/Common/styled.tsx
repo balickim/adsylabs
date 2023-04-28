@@ -11,8 +11,8 @@ export const CtaButton = styled.button<ICtaButton>(
   ({ version }) => [
     tw`p-3 text-center transition  rounded-3xl hover:-translate-y-1 focus:outline-none focus:ring-4`,
     version === 'primary'
-      ? tw`text-white  bg-primary hover:brightness-150`
-      : tw`text-black bg-white border `,
+      ? tw`text-white bg-primary hover:brightness-150`
+      : tw`text-black bg-white border`,
   ]
 );
 
