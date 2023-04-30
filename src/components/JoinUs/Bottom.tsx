@@ -31,7 +31,8 @@ const Highlight = styled.span`
   }
 `;
 const CtaContainer = tw.div`
-  mt-[-8rem] bg-primary flex flex-col gap-6 justify-center items-center text-center text-white w-[80%] h-[25rem]
+  flex flex-col justify-center items-center text-center bg-primary text-white text-xs w-[90%] h-[19rem] gap-4 mt-[-6.5rem] rounded-3xl 
+  lg:text-base lg:w-[80%] lg:mt-[-8rem] lg:gap-6 lg:rounded-none lg:h-[25rem]
 `;
 
 const Bottom = () => {
@@ -81,7 +82,7 @@ const Bottom = () => {
       <div className={'flex justify-center'}>
         <CtaContainer>
           <BasicTitle className={'!text-white mt-24'}>Zarejestruj się za darmo</BasicTitle>
-          <p>Porozmawiajmy, jak możemy pomóc rozwinąć Twoją karierę.</p>
+          <p className={'max-w-[70%] sm:max-w-[40%] md:max-w-[30%]'}>Porozmawiajmy, jak możemy pomóc rozwinąć Twoją karierę.</p>
           <Link href="/sign-up">
             <CtaButton
               version={'secondary'}
