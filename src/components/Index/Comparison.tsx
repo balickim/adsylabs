@@ -42,7 +42,7 @@ const Comparison = () => {
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-t-4 border-r-4 rounded-t-xl'}>
             <Image
-              src={`${STATIC.LOGO}`}
+              src={STATIC.LOGO}
               alt="AdsBridge Logo"
               width={100}
               height={50}

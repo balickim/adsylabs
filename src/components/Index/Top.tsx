@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 import { STATIC } from 'constants/index';
-import { SubTitleLeftShadow, TitleLeft } from 'components/Index/styled';
+import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 import { twConfig } from 'helpers/tailwind';
 
@@ -17,10 +17,10 @@ const Top = () => {
         <TitleLeft>
           Zatrudnij specjalistów marketingu, bez ryzyka
         </TitleLeft>
-        <SubTitleLeftShadow>
+        <SubTitleLeft>
           Adsbridge.pl pomoże Ci znaleźć, zatrudnić i zarządzać zweryfikowanymi
           specjalistami ds. marketingu i reklamy
-        </SubTitleLeftShadow>
+        </SubTitleLeft>
 
         <Link href="/#pricing">
           <div className={'flex justify-start'}>
@@ -54,14 +54,14 @@ const Top = () => {
         <Image
           fill
           priority
-          src={`${STATIC.STAIN_1}`}
+          src={STATIC.STAIN_1}
           alt="stain"
           style={{ objectFit: 'contain' }}
         />
         <Image
           fill
           priority
-          src={`${STATIC.ROB_KATARZYNA}`}
+          src={STATIC.ROB_KATARZYNA}
           alt="how it works"
           style={{ objectFit: 'contain' }}
         />

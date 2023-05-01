@@ -99,7 +99,7 @@ const HowItWorks = () => {
         <ImageContainer>
           <Image
             fill
-            src={`${STATIC.MOBILE_STOCK}`}
+            src={STATIC.MOBILE_STOCK}
             alt="how-it-works"
             style={{ objectFit: 'contain' }}
           />

@@ -29,7 +29,7 @@ const Why = () => {
           autoPlay
           muted
         >
-          <source src={`${STATIC.SPECIALISTS}`} type={'video/mp4'} />
+          <source src={STATIC.SPECIALISTS} type={'video/mp4'} />
             Your browser does not support the video tag.
         </LocalStyledVideo>
       </VideoContainer>

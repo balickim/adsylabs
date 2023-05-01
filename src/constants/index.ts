@@ -17,4 +17,12 @@ export const STATIC = {
   SPECIALISTS_CTA_1: '/static/assets/specialists-cta-1.png',
   SPECIALISTS_CTA_2: '/static/assets/specialists-cta-2.png',
   SPECIALISTS_CTA_3: '/static/assets/specialists-cta-3.png',
+  JAKUB_JANIAK: '/static/assets/jakub_janiak.png',
+  SHAPE_1: '/static/assets/shape_1.png',
+  SHAPE_2: '/static/assets/shape_2.png',
+} as const;
+
+export const PAY_PLANS = {
+  BASIC: 'basic',
+  PREMIUM: 'premium',
 } as const;

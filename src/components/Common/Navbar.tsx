@@ -92,7 +92,7 @@ const StyledUserButton = () => (
 const Logo = () => (
   <Link href="/" className="flex mr-4">
     <Image
-      src={`${STATIC.LOGO}`}
+      src={STATIC.LOGO}
       alt="AdsBridge Logo"
       width={100}
       height={50}
