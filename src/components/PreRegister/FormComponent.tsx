@@ -24,15 +24,13 @@ export const FormComponent = () => {
           }
           return {};
         }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
+        onSubmit={() => {
           store.setStep(1);
         }}
       >
         {({
-          isSubmitting,
           touched,
           errors,
-          values,
           getFieldProps,
         }) => (
           <Form>
