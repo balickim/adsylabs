@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { BasicTitle, CtaButton } from 'components/Common/styled';
 import { SubTitle } from 'components/Index/styled';
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 import Link from 'next/link';
 
 const StyledSection = tw.section`mt-12 md:mt-24`;

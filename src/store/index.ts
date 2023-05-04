@@ -1,5 +1,5 @@
-import { useSpecialistsPreRegistrationStore } from 'store/registrationStore';
+import { usePreRegistrationStore } from 'store/registrationStore';
 
 export {
-  useSpecialistsPreRegistrationStore,
+  usePreRegistrationStore,
 };

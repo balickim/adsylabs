@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
 

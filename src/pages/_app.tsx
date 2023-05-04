@@ -5,9 +5,10 @@ import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 
-import 'main.css';
-import { twConfig } from 'helpers/tailwind';
+import 'styles/main.css';
+import { twConfig } from 'utils/helpers/tailwind';
 import { pl } from 'locale/clerk/pl';
+import { api } from 'utils/api';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
   const { push } = useRouter();
@@ -40,4 +41,4 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default _App;
+export default api.withTRPC(_App);

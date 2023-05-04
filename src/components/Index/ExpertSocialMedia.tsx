@@ -2,9 +2,9 @@ import tw from 'twin.macro';
 import Image from 'next/image';
 
 import { SubTitle, Title } from './styled';
-import { STATIC } from 'constants/index';
-import { twConfig } from 'helpers/tailwind';
-import useWindowDimension from 'hooks/useWindowDimension';
+import { STATIC } from 'utils/constants/index';
+import { twConfig } from 'utils/helpers/tailwind';
+import useWindowDimension from 'utils/hooks/useWindowDimension';
 
 const StyledSection = tw.section`md:px-24 mt-16 md:mt-32 flex flex-col gap-8`;
 const SocialMediaContainer = tw.div`grid grid-cols-2 md:grid-cols-12 gap-6 rounded-sm border-2 shadow-xl px-16 py-8`;

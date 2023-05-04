@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { useRect } from 'hooks/useRect';
+import { useRect } from 'utils/hooks/useRect';
 import Link from 'next/link';
 import { CtaButton } from './styled';
 

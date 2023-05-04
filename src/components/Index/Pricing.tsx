@@ -2,8 +2,7 @@ import React, { Children, LegacyRef } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import { useSpecialistsPreRegistrationStore } from '../../store';
-import { useAuth } from '@clerk/nextjs';
+import { usePreRegistrationStore } from 'store';
 
 const StyledSection = tw.section`md:px-12 mt-16 md:mt-32 lg:px-6 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3`;
 const TextContainer = tw.div`flex flex-col gap-6 xl:pt-32`;
@@ -99,13 +98,10 @@ const PricingItem = ({
 }: IPricingItem) => {
   const arrayChildren = Children.toArray(children);
   const router = useRouter();
-  const store = useSpecialistsPreRegistrationStore();
-  const { isSignedIn } = useAuth();
+  const store = usePreRegistrationStore();
 
   const handleClick = (variant: IPricingItem['variant']) => {
-    if (isSignedIn) return router.push('/thank-you');
-
-    store.setStep(0);
+    store.setPayPlan(variant === 'primary' ? 'premium' : 'basic');
     router.push({
       pathname: '/pre-register',
       query: { plan: variant === 'primary' ? 'premium' : 'basic' },

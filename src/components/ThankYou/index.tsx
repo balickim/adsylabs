@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 
 const Container = tw.div`
   bg-primary h-screen w-screen relative text-white text-center overflow-hidden

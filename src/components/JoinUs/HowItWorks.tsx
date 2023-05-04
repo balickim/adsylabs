@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { Number } from 'components/Common/styled';
 import { BasicTitle } from 'components/Common/styled';
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 
 const StyledSection = tw.section`grid grid-cols-1 items-center mt-16`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-8`;

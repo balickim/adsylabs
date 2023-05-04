@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import tw from 'twin.macro';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 
 const Container = tw.div`
   absolute bottom-0 text-white overflow-hidden

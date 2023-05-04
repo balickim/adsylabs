@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import { FaCheck } from 'react-icons/fa';
 import { GrFormClose } from 'react-icons/gr';
 
-import { twConfig } from 'helpers/tailwind';
+import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`mt-16 md:mt-32`;
 const Title = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900 text-center mb-16`;

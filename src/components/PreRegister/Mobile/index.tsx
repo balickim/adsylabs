@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { SignUp } from '@clerk/nextjs';
 
-import { useSpecialistsPreRegistrationStore } from 'store';
-import { STATIC } from 'constants/index';
+import { usePreRegistrationStore } from 'store';
+import { STATIC } from 'utils/constants/index';
 
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
 import { FormComponent } from 'components/PreRegister/FormComponent';
 import { JoinUs } from 'components/PreRegister/JoinUs';
-import { Motion } from 'helpers/framerMotion';
+import { Motion } from 'utils/helpers/framerMotion';
 
 const StyledImage = styled(Image)`
   position: absolute;
@@ -21,9 +21,10 @@ const StyledImage = styled(Image)`
 `;
 const MobileMainContainer = tw.div`w-screen h-screen bg-primary relative overflow-hidden`;
 const MobileSecondaryContainer = tw.div`w-screen h-screen bg-white relative`;
+const SignUpContainer = tw.div`flex justify-center`;
 
 const Mobile = () => {
-  const store = useSpecialistsPreRegistrationStore();
+  const store = usePreRegistrationStore();
 
   switch (true) {
     case store.step === 0:
@@ -44,7 +45,7 @@ const Mobile = () => {
         <MobileSecondaryContainer>
           <Motion>
             <JoinUs />
-            <SignUp redirectUrl={'./thank-you'}/>
+            <SignUpContainer><SignUp routing={'virtual'} redirectUrl={'./thank-you'}/></SignUpContainer>
           </Motion>
         </MobileSecondaryContainer>
       );

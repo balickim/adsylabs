@@ -5,10 +5,10 @@ import { FaCheck } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
 import Link from 'next/link';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 import { CtaButton } from 'components/Common/styled';
 import styled from 'styled-components';
-import { twConfig } from 'helpers/tailwind';
+import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`mt-16 md:mt-32`;
 const Title = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900 text-center mb-16`;

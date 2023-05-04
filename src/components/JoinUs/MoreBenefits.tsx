@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 import { BasicTitle } from 'components/Common/styled';
-import { twConfig } from 'helpers/tailwind';
+import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`grid grid-cols-1 items-center mt-16`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-8`;

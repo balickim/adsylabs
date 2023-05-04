@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 import { BasicTitle, StyledVideo, VideoContainer } from 'components/Common/styled';
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 
 const StyledSection = tw.section`mt-10 md:mt-16 md:px-10 grid grid-cols-1 items-center`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-4 md:mb-0`;

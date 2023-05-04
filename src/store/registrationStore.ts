@@ -1,60 +1,79 @@
 /* eslint-disable no-unused-vars */
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
+import { v4 as uuidv4 } from 'uuid';
 
-import { PAY_PLANS } from 'constants/index';
-import { SpecialistPreRegistration } from 'types';
+import { PAY_PLANS } from 'utils/constants/index';
+import { IPreRegistration } from 'root/types';
 
-const initialState: SpecialistPreRegistration = {
-  step: 1,
+const initialState: IPreRegistration = {
+  step: 0,
+  puuid: '',
+  userId: '',
   name: '',
   companyName: '',
   payPlan: PAY_PLANS.BASIC,
 };
 
 interface IActions {
-  setName: (value: SpecialistPreRegistration['name']) => void
-  setCompanyName: (value: SpecialistPreRegistration['companyName']) => void
-  setPayPlan: (value: SpecialistPreRegistration['payPlan']) => void
-  setStep: (value: SpecialistPreRegistration['step']) => void
+  setName: (value: IPreRegistration['name']) => void
+  setCompanyName: (value: IPreRegistration['companyName']) => void
+  setPayPlan: (value: IPreRegistration['payPlan']) => void
+  setStep: (value: IPreRegistration['step']) => void
+  setPuuid: () => void
+  setUserId: (value: IPreRegistration['userId']) => void
   resetStore: () => void
 }
 
-export const useSpecialistsPreRegistrationStore = create<SpecialistPreRegistration & IActions>()(
+export const usePreRegistrationStore = create<IPreRegistration & IActions>()(
   devtools(
-    (set) => ({
-      ...initialState,
+    persist(
+      (set) => ({
+        ...initialState,
 
-      setName (value: SpecialistPreRegistration['name']) {
-        set((state: SpecialistPreRegistration) => ({
-          name: state.name = value,
-        }));
-      },
+        setName (value: IPreRegistration['name']) {
+          set((state: IPreRegistration) => ({
+            name: state.name = value,
+          }));
+        },
 
-      setCompanyName (value: SpecialistPreRegistration['companyName']) {
-        set((state: SpecialistPreRegistration) => ({
-          companyName: state.companyName = value,
-        }));
-      },
+        setCompanyName (value: IPreRegistration['companyName']) {
+          set((state: IPreRegistration) => ({
+            companyName: state.companyName = value,
+          }));
+        },
 
-      setPayPlan (value: SpecialistPreRegistration['payPlan']) {
-        set((state: SpecialistPreRegistration) => ({
-          payPlan: state.payPlan = value,
-        }));
-      },
+        setPayPlan (value: IPreRegistration['payPlan']) {
+          set((state: IPreRegistration) => ({
+            payPlan: state.payPlan = value,
+          }));
+        },
 
-      setStep (value: SpecialistPreRegistration['step']) {
-        set((state: SpecialistPreRegistration) => ({
-          step: state.step = value,
-        }));
-      },
+        setStep (value: IPreRegistration['step']) {
+          set((state: IPreRegistration) => ({
+            step: state.step = value,
+          }));
+        },
 
-      resetStore () {
-        set(initialState);
-      },
-    }),
-    {
-      name: 'specialistsPreRegistrationStore',
-    }
+        setPuuid () {
+          set((state: IPreRegistration) => ({
+            puuid: state.puuid = uuidv4(),
+          }));
+        },
+
+        setUserId (value: IPreRegistration['userId']) {
+          set((state: IPreRegistration) => ({
+            userId: state.userId = value,
+          }));
+        },
+
+        resetStore () {
+          set(initialState);
+        },
+      }),
+      {
+        name: 'specialistsPreRegistrationStore',
+      }
+    )
   )
 );

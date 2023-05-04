@@ -1,37 +1,46 @@
-import { Form, Formik, validateYupSchema, yupToFormErrors } from 'formik';
+import { Form, Formik } from 'formik';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
 import tw from 'twin.macro';
 
-import { PreRegisterSchema } from 'validation/frontend';
-import { CtaButton } from 'components/Common/styled';
-import { useSpecialistsPreRegistrationStore } from 'store';
+import { preRegisterUserSchema } from 'validation';
+import { LoadingCtaButton } from 'components/Common/styled';
+import { usePreRegistrationStore } from 'store';
+import { api } from 'utils/api';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
 export const FormComponent = () => {
-  const store = useSpecialistsPreRegistrationStore();
+  const store = usePreRegistrationStore();
+  const { mutateAsync } = api.profile.insertUser.useMutation();
+
   return (
     <StyledMain>
       <Formik
         initialValues={{
           name: '',
           companyName: '',
+          puuid: store.puuid,
         }}
-        validate={values => {
-          try {
-            validateYupSchema(values, PreRegisterSchema, true, values);
-          } catch (e) {
-            return yupToFormErrors(e);
-          }
-          return {};
-        }}
-        onSubmit={() => {
-          store.setStep(1);
+        validationSchema={toFormikValidationSchema(preRegisterUserSchema)}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          await mutateAsync({
+            name: values.name,
+            companyName: values.companyName,
+            puuid: store.puuid,
+          });
+          store.setName(values.name);
+          store.setCompanyName(values.companyName);
+
+          setSubmitting(false);
+          resetForm();
+          return store.setStep(1);
         }}
       >
         {({
           touched,
           errors,
           getFieldProps,
+          isSubmitting,
         }) => (
           <Form>
             <div className="mt-3 grid gap-6 mb-6">
@@ -47,6 +56,7 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('name')}
+                  disabled={isSubmitting}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.name && errors.name && 'Pole nie może być puste'}
@@ -64,26 +74,29 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('companyName')}
+                  disabled={isSubmitting}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.companyName && errors.companyName && 'Pole nie może być puste'}
                 </p>
               </div>
             </div>
-            <CtaButton
+            <LoadingCtaButton
               version={'primary'}
               type={'submit'}
-              className={'!rounded-md !bg-white !text-primary w-2/5 sm:hidden'}
+              className={'!rounded-md !bg-white !text-primary sm:hidden'}
+              isLoading={isSubmitting}
             >
               Dalej →
-            </CtaButton>
-            <CtaButton
+            </LoadingCtaButton>
+            <LoadingCtaButton
               version={'primary'}
               type={'submit'}
-              className={'hidden !rounded-md w-28 sm:block'}
+              className={'hidden !rounded-md sm:block'}
+              isLoading={isSubmitting}
             >
               Zapisz się
-            </CtaButton>
+            </LoadingCtaButton>
           </Form>
         )}
       </Formik>

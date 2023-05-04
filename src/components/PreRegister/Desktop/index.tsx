@@ -6,15 +6,14 @@ import Image from 'next/image';
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
 import { AboutUs } from 'components/PreRegister/AboutUs';
 import { JoinUs } from 'components/PreRegister/JoinUs';
+import { usePreRegistrationStore } from 'store';
+import { STATIC } from 'utils/constants/index';
 import { FormComponent } from 'components/PreRegister/FormComponent';
-import { useSpecialistsPreRegistrationStore } from 'store';
-import { Motion } from 'helpers/framerMotion';
-import { STATIC } from 'constants/index';
 
 const MainContainer = tw.div`w-screen h-screen overflow-hidden`;
 const Container = tw.div`flex`;
 const Left = tw.div`w-[45%] h-screen bg-primary overflow-hidden`;
-const Right = tw.div`w-[55%] h-screen sm:pl-6 lg:pl-24`;
+const Right = tw.div`w-[55%] h-screen sm:pl-6 lg:pl-24 overflow-hidden`;
 const SignUpContainer = tw.div`flex justify-center`;
 
 const StyledTopImage = styled(Image)`
@@ -32,7 +31,7 @@ const StyledBottomImage = styled(Image)`
 `;
 
 const Desktop = () => {
-  const store = useSpecialistsPreRegistrationStore();
+  const store = usePreRegistrationStore();
 
   return (
     <MainContainer>
@@ -57,7 +56,7 @@ const Desktop = () => {
           <JoinUs />
           {store.step === 0
             ? <FormComponent />
-            : <Motion><SignUpContainer><SignUp redirectUrl={'./thank-you'}/></SignUpContainer></Motion>
+            : <SignUpContainer><SignUp routing={'virtual'} redirectUrl={'./thank-you'}/></SignUpContainer>
           }
         </Right>
       </Container>

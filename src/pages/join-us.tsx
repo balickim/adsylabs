@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 import type { NextPage } from 'next';
 
-import { Motion } from 'helpers/framerMotion';
+import { Motion } from 'utils/helpers/framerMotion';
 import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
 import Top from 'components/JoinUs/Top';

@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import Link from 'next/link';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 import styled from 'styled-components';
 import { CtaButton, StyledVideo, VideoContainer } from 'components/Common/styled';
 

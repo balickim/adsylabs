@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 import { AiFillStar } from 'react-icons/ai';
 import Link from 'next/link';
 
-import { twConfig } from 'helpers/tailwind';
+import { twConfig } from 'utils/helpers/tailwind';
 import { BasicTitle, CtaButton } from 'components/Common/styled';
 
 const StyledSection = tw.section`px-10 gap-4 flex flex-col items-center`;

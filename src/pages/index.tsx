@@ -13,8 +13,8 @@ import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
 import Pricing from 'components/Index/Pricing';
 import Comparison from 'components/Index/Comparison';
 import FloatingButton from 'components/Common/FloatingButton';
-import { useRect } from 'hooks/useRect';
-import { Motion } from 'helpers/framerMotion';
+import { useRect } from 'utils/hooks/useRect';
+import { Motion } from 'utils/helpers/framerMotion';
 
 export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 

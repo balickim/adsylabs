@@ -1,5 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import { FaSpinner } from 'react-icons/fa';
 
 export const BasicTitle = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900`;
 
@@ -9,7 +10,7 @@ interface ICtaButton {
 
 export const CtaButton = styled.button<ICtaButton>(
   ({ version }) => [
-    tw`p-3 text-center transition  rounded-3xl hover:-translate-y-1 focus:outline-none focus:ring-4`,
+    tw`p-3 text-center transition rounded-3xl hover:-translate-y-1 focus:outline-none focus:ring-4`,
     version === 'primary'
       ? tw`text-white bg-primary hover:brightness-150`
       : tw`text-black bg-white border`,
@@ -43,6 +44,20 @@ export const Spinner = () => (
     <span className="sr-only">Loading...</span>
   </div>
 );
+
+interface ILoadingCtaButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isLoading: boolean
+  version: ICtaButton['version']
+  children: React.ReactNode;
+}
+export const LoadingCtaButton = ({ isLoading, version, children, ...props }: ILoadingCtaButton) => {
+  return <CtaButton version={version} {...props}>
+    <span className={'flex items-center gap-2'}>
+      {isLoading ? <FaSpinner className={'animate-spin align-bottom'} size={24}  /> : null}
+      {children}
+    </span>
+  </CtaButton>;
+};
 
 export const VideoContainer = styled('div')`
   position: relative;

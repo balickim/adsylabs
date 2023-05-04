@@ -1,6 +1,6 @@
 import { getAuth, withClerkMiddleware } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
-import { isPublic } from 'helpers';
+import { isPublic } from 'utils/helpers';
 
 export default withClerkMiddleware((request: NextRequest) => {
   if (isPublic(request.nextUrl.pathname)) {

@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
-import { STATIC } from 'constants/index';
+import { STATIC } from 'utils/constants/index';
 import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
-import { twConfig } from 'helpers/tailwind';
+import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:mt-0 lg:gap-0`;
 
