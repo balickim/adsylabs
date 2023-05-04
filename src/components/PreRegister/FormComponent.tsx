@@ -23,17 +23,20 @@ export const FormComponent = () => {
         }}
         validationSchema={toFormikValidationSchema(preRegisterUserSchema)}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          await mutateAsync({
+          mutateAsync({
             name: values.name,
             companyName: values.companyName,
             puuid: store.puuid,
-          });
-          store.setName(values.name);
-          store.setCompanyName(values.companyName);
+          })
+            .then(() => {
+              store.setName(values.name);
+              store.setCompanyName(values.companyName);
 
-          setSubmitting(false);
-          resetForm();
-          return store.setStep(1);
+              setSubmitting(false);
+              resetForm();
+              return store.setStep(1);
+            })
+            .catch((reason) => console.error(reason));
         }}
       >
         {({
