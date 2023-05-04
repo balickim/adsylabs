@@ -9,7 +9,7 @@ export const profileRouter = createTRPCRouter({
     .query(async () => {
       return await db
         .selectFrom('user_profile')
-        .select(['name', 'company_name', 'created_at'])
+        .select(['name', 'company_name', 'clerk_user_id', 'created_at'])
         .execute();
     }),
 

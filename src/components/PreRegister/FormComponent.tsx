@@ -31,12 +31,13 @@ export const FormComponent = () => {
             .then(() => {
               store.setName(values.name);
               store.setCompanyName(values.companyName);
-
-              setSubmitting(false);
-              resetForm();
-              return store.setStep(1);
+              store.setStep(1);
             })
-            .catch((reason) => console.error(reason));
+            .catch((reason) => console.error(reason))
+            .finally(() => {
+              resetForm();
+              setSubmitting(false);
+            });
         }}
       >
         {({
