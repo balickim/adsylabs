@@ -11,7 +11,7 @@ const StyledMain = tw.main`p-4 mt-8`;
 
 export const FormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync } = api.profile.insertUser.useMutation();
+  const { mutateAsync, isLoading } = api.profile.insertUser.useMutation();
 
   return (
     <StyledMain>
@@ -44,7 +44,6 @@ export const FormComponent = () => {
           touched,
           errors,
           getFieldProps,
-          isSubmitting,
         }) => (
           <Form>
             <div className="mt-3 grid gap-6 mb-6">
@@ -60,7 +59,7 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('name')}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.name && errors.name && 'Pole nie może być puste'}
@@ -78,7 +77,7 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('companyName')}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.companyName && errors.companyName && 'Pole nie może być puste'}
@@ -89,7 +88,7 @@ export const FormComponent = () => {
               version={'primary'}
               type={'submit'}
               className={'!rounded-md !bg-white !text-primary sm:hidden'}
-              isLoading={isSubmitting}
+              isLoading={isLoading}
             >
               Dalej →
             </LoadingCtaButton>
@@ -97,7 +96,7 @@ export const FormComponent = () => {
               version={'primary'}
               type={'submit'}
               className={'hidden !rounded-md sm:block'}
-              isLoading={isSubmitting}
+              isLoading={isLoading}
             >
               Zapisz się
             </LoadingCtaButton>
