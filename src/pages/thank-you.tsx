@@ -2,6 +2,7 @@ import React, { FC, useEffect } from 'react';
 import Head from 'next/head';
 import { getAuth } from '@clerk/nextjs/server';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
 import ThankYouComponent from 'components/ThankYou';
 import { usePreRegistrationStore } from 'store';
@@ -13,9 +14,10 @@ interface IThankYouProps {
 const ThankYou: FC<IThankYouProps> = ({ userId }: IThankYouProps) => {
   const store = usePreRegistrationStore();
   const { mutateAsync } = api.profile.updateClerkUserId.useMutation();
-
+  const { query } = useRouter();
+  
   useEffect(() => {
-    mutateAsync({ clerk_user_id: userId, puuid: store.puuid })
+    mutateAsync({ clerk_user_id: userId, puuid: query.puuid as string | undefined })
       .finally(() => store.resetStore());
   }, []);
 

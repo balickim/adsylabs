@@ -9,7 +9,7 @@ export const profileRouter = createTRPCRouter({
     .query(async () => {
       return await db
         .selectFrom('user_profile')
-        .select(['name', 'company_name', 'clerk_user_id', 'created_at'])
+        .select(['name', 'company_name', 'pay_plan', 'clerk_user_id', 'created_at'])
         .execute();
     }),
 
@@ -19,8 +19,9 @@ export const profileRouter = createTRPCRouter({
       await db
         .insertInto('user_profile')
         .values([{
-          name: input.name, 
+          name: input.name,
           company_name: input.companyName,
+          pay_plan: input.payPlan,
           puuid: input.puuid,
         }])
         .execute();

@@ -11,7 +11,7 @@ const StyledMain = tw.main`p-4 mt-8`;
 
 export const FormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync, isLoading } = api.profile.insertUser.useMutation();
+  const { mutateAsync } = api.profile.insertUser.useMutation();
 
   return (
     <StyledMain>
@@ -22,13 +22,16 @@ export const FormComponent = () => {
           puuid: store.puuid,
         }}
         validationSchema={toFormikValidationSchema(preRegisterUserSchema)}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          if (!store.puuid) store.setPuuid();
           mutateAsync({
             name: values.name,
             companyName: values.companyName,
+            payPlan: store.payPlan,
             puuid: store.puuid,
           })
             .then(() => {
+              setSubmitting(false);
               store.setName(values.name);
               store.setCompanyName(values.companyName);
               store.setStep(1);
@@ -44,6 +47,7 @@ export const FormComponent = () => {
           touched,
           errors,
           getFieldProps,
+          isSubmitting,
         }) => (
           <Form>
             <div className="mt-3 grid gap-6 mb-6">
@@ -59,7 +63,7 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('name')}
-                  disabled={isLoading}
+                  disabled={isSubmitting}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.name && errors.name && 'Pole nie może być puste'}
@@ -77,7 +81,7 @@ export const FormComponent = () => {
                   `}
                   required
                   {...getFieldProps('companyName')}
-                  disabled={isLoading}
+                  disabled={isSubmitting}
                 />
                 <p className={'text-red-600 font-bold text-xs'}>
                   {touched.companyName && errors.companyName && 'Pole nie może być puste'}
@@ -87,18 +91,11 @@ export const FormComponent = () => {
             <LoadingCtaButton
               version={'primary'}
               type={'submit'}
-              className={'!rounded-md !bg-white !text-primary sm:hidden'}
-              isLoading={isLoading}
+              className={'!rounded-md !bg-white !text-primary sm:!bg-primary sm:!text-white'}
+              isLoading={isSubmitting}
             >
-              Dalej →
-            </LoadingCtaButton>
-            <LoadingCtaButton
-              version={'primary'}
-              type={'submit'}
-              className={'hidden !rounded-md sm:block'}
-              isLoading={isLoading}
-            >
-              Zapisz się
+              <p className={'sm:hidden'}>Dalej →</p>
+              <p className={'hidden sm:block'}>Zapisz się</p>
             </LoadingCtaButton>
           </Form>
         )}

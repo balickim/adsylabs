@@ -45,7 +45,12 @@ const Mobile = () => {
         <MobileSecondaryContainer>
           <Motion>
             <JoinUs />
-            <SignUpContainer><SignUp routing={'virtual'} redirectUrl={'./thank-you'}/></SignUpContainer>
+            <SignUpContainer>
+              <SignUp
+                routing={'virtual'}
+                redirectUrl={`./thank-you?puuid=${store.puuid}`}
+              />
+            </SignUpContainer>
           </Motion>
         </MobileSecondaryContainer>
       );

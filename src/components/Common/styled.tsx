@@ -51,7 +51,7 @@ interface ILoadingCtaButton extends React.ButtonHTMLAttributes<HTMLButtonElement
   children: React.ReactNode;
 }
 export const LoadingCtaButton = ({ isLoading, version, children, ...props }: ILoadingCtaButton) => {
-  return <CtaButton version={version} {...props}>
+  return <CtaButton disabled={isLoading} version={version} {...props}>
     <span className={'flex items-center gap-2'}>
       {isLoading ? <FaSpinner className={'animate-spin align-bottom'} size={24}  /> : null}
       {children}

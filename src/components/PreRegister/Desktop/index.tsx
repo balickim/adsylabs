@@ -56,7 +56,12 @@ const Desktop = () => {
           <JoinUs />
           {store.step === 0
             ? <FormComponent />
-            : <SignUpContainer><SignUp routing={'virtual'} redirectUrl={'./thank-you'}/></SignUpContainer>
+            : <SignUpContainer>
+              <SignUp
+                routing={'virtual'}
+                redirectUrl={`./thank-you?puuid=${store.puuid}`}
+              />
+            </SignUpContainer>
           }
         </Right>
       </Container>
