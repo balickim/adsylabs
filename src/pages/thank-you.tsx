@@ -17,7 +17,7 @@ const ThankYou: FC<IThankYouProps> = ({ userId }: IThankYouProps) => {
   const { query } = useRouter();
   
   useEffect(() => {
-    mutateAsync({ clerk_user_id: userId, puuid: query.puuid as string | undefined })
+    mutateAsync({ clerk_user_id: userId, puuid: query.puuid as string })
       .finally(() => store.resetStore());
   }, []);
 
