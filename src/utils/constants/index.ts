@@ -20,6 +20,7 @@ export const STATIC = {
   JAKUB_JANIAK: '/static/assets/jakub_janiak.png',
   SHAPE_1: '/static/assets/shape_1.png',
   SHAPE_2: '/static/assets/shape_2.png',
+  ADSBRIDGE_AUTOMATES: '/static/media/adsbridge_automates.mp4',
 } as const;
 
 export const PAY_PLANS = {

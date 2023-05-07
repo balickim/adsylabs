@@ -12,6 +12,7 @@ import MoreBenefits from 'components/JoinUs/MoreBenefits';
 import HowItWorks from 'components/JoinUs/HowItWorks';
 import Comparison from 'components/JoinUs/Comparison';
 import Bottom from 'components/JoinUs/Bottom';
+import Video from 'components/JoinUs/Video';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 
@@ -34,6 +35,10 @@ const JoinUsPage: NextPage = () => {
 
         <Motion>
           <MoreBenefits />
+        </Motion>
+
+        <Motion>
+          <Video />
         </Motion>
 
         <Motion>
