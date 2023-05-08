@@ -21,28 +21,30 @@ const Statistics = () => {
         <StatsContainer>
           <StatsItem className={'rounded-t-lg'}>
             <TitleLeft>
-              10,5 mld zł
+              1,5 mld zł
             </TitleLeft>
             <SubTitleLeft>
-              wartość rynku reklamowego w Polsce w 2021 roku.
+              wartość rynku marketingu online w 2022 roku. Wzrost o 9% rok do roku.¹
             </SubTitleLeft>
           </StatsItem>
           <StatsItem>
             <TitleLeft>
-              803,6 mln zł
+              120 mln zł
             </TitleLeft>
             <SubTitleLeft>
-              o tyle wzrosły wydatki na reklamę w Internecie w 2021 r.
+              o tyle rok do roku wzrosły wydatki na marketing online w styczniu 2022 roku.²
             </SubTitleLeft>
           </StatsItem>
           <StatsItem className={'rounded-b-lg'}>
             <TitleLeft>
-              16%
+              63% firm
             </TitleLeft>
             <SubTitleLeft>
-              o tyle wzrosła wartość rynku reklamowego w Polsce w ciągu 10 lat.
+              zwiększyło swoje budżety na marketing online od 2021 roku.
             </SubTitleLeft>
           </StatsItem>
+          <span className={'text-xs'}>¹ Raport AdEx 2022’Q1 (IAB Polska/PwC AdEx)</span>
+          <span className={'text-xs'}>² Ranktracker.com 77 statistics on Digital Marketing in 2022 you need to know</span>
         </StatsContainer>
         <div className={'absolute h-full w-full left-0 top-0'}>
           <Image
