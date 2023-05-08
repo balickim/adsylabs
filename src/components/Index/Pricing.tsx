@@ -17,7 +17,7 @@ interface IPricingItem {
   title: string;
   subtitle: string;
   price: string;
-  payPlan: string
+  payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
   children: React.ReactNode;
 }
 
