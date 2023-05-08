@@ -5,7 +5,7 @@ import { STATIC } from 'utils/constants/index';
 
 const Container = tw.div`
   absolute bottom-0 text-white overflow-hidden
-  sm:relative sm:bottom-auto sm:mt-64 sm:pl-4 sm:max-w-[90%] lg:pl-24
+  sm:relative sm:bottom-auto sm:pl-4 md:max-w-[80%] sm:mt-[40%] md:mt-[30%] lg:pl-24
 `;
 const Wrapper = tw.div`p-2 sm:p-0`;
 const BottomContainer = tw.div`flex gap-2 sm:mt-4`;

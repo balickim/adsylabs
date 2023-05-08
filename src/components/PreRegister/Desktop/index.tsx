@@ -13,7 +13,7 @@ import { FormComponent } from 'components/PreRegister/FormComponent';
 const MainContainer = tw.div`w-screen h-screen overflow-hidden`;
 const Container = tw.div`flex`;
 const Left = tw.div`w-[45%] h-screen bg-primary overflow-hidden`;
-const Right = tw.div`w-[55%] h-screen sm:pl-6 lg:pl-24 overflow-hidden`;
+const Right = tw.div`w-[55%] h-screen sm:pl-6 lg:pl-24 overflow-x-hidden`;
 const SignUpContainer = tw.div`flex justify-center`;
 
 const StyledTopImage = styled(Image)`

@@ -103,7 +103,7 @@ const PricingItem = ({
   const handleClick = (variant: IPricingItem['variant']) => {
     if (!store.puuid) store.setPuuid();
     store.setPayPlan(variant === 'primary' ? 'premium' : 'basic');
-    router.push({
+    return router.push({
       pathname: '/pre-register',
     });
   };
