@@ -25,5 +25,6 @@ export const STATIC = {
 
 export const PAY_PLANS = {
   BASIC: 'basic',
-  PREMIUM: 'premium',
+  STANDARD: 'standard',
+  PREMIUM_GUARANTEE: 'premium_guarantee',
 } as const;

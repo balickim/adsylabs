@@ -4,7 +4,15 @@ import { devtools } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
 
 import { PAY_PLANS } from 'utils/constants/index';
-import { IPreRegistration } from 'root/types';
+
+interface IPreRegistration {
+  step: number;
+  puuid: string;
+  userId: string;
+  name: string;
+  companyName: string;
+  payPlan: string;
+}
 
 const initialState: IPreRegistration = {
   step: 0,
