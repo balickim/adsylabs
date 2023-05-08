@@ -11,7 +11,7 @@ interface IPreRegistration {
   userId: string;
   name: string;
   companyName: string;
-  payPlan: string;
+  payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
 }
 
 const initialState: IPreRegistration = {
