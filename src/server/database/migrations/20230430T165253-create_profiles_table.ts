@@ -39,7 +39,7 @@ export interface IUserProfileTable {
   id: Generated<number>
   name: string
   company_name: string
-  pay_plan: typeof PAY_PLANS | null
+  pay_plan: string | null
   clerk_user_id: string | null
   puuid: string | null
   created_at: Date | null
@@ -51,7 +51,7 @@ export interface ISpecialistProfileTable {
   id: Generated<number>
   name: string
   linkedin_url: string
-  pay_plan: typeof PAY_PLANS | null
+  pay_plan: string | null
   clerk_user_id: string | null
   puuid: string | null
   created_at: Date | null
