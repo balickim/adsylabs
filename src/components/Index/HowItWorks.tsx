@@ -8,7 +8,7 @@ const SubTitle = tw.h2`text-center font-light text-gray-500 sm:text-base xl:px-5
 const StyledStepsContainer = tw.div`grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-6 lg:gap-24 text-center`;
 const StyledStep = tw.div`flex flex-col gap-2`;
 const StyledIconContainer = tw.div`flex justify-center`;
-const StyledText = tw.div`font-light text-gray-500 text-sm`;
+const StyledText = tw.div`font-light text-gray-500 text-base`;
 const StyledHeaderText = tw.span`text-lg lg:text-2xl`;
 
 const HowItWorks = () => {

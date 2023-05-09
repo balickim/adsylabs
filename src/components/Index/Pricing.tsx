@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 import { usePreRegistrationStore } from 'store';
 import { PAY_PLANS } from 'utils/constants/index';
 
-const StyledSection = tw.section`md:px-12 mt-16 md:mt-32 lg:px-6`;
-const TextContainer = tw.div`flex flex-col gap-6 mb-7 xl:pt-32 text-center`;
+const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
+const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;
 const Title = tw.div`text-3xl`;
 const SubTitle = tw.h3`text-sm text-gray-500 text-lg`;
 const Grid = tw.div`grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3`;

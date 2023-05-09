@@ -30,8 +30,8 @@ const MoreBenefits = () => {
         <ItemContainer>
           <AiOutlineCheckCircle size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
           <p>
-            <b>Sytuacja win-win.</b>
-            {' '}Pomagamy znaleźć idealnie dopasowanych Klientów, w niszy, którą oboje doskonale rozumiecie.
+            <b>Pozyskiwanie Klientów bierzemy na siebie.</b>
+            {' '}Oszczędź czas i pieniądze na prospectingu i pozyskiwaniu leadów.
           </p>
         </ItemContainer>
         <ItemContainer>
