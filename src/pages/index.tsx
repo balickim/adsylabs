@@ -24,8 +24,8 @@ const HomePage: NextPage = () => {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge | Strona główna',
-        description: 'Zatrudnij sprawdzonych marketerów do Twojego Biznesu.',
+        title: 'AdsBridge - automatyzujemy współprace marketingowe',
+        description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
       }}
     >
       <Main>

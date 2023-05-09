@@ -16,10 +16,10 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsBridge</title>
+        <title>AdsBridge - automatyzujemy współprace marketingowe</title>
         <meta
           name="description"
-          content="Zatrudnij sprawdzonych marketerów do Twojego Biznesu."
+          content="Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

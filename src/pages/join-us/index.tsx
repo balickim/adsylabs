@@ -21,7 +21,7 @@ const JoinUsPage: NextPage = () => {
     <Layout
       meta={{
         title: 'AdsBridge | Zostań specjalistą',
-        description: 'Zatrudnij sprawdzonych marketerów do Twojego Biznesu.',
+        description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
       }}
     >
       <Main>
