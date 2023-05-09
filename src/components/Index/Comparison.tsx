@@ -94,7 +94,7 @@ const Comparison = () => {
           </ColumnText>
 
           <LeftColumnText>
-            Dedykowany ekspert strategii marketingowej
+            Automatyczny system raportowania
           </LeftColumnText>
           <ColumnAsset className={'border-primary border-l-4 border-r-4'}>
             <FaCheck size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
