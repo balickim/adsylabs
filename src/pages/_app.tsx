@@ -15,8 +15,8 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>AdsBridge - automatyzujemy współprace marketingowe</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz."
