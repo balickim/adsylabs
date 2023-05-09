@@ -19,11 +19,14 @@
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
-    "baseUrl": "./src",
-    "rootDir": ".",
+    "baseUrl": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "sourceRoot": "/"
+    "sourceRoot": "/",
+    "paths": {
+      "*": ["./src/*"],
+      "root/*": ["./*"]
+    }
   },
   "include": [
     "next-env.d.ts",

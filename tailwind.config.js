@@ -4,10 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2252f0',
-        secondary: '#007D5D',
-        tertiary: '#AD4200',
+        primary: '#5762f6',
+        primaryLighten: '#808af7',
+        secondary: '#6027e5',
+        tertiary: '#007D5D',
       },
+    },
+    fontFamily: {
+      sans: ['IBMPlexSans', 'sans-serif'],
     },
   },
   plugins: [],

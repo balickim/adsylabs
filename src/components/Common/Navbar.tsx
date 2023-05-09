@@ -1,7 +1,15 @@
+import {
+  useAuth,
+  UserButton,
+} from '@clerk/nextjs';
 import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IMAGES } from '../../constants';
+import { AiOutlineMenu } from 'react-icons/ai';
+
+import { STATIC } from 'utils/constants/index';
+import { Spinner, CtaButton } from 'components/Common/styled';
+import React from 'react';
 
 const Nav = tw.nav`
   bg-white 
@@ -9,91 +17,141 @@ const Nav = tw.nav`
   px-4 
   lg:px-6 
   py-2.5 
-  dark:bg-gray-800
   border-b-2
 `;
 
 const Container = tw.div`
   flex
-  flex-col
-  sm:flex-wrap
-  sm:flex-row 
-  sm:justify-between 
-  sm:items-center
+  flex-wrap
+  justify-between 
+  items-center
+  2xl:max-w-[1200px] 2xl:ml-auto 2xl:mr-auto 2xl:left-0 2xl:right-0
 `;
 
 const Start = tw.div`
   flex
-  flex-col
-  sm:flex-row
   justify-start 
   items-center
 `;
 
 const End = tw.div`
   flex 
-  flex-col
-  sm:flex-row
   gap-2
+  md:gap-2
   items-center
-`;
-
-const CtaButton = tw.button`
-  mr-2 
-  px-3 
-  py-1.5
-  h-10
-  bg-primary 
-  items-center 
-  justify-center 
-  rounded-lg 
-  text-xs 
-  font-medium 
-  text-white 
-  transition
-  hover:brightness-150
-  hover:-translate-y-1
-  focus:outline-none 
-  focus:ring-4 
 `;
 
 const MenuItem = ({ text, link }: { text: string; link: string }) => (
   <Link href={link}>
-    <span className="mx-6 text-black hover:text-primary dark:text-white">
+    <span className="text-black hover:text-primary">
       {text}
     </span>
   </Link>
 );
 
+const MenuItems = () => (
+  <>
+    <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
+    <MenuItem text={'Cennik'} link={'/#pricing'} />
+    <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
+    <Link href="/#pricing">
+      <CtaButton
+        version={'primary'}
+        type="button"
+        className={'md:hidden'}
+      >
+        Znajdź specjalistę
+      </CtaButton>
+    </Link>
+  </>
+);
+
+const DesktopMenuItems = () => (
+  <div className="hidden md:flex flex-row gap-6 w-auto">
+    <MenuItems />
+  </div>
+);
+
+const MobileMenuItems = () => (
+  <div className="md:hidden absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
+    <MenuItems />
+  </div>
+);
+
+const StyledUserButton = () => (
+  <div className={'mr-2'}>
+    <UserButton
+      appearance={{
+        elements: {
+          userButtonAvatarBox: 'scale-125',
+        } }}
+    />
+  </div>
+);
+
 const Logo = () => (
-  <Link href="/" className="mr-4 flex">
+  <Link href="/" className="flex mr-4">
     <Image
-      src={`/images/${IMAGES.LOGO}`}
-      alt="FlowBite Logo"
+      src={STATIC.LOGO}
+      alt="AdsBridge Logo"
       width={100}
       height={50}
+      priority
     />
   </Link>
 );
 
-export const Navbar = () => (
-  <Nav>
+const LoginButton = () => (
+  <Link href="/sign-in">
+    <CtaButton
+      version={'secondary'}
+      type="button"
+    >
+      Zaloguj się
+    </CtaButton>
+  </Link>
+);
+
+export const Navbar = () => {
+  const { isLoaded, isSignedIn } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const MobileButton = () => (
+    <button
+      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      className={'md:hidden'}
+    >
+      <AiOutlineMenu size={24} />
+    </button>
+  );
+
+  return <Nav>
     <Container>
       <Start>
         <Logo />
-        <MenuItem text={'Dołącz jako specjalista'} link={'/'} />
-        <MenuItem text={'Cennik'} link={'/pricing'} />
-        <MenuItem text={'Jak to działa?'} link={'/'} />
+
+        <DesktopMenuItems />
       </Start>
       <End>
-        <Link href="/src/pages/pricing">
-          <CtaButton type="button">Zaloguj się</CtaButton>
+        {!isLoaded
+          ? <Spinner />
+          : isSignedIn
+            ? <StyledUserButton />
+            : <LoginButton />
+        }
+        <Link href="/#pricing">
+          <CtaButton
+            className={'hidden md:block'}
+            version={'primary'}
+            type="button"
+          >
+            Znajdź specjalistę
+          </CtaButton>
         </Link>
 
-        <Link href="/">
-          <CtaButton type="button">Znajdź specjalistę</CtaButton>
-        </Link>
+        <MobileButton />
+        {isMobileMenuOpen ? <MobileMenuItems /> : null}
       </End>
     </Container>
-  </Nav>
-);
+  </Nav>;
+};

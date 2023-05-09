@@ -20,7 +20,9 @@ const Layout = ({ meta, children }: IAuthProps) => {
       </Head>
 
       <Navbar />
-      {children}
+      <div className={'2xl:max-w-[1400px] 2xl:ml-auto 2xl:mr-auto 2xl:left-0 2xl:right-0'}>
+        {children}
+      </div>
     </div>
   );
 };
