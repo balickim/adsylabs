@@ -6,9 +6,12 @@ export default withClerkMiddleware((request: NextRequest) => {
   if (isPublic(request.nextUrl.pathname)) {
     return NextResponse.next();
   }
-
+  // if the user is not signed in redirect them to the sign in page.
   const { userId } = getAuth(request);
+
   if (!userId) {
+    // redirect the users to /pages/sign-in/[[...index]].ts
+
     const signInUrl = new URL('/sign-in', request.url);
     signInUrl.searchParams.set('redirect_url', request.url);
     return NextResponse.redirect(signInUrl);
@@ -16,16 +19,4 @@ export default withClerkMiddleware((request: NextRequest) => {
   return NextResponse.next();
 });
 
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next
-     * - static (static files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
-    '/((?!static|.*\\..*|_next|favicon.ico).*)',
-    '/',
-  ],
-};
+export const config = { matcher:  '/((?!_next/image|_next/static|favicon.ico).*)' };
