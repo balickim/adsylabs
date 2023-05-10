@@ -23,6 +23,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
           content="Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz."
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#000000" />
       </Head>
 
       <Analytics />
