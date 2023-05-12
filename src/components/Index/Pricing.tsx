@@ -57,15 +57,7 @@ const Price = styled.span<IVariant>(
       : tw`text-black`,
   ]
 );
-const Button = styled.button<IVariant>(
-  ({ variant }) => [
-    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
-    variant === 'primary'
-      ? tw`bg-white text-primary`
-      : tw`bg-primary text-white hover:brightness-150`,
-  ]
-);
-const PriceContainer = tw.div`flex justify-center items-end gap-2`;
+
 const ButtonContainer = styled.div<IVariant>(
   ({ variant }) => [
     tw`flex justify-center px-16 mt-4 relative`,
@@ -74,13 +66,22 @@ const ButtonContainer = styled.div<IVariant>(
       : tw`lg:absolute lg:bottom-4 lg:left-0 lg:right-0 lg:m-0 lg:text-center lg:mx-auto`,
   ]
 );
+const Button = styled.button<IVariant>(
+  ({ variant }) => [
+    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
+    variant === 'primary'
+      ? tw`bg-white text-primary`
+      : tw`bg-primary text-white hover:brightness-150`,
+  ]
+);
 
+const PriceContainer = tw.div`flex justify-center items-end gap-2`;
 const ChildrenContainer = styled.div<IVariant>(
   ({ variant }) => [
     tw`flex flex-col grow px-16 space-y-8`,
     variant === 'primary'
       ? tw``
-      : tw`space-y-4 md:space-y-8`,
+      : tw`space-y-4 md:space-y-12`,
   ]
 );
 
@@ -185,10 +186,10 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           price={'350'}
           payPlan={PAY_PLANS.STANDARD}
         >
-          <p>1 użytkownik</p>
+          <p>3 użytkowników</p>
           <p>Dostęp do platformy</p>
-          <p>Dostęp tylko do 5 wybranych ekspertów</p>
-          <p>1 godzina wsparcia eksperta w budowaniu strategii marketingowej</p>
+          <p>Dostęp do wszystkich specjalistów</p>
+          <p>Automatyczny system raportowania</p>
           <p className={'font-bold text-lg'}>Brak gwarancji AdsBridge</p>
         </PricingItem>
 
@@ -203,8 +204,8 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           <p>Dostęp do platformy</p>
           <p>Dostęp do wszystkich specjalistów</p>
           <p>Indywidualna ilość godzin wsparcia</p>
-          <p>Wspólna analiza wyników kampanii</p>
-          <p className={'font-bold text-lg'}>60 dniowa gwarancja AdsBridge</p>
+          <p>Automatyczny system raportowania</p>
+          <p className={'font-bold text-lg'}>60 dniowa gwarancja AdsBridge = brak wyników, nie płacisz</p>
         </PricingItem>
       </Grid>
     </StyledSection>
