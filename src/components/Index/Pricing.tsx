@@ -78,14 +78,14 @@ const Button = styled.button<IVariant>(
 const PriceContainer = tw.div`relative flex justify-center items-end gap-2`;
 const ChildrenContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`flex flex-col grow px-4 space-y-8 justify-between`,
+    tw`flex flex-col grow px-4 space-y-4 justify-between`,
     variant === 'primary'
       ? tw``
-      : tw`md:space-y-16`,
+      : tw``,
   ]
 );
 
-const TopContainer = tw.div`flex flex-col gap-6 px-16 h-52 justify-between md:h-64 lg:h-44 xl:h-60`;
+const TopContainer = tw.div`flex flex-col gap-6 px-4 justify-between h-52 sm:h-40 xl:h-52`;
 
 const PricingItem = ({
   variant,
