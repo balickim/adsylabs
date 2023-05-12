@@ -31,12 +31,8 @@ export default class _Document extends Document {
 
   render () {
     return (
-      <Html lang="en">
-        <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta charSet={'utf-8'}/>
-          <meta name="theme-color" content="#000000" />
-        </Head>
+      <Html lang="pl">
+        <Head />
         <body>
           <Main />
           <NextScript />
