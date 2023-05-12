@@ -167,7 +167,6 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           <p>Dostęp do platformy</p>
           <p>Dostęp tylko do 5 wybranych ekspertów</p>
           <p>1 godzina wsparcia eksperta w budowaniu strategii marketingowej</p>
-          <p className={'font-bold text-lg'}>Brak gwarancji AdsBridge</p>
         </PricingItem>
 
         <PricingItem
@@ -181,7 +180,6 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           <p>Dostęp do platformy</p>
           <p>Dostęp do wszystkich specjalistów</p>
           <p>Automatyczny system raportowania</p>
-          <p className={'font-bold text-lg'}>Brak gwarancji AdsBridge</p>
         </PricingItem>
 
         <PricingItem
