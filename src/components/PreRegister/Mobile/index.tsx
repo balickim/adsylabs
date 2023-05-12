@@ -7,9 +7,10 @@ import { usePreRegistrationStore } from 'store';
 import { STATIC } from 'utils/constants/index';
 
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
-import { FormComponent } from 'components/PreRegister/FormComponent';
+import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
 import { JoinUs } from 'components/PreRegister/JoinUs';
 import { Motion } from 'utils/helpers/framerMotion';
+import { UserFormComponent } from 'components/PreRegister/UserFormComponent';
 
 const StyledImage = styled(Image)`
   position: absolute;
@@ -23,15 +24,23 @@ const MobileMainContainer = tw.div`w-screen h-screen bg-primary relative overflo
 const MobileSecondaryContainer = tw.div`w-screen h-screen bg-white relative`;
 const SignUpContainer = tw.div`flex justify-center`;
 
-const Mobile = () => {
+interface IMobile {
+  variant: 'user' | 'specialist'
+}
+
+const Mobile = ({ variant }: IMobile) => {
   const store = usePreRegistrationStore();
 
   switch (true) {
     case store.step === 0:
       return (
         <MobileMainContainer>
-          <WelcomeIn />
-          <FormComponent />
+          <WelcomeIn subtitle={
+            variant === 'user'
+              ? 'i rozwinie marketing w Twoim Biznesie.'
+              : 'poszukiwanie Klientów i zautomatyzuje Waszą współpracę.'
+          } />
+          {variant === 'user' ? <UserFormComponent /> : <SpecialistFormComponent />}
           <StyledImage
             src={STATIC.SHAPE_2}
             alt="shape"
@@ -44,11 +53,16 @@ const Mobile = () => {
       return (
         <MobileSecondaryContainer>
           <Motion>
-            <JoinUs />
+            <JoinUs
+              subtitle={
+                variant === 'user'
+                  ? '10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.'
+                  : '35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge.'
+              } />
             <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={`./thank-you?puuid=${store.puuid}`}
+                redirectUrl={variant === 'user' ? `./thank-you?puuid=${store.puuid}` : '/app'}
               />
             </SignUpContainer>
           </Motion>

@@ -2,7 +2,7 @@ export const publicPaths = [
   '/',
   '/sign-in*',
   '/sign-up*',
-  '/join-us',
+  '/join-us*',
   '/pre-register',
 ];
 

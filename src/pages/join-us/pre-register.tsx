@@ -14,8 +14,8 @@ const PreRegister: NextPage = () => {
         <title>AdsBridge | Dołącz do nas</title>
       </Head>
 
-      <div className={'sm:hidden'}><Mobile variant={'user'} /></div>
-      <div className={'hidden sm:block'}><Desktop variant={'user'} /></div>
+      <div className={'sm:hidden'}><Mobile variant={'specialist'} /></div>
+      <div className={'hidden sm:block'}><Desktop variant={'specialist'} /></div>
 
     </main>
   );

@@ -21,9 +21,7 @@ export async function up (db: Kysely<any>): Promise<void> {
     .addColumn('id', 'varchar(40)', (col) => col.defaultTo(sql`(UUID())`).primaryKey())
     .addColumn('name', 'varchar(36)', (col) => col.notNull())
     .addColumn('linkedin_url', 'varchar(256)', (col) => col.notNull())
-    .addColumn('pay_plan', sql`enum(${PAY_PLANS.BASIC}, ${PAY_PLANS.STANDARD}, ${PAY_PLANS.PREMIUM_GUARANTEE})`)
     .addColumn('clerk_user_id', 'varchar(40)')
-    .addColumn('puuid', 'varchar(40)')
     .addColumn('created_at', 'timestamp', (col) => col.defaultTo(sql`now()`).notNull())
     .addColumn('modified_at', 'timestamp')
     .addColumn('deleted_at', 'timestamp')
@@ -51,9 +49,7 @@ export interface ISpecialistProfileTable {
   id: Generated<number>
   name: string
   linkedin_url: string
-  pay_plan: string | null
   clerk_user_id: string | null
-  puuid: string | null
   created_at: Date | null
   modified_at: Date | null
   deleted_at: Date | null

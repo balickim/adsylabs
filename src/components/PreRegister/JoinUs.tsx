@@ -13,7 +13,11 @@ const SubTitle = tw.p`
   sm:text-start sm:ml-0 sm:mr-0 sm:text-base sm:max-w-[90%] lg:text-xl
 `;
 
-export const JoinUs = () => {
+interface IJoinUs {
+  subtitle: string
+}
+
+export const JoinUs = ({ subtitle }: IJoinUs) => {
   return (
     <Container>
       <Title>
@@ -25,7 +29,7 @@ export const JoinUs = () => {
       </SubTitle>
       <SubTitle className={'hidden sm:block'}>
         Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy
-        i skorzystaj z 10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.
+        i skorzystaj z <b>{subtitle}</b>
       </SubTitle>
     </Container>
   );

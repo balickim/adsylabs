@@ -13,7 +13,11 @@ const SubTitle = tw.div`
   sm:text-start sm:ml-0 sm:mr-0 sm:text-base sm:max-w-[90%] lg:text-xl
 `;
 
-export const WelcomeIn = () => {
+interface IWelcomeIn {
+  subtitle: string
+}
+
+export const WelcomeIn = ({ subtitle }: IWelcomeIn) => {
   return (
     <Container>
       <Title>
@@ -25,7 +29,7 @@ export const WelcomeIn = () => {
       </SubTitle>
       <SubTitle className={'hidden sm:block'}>
         Nasza platforma jest wciąż w fazie rozwoju i testów. Cały nasz zespół ciężko pracuje,
-        aby dostarczyć produkt, który przyspieszy i rozwinie marketing w Twoim Biznesie.
+        aby dostarczyć produkt, który przyspieszy {subtitle}
       </SubTitle>
     </Container>
   );

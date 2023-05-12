@@ -1,8 +1,8 @@
 
 import { createTRPCRouter, publicProcedure } from 'server/api/trpc';
-import { preRegisterUserSchema } from 'validation';
+import { preRegisterSchema } from 'validation';
 import { db } from 'server/database';
-import { preRegisterUserClerkSchema } from 'validation/preRegisterSchema';
+import { preRegisterSpecialistSchema, preRegisterUserClerkSchema } from 'validation/preRegisterSchema';
 
 export const profileRouter = createTRPCRouter({
   getUsers: publicProcedure
@@ -14,7 +14,7 @@ export const profileRouter = createTRPCRouter({
     }),
 
   insertUser: publicProcedure
-    .input(preRegisterUserSchema)
+    .input(preRegisterSchema)
     .mutation(async ({ input }) => {
       await db
         .insertInto('user_profile')
@@ -34,6 +34,18 @@ export const profileRouter = createTRPCRouter({
         .updateTable('user_profile')
         .set({ clerk_user_id: input.clerk_user_id })
         .where('puuid', '=', input.puuid)
+        .execute();
+    }),
+
+  insertSpecialist: publicProcedure
+    .input(preRegisterSpecialistSchema)
+    .mutation(async ({ input }) => {
+      await db
+        .insertInto('specialist_profile')
+        .values([{
+          name: input.name,
+          linkedin_url: input.linkedinUrl,
+        }])
         .execute();
     }),
 });

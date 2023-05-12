@@ -9,8 +9,6 @@ interface IPreRegistration {
   step: number;
   puuid: string;
   userId: string;
-  name: string;
-  companyName: string;
   payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
 }
 
@@ -18,14 +16,10 @@ const initialState: IPreRegistration = {
   step: 0,
   puuid: '',
   userId: '',
-  name: '',
-  companyName: '',
   payPlan: PAY_PLANS.BASIC,
 };
 
 interface IActions {
-  setName: (value: IPreRegistration['name']) => void
-  setCompanyName: (value: IPreRegistration['companyName']) => void
   setPayPlan: (value: IPreRegistration['payPlan']) => void
   setStep: (value: IPreRegistration['step']) => void
   setPuuid: () => void
@@ -37,18 +31,6 @@ export const usePreRegistrationStore = create<IPreRegistration & IActions>()(
   devtools(
     (set, get) => ({
       ...initialState,
-
-      setName (value: IPreRegistration['name']) {
-        set((state: IPreRegistration) => ({
-          name: state.name = value,
-        }));
-      },
-
-      setCompanyName (value: IPreRegistration['companyName']) {
-        set((state: IPreRegistration) => ({
-          companyName: state.companyName = value,
-        }));
-      },
 
       setPayPlan (value: IPreRegistration['payPlan']) {
         set((state: IPreRegistration) => ({

@@ -1,5 +1,5 @@
-import { preRegisterUserSchema } from 'validation/preRegisterSchema';
+import { preRegisterSchema } from 'validation/preRegisterSchema';
 
 export {
-  preRegisterUserSchema,
+  preRegisterSchema,
 };
