@@ -6,7 +6,6 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import { STATIC } from 'utils/constants/index';
 import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
-import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:mt-0 lg:gap-0`;
 
@@ -37,14 +36,14 @@ const Top = () => {
           <span className="flex items-center gap-1">
             <AiFillCheckCircle
               size={20}
-              color={twConfig?.theme?.colors?.tertiary as string}
+              color={'#007D5D'}
             />
             Nie znajdziesz kandydata? Nie płacisz.
           </span>
           <span className="flex items-center gap-1">
             <AiFillCheckCircle
               size={20}
-              color={twConfig?.theme?.colors?.tertiary as string}
+              color={'#007D5D'}
             />
             60 dniowa gwarancja
           </span>

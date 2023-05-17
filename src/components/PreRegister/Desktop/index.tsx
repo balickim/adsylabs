@@ -73,7 +73,7 @@ const Desktop = ({ variant }: IDesktop) => {
             : <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={variant === 'user' ? `./thank-you?puuid=${store.puuid}` : '/app'}
+                redirectUrl={variant === 'user' ? `./thank-you?puuid=${store.puuid}` : '/dashboard'}
               />
             </SignUpContainer>
           }

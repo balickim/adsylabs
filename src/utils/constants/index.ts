@@ -21,6 +21,8 @@ export const STATIC = {
   SHAPE_1: '/static/assets/shape_1.png',
   SHAPE_2: '/static/assets/shape_2.png',
   ADSBRIDGE_AUTOMATES: '/static/media/adsbridge_automates.mp4',
+  DASHBOARD_GRAPH_1: '/static/assets/dashboard_graph_1.png',
+  DASHBOARD_GRAPH_2: '/static/assets/dashboard_graph_2.png',
 } as const;
 
 export const PAY_PLANS = {

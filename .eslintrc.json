@@ -44,7 +44,7 @@
         "ignoreUrls": true
       }
     ],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "unused-imports/no-unused-imports": "error",
     "template-curly-spacing": "off",
     "indent": [

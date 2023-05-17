@@ -7,7 +7,6 @@ module.exports = {
         primary: '#5762f6',
         primaryLighten: '#808af7',
         secondary: '#6027e5',
-        tertiary: '#007D5D',
       },
     },
     fontFamily: {

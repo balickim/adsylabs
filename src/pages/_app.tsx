@@ -1,3 +1,5 @@
+import { ReactElement, ReactNode } from 'react';
+import { NextPage } from 'next';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -10,8 +12,17 @@ import { twConfig } from 'utils/helpers/tailwind';
 import { pl } from 'locale/clerk/pl';
 import { api } from 'utils/api';
 
-const _App: AppType = ({ Component, pageProps }: AppProps) => {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { push } = useRouter();
+  const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <>
       <Head>
@@ -36,7 +47,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         navigate={(to) => push(to)}
         {...pageProps}
       >
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ClerkProvider>
     </>
   );
