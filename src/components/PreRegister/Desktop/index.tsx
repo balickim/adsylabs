@@ -8,7 +8,8 @@ import { AboutUs } from 'components/PreRegister/AboutUs';
 import { JoinUs } from 'components/PreRegister/JoinUs';
 import { usePreRegistrationStore } from 'store';
 import { STATIC } from 'utils/constants/index';
-import { FormComponent } from 'components/PreRegister/FormComponent';
+import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
+import { UserFormComponent } from 'components/PreRegister/UserFormComponent';
 
 const MainContainer = tw.div`w-screen h-screen overflow-hidden`;
 const Container = tw.div`flex`;
@@ -30,7 +31,11 @@ const StyledBottomImage = styled(Image)`
   margin-left: 30%;
 `;
 
-const Desktop = () => {
+interface IDesktop {
+  variant: 'user' | 'specialist'
+}
+
+const Desktop = ({ variant }: IDesktop) => {
   const store = usePreRegistrationStore();
 
   return (
@@ -43,7 +48,11 @@ const Desktop = () => {
             width={100}
             height={100}
           />
-          <WelcomeIn />
+          <WelcomeIn subtitle={
+            variant === 'user'
+              ? 'i rozwinie marketing w Twoim Biznesie.'
+              : 'poszukiwanie Klientów i zautomatyzuje Waszą współpracę.'
+          } />
           <AboutUs />
           <StyledBottomImage
             src={STATIC.SHAPE_2}
@@ -53,13 +62,18 @@ const Desktop = () => {
           />
         </Left>
         <Right>
-          <JoinUs />
+          <JoinUs
+            subtitle={
+              variant === 'user'
+                ? '10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.'
+                : '35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge.'
+            } />
           {store.step === 0
-            ? <FormComponent />
+            ? <>{variant === 'user' ? <UserFormComponent /> : <SpecialistFormComponent />}</>
             : <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={`./thank-you?puuid=${store.puuid}`}
+                redirectUrl={variant === 'user' ? `./thank-you?puuid=${store.puuid}` : '/app'}
               />
             </SignUpContainer>
           }

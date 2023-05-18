@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { FaSpinner } from 'react-icons/fa';
+import { InputHTMLAttributes } from 'react';
 
 export const BasicTitle = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900`;
 
@@ -77,3 +78,30 @@ export const StyledVideo = styled('video')`
 `;
 
 export const Number = tw.p`flex items-center justify-center text-2xl rounded-full bg-primary w-8 h-8 text-white`;
+
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  error?: any;
+}
+
+export const Input = ({ label, error, ...rest }: IInput) => {
+  return <div>
+    <label
+      htmlFor="input"
+      className="block mb-2 text-sm font-medium text-white sm:text-black sm:text-base"
+    >
+      {label}
+    </label>
+    <input
+      type="text"
+      id={'input'}
+      className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 
+                    ${error && 'border-2 border-red-600'}
+                  `}
+      {...rest}
+    />
+    <p className={'text-red-600 font-bold text-xs'}>
+      {error}
+    </p>
+  </div>;
+};
