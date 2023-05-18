@@ -15,6 +15,7 @@ import Comparison from 'components/Index/Comparison';
 import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'utils/hooks/useRect';
 import { Motion } from 'utils/helpers/framerMotion';
+import { HotJarScript } from 'components/Common/externalScripts';
 
 export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 
@@ -28,6 +29,7 @@ const HomePage: NextPage = () => {
         description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
       }}
     >
+      <HotJarScript />
       <Main>
         <Motion>
           <Top />
