@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
-
-import type { NextPage } from 'next';
 
 import { Motion } from 'utils/helpers/framerMotion';
 import Layout from 'components/Common/Layout';
@@ -17,14 +15,9 @@ import { HotJarScript } from 'components/Common/externalScripts';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 
-const JoinUsPage: NextPage = () => {
+export default function JoinUsPage () {
   return (
-    <Layout
-      meta={{
-        title: 'AdsBridge | Zostań specjalistą',
-        description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
-      }}
-    >
+    <>
       <HotJarScript />
       <Main>
         <Motion>
@@ -56,8 +49,19 @@ const JoinUsPage: NextPage = () => {
         </Motion>
       </Main>
       <Footer />
-    </Layout>
+    </>
   );
 };
 
-export default JoinUsPage;
+JoinUsPage.getLayout = function getLayout (page: ReactElement) {
+  return (
+    <Layout
+      meta={{
+        title: 'AdsBridge | Zostań specjalistą',
+        description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};

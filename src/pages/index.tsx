@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
-
-import type { NextPage } from 'next';
 
 import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
@@ -19,16 +17,11 @@ import { HotJarScript } from 'components/Common/externalScripts';
 
 export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 
-const HomePage: NextPage = () => {
+export default function HomePage () {
   const [rect, ref] = useRect<HTMLDivElement>();
 
   return (
-    <Layout
-      meta={{
-        title: 'AdsBridge - automatyzujemy współprace marketingowe',
-        description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
-      }}
-    >
+    <>
       <HotJarScript />
       <Main>
         <Motion>
@@ -62,8 +55,19 @@ const HomePage: NextPage = () => {
       </Main>
       <Footer />
       <FloatingButton pricingPosition={rect} />
-    </Layout>
+    </>
   );
 };
 
-export default HomePage;
+HomePage.getLayout = function getLayout (page: ReactElement) {
+  return (
+    <Layout
+      meta={{
+        title: 'AdsBridge - automatyzujemy współprace marketingowe',
+        description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};
