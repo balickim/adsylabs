@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import { SignUp } from '@clerk/nextjs';
 
 import { usePreRegistrationStore } from 'store';
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
 import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
@@ -42,7 +42,7 @@ const Mobile = ({ variant }: IMobile) => {
           } />
           {variant === 'user' ? <UserFormComponent /> : <SpecialistFormComponent />}
           <StyledImage
-            src={STATIC.SHAPE_2}
+            src={LANDING_IMAGES_PATH.SHAPE_2}
             alt="shape"
             width={400}
             height={400}

@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import Link from 'next/link';
 
-import { STATIC } from 'utils/constants/index';
+import { MEDIA_PATH } from 'utils/constants';
 import styled from 'styled-components';
 import { CtaButton, StyledVideo, VideoContainer } from 'components/Common/styled';
 
@@ -25,7 +25,7 @@ const Video = () => {
           autoPlay
           muted
         >
-          <source src={`${STATIC.HOW_WE_VERIFY}`} type={'video/mp4'} />
+          <source src={`${MEDIA_PATH.HOW_WE_VERIFY}`} type={'video/mp4'} />
           Your browser does not support the video tag.
         </StyledVideo>
       </VideoContainer>

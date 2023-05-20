@@ -32,7 +32,7 @@ const Top = () => {
       <Text>
         Uzyskaj dostęp do ekscytujących współprac z Klientami w towarzystwie najlepszych specjalistów marketingu
       </Text>
-      <Link href="/sign-up">
+      <Link href="/join-us/pre-register">
         <CtaButton
           version={'primary'}
           type={'button'}

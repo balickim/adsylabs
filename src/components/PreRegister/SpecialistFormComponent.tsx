@@ -46,12 +46,12 @@ export const SpecialistFormComponent = () => {
             <div className="mt-3 grid gap-6 mb-6">
               <Input
                 label={'Imię'}
-                error={(touched.name && errors.name) ? 'Pole nie może być puste' : null}
+                error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />
               <Input
                 label={'Link do Twojego profilu LinkedIn'}
-                error={(touched.linkedinUrl && errors.linkedinUrl) ? 'Pole nie może być puste' : null}
+                error={(touched.linkedinUrl && errors.linkedinUrl) ? errors.linkedinUrl : null}
                 {...getFieldProps('linkedinUrl')}
               />
             </div>

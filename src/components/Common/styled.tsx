@@ -18,6 +18,8 @@ export const CtaButton = styled.button<ICtaButton>(
   ]
 );
 
+export const StyledFaSpinner = tw(FaSpinner)`animate-spin`;
+
 export const Spinner = () => (
   <div role="status">
     <svg
@@ -54,11 +56,12 @@ interface ILoadingCtaButton extends React.ButtonHTMLAttributes<HTMLButtonElement
 export const LoadingCtaButton = ({ isLoading, version, children, ...props }: ILoadingCtaButton) => {
   return <CtaButton disabled={isLoading} version={version} {...props}>
     <span className={'flex items-center gap-2'}>
-      {isLoading ? <FaSpinner className={'animate-spin align-bottom'} size={24}  /> : null}
+      {isLoading ? <StyledFaSpinner className={'align-bottom'} size={24}  /> : null}
       {children}
     </span>
   </CtaButton>;
 };
+
 
 export const VideoContainer = styled('div')`
   position: relative;

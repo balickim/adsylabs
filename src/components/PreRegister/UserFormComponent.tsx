@@ -50,12 +50,12 @@ export const UserFormComponent = () => {
             <div className="mt-3 grid gap-6 mb-6">
               <Input
                 label={'Imię'}
-                error={(touched.name && errors.name) ? 'Pole nie może być puste' : null}
+                error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />
               <Input
                 label={'Nazwa Twojej firmy'}
-                error={(touched.companyName && errors.companyName) ? 'Pole nie może być puste' : null}
+                error={(touched.companyName && errors.companyName) ? errors.companyName : null}
                 {...getFieldProps('companyName')}
               />
             </div>

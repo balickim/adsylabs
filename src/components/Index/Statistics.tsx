@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { SubTitleLeft } from './styled';
 import { CtaButton } from 'components/Common/styled';
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 const StyledSection = tw.section`grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
@@ -49,7 +49,7 @@ const Statistics = () => {
         <div className={'absolute h-full w-full left-0 top-0'}>
           <Image
             fill
-            src={STATIC.STAIN_2}
+            src={LANDING_IMAGES_PATH.STAIN_2}
             alt="stain"
             style={{ objectFit: 'contain' }}
           />

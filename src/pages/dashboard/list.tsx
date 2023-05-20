@@ -7,7 +7,7 @@ import { api } from 'utils/api';
 
 const List = ({ __clerk_ssr_state }: { __clerk_ssr_state: Clerk}) => {
   const { data } = api.profile.getUsers.useQuery(undefined, { refetchOnWindowFocus: true });
-
+  console.log(__clerk_ssr_state);
   return <Layout>
     <pre>{JSON.stringify(data, null, 4)}</pre>
   </Layout>;

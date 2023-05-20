@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { Number } from 'components/Common/styled';
 import { BasicTitle } from 'components/Common/styled';
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 const StyledSection = tw.section`grid grid-cols-1 items-center mt-16`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-8`;
@@ -88,7 +88,7 @@ const HowItWorks = () => {
             <ItemTop>
               <div className='w-10'></div>
               <ItemLink>
-                <Link href={'/sign-up'}>
+                <Link href={'/join-us/pre-register'}>
                   Aplikuj teraz i przetestuj za darmo →
                 </Link>
               </ItemLink>
@@ -99,7 +99,7 @@ const HowItWorks = () => {
         <ImageContainer>
           <Image
             fill
-            src={STATIC.MOBILE_STOCK}
+            src={LANDING_IMAGES_PATH.MOBILE_STOCK}
             alt="how-it-works"
             style={{ objectFit: 'contain' }}
           />

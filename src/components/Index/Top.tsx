@@ -3,10 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
-import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:mt-0 lg:gap-0`;
 
@@ -37,14 +36,14 @@ const Top = () => {
           <span className="flex items-center gap-1">
             <AiFillCheckCircle
               size={20}
-              color={twConfig?.theme?.colors?.tertiary as string}
+              color={'#007D5D'}
             />
             Nie znajdziesz kandydata? Nie płacisz.
           </span>
           <span className="flex items-center gap-1">
             <AiFillCheckCircle
               size={20}
-              color={twConfig?.theme?.colors?.tertiary as string}
+              color={'#007D5D'}
             />
             60 dniowa gwarancja
           </span>
@@ -54,14 +53,14 @@ const Top = () => {
         <Image
           fill
           priority
-          src={STATIC.STAIN_1}
+          src={LANDING_IMAGES_PATH.STAIN_1}
           alt="stain"
           style={{ objectFit: 'contain' }}
         />
         <Image
           fill
           priority
-          src={STATIC.ROB_KATARZYNA}
+          src={LANDING_IMAGES_PATH.ROB_KATARZYNA}
           alt="how it works"
           style={{ objectFit: 'contain' }}
         />

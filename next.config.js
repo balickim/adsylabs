@@ -5,6 +5,14 @@ const nextConfig = {
     locales: ['pl'],
     defaultLocale: 'pl',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.clerk.dev',
+      },
+    ],
+  },
 };
 
 module.exports =  nextConfig;

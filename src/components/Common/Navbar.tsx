@@ -1,13 +1,12 @@
 import {
   useAuth,
-  UserButton,
 } from '@clerk/nextjs';
 import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
 
@@ -78,21 +77,10 @@ const MobileMenuItems = () => (
   </div>
 );
 
-const StyledUserButton = () => (
-  <div className={'mr-2'}>
-    <UserButton
-      appearance={{
-        elements: {
-          userButtonAvatarBox: 'scale-125',
-        } }}
-    />
-  </div>
-);
-
 const Logo = () => (
   <Link href="/" className="flex mr-4">
     <Image
-      src={STATIC.LOGO}
+      src={LANDING_IMAGES_PATH.LOGO}
       alt="AdsBridge Logo"
       width={100}
       height={50}
@@ -105,9 +93,35 @@ const LoginButton = () => (
   <Link href="/sign-in">
     <CtaButton
       version={'secondary'}
+      aria-label={'log in'}
       type="button"
     >
       Zaloguj się
+    </CtaButton>
+  </Link>
+);
+
+const DashboardButton = () => (
+  <Link href="/dashboard">
+    <CtaButton
+      className={'w-36'}
+      version={'primary'}
+      aria-label={'go to dashboard'}
+      type="button"
+    >
+      Dashboard
+    </CtaButton>
+  </Link>
+);
+
+const SpecialistButton = () => (
+  <Link href="/#pricing">
+    <CtaButton
+      className={'hidden md:block'}
+      version={'primary'}
+      type="button"
+    >
+      Znajdź specjalistę
     </CtaButton>
   </Link>
 );
@@ -136,18 +150,15 @@ export const Navbar = () => {
         {!isLoaded
           ? <Spinner />
           : isSignedIn
-            ? <StyledUserButton />
+            ? <DashboardButton />
             : <LoginButton />
         }
-        <Link href="/#pricing">
-          <CtaButton
-            className={'hidden md:block'}
-            version={'primary'}
-            type="button"
-          >
-            Znajdź specjalistę
-          </CtaButton>
-        </Link>
+        {!isLoaded
+          ? null
+          : isSignedIn
+            ? null
+            : <SpecialistButton />
+        }
 
         <MobileButton />
         {isMobileMenuOpen ? <MobileMenuItems /> : null}
