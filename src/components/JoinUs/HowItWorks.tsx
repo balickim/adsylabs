@@ -88,7 +88,7 @@ const HowItWorks = () => {
             <ItemTop>
               <div className='w-10'></div>
               <ItemLink>
-                <Link href={'/sign-up'}>
+                <Link href={'/join-us/pre-register'}>
                   Aplikuj teraz i przetestuj za darmo →
                 </Link>
               </ItemLink>

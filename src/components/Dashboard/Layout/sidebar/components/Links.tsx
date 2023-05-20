@@ -20,14 +20,14 @@ export const SidebarLinks = ({ routes }: { routes: IRoutesItem[] }): JSX.Element
 
       return (
         <Link key={index} href={route.disabled ? '' : `/dashboard${route.path}`}>
-          <div className="relative mb-3 flex hover:cursor-pointer w-80">
+          <div className="relative mb-3 flex hover:cursor-pointer">
             <li
-              className={`my-1 mx-8 rounded-md py-3 w-full ${activeRoute(path) ? "bg-secondary" : ""}`}
+              className={`my-1 mx-8 rounded-md py-3 ${activeRoute(path) ? "bg-secondary" : ""}`}
               key={index}
             >
               {route.disabled
                 ? <Tooltip>
-                  <div className={"flex ml-4 cursor-no-drop items-center"}>
+                  <div className={"flex ml-4 cursor-no-drop items-center blur-sm select-none"}>
                     <span
                       className={`${
                         activeRoute(path)
@@ -55,7 +55,7 @@ export const SidebarLinks = ({ routes }: { routes: IRoutesItem[] }): JSX.Element
                     }
                   </div>
                 </Tooltip>
-                : <div className={"flex ml-4 cursor-pointer items-center"}>
+                : <div className={"flex ml-4 cursor-pointer items-center w-56"}>
                     <span
                       className={`${
                         activeRoute(path)

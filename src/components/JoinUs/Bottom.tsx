@@ -83,7 +83,7 @@ const Bottom = () => {
         <CtaContainer>
           <BasicTitle className={'!text-white mt-24'}>Zarejestruj się za darmo</BasicTitle>
           <p className={'max-w-[70%] sm:max-w-[40%] md:max-w-[30%]'}>Porozmawiajmy, jak możemy pomóc rozwinąć Twoją karierę.</p>
-          <Link href="/sign-up">
+          <Link href="/join-us/pre-register">
             <CtaButton
               version={'secondary'}
               type={'button'}

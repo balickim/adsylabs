@@ -5,9 +5,11 @@ import Navbar from 'components/Dashboard/Layout/navbar';
 import Sidebar from 'components/Dashboard/Layout/sidebar';
 import { twConfig } from 'utils/helpers/tailwind';
 import styled from 'styled-components';
+import useWindowDimension from 'utils/hooks/useWindowDimension';
 
-const LayoutWrapper = tw.section`flex h-screen`;
+const LayoutWrapper = tw.div`flex h-screen`;
 const Container = tw.section`flex flex-1 overflow-hidden`;
+const ChildrenContainer = tw.div`pt-5 mx-auto mb-auto z-0`;
 
 interface IChildrenContainer {
   open: boolean
@@ -20,7 +22,7 @@ export const ContentContainer = styled.main<IChildrenContainer>(
         transition-all ease-in-out delay-150 duration-300
       `,
     open
-      ? tw`ml-80`
+      ? tw`md:ml-72`
       : tw`ml-0`,
   ]
 );
@@ -31,23 +33,24 @@ interface IDashboardLayout {
 
 export default function DashboardLayout ({ children }: IDashboardLayout) {
   const [open, setOpen] = React.useState(true);
+  const { width } = useWindowDimension();
 
   React.useEffect(() => {
-    window.addEventListener('resize', () =>
-      // @ts-ignore
-      window.innerWidth < twConfig.theme.screens.xl.slice(0, -2) ? setOpen(false) : setOpen(true)
-    );
-  }, []);
+    // @ts-ignore
+    width < twConfig.theme.screens.xl.slice(0, -2)
+      ? setOpen(false)
+      : setOpen(true);
+  }, [width]);
 
   return (
     <LayoutWrapper>
       <Container>
-        <Sidebar open={open} />
+        <Sidebar open={open} setOpen={setOpen} />
         <ContentContainer open={open}>
           <Navbar />
-          <div className={'pt-5 mx-auto mb-auto'}>
+          <ChildrenContainer>
             {children}
-          </div>
+          </ChildrenContainer>
         </ContentContainer>
       </Container>
     </LayoutWrapper>

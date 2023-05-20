@@ -21,8 +21,12 @@ export const LANDING_IMAGES_PATH = {
 } as const;
 
 export const DASHBOARD_IMAGES_PATH = {
-  DASHBOARD_GRAPH_1: '/static/image/dashboard/dashboard_graph_1.png',
-  DASHBOARD_GRAPH_2: '/static/image/dashboard/dashboard_graph_2.png',
+  GRAPH_1: '/static/image/dashboard/graph_1.png',
+  GRAPH_2: '/static/image/dashboard/graph_2.png',
+  GRAPH_3: '/static/image/dashboard/graph_3.png',
+  PLACEHOLDER_AVATAR_1: '/static/image/dashboard/placeholder_avatar_1.png',
+  PLACEHOLDER_AVATAR_2: '/static/image/dashboard/placeholder_avatar_2.png',
+  PLACEHOLDER_AVATAR_3: '/static/image/dashboard/placeholder_avatar_3.png',
 } as const;
 
 export const MEDIA_PATH = {

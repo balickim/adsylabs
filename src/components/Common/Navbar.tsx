@@ -1,6 +1,5 @@
 import {
   useAuth,
-  UserButton,
 } from '@clerk/nextjs';
 import tw from 'twin.macro';
 import Image from 'next/image';
@@ -78,17 +77,6 @@ const MobileMenuItems = () => (
   </div>
 );
 
-const StyledUserButton = () => (
-  <div className={'mr-2'}>
-    <UserButton
-      appearance={{
-        elements: {
-          userButtonAvatarBox: 'scale-125',
-        } }}
-    />
-  </div>
-);
-
 const Logo = () => (
   <Link href="/" className="flex mr-4">
     <Image
@@ -105,9 +93,35 @@ const LoginButton = () => (
   <Link href="/sign-in">
     <CtaButton
       version={'secondary'}
+      aria-label={'log in'}
       type="button"
     >
       Zaloguj się
+    </CtaButton>
+  </Link>
+);
+
+const DashboardButton = () => (
+  <Link href="/dashboard">
+    <CtaButton
+      className={'w-36'}
+      version={'primary'}
+      aria-label={'go to dashboard'}
+      type="button"
+    >
+      Dashboard
+    </CtaButton>
+  </Link>
+);
+
+const SpecialistButton = () => (
+  <Link href="/#pricing">
+    <CtaButton
+      className={'hidden md:block'}
+      version={'primary'}
+      type="button"
+    >
+      Znajdź specjalistę
     </CtaButton>
   </Link>
 );
@@ -136,18 +150,15 @@ export const Navbar = () => {
         {!isLoaded
           ? <Spinner />
           : isSignedIn
-            ? <StyledUserButton />
+            ? <DashboardButton />
             : <LoginButton />
         }
-        <Link href="/#pricing">
-          <CtaButton
-            className={'hidden md:block'}
-            version={'primary'}
-            type="button"
-          >
-            Znajdź specjalistę
-          </CtaButton>
-        </Link>
+        {!isLoaded
+          ? null
+          : isSignedIn
+            ? null
+            : <SpecialistButton />
+        }
 
         <MobileButton />
         {isMobileMenuOpen ? <MobileMenuItems /> : null}
