@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { BasicTitle, CtaButton } from 'components/Common/styled';
 import { SubTitle } from 'components/Index/styled';
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import Link from 'next/link';
 
 const StyledSection = tw.section`mt-12 md:mt-24`;
@@ -50,7 +50,7 @@ const Bottom = () => {
             Poznaj: <Highlight>społeczność ekspertów</Highlight> pomoże Ci uzyskać odpowiedź na każde pytanie dzięki wbudowanej grupie Slack.
           </ItemText>
           <StyledImage
-            src={STATIC.SPECIALISTS_CTA_1}
+            src={LANDING_IMAGES_PATH.SPECIALISTS_CTA_1}
             alt="Społeczność ekspertów"
             width={500}
             height={400}
@@ -61,7 +61,7 @@ const Bottom = () => {
             Zwiększ produktywnosć: zarządzaj wszystkimi klientami <Highlight>w jednym miejscu.</Highlight>
           </ItemText>
           <StyledImage
-            src={STATIC.SPECIALISTS_CTA_2}
+            src={LANDING_IMAGES_PATH.SPECIALISTS_CTA_2}
             alt="Zarządzaj klientami"
             width={500}
             height={400}
@@ -72,7 +72,7 @@ const Bottom = () => {
             Oszczędź czas: korzystaj z naszego <Highlight>automatycznego systemu</Highlight> raportowania wyników kampanii.
           </ItemText>
           <StyledImage
-            src={STATIC.SPECIALISTS_CTA_3}
+            src={LANDING_IMAGES_PATH.SPECIALISTS_CTA_3}
             alt="Automatyczny system"
             width={500}
             height={400}

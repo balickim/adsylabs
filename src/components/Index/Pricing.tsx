@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import { usePreRegistrationStore } from 'store';
-import { PAY_PLANS } from 'utils/constants/index';
+import { PAY_PLANS } from 'utils/constants';
 
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
 const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;

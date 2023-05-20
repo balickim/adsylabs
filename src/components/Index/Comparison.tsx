@@ -5,7 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
 import Link from 'next/link';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { CtaButton } from 'components/Common/styled';
 import styled from 'styled-components';
 import { twConfig } from 'utils/helpers/tailwind';
@@ -42,7 +42,7 @@ const Comparison = () => {
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-t-4 border-r-4 rounded-t-xl'}>
             <Image
-              src={STATIC.LOGO}
+              src={LANDING_IMAGES_PATH.LOGO}
               alt="AdsBridge Logo"
               width={100}
               height={50}

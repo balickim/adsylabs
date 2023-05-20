@@ -7,7 +7,7 @@ import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
 import { AboutUs } from 'components/PreRegister/AboutUs';
 import { JoinUs } from 'components/PreRegister/JoinUs';
 import { usePreRegistrationStore } from 'store';
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
 import { UserFormComponent } from 'components/PreRegister/UserFormComponent';
 
@@ -43,7 +43,7 @@ const Desktop = ({ variant }: IDesktop) => {
       <Container>
         <Left>
           <StyledTopImage
-            src={STATIC.SHAPE_1}
+            src={LANDING_IMAGES_PATH.SHAPE_1}
             alt="shape"
             width={100}
             height={100}
@@ -55,7 +55,7 @@ const Desktop = ({ variant }: IDesktop) => {
           } />
           <AboutUs />
           <StyledBottomImage
-            src={STATIC.SHAPE_2}
+            src={LANDING_IMAGES_PATH.SHAPE_2}
             alt="shape"
             width={400}
             height={400}

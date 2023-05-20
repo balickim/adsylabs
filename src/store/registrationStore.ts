@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
 
-import { PAY_PLANS } from 'utils/constants/index';
+import { PAY_PLANS } from 'utils/constants';
 
 interface IPreRegistration {
   step: number;
@@ -28,7 +28,7 @@ interface IActions {
 
 export const usePreRegistrationStore = create<IPreRegistration & IActions>()(
   devtools(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
 
       setPayPlan (value: IPreRegistration['payPlan']) {

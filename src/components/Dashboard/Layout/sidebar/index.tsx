@@ -7,7 +7,7 @@ import tw from "twin.macro";
 
 import Links from "./components/Links";
 import routes from "components/Dashboard/Layout/routes";
-import { STATIC } from "utils/constants";
+import { LANDING_IMAGES_PATH } from "utils/constants";
 
 interface ISidebar {
   open: boolean
@@ -37,7 +37,7 @@ const Sidebar = ({ open }: ISidebar) => {
 
       <div className={`h-28 ml-6 flex items-center`}>
         <Image
-          src={STATIC.LOGO}
+          src={LANDING_IMAGES_PATH.LOGO}
           alt="AdsBridge Logo"
           width={200}
           height={100}

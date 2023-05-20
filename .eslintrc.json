@@ -44,7 +44,8 @@
         "ignoreUrls": true
       }
     ],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "unused-imports/no-unused-imports": "error",
     "template-curly-spacing": "off",
     "indent": [
@@ -58,6 +59,7 @@
     ]
   },
   "plugins": [
-    "unused-imports"
+    "unused-imports",
+    "@typescript-eslint"
   ]
 }

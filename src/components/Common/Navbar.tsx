@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
 
@@ -92,7 +92,7 @@ const StyledUserButton = () => (
 const Logo = () => (
   <Link href="/" className="flex mr-4">
     <Image
-      src={STATIC.LOGO}
+      src={LANDING_IMAGES_PATH.LOGO}
       alt="AdsBridge Logo"
       width={100}
       height={50}

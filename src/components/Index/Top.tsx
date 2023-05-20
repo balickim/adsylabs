@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 
@@ -53,14 +53,14 @@ const Top = () => {
         <Image
           fill
           priority
-          src={STATIC.STAIN_1}
+          src={LANDING_IMAGES_PATH.STAIN_1}
           alt="stain"
           style={{ objectFit: 'contain' }}
         />
         <Image
           fill
           priority
-          src={STATIC.ROB_KATARZYNA}
+          src={LANDING_IMAGES_PATH.ROB_KATARZYNA}
           alt="how it works"
           style={{ objectFit: 'contain' }}
         />

@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 const Container = tw.div`
   bg-primary h-screen w-screen relative text-white text-center overflow-hidden
@@ -61,7 +61,7 @@ const ThankYouComponent = () => {
         </p>
         <div className={'flex justify-center text-left gap-2'}>
           <Image
-            src={STATIC.JAKUB_JANIAK}
+            src={LANDING_IMAGES_PATH.JAKUB_JANIAK}
             alt="Jakub Janiak Co-Founder AdsBridge"
             width={50}
             height={50}
@@ -72,7 +72,7 @@ const ThankYouComponent = () => {
           </div>
         </div>
         <StyledImage
-          src={STATIC.SHAPE_2}
+          src={LANDING_IMAGES_PATH.SHAPE_2}
           alt="shape"
           width={400}
           height={400}

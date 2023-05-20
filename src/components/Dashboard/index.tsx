@@ -5,7 +5,7 @@ import { useUser } from '@clerk/nextjs';
 import { BsArrowRight } from 'react-icons/bs';
 import { FiMapPin } from 'react-icons/fi';
 
-import { STATIC } from 'utils/constants';
+import { DASHBOARD_IMAGES_PATH } from 'utils/constants';
 
 interface IWidget {
   title: string
@@ -73,17 +73,17 @@ const DashboardMainPage = () => {
         <Widget
           title={'Aktywne projekty'}
           value={11}
-          imgSrc={STATIC.DASHBOARD_GRAPH_1}
+          imgSrc={DASHBOARD_IMAGES_PATH.DASHBOARD_GRAPH_1}
         />
         <Widget
           title={'Aktywne projekty'}
           value={11}
-          imgSrc={STATIC.DASHBOARD_GRAPH_2}
+          imgSrc={DASHBOARD_IMAGES_PATH.DASHBOARD_GRAPH_2}
         />
         <Widget
           title={'Aktywne kampanie'}
           value={16}
-          imgSrc={STATIC.DASHBOARD_GRAPH_1}
+          imgSrc={DASHBOARD_IMAGES_PATH.DASHBOARD_GRAPH_1}
         />
       </div>
       <Tile>
