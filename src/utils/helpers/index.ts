@@ -1,9 +1,9 @@
 export const publicPaths = [
   '/',
   '/sign-in*',
-  '/sign-up*',
   '/join-us*',
   '/pre-register',
+  '/faq',
 ];
 
 export const isPublic = (path: string) => {

@@ -15,7 +15,7 @@ import { useRect } from 'utils/hooks/useRect';
 import { Motion } from 'utils/helpers/framerMotion';
 import { HotJarScript } from 'components/Common/externalScripts';
 
-export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
+const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 
 export default function HomePage () {
   const [rect, ref] = useRect<HTMLDivElement>();
