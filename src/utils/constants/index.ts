@@ -36,9 +36,3 @@ export const MEDIA_PATH = {
   SPECIALISTS: '/static/media/specialists.mp4',
   ADSBRIDGE_AUTOMATES: '/static/media/adsbridge_automates.mp4',
 } as const;
-
-export const PAY_PLANS = {
-  BASIC: 'basic',
-  STANDARD: 'standard',
-  PREMIUM_GUARANTEE: 'premium_guarantee',
-} as const;

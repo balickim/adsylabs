@@ -1,11 +1,12 @@
 import { Form, Formik } from 'formik';
 import tw from 'twin.macro';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
 
 import { Input, LoadingCtaButton } from 'components/Common/styled';
 import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
 import { preRegisterSpecialistSchema } from 'validation/preRegisterSchema';
-import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { ROLES } from '@prisma/client';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
@@ -25,8 +26,10 @@ export const SpecialistFormComponent = () => {
           mutateAsync({
             name: values.name,
             linkedinUrl: values.linkedinUrl,
+            role: ROLES.SPECIALIST,
           })
-            .then(() => {
+            .then((profileId) => {
+              store.setProfileId(profileId);
               store.setStep(1);
             })
             .catch((reason) => console.error(reason))
@@ -64,6 +67,7 @@ export const SpecialistFormComponent = () => {
               <p className={'sm:hidden'}>Dalej →</p>
               <p className={'hidden sm:block'}>Zapisz się</p>
             </LoadingCtaButton>
+            {JSON.stringify(errors)}
           </Form>
         )}
       </Formik>

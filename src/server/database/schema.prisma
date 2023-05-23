@@ -1,0 +1,44 @@
+generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+    shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum PAY_PLANS {
+    BASIC
+    STANDARD
+    PREMIUM_GUARANTEE
+}
+
+enum ROLES {
+    CUSTOMER
+    SPECIALIST
+}
+
+model profile {
+    id              String      @id @default(cuid())
+    role            ROLES       @default(CUSTOMER)
+    clerk_user_id   String?
+    name            String
+    created_at      DateTime    @default(now())
+    updated_at      DateTime    @updatedAt
+    deleted_at      DateTime?
+}
+
+model profile_customer {
+    profile_id      String      @id
+    company_name    String
+    pay_plan        PAY_PLANS   @default(BASIC)
+    updated_at      DateTime    @updatedAt
+}
+
+model profile_specialist {
+    profile_id      String      @id
+    linkedin_url    String
+    updated_at      DateTime    @updatedAt
+}

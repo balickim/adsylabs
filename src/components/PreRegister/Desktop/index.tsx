@@ -9,7 +9,8 @@ import { JoinUs } from 'components/PreRegister/JoinUs';
 import { usePreRegistrationStore } from 'store';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
-import { UserFormComponent } from 'components/PreRegister/UserFormComponent';
+import { CustomerFormComponent } from 'components/PreRegister/CustomerFormComponent';
+import { UserRoles } from 'root/types';
 
 const MainContainer = tw.div`w-screen h-screen overflow-hidden`;
 const Container = tw.div`flex`;
@@ -32,7 +33,13 @@ const StyledBottomImage = styled(Image)`
 `;
 
 interface IDesktop {
-  variant: 'user' | 'specialist'
+  variant: UserRoles
+}
+
+export function getRedirectUrl (variant: IDesktop['variant'], profileId: string) {
+  if (variant === 'customer') return `/acc/clerk?profileId=${profileId}&redirectUrl=/thank-you`;
+  if (variant === 'specialist') return `/acc/clerk?profileId=${profileId}&redirectUrl=/dashboard`;
+  return '/';
 }
 
 const Desktop = ({ variant }: IDesktop) => {
@@ -49,7 +56,7 @@ const Desktop = ({ variant }: IDesktop) => {
             height={100}
           />
           <WelcomeIn subtitle={
-            variant === 'user'
+            variant === 'customer'
               ? 'i rozwinie marketing w Twoim Biznesie.'
               : 'poszukiwanie Klientów i zautomatyzuje Waszą współpracę.'
           } />
@@ -64,16 +71,16 @@ const Desktop = ({ variant }: IDesktop) => {
         <Right>
           <JoinUs
             subtitle={
-              variant === 'user'
+              variant === 'customer'
                 ? '10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.'
                 : '35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge.'
             } />
           {store.step === 0
-            ? <>{variant === 'user' ? <UserFormComponent /> : <SpecialistFormComponent />}</>
+            ? <>{variant === 'customer' ? <CustomerFormComponent /> : <SpecialistFormComponent />}</>
             : <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={variant === 'user' ? `./thank-you?puuid=${store.puuid}` : '/dashboard'}
+                redirectUrl={getRedirectUrl(variant, store.profileId)}
               />
             </SignUpContainer>
           }

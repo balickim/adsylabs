@@ -16,6 +16,8 @@
  */
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
 
+import { prisma } from 'server/database/db';
+
 /** Replace this with an object if you want to pass things to `createContextInner`. */
 type CreateContextOptions = Record<string, never>;
 
@@ -31,7 +33,9 @@ type CreateContextOptions = Record<string, never>;
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createInnerTRPCContext = (_opts: CreateContextOptions) => {
-  return {};
+  return {
+    prisma,
+  };
 };
 
 /**

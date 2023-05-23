@@ -6,12 +6,13 @@ import { preRegisterSchema } from 'validation';
 import { Input, LoadingCtaButton } from 'components/Common/styled';
 import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
+import { ROLES } from '@prisma/client';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
-export const UserFormComponent = () => {
+export const CustomerFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync } = api.profile.insertUser.useMutation();
+  const { mutateAsync, error } = api.profile.insertCustomer.useMutation();
 
   return (
     <StyledMain>
@@ -19,18 +20,17 @@ export const UserFormComponent = () => {
         initialValues={{
           name: '',
           companyName: '',
-          puuid: store.puuid,
         }}
         validationSchema={toFormikValidationSchema(preRegisterSchema)}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          if (!store.puuid) store.setPuuid();
           mutateAsync({
             name: values.name,
             companyName: values.companyName,
             payPlan: store.payPlan,
-            puuid: store.puuid,
+            role: ROLES.CUSTOMER,
           })
-            .then(() => {
+            .then((profileId) => {
+              store.setProfileId(profileId);
               store.setStep(1);
             })
             .catch((reason) => console.error(reason))
@@ -68,6 +68,7 @@ export const UserFormComponent = () => {
               <p className={'sm:hidden'}>Dalej →</p>
               <p className={'hidden sm:block'}>Zapisz się</p>
             </LoadingCtaButton>
+            {!!error && JSON.stringify(error, null, 4)}
           </Form>
         )}
       </Formik>

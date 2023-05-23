@@ -1,28 +1,24 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { v4 as uuidv4 } from 'uuid';
 
-import { PAY_PLANS } from 'utils/constants';
+import { PAY_PLANS } from '@prisma/client';
 
 interface IPreRegistration {
   step: number;
-  puuid: string;
-  userId: string;
-  payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
+  profileId: string;
+  payPlan: PAY_PLANS
 }
 
 const initialState: IPreRegistration = {
   step: 0,
-  puuid: '',
-  userId: '',
+  profileId: '',
   payPlan: PAY_PLANS.BASIC,
 };
 
 interface IActions {
   setPayPlan: (value: IPreRegistration['payPlan']) => void
   setStep: (value: IPreRegistration['step']) => void
-  setPuuid: () => void
-  setUserId: (value: IPreRegistration['userId']) => void
+  setProfileId: (value: IPreRegistration['profileId']) => void
   resetStore: () => void
 }
 
@@ -43,15 +39,9 @@ export const usePreRegistrationStore = create<IPreRegistration & IActions>()(
         }));
       },
 
-      setPuuid () {
+      setProfileId (value: IPreRegistration['profileId']) {
         set((state: IPreRegistration) => ({
-          puuid: state.puuid = uuidv4(),
-        }));
-      },
-
-      setUserId (value: IPreRegistration['userId']) {
-        set((state: IPreRegistration) => ({
-          userId: state.userId = value,
+          profileId: state.profileId = value,
         }));
       },
 
@@ -60,7 +50,7 @@ export const usePreRegistrationStore = create<IPreRegistration & IActions>()(
       },
     }),
     {
-      name: 'specialistsPreRegistrationStore',
+      name: 'preRegistrationStore',
     }
   )
 );

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import { usePreRegistrationStore } from 'store';
-import { PAY_PLANS } from 'utils/constants';
+import { PAY_PLANS } from '@prisma/client';
 
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
 const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;
@@ -17,7 +17,7 @@ interface IPricingItem {
   title: string;
   subtitle: string;
   price: string;
-  payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
+  payPlan: PAY_PLANS;
   children: React.ReactNode;
 }
 
@@ -100,7 +100,6 @@ const PricingItem = ({
   const store = usePreRegistrationStore();
 
   const handleClick = () => {
-    if (!store.puuid) store.setPuuid();
     store.setPayPlan(payPlan);
     return router.push({
       pathname: '/pre-register',
