@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { BsArrowRight } from 'react-icons/bs';
 
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
@@ -104,12 +105,12 @@ const LoginButton = () => (
 const DashboardButton = () => (
   <Link href="/dashboard">
     <CtaButton
-      className={'w-36'}
+      className={'w-36 flex items-center justify-evenly'}
       version={'primary'}
       aria-label={'go to dashboard'}
       type="button"
     >
-      Dashboard
+      Dashboard <BsArrowRight />
     </CtaButton>
   </Link>
 );

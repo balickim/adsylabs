@@ -24,7 +24,7 @@ const Widget = ({ title, value, imgSrc, type }: IWidget) => {
       </div>
       <Image
         src={imgSrc}
-        alt="graph"
+        alt={`graph ${title}`}
         width={80}
         height={50}
       />
@@ -82,13 +82,13 @@ const DashboardMainPage = () => {
           type={'primary'}
           title={'Pozycja w wyszukiwarce'}
           value={2}
-          imgSrc={DASHBOARD_IMAGES_PATH.GRAPH_2}
+          imgSrc={DASHBOARD_IMAGES_PATH.GRAPH_3}
         />
         <Widget
           type={'secondary'}
           title={'Aktywne kampanie'}
           value={16}
-          imgSrc={DASHBOARD_IMAGES_PATH.GRAPH_3}
+          imgSrc={DASHBOARD_IMAGES_PATH.GRAPH_2}
         />
       </div>
       <Tile>

@@ -5,7 +5,10 @@ import Layout from 'components/Common/Layout';
 
 export default function SignInPage () {
   return <main className='h-screen flex items-center justify-center'>
-    <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+    <SignIn
+      path="/sign-in"
+      routing="path"
+    />
   </main>;
 };
 

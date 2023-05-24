@@ -63,9 +63,7 @@ const Sidebar = ({ open, setOpen }: ISidebar) => {
         <Links routes={routes} />
       </ul>
       <button
-        onClick={() => {
-          signOut().then(() => push('/'));
-        }}
+        onClick={() => signOut().then(() => push('./'))}
         className={'absolute left-10 bottom-20 flex items-center gap-2 text-gray-400 text-lg'}
       >
         <MdLogout size={24} /> Wyloguj się
