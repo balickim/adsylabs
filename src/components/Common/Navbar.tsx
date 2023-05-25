@@ -10,6 +10,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
+import { useLocalStorageStore } from 'store';
 
 const Nav = tw.nav`
   bg-white 
@@ -130,6 +131,7 @@ const SpecialistButton = () => (
 export const Navbar = () => {
   const { isLoaded, isSignedIn } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const { wasOnboarded } = useLocalStorageStore();
 
   const MobileButton = () => (
     <button
@@ -152,7 +154,9 @@ export const Navbar = () => {
           ? <Spinner />
           : isSignedIn
             ? <DashboardButton />
-            : <LoginButton />
+            : wasOnboarded
+              ? <LoginButton />
+              : null
         }
         {!isLoaded
           ? null
