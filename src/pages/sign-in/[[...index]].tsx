@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 import { SignIn } from '@clerk/nextjs';
 
 import Layout from 'components/Common/Layout';
-import { useLocalStorageStore } from 'store';
 
 export default function SignInPage () {
   return <main className='h-screen flex items-center justify-center'>
@@ -31,18 +30,4 @@ SignInPage.getLayout = function getLayout (page: ReactElement) {
       {page}
     </Layout>
   );
-};
-
-export const getServerSideProps = () => {
-  const { wasOnboarded } = useLocalStorageStore.getState();
-
-  if (!wasOnboarded) return {
-    redirect: {
-      permanent: false,
-      destination: '/',
-    },
-    props:{},
-  };
-
-  return { props: { } };
 };
