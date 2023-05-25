@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { SignUp } from '@clerk/nextjs';
 
-import { useLocalStorageStore, usePreRegistrationStore } from 'store';
+import { usePreRegistrationStore } from 'store';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
@@ -32,7 +32,6 @@ interface IMobile {
 
 const Mobile = ({ variant }: IMobile) => {
   const store = usePreRegistrationStore();
-  const { setWasOnboarded } = useLocalStorageStore();
 
   switch (true) {
     case store.step === 0:
@@ -65,7 +64,7 @@ const Mobile = ({ variant }: IMobile) => {
             <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={getRedirectUrl(variant, store.profileId, setWasOnboarded)}
+                redirectUrl={getRedirectUrl(variant, store.profileId)}
               />
             </SignUpContainer>
           </Motion>

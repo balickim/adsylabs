@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { api } from 'utils/api';
 import { Url } from 'next/dist/shared/lib/router/router';
+import { useLocalStorageStore } from 'store';
 
 interface IThankYouProps {
   userId: string
@@ -12,10 +13,14 @@ interface IThankYouProps {
 export default function ClerkAction ({ userId }: IThankYouProps) {
   const { mutateAsync } = api.profile.updateClerkUserId.useMutation();
   const { query, push } = useRouter();
+  const { setWasOnboarded } = useLocalStorageStore();
 
   useEffect(() => {
     mutateAsync({ clerk_user_id: userId, profile_id: query.profileId as string })
-      .finally(() => push(query.redirectUrl as Url));
+      .finally(() => {
+        setWasOnboarded(true);
+        return push(query.redirectUrl as Url);
+      });
   }, []);
 
   return null;

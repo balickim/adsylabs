@@ -12,7 +12,7 @@ const StyledMain = tw.main`p-4 mt-8`;
 
 export const SpecialistFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync } = api.profile.insertSpecialist.useMutation();
+  const { mutateAsync, error } = api.profile.insertSpecialist.useMutation();
 
   return (
     <StyledMain>
@@ -67,10 +67,15 @@ export const SpecialistFormComponent = () => {
               <p className={'sm:hidden'}>Dalej →</p>
               <p className={'hidden sm:block'}>Zapisz się</p>
             </LoadingCtaButton>
-            {JSON.stringify(errors)}
           </Form>
         )}
       </Formik>
+      {!!error ?
+        <div className={'w-72 mt-8 bg-red-400 rounded-xl p-2 text-white'}>
+          Wystąpił błąd. Spróbuj ponownie.
+        </div>
+        : null
+      }
     </StyledMain>
   );
 };

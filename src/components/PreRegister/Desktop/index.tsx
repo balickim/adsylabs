@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { WelcomeIn } from 'components/PreRegister/WelcomeIn';
 import { AboutUs } from 'components/PreRegister/AboutUs';
 import { JoinUs } from 'components/PreRegister/JoinUs';
-import { useLocalStorageStore, usePreRegistrationStore } from 'store';
+import { usePreRegistrationStore } from 'store';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SpecialistFormComponent } from 'components/PreRegister/SpecialistFormComponent';
 import { CustomerFormComponent } from 'components/PreRegister/CustomerFormComponent';
@@ -36,8 +36,7 @@ interface IDesktop {
   variant: UserRoles
 }
 
-export function getRedirectUrl (variant: IDesktop['variant'], profileId: string, setWasOnboarded: (value: boolean) => void) {
-  setWasOnboarded(true);
+export function getRedirectUrl (variant: IDesktop['variant'], profileId: string) {
   if (variant === 'customer') return `/acc/clerk?profileId=${profileId}&redirectUrl=/thank-you`;
   if (variant === 'specialist') return `/acc/clerk?profileId=${profileId}&redirectUrl=/dashboard`;
   return '/';
@@ -45,7 +44,6 @@ export function getRedirectUrl (variant: IDesktop['variant'], profileId: string,
 
 const Desktop = ({ variant }: IDesktop) => {
   const store = usePreRegistrationStore();
-  const { setWasOnboarded } = useLocalStorageStore();
 
   return (
     <MainContainer>
@@ -82,7 +80,7 @@ const Desktop = ({ variant }: IDesktop) => {
             : <SignUpContainer>
               <SignUp
                 routing={'virtual'}
-                redirectUrl={getRedirectUrl(variant, store.profileId, setWasOnboarded)}
+                redirectUrl={getRedirectUrl(variant, store.profileId)}
               />
             </SignUpContainer>
           }

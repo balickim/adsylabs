@@ -68,10 +68,15 @@ export const CustomerFormComponent = () => {
               <p className={'sm:hidden'}>Dalej →</p>
               <p className={'hidden sm:block'}>Zapisz się</p>
             </LoadingCtaButton>
-            {!!error && JSON.stringify(error, null, 4)}
           </Form>
         )}
       </Formik>
+      {!!error ?
+        <div className={'w-72 mt-8 bg-red-400 rounded-xl p-2 text-white'}>
+          Wystąpił błąd. Spróbuj ponownie.
+        </div>
+        : null
+      }
     </StyledMain>
   );
 };
