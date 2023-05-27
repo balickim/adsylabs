@@ -18,7 +18,7 @@ export const LANDING_IMAGES_PATH = {
   JAKUB_JANIAK: '/static/image/landing/jakub_janiak.png',
   SHAPE_1: '/static/image/landing/shape_1.png',
   SHAPE_2: '/static/image/landing/shape_2.png',
-  FAQ: '/static/image/landing/FAQ.png',
+  FAQ: '/static/image/landing/faq.png',
   WAVING_HAND: '/static/image/landing/waving_hand.png',
 } as const;
 
