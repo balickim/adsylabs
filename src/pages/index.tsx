@@ -14,8 +14,11 @@ import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'utils/hooks/useRect';
 import { Motion } from 'utils/helpers/framerMotion';
 import { HotJarScript } from 'components/Common/externalScripts';
+import { CustomerExcerpt, ExcerptCta } from 'components/Faq/Excerpts';
+import { FadeGradientContainer } from 'utils/helpers';
 
 const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
+const ExcerptContainer = tw.div`h-[400px]`;
 
 export default function HomePage () {
   const [rect, ref] = useRect<HTMLDivElement>();
@@ -34,6 +37,19 @@ export default function HomePage () {
 
         <Motion>
           <HowItWorks />
+        </Motion>
+
+        <Motion>
+          <FadeGradientContainer
+            fadeHeight={300}
+            fadeFrom={1.5}
+            fadeTo={0}
+          >
+            <ExcerptContainer>
+              <CustomerExcerpt />
+            </ExcerptContainer>
+          </FadeGradientContainer>
+          <ExcerptCta href={'faq'} />
         </Motion>
 
         <Motion>

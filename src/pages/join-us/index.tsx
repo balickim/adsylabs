@@ -12,8 +12,11 @@ import Comparison from 'components/JoinUs/Comparison';
 import Bottom from 'components/JoinUs/Bottom';
 import Video from 'components/JoinUs/Video';
 import { HotJarScript } from 'components/Common/externalScripts';
+import { FadeGradientContainer } from 'utils/helpers';
+import { ExcerptCta, SpecialistExcerpt } from 'components/Faq/Excerpts';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
+const ExcerptContainer = tw.div`h-[500px]`;
 
 export default function JoinUsPage () {
   return (
@@ -38,6 +41,19 @@ export default function JoinUsPage () {
 
         <Motion>
           <HowItWorks />
+        </Motion>
+
+        <Motion>
+          <FadeGradientContainer
+            fadeHeight={300}
+            fadeFrom={1.5}
+            fadeTo={0}
+          >
+            <ExcerptContainer>
+              <SpecialistExcerpt />
+            </ExcerptContainer>
+          </FadeGradientContainer>
+          <ExcerptCta href={'join-us/faq'} />
         </Motion>
 
         <Motion>

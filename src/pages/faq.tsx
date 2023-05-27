@@ -6,6 +6,7 @@ import { Top } from 'components/Faq/Top';
 import { Item } from 'components/Faq/Item';
 import { Banner } from 'components/Faq/Banner';
 import Footer from 'components/Common/Footer';
+import { CustomerExcerpt } from 'components/Faq/Excerpts';
 
 const Main = tw.main`flex flex-col mt-20 px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 
@@ -17,40 +18,7 @@ export default function FaqPage () {
       `}
     />
     <div id={'items'}>
-      <Item
-        index={'1.'}
-        title={`
-      Jakich specjalistów ds. marketingu mogę znaleźć za pomocą AdsBridge i jak mogę się upewnić, 
-      że ich umiejętności i doświadczenie odpowiadają moim potrzebom?
-      `}
-      >
-      W AdsBridge możesz znaleźć i zatrudnić sprawdzonych specjalistów ds. marketingu, którzy posiadają
-      szeroki zakres umiejętności, sprawdzony w trakcie restrykcyjnego procesu rekrutacji, który przechodzi
-      jedynie niewielki odsetek kandydatów. Na platformie możesz znaleźć specjalistów w dziedzinach
-      takich jak PPC, SEO, social media marketing, email marketing, content marketing i wiele innych.
-        <br/>
-      Każdy specjalista jest przez nas rzetelnie sprawdzany pod kątem doswiadczenia i realnych umiejętności
-      wykorzystanych w poprzednich projektach. Więcej o procesie weryfikacji piszemy w tej sekcji strony.
-      </Item>
-
-      <Item
-        index={'2.'}
-        title={'W jaki sposób rozwiązanie AdBridge dopasowuje mnie do specjalistów ds. marketingu?'}
-      >
-      Nasza platforma na podstawie wywiadu przeprowadzonego przy pierwszym logowaniu rekomenduje
-      najlepszych specjalistów dla Twojego Biznesu, mając na uwadze wszystkie najważniejsze paremetry
-      takie jak cel kampanii, budżet, specyfika Twojej branży, wymagania dotyczące rodzaju współpracy
-      ze specjalistą, przybliżone terminy rozpoczęcia i realizacji projektów itd.
-        <br/>
-        <br/>
-      Poza rekomendacjami, każdego naszego użytkownika wyposażamy w rozbudowane funkcje filtrowania i
-      dedykowanego eksperta, który w razie potrzeby poprowadzi proces rekrutacji i rozpoczęcia współpracy.
-        <br/>
-        <br/>
-      Ponadto udzielamy 60-dniowej gwarancji sukcesu - jesteśmy pewni jakości naszych usług i
-      umiejetności specjalistów dlatego jeśli w ciągu pierwszych dwóch miesięcy uznasz,
-      ze platforma nie jest dla Ciebie, zwrócimy Ci pieniądze za subskrypcję naszej platformy.
-      </Item>
+      <CustomerExcerpt />
 
       <Item
         index={'3.'}
