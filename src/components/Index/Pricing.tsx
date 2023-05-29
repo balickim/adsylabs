@@ -1,9 +1,8 @@
 import React, { Children, LegacyRef } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import { usePreRegistrationStore } from 'store';
 import { PAY_PLANS } from '@prisma/client';
 
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
@@ -96,15 +95,6 @@ const PricingItem = ({
   payPlan,
 }: IPricingItem) => {
   const arrayChildren = Children.toArray(children);
-  const router = useRouter();
-  const store = usePreRegistrationStore();
-
-  const handleClick = () => {
-    store.setPayPlan(payPlan);
-    return router.push({
-      pathname: '/pre-register',
-    });
-  };
 
   return (
     <PricingItemContainer variant={variant}>
@@ -132,9 +122,11 @@ const PricingItem = ({
           })}
         </ChildrenContainer>
         <ButtonContainer variant={variant}>
-          <Button variant={variant} onClick={() => handleClick()}>
-            Zarejestruj się za darmo
-          </Button>
+          <Link href={`/pre-register?payPlan=${payPlan}`}>
+            <Button variant={variant}>
+              Zarejestruj się za darmo
+            </Button>
+          </Link>
         </ButtonContainer>
       </div>
     </PricingItemContainer>

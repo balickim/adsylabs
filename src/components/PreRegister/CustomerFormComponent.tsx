@@ -1,18 +1,20 @@
 import { Form, Formik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import tw from 'twin.macro';
+import { PAY_PLANS, ROLES } from '@prisma/client';
+import { useRouter } from 'next/router';
 
 import { preRegisterSchema } from 'validation';
 import { Input, LoadingCtaButton } from 'components/Common/styled';
 import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
-import { ROLES } from '@prisma/client';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
 export const CustomerFormComponent = () => {
   const store = usePreRegistrationStore();
   const { mutateAsync, error } = api.profile.insertCustomer.useMutation();
+  const { query } = useRouter();
 
   return (
     <StyledMain>
@@ -26,7 +28,7 @@ export const CustomerFormComponent = () => {
           mutateAsync({
             name: values.name,
             companyName: values.companyName,
-            payPlan: store.payPlan,
+            payPlan: query.payPlan as PAY_PLANS,
             role: ROLES.CUSTOMER,
           })
             .then((profileId) => {
