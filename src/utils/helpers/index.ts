@@ -6,6 +6,8 @@ export const publicPaths = [
   '/join-us*',
   '/pre-register',
   '/faq',
+  '/polityka-prywatnosci',
+  '/polityka-cookies',
 ];
 
 export const isPublic = (path: string) => {
