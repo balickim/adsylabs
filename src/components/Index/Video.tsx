@@ -11,7 +11,6 @@ const Title = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight xl:text-left
 
 const SubTitle = styled.h3`
   ${tw`text-lg text-center text-gray-500 xl:text-left`}
-  text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.1);
 `;
 
 const Video = () => {

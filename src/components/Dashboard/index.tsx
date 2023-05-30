@@ -18,9 +18,9 @@ interface IWidget {
 const Widget = ({ title, value, imgSrc, type }: IWidget) => {
   return <div className={`rounded-xl ${type === 'primary' ? 'bg-secondary' : 'bg-white'}`}>
     <div className={'flex h-24 px-10 justify-between items-center'}>
-      <div className={'flex flex-col text-xl'}>
+      <div className={'flex flex-col text-lg'}>
         <p className={'text-gray-400'}>{title}</p>
-        <p className={`text-2xl ${type === 'primary' ? 'text-gray-200' : 'text-black'}`}>{value}</p>
+        <p className={`text-xl ${type === 'primary' ? 'text-gray-200' : 'text-black'}`}>{value}</p>
       </div>
       <Image
         src={imgSrc}
@@ -36,7 +36,7 @@ const Tile = tw.div`flex flex-col justify-between bg-white rounded-2xl p-8 min-h
 
 const Tasks = () => {
   return <>
-    <p className={'text-4xl'}>27 Maj</p>
+    <p className={'text-3xl'}>27 Maj</p>
     <div className={'flex flex-col gap-y-4'}>
       <div className={'flex gap-2 h-12'}>
         <div className={'w-1 bg-secondary'} />
@@ -60,7 +60,7 @@ const Tasks = () => {
         </div>
       </div>
     </div>
-    <span className={'flex justify-end items-center text-base md:text-xl gap-x-3 text-secondary font-bold cursor-pointer hover:underline'}>
+    <span className={'flex justify-end items-center text-xs md:text-base gap-x-3 text-secondary font-bold cursor-pointer hover:underline'}>
       Zobacz wszystkie <BsArrowRight />
     </span>
   </>;
@@ -106,23 +106,23 @@ const DashboardMainPage = () => {
           /> : <StyledFaSpinner size={64} />}
         </div>
         <div className={'flex flex-col items-center justify-center'}>
-          <p className={'text-4xl'}>{user?.firstName}</p>
-          <span className={'text-base text-gray-400 flex items-center gap-2'}><FiMapPin /> Warszawa, Polska</span>
+          <p className={'text-3xl'}>{user?.firstName}</p>
+          <span className={'text-xs text-gray-400 flex items-center gap-2'}><FiMapPin /> Warszawa, Polska</span>
         </div>
         <div className={'flex justify-evenly gap-x-3 px-10'}>
           <div className={'flex flex-col items-center'}>
             <p className={'text-gray-400'}>Projekty</p>
-            <p className={'text-3xl'}>28</p>
+            <p className={'text-2xl'}>28</p>
           </div>
           <div className={'flex flex-col items-center'}>
             <p className={'text-gray-400'}>Klienci</p>
-            <p className={'text-3xl'}>37</p>
+            <p className={'text-2xl'}>37</p>
           </div>
         </div>
       </Tile>
       <Tile className={'overflow-x-auto col-span-1 sm:col-span-2 2xl:col-span-3'}>
         <section className={'min-w-[500px]'}>
-          <h2 className={'text-2xl'}>Twoje projekty</h2>
+          <h2 className={'text-xl'}>Twoje projekty</h2>
           <div className={'text-end my-3 text-gray-300'}>Konwersje</div>
           <div className={'flex flex-col gap-6'}>
             <div className={'flex items-center'}>
@@ -188,7 +188,7 @@ const DashboardMainPage = () => {
       <Tile className={'col-span-1 sm:col-span-2 2xl:col-span-3'}>
         <div className={'flex justify-between items-center'}>
           <div className={'flex flex-col gap-6'}>
-            <p className={'text-4xl'}>Dołącz do społecznosci Slack!</p>
+            <p className={'text-xl lg:text-3xl'}>Dołącz do społecznosci Slack!</p>
             <p className={'text-gray-400'}>
               Dołącz do grona specjalistów, rozmawiaj, nawiązuj kontakty i wymieniaj się spostrzeżeniami!
             </p>

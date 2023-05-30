@@ -7,8 +7,8 @@ import { PAY_PLANS } from '@prisma/client';
 
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
 const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;
-const Title = tw.div`text-3xl`;
-const SubTitle = tw.h3`text-sm text-gray-500 text-lg`;
+const Title = tw.div`text-2xl lg:text-3xl xl:text-4xl`;
+const SubTitle = tw.h3`text-sm text-gray-500`;
 const Grid = tw.div`grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
 
 interface IPricingItem {
@@ -34,7 +34,7 @@ const PricingItemContainer = styled.div<IVariant>(
 );
 const TitleContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`flex justify-center text-center text-2xl`,
+    tw`flex justify-center text-center text-xl`,
     variant === 'primary'
       ? tw`text-white`
       : tw`text-black`,
@@ -50,21 +50,14 @@ const Text = styled.div<IVariant>(
 );
 const Price = styled.span<IVariant>(
   ({ variant }) => [
-    tw`text-5xl font-bold`,
+    tw`text-4xl font-bold h-14`,
     variant === 'primary'
       ? tw`text-white`
       : tw`text-black`,
   ]
 );
 
-const ButtonContainer = styled.div<IVariant>(
-  ({ variant }) => [
-    tw`flex justify-center px-16 mt-4 justify-self-end`,
-    variant === 'primary'
-      ? tw``
-      : tw``,
-  ]
-);
+const ButtonContainer = tw.div`flex justify-center px-16 mt-4 justify-self-end`;
 const Button = styled.button<IVariant>(
   ({ variant }) => [
     tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
@@ -74,17 +67,9 @@ const Button = styled.button<IVariant>(
   ]
 );
 
-const PriceContainer = tw.div`relative flex justify-center items-end gap-2`;
-const ChildrenContainer = styled.div<IVariant>(
-  ({ variant }) => [
-    tw`flex flex-col grow px-4 space-y-4 justify-between`,
-    variant === 'primary'
-      ? tw``
-      : tw``,
-  ]
-);
-
-const TopContainer = tw.div`flex flex-col gap-6 px-4 justify-between h-52 sm:h-40 xl:h-52`;
+const PriceContainer = tw.div`relative flex h-5 justify-center items-end gap-2`;
+const ChildrenContainer = tw.div`flex flex-col grow px-4 space-y-4 justify-between`;
+const TopContainer = tw.div`flex flex-col gap-6 px-4 justify-between h-40 xl:h-52`;
 
 const PricingItem = ({
   variant,
@@ -112,7 +97,7 @@ const PricingItem = ({
 
         <hr/>
 
-        <ChildrenContainer variant={variant}>
+        <ChildrenContainer>
           {Children.map(arrayChildren, (child, index) => {
             return (
               <Text variant={variant} key={index}>
@@ -121,7 +106,7 @@ const PricingItem = ({
             );
           })}
         </ChildrenContainer>
-        <ButtonContainer variant={variant}>
+        <ButtonContainer>
           <Link href={`/pre-register?payPlan=${payPlan}`}>
             <Button variant={variant}>
               Zarejestruj się za darmo

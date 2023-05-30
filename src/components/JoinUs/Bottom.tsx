@@ -81,7 +81,7 @@ const Bottom = () => {
       </Container>
       <div className={'flex justify-center'}>
         <CtaContainer>
-          <BasicTitle className={'!text-white mt-24'}>Zarejestruj się za darmo</BasicTitle>
+          <h1 className={'text-xl lg:text-2xl xl:text-3xl mt-24'}>Zarejestruj się za darmo</h1>
           <p className={'max-w-[70%] sm:max-w-[40%] md:max-w-[30%]'}>Porozmawiajmy, jak możemy pomóc rozwinąć Twoją karierę.</p>
           <Link href="/join-us/pre-register">
             <CtaButton

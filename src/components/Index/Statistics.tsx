@@ -43,8 +43,8 @@ const Statistics = () => {
               zwiększyło swoje budżety na marketing online od 2021 roku.
             </SubTitleLeft>
           </StatsItem>
-          <span className={'text-xs'}>¹ Raport AdEx 2022’Q1 (IAB Polska/PwC AdEx)</span>
-          <span className={'text-xs'}>² Ranktracker.com 77 statistics on Digital Marketing in 2022 you need to know</span>
+          <span className={'text-[11px]'}>¹ Raport AdEx 2022’Q1 (IAB Polska/PwC AdEx)</span>
+          <span className={'text-[11px]'}>² Ranktracker.com 77 statistics on Digital Marketing in 2022 you need to know</span>
         </StatsContainer>
         <div className={'absolute h-full w-full left-0 top-0'}>
           <Image

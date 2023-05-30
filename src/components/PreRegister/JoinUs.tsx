@@ -5,12 +5,12 @@ const Container = tw.div`
   sm:pl-4 sm:mt-28
 `;
 const Title = tw.h1`
-  text-5xl text-center text-black
-  sm:text-start sm:max-w-[90%] lg:text-6xl
+  text-3xl text-center text-black
+  sm:text-start sm:max-w-[90%] lg:text-5xl
 `;
 const SubTitle = tw.p`
-  relative ml-auto mr-auto mt-4 text-lg max-w-xs text-center text-gray-600 leading-8
-  sm:text-start sm:ml-0 sm:mr-0 sm:text-base sm:max-w-[90%] lg:text-xl
+  relative ml-auto mr-auto mt-4 text-base max-w-xs text-center text-gray-600 leading-8
+  sm:text-start sm:ml-0 sm:mr-0 sm:text-xs sm:max-w-[90%] lg:text-lg
 `;
 
 interface IJoinUs {

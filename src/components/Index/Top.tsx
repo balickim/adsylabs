@@ -7,7 +7,7 @@ import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { SubTitleLeft, TitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 
-const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:mt-0 lg:gap-0`;
+const StyledSection = tw.section`px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0`;
 
 const Top = () => {
   return (

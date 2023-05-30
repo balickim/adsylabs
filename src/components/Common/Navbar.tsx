@@ -42,43 +42,6 @@ const End = tw.div`
   items-center
 `;
 
-const MenuItem = ({ text, link }: { text: string; link: string }) => (
-  <Link href={link}>
-    <span className="text-black hover:text-primary">
-      {text}
-    </span>
-  </Link>
-);
-
-const MenuItems = () => (
-  <>
-    <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
-    <MenuItem text={'Cennik'} link={'/#pricing'} />
-    <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
-    <Link href="/#pricing">
-      <CtaButton
-        version={'primary'}
-        type="button"
-        className={'md:hidden'}
-      >
-        Znajdź specjalistę
-      </CtaButton>
-    </Link>
-  </>
-);
-
-const DesktopMenuItems = () => (
-  <div className="hidden md:flex flex-row gap-6 w-auto">
-    <MenuItems />
-  </div>
-);
-
-const MobileMenuItems = () => (
-  <div className="md:hidden absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
-    <MenuItems />
-  </div>
-);
-
 const Logo = () => (
   <Link href="/" className="flex mr-4">
     <Image
@@ -133,6 +96,43 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { wasOnboarded } = useLocalStorageStore();
 
+  const MenuItem = ({ text, link }: { text: string; link: string }) => (
+    <Link href={link} onClick={() => setIsMobileMenuOpen(false)}>
+      <span className="text-black hover:text-primary">
+        {text}
+      </span>
+    </Link>
+  );
+
+  const MenuItems = () => (
+    <>
+      <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
+      <MenuItem text={'Cennik'} link={'/#pricing'} />
+      <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
+      <Link href="/#pricing">
+        <CtaButton
+          version={'primary'}
+          type="button"
+          className={'md:hidden'}
+        >
+          Znajdź specjalistę
+        </CtaButton>
+      </Link>
+    </>
+  );
+
+  const DesktopMenuItems = () => (
+    <div className="hidden md:flex flex-row gap-6 w-auto">
+      <MenuItems />
+    </div>
+  );
+
+  const MobileMenuItems = () => (
+    <div className="md:hidden absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
+      <MenuItems />
+    </div>
+  );
+  
   const MobileButton = () => (
     <button
       onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

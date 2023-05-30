@@ -11,8 +11,7 @@ export default function SignInPage () {
       signUpUrl={undefined}
       appearance={{
         layout: {
-          termsPageUrl: '/',
-          privacyPageUrl: '/',
+          privacyPageUrl: './polityka-prywatnosci',
         } }
       }
     />

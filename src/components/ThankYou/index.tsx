@@ -56,7 +56,7 @@ const ThankYouComponent = () => {
           </a>
         </div>
 
-        <p className={'mt-40 mb-6 sm:mt-28'}>
+        <p className={'mt-36 mb-6 sm:mt-24 w-4/5 mx-auto'}>
         &quot;Dziękuję za Państwa kredyt zaufania. Razem tworzymy produkt, który na zawsze zmieni obraz marketingu w Polsce.&quot;
         </p>
         <div className={'flex justify-center text-left gap-2'}>

@@ -16,7 +16,7 @@ export const Top = ({ text }: ITop) => {
   return (
     <section className={'flex justify-evenly items-center'}>
       <div className={'flex flex-col items-center md:items-start'}>
-        <h1 className={'text-5xl'}>
+        <h1 className={'text-4xl'}>
           <p>Automatyzujemy</p>
           <p>współprace</p>
           <p>marketingowe</p>

@@ -1,34 +1,33 @@
 import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 import Link from 'next/link';
+import tw from 'twin.macro';
 
+const StyledLink = tw(Link)`text-xs text-gray-500 hover:text-gray-900 md:text-base`;
 
 function Links () {
   return (
     <div className="py-4 flex justify-center space-x-4">
-      <Link
+      <StyledLink
         target="_blank"
         rel="noopener noreferrer"
         href={'./join-us'}
-        className="text-gray-500 hover:text-gray-900"
       >
         Dołącz do nas
-      </Link>
-      <Link
+      </StyledLink>
+      <StyledLink
         target="_blank"
         rel="noopener noreferrer"
         href={'./polityka-prywatnosci'}
-        className="text-gray-500 hover:text-gray-900"
       >
         Polityka prywatności
-      </Link>
-      <Link
+      </StyledLink>
+      <StyledLink
         target="_blank"
         rel="noopener noreferrer"
         href={'./polityka-cookies'}
-        className="text-gray-500 hover:text-gray-900"
       >
         Polityka cookies
-      </Link>
+      </StyledLink>
     </div>
   );
 }

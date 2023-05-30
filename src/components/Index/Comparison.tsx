@@ -12,11 +12,11 @@ import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`mt-16 md:mt-32`;
 const Title = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900 text-center mb-16`;
-const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center text-sm xl:text-base`;
+const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center text-xs text-center md:text-left xl:text-base`;
 const PinkText = tw.p`text-pink-400`;
 const ColumnAsset = tw.div`flex justify-center items-center`;
 const ColumnText = tw.p`flex justify-center items-center`;
-const LeftColumnText = tw.p`flex items-center text-xs xl:text-base`;
+const LeftColumnText = tw.p`flex items-center text-[11px] xl:text-sm`;
 const Grid = styled.div`
   ${tw`grid gap-x-4 h-[34rem] grid-rows-6 overflow-x-auto`}
   grid-template-columns:
@@ -131,7 +131,7 @@ const Comparison = () => {
               <CtaButton
                 version={'primary'}
                 type="button"
-                className={'text-xs xl:p-4 xl:text-lg'}
+                className={'text-[11px] xl:p-4 xl:text-lg'}
               >
                 Znajdź specjalistę
               </CtaButton>

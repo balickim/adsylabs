@@ -26,7 +26,7 @@ export const Banner = ({ text_1, text_2, text_3, link }: IBanner) => {
             />
           </div>
 
-          <p className={'text-white text-xl xl:w-3/5 xl:text-2xl'}>{text_1}</p>
+          <p className={'text-white text-lg xl:w-3/5 xl:text-xl'}>{text_1}</p>
         </div>
 
         <div className={'flex flex-col items-center'}>
