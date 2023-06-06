@@ -11,8 +11,8 @@ export const profileSettingsRouter = {
         maxFileSize: '2MB',
         maxFileCount: 1,
       },
-  }).middleware(async (req, res) => {
-    const user = await auth(req, res);
+  }).middleware(async () => {
+    const user = await auth();
     if (!user) throw new Error('Unauthorized');
     // Whatever is returned here is accessible in onUploadComplete as `metadata`
     return { userId: user.id };
@@ -27,8 +27,8 @@ export const profileSettingsRouter = {
         maxFileSize: '2MB',
         maxFileCount: 5,
       },
-  }).middleware(async (req, res) => {
-    const user = await auth(req, res);
+  }).middleware(async () => {
+    const user = await auth();
     if (!user) throw new Error('Unauthorized');
     // Whatever is returned here is accessible in onUploadComplete as `metadata`
     return { userId: user.id };
@@ -43,8 +43,8 @@ export const profileSettingsRouter = {
         maxFileSize: '2MB',
         maxFileCount: 1,
       },
-  }).middleware(async (req, res) => {
-    const user = await auth(req, res);
+  }).middleware(async () => {
+    const user = await auth();
     if (!user) throw new Error('Unauthorized');
     // Whatever is returned here is accessible in onUploadComplete as `metadata`
     return { userId: user.id };
