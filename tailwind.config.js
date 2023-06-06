@@ -7,12 +7,14 @@ module.exports = {
         primary: '#5762f6',
         primaryLighten: '#808af7',
         secondary: '#6027e5',
+        dashboardPrimary: '#2B3674',
       },
     },
     fontFamily: {
       sans: ['IBMPlexSans', 'sans-serif'],
     },
     fontSize: {
+      'xxs': '0.6875rem',
       'xs': '0.875rem',
       'sm': '1rem',
       'base': '1.125rem', // zwykły tekst

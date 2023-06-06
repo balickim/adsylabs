@@ -40,7 +40,7 @@ const Comparison = () => {
                 Usługi
               </Th>
               <Th>
-                Zadania
+
               </Th>
               <Th className={'font-bold'}>
                 AdsBridge
@@ -76,7 +76,7 @@ const Comparison = () => {
             <Tr>
               <TdLeft></TdLeft>
               <TdTextCenter className={'min-w-[13rem] lg:min-w-auto'}>ponad 30 tys zł/mies. + czas</TdTextCenter>
-              <TdTextCenter className={'font-bold text-primary'}>Wszystko w cenie</TdTextCenter>
+              <TdTextCenter className={'font-bold text-primary'}>Wszystko w pakiecie</TdTextCenter>
             </Tr>
           </Tbody>
         </Table>

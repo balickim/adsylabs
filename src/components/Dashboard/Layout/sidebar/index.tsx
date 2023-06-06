@@ -24,7 +24,7 @@ interface ISidebarContainer {
 export const SidebarContainer = styled.aside<ISidebarContainer>(
   ({ open }) => [
     tw`
-        z-10 fixed min-h-full bg-white pb-10 shadow-2xl shadow-white/5 text-white md:z-0
+        z-20 fixed min-h-full bg-white pb-10 shadow-2xl shadow-white/5 text-white md:z-0
         transition ease-in-out delay-150 duration-300
       `,
     open

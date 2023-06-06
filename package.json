@@ -19,22 +19,27 @@
     "@trpc/next": "10.23.0",
     "@trpc/react-query": "10.23.0",
     "@trpc/server": "10.23.0",
+    "@uploadthing/react": "4.0.0",
     "@vercel/analytics": "1.0.0",
     "formik": "2.2.9",
     "framer-motion": "10.11.2",
     "next": "13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dropzone": "14.2.3",
     "react-icons": "4.8.0",
+    "react-intl": "6.4.2",
+    "react-select": "5.7.3",
     "styled-components": "5.3.9",
     "superjson": "1.12.3",
     "twin.macro": "3.1.0",
+    "uploadthing": "4.0.0",
     "zod": "3.21.4",
     "zod-formik-adapter": "1.2.0",
     "zustand": "4.3.7"
   },
   "devDependencies": {
-    "@types/node": "18.15.10",
+    "@types/node": "20.2.5",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "@types/styled-components": "5.1.26",
@@ -46,14 +51,15 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "eslint-plugin-unused-imports": "2.0.0",
-    "kysely-codegen": "0.10.0",
     "postcss": "8.4.21",
     "prisma": "4.14.1",
     "tailwindcss": "3.2.7",
+    "ts-node": "10.9.1",
     "typescript": "5.0.2"
   },
   "prisma": {
-    "schema": "src/server/database/schema.prisma"
+    "schema": "src/server/database/schema.prisma",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} src/server/database/seed.ts"
   },
   "babelMacros": {
     "twin": {

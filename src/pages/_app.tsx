@@ -8,10 +8,13 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 
 import 'styles/main.css';
+import '@uploadthing/react/styles.css';
 import { twConfig } from 'utils/helpers/tailwind';
-import { pl } from 'locale/clerk/pl';
+import { pl as clerkPl } from 'locale/clerk/pl';
+import pl from 'locale/pl.json';
 import { api } from 'utils/api';
 import { isBrowser } from 'utils/helpers';
+import { IntlProvider } from 'react-intl';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,8 +24,12 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+const messages = {
+  pl,
+};
+
 const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
-  const { push, events } = useRouter();
+  const { push, events, locale } = useRouter();
   const [ loading, setLoading ] = useState(false);
   isBrowser() && events.on('routeChangeStart', () => setLoading(true));
   isBrowser() && events.on('routeChangeComplete', () => setLoading(false));
@@ -45,7 +52,7 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
 
       <Analytics />
       <ClerkProvider
-        localization={pl}
+        localization={clerkPl}
         appearance={{
           variables: {
             colorPrimary: twConfig?.theme?.colors?.primary,
@@ -54,7 +61,12 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
         navigate={(to) => push(to)}
         {...pageProps}
       >
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(
+          // @ts-ignore
+          <IntlProvider locale={locale} messages={messages[locale]}>
+            <Component {...pageProps} />
+          </IntlProvider>
+        )}
       </ClerkProvider>
     </>
   );

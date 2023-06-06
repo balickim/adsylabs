@@ -29,6 +29,7 @@ export const DASHBOARD_IMAGES_PATH = {
   PLACEHOLDER_AVATAR_1: '/static/image/dashboard/placeholder_avatar_1.png',
   PLACEHOLDER_AVATAR_2: '/static/image/dashboard/placeholder_avatar_2.png',
   PLACEHOLDER_AVATAR_3: '/static/image/dashboard/placeholder_avatar_3.png',
+  AVATAR: '/static/image/dashboard/avatar.webp',
 } as const;
 
 export const MEDIA_PATH = {

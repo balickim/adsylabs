@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import { PAY_PLANS, ROLES } from '@prisma/client';
 import { useRouter } from 'next/router';
 
-import { preRegisterSchema } from 'validation';
+import { preRegisterSchema } from 'validation/preRegisterSchema';
 import { Input, LoadingCtaButton } from 'components/Common/styled';
 import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
@@ -52,11 +52,13 @@ export const CustomerFormComponent = () => {
             <div className="mt-3 grid gap-6 mb-6">
               <Input
                 label={'Imię'}
+                labelClasses={'text-white sm:text-black'}
                 error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />
               <Input
                 label={'Nazwa Twojej firmy'}
+                labelClasses={'text-white sm:text-black'}
                 error={(touched.companyName && errors.companyName) ? errors.companyName : null}
                 {...getFieldProps('companyName')}
               />

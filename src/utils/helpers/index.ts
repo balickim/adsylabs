@@ -1,21 +1,5 @@
 import styled from 'styled-components';
 
-export const publicPaths = [
-  '/',
-  '/sign-in*',
-  '/join-us*',
-  '/pre-register',
-  '/faq',
-  '/polityka-prywatnosci',
-  '/polityka-cookies',
-];
-
-export const isPublic = (path: string) => {
-  return publicPaths.find(x =>
-    path.match(new RegExp(`^${x}$`.replace('*$', '($|/)')))
-  );
-};
-
 export const isBrowser = () => typeof window !== 'undefined';
 
 export const openLink = (url: string, target: string = '_blank', options: string = 'noreferrer noopener') =>

@@ -1,7 +1,6 @@
 import React from 'react';
 import tw from 'twin.macro';
 
-import Navbar from 'components/Dashboard/Layout/navbar';
 import Sidebar from 'components/Dashboard/Layout/sidebar';
 import { twConfig } from 'utils/helpers/tailwind';
 import styled from 'styled-components';
@@ -18,8 +17,9 @@ interface IChildrenContainer {
 export const ContentContainer = styled.main<IChildrenContainer>(
   ({ open }) => [
     tw`
-        w-full px-8 h-full overflow-y-auto bg-[#F4F7FE]
+        w-full px-2 h-full overflow-y-auto bg-[#F4F7FE]
         transition-all ease-in-out delay-150 duration-300
+        lg:px-8
       `,
     open
       ? tw`md:ml-72`
@@ -47,7 +47,6 @@ export default function DashboardLayout ({ children }: IDashboardLayout) {
       <Container>
         <Sidebar open={open} setOpen={setOpen} />
         <ContentContainer open={open}>
-          <Navbar />
           <ChildrenContainer>
             {children}
           </ChildrenContainer>

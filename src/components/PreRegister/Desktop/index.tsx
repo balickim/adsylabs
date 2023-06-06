@@ -38,7 +38,7 @@ interface IDesktop {
 
 export function getRedirectUrl (variant: IDesktop['variant'], profileId: string) {
   if (variant === 'customer') return `/acc/clerk?profileId=${profileId}&redirectUrl=/thank-you`;
-  if (variant === 'specialist') return `/acc/clerk?profileId=${profileId}&redirectUrl=/dashboard`;
+  if (variant === 'specialist') return `/acc/clerk?profileId=${profileId}&redirectUrl=/dashboard/settings`;
   return '/';
 }
 

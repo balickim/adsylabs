@@ -27,7 +27,7 @@ export const SidebarLinks = ({ routes }: { routes: IRoutesItem[] }): JSX.Element
             >
               {route.disabled
                 ? <Tooltip>
-                  <div className={"flex ml-4 cursor-no-drop items-center blur-sm select-none"}>
+                  <div className={"flex ml-4 cursor-no-drop items-center blur-[2px] select-none"}>
                     <span
                       className={`${
                         activeRoute(path)

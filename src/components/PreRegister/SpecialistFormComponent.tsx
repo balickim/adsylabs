@@ -49,11 +49,13 @@ export const SpecialistFormComponent = () => {
             <div className="mt-3 grid gap-6 mb-6">
               <Input
                 label={'Imię'}
+                labelClasses={'text-white sm:text-black'}
                 error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />
               <Input
                 label={'Link do Twojego profilu LinkedIn'}
+                labelClasses={'text-white sm:text-black'}
                 error={(touched.linkedinUrl && errors.linkedinUrl) ? errors.linkedinUrl : null}
                 {...getFieldProps('linkedinUrl')}
               />
@@ -72,7 +74,7 @@ export const SpecialistFormComponent = () => {
       </Formik>
       {!!error ?
         <div className={'w-72 mt-8 bg-red-400 rounded-xl p-2 text-white'}>
-          Wystąpił błąd. Spróbuj ponownie.
+          {JSON.stringify(error)}
         </div>
         : null
       }
