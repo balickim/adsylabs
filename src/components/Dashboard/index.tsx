@@ -3,6 +3,7 @@ import React from 'react';
 import tw from 'twin.macro';
 import { BsArrowRight } from 'react-icons/bs';
 import { FiMapPin } from 'react-icons/fi';
+import { useAuth } from '@clerk/nextjs';
 
 import { DASHBOARD_IMAGES_PATH } from 'utils/constants';
 import { CtaButton, StyledFaSpinner } from 'components/Common/styled';
@@ -68,7 +69,8 @@ const Tasks = () => {
 };
 
 const DashboardMainPage = () => {
-  const { data, isLoading } = api.profile.getProfile.useQuery();
+  const { isLoaded } = useAuth();
+  const { data, isLoading } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded });
 
   const navText = <>Dzień Dobry, {!isLoading && data ? data?.name : <StyledFaSpinner size={36} /> }</>;
   return (

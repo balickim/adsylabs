@@ -74,7 +74,7 @@ export const SpecialistFormComponent = () => {
       </Formik>
       {!!error ?
         <div className={'w-72 mt-8 bg-red-400 rounded-xl p-2 text-white'}>
-          {JSON.stringify(error)}
+          Wystąpił błąd. Spróbuj ponownie.
         </div>
         : null
       }

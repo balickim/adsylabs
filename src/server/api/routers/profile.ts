@@ -20,6 +20,14 @@ export const profileRouter = createTRPCRouter({
       return ctx.prisma.profile.findMany();
     }),
 
+  getRole: protectedProcedure
+    .query( ({ ctx }) => {
+      return ctx.prisma.profile.findFirst({
+        select: { role: true },
+        where: { clerk_user_id: ctx.auth.userId },
+      });
+    }),
+
   insertCustomer: publicProcedure
     .input(preRegisterSchema)
     .mutation(async ({ ctx, input }) => {
@@ -39,13 +47,13 @@ export const profileRouter = createTRPCRouter({
         return profile.id;
       });
     }),
-
+  // TODO Fix security
   updateClerkUserId: publicProcedure
     .input(preRegisterUserClerkSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.prisma.profile.update({
         where: { id: input.profile_id },
-        data: { clerk_user_id: input.clerk_user_id },
+        data: { clerk_user_id: input.clerk_user_id, email: input.email },
       });
     }),
 

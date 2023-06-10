@@ -11,6 +11,8 @@ import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
 import React from 'react';
 import { useLocalStorageStore } from 'store';
+import { api } from 'utils/api';
+import { ROLES } from '@prisma/client';
 
 const Nav = tw.nav`
   bg-white 
@@ -66,6 +68,17 @@ const LoginButton = () => (
   </Link>
 );
 
+const LogoutButton = ({ signOut }: { signOut: () => Promise<void>}) => (
+  <CtaButton
+    version={'secondary'}
+    aria-label={'log out'}
+    type="button"
+    onClick={() => signOut()}
+  >
+      Wyloguj się
+  </CtaButton>
+);
+
 const DashboardButton = () => (
   <Link href="/dashboard">
     <CtaButton
@@ -92,9 +105,12 @@ const SpecialistButton = () => (
 );
 
 export const Navbar = () => {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoaded, isSignedIn, signOut } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { wasOnboarded } = useLocalStorageStore();
+  const {
+    data,
+  } = api.profile.getRole.useQuery(undefined, { enabled: isLoaded && isSignedIn });
 
   const MenuItem = ({ text, link }: { text: string; link: string }) => (
     <Link href={link} onClick={() => setIsMobileMenuOpen(false)}>
@@ -153,7 +169,9 @@ export const Navbar = () => {
         {!isLoaded
           ? <Spinner />
           : isSignedIn
-            ? <DashboardButton />
+            ? data && data.role === ROLES.SPECIALIST
+              ? <DashboardButton />
+              : <LogoutButton signOut={signOut}/>
             : wasOnboarded
               ? <LoginButton />
               : null

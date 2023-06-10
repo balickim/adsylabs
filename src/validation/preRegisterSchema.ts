@@ -34,4 +34,5 @@ export const preRegisterSpecialistSchema = z.object({
 export const preRegisterUserClerkSchema = z.object({
   profile_id: z.string(),
   clerk_user_id: z.string(),
+  email: z.string().optional(),
 });

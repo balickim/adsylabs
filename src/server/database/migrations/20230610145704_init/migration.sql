@@ -1,5 +1,3 @@
-yarn run v1.22.19
-$ /Users/balu/Balitec/ads_bridge-app/node_modules/.bin/prisma migrate diff --from-empty --to-schema-datamodel ./src/server/database/schema.prisma --script
 -- CreateEnum
 CREATE TYPE "PAY_PLANS" AS ENUM ('BASIC', 'STANDARD', 'PREMIUM_GUARANTEE');
 
@@ -11,8 +9,9 @@ CREATE TABLE "profile" (
     "id" TEXT NOT NULL,
     "role" "ROLES" NOT NULL DEFAULT 'CUSTOMER',
     "clerk_user_id" TEXT,
-    "name" TEXT,
-    "surname" TEXT,
+    "email" TEXT,
+    "name" VARCHAR(50),
+    "surname" VARCHAR(50),
     "image_url" TEXT,
     "background_image_url" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -156,5 +155,3 @@ ALTER TABLE "profile_specialist_tagsplatform" ADD CONSTRAINT "profile_specialist
 
 -- AddForeignKey
 ALTER TABLE "profile_specialist_tagsplatform" ADD CONSTRAINT "profile_specialist_tagsplatform_tagsplatform_id_fkey" FOREIGN KEY ("tagsplatform_id") REFERENCES "tagsplatform"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
-Done in 0.71s.

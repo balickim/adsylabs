@@ -24,8 +24,9 @@ model profile {
     id                          String      @id @default(cuid())
     role                        ROLES       @default(CUSTOMER)
     clerk_user_id               String?     @unique
-    name                        String?
-    surname                     String?
+    email                       String?
+    name                        String?     @db.VarChar(50)
+    surname                     String?     @db.VarChar(50)
     image_url                   String?
     background_image_url        String?
     created_at                  DateTime    @default(now())

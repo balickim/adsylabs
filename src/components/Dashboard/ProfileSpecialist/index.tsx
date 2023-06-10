@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 import Image from 'next/image';
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
+import { useAuth } from '@clerk/nextjs';
 
 import { CtaButton } from 'components/Common/styled';
 import Modal from 'components/Common/Modal';
@@ -38,16 +39,19 @@ interface IEditButton {
 }
 
 export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
+  const { isLoaded } = useAuth();
   const {
     data: dataProfile,
     refetch: refetchProfile,
     isLoading,
-  } = api.profile.getProfile.useQuery();
+    error: errorProfile,
+  } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded });
   const {
     data: dataProfileSpecialist,
     refetch: refetchProfileSpecialist,
     isLoading: isLoadingSpecialist,
-  } = api.profile.getProfileSpecialist.useQuery();
+    error: errorProfileSpecialist,
+  } = api.profile.getProfileSpecialist.useQuery(undefined, { enabled: isLoaded });
 
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState<JSX.Element>();
@@ -69,6 +73,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
       : null
   );
 
+  if (errorProfile || errorProfileSpecialist) return <div className={'text-red-500'}>{JSON.stringify(errorProfile)} {JSON.stringify(errorProfileSpecialist)}</div>;
   if (isLoading || isLoadingSpecialist || !dataProfile || !dataProfileSpecialist) return <ProfileLoader />;
 
   return (
