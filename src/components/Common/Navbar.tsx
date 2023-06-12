@@ -110,6 +110,7 @@ export const Navbar = () => {
   const { wasOnboarded } = useLocalStorageStore();
   const {
     data,
+    isLoading,
   } = api.profile.getRole.useQuery(undefined, { enabled: isLoaded && isSignedIn });
 
   const MenuItem = ({ text, link }: { text: string; link: string }) => (
@@ -166,17 +167,17 @@ export const Navbar = () => {
         <DesktopMenuItems />
       </Start>
       <End>
-        {!isLoaded
+        {!isLoaded || (isLoaded && isSignedIn ? isLoading : false)
           ? <Spinner />
           : isSignedIn
             ? data && data.role === ROLES.SPECIALIST
               ? <DashboardButton />
-              : <LogoutButton signOut={signOut}/>
+              : <LogoutButton signOut={signOut} />
             : wasOnboarded
               ? <LoginButton />
               : null
         }
-        {!isLoaded
+        {!isLoaded || (isLoaded && isSignedIn ? isLoading : false)
           ? null
           : isSignedIn
             ? null

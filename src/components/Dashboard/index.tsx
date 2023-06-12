@@ -6,9 +6,10 @@ import { FiMapPin } from 'react-icons/fi';
 import { useAuth } from '@clerk/nextjs';
 
 import { DASHBOARD_IMAGES_PATH } from 'utils/constants';
-import { CtaButton, StyledFaSpinner } from 'components/Common/styled';
+import { CtaButton } from 'components/Common/styled';
 import Navbar from 'components/Dashboard/Layout/navbar';
 import { api } from 'utils/api';
+import { ProfileCard, SingleTextLine } from 'utils/helpers/skeletonLoaders';
 
 interface IWidget {
   title: string
@@ -72,7 +73,7 @@ const DashboardMainPage = () => {
   const { isLoaded } = useAuth();
   const { data, isLoading } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded });
 
-  const navText = <>Dzień Dobry, {!isLoading && data ? data?.name : <StyledFaSpinner size={36} /> }</>;
+  const navText = <>{!isLoading && data ? `Dzień Dobry, ${data?.name}` : <SingleTextLine />}</>;
   return (
     <>
       <Navbar text={navText} showDemo />
@@ -101,30 +102,37 @@ const DashboardMainPage = () => {
           <Tasks />
         </Tile>
         <Tile>
-          <div className={'flex justify-center'}>
-            {!isLoading && data ? <Image
-              src={data.image_url ? data.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
-              alt="graph"
-              width={120}
-              height={120}
-              className={'rounded-full'}
-              priority
-            /> : <StyledFaSpinner size={64} />}
-          </div>
-          <div className={'flex flex-col items-center justify-center'}>
-            <p className={'text-3xl'}>{data?.name}</p>
-            <span className={'text-xs text-gray-400 flex items-center gap-2'}><FiMapPin /> Warszawa, Polska</span>
-          </div>
-          <div className={'flex justify-evenly gap-x-3 px-10'}>
-            <div className={'flex flex-col items-center'}>
-              <p className={'text-gray-400'}>Projekty</p>
-              <p className={'text-2xl'}>28</p>
-            </div>
-            <div className={'flex flex-col items-center'}>
-              <p className={'text-gray-400'}>Klienci</p>
-              <p className={'text-2xl'}>37</p>
-            </div>
-          </div>
+          {isLoading && !data
+            ? <ProfileCard />
+            : (
+              <>
+                <div className={'flex justify-center'}>
+                  <Image
+                    src={data?.image_url ? data.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
+                    alt="graph"
+                    width={120}
+                    height={120}
+                    className={'rounded-full'}
+                    priority
+                  />
+                </div>
+                <div className={'flex flex-col items-center justify-center'}>
+                  <p className={'text-3xl'}>{data?.name}</p>
+                  <span className={'text-xs text-gray-400 flex items-center gap-2'}><FiMapPin /> Warszawa, Polska</span>
+                </div>
+                <div className={'flex justify-evenly gap-x-3 px-10'}>
+                  <div className={'flex flex-col items-center'}>
+                    <p className={'text-gray-400'}>Projekty</p>
+                    <p className={'text-2xl'}>28</p>
+                  </div>
+                  <div className={'flex flex-col items-center'}>
+                    <p className={'text-gray-400'}>Klienci</p>
+                    <p className={'text-2xl'}>37</p>
+                  </div>
+                </div>
+              </>
+            )
+          }
         </Tile>
         <Tile className={'overflow-x-auto col-span-1 sm:col-span-2 2xl:col-span-3'}>
           <section className={'min-w-[500px]'}>
