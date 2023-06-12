@@ -12,6 +12,15 @@ export const publicRoutes = [
 
 export default authMiddleware({
   publicRoutes,
+  // afterAuth (auth, req, ctx) {
+  //   if (req.nextUrl.pathname.includes('dashboard')) {
+  //     const user = await currentUser();
+  //     prisma.profile.findFirst({
+  //       select: { role: true },
+  //       where: { clerk_user_id: user?.id },
+  //     });
+  //   }
+  // },
 });
 
 export const config = {

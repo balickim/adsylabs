@@ -28,9 +28,10 @@ export default function ClerkAction ({ userId, primaryEmailAddress }: IThankYouP
 };
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
+  const query = ctx.query;
+
   const { userId } = getAuth(ctx.req);
   const user = userId ? await clerkClient.users.getUser(userId) : undefined;
-  const query = ctx.query;
   const primaryEmailAddress = user?.emailAddresses[0]?.emailAddress;
 
   if (userId && query.profileId && query.redirectUrl) {

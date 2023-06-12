@@ -196,10 +196,17 @@ const DashboardMainPage = () => {
             <div className={'flex flex-col gap-6'}>
               <p className={'text-xl lg:text-3xl'}>Dołącz do społecznosci Slack!</p>
               <p className={'text-gray-400'}>
-              Dołącz do grona specjalistów, rozmawiaj, nawiązuj kontakty i wymieniaj się spostrzeżeniami!
+                Dołącz do grona specjalistów, rozmawiaj, nawiązuj kontakty i wymieniaj się spostrzeżeniami!
               </p>
             </div>
-            <CtaButton className={'w-32 flex justify-center items-center gap-2'} version={'primary'}>Dołącz <BsArrowRight /></CtaButton>
+            <a target="_blank" href={process.env.NEXT_PUBLIC_SLACK_INVITE_LINK ?? ''} rel="noopener noreferrer">
+              <CtaButton
+                className={'w-32 flex justify-center items-center gap-2'}
+                version={'primary'}
+              >
+                Dołącz <BsArrowRight />
+              </CtaButton>
+            </a>
           </div>
         </Tile>
       </main>

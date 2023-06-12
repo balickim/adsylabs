@@ -79,7 +79,7 @@ export const profileRouter = createTRPCRouter({
   getProfile: protectedProcedure
     .query(async ({ ctx }) => {
       return ctx.prisma.profile.findFirst({
-        select: { name: true, surname: true, role: true, image_url: true, background_image_url: true, profiles_specialists: true, profiles_customers: true },
+        select: { name: true, surname: true, email: true, role: true, image_url: true, background_image_url: true, profiles_specialists: true, profiles_customers: true },
         where: { clerk_user_id: ctx.auth.userId },
       });
     }),
