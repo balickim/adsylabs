@@ -6,13 +6,20 @@ const StyledLink = tw(Link)`text-xs text-gray-500 hover:text-gray-900 md:text-ba
 
 function Links () {
   return (
-    <div className="py-4 flex justify-center space-x-4">
+    <div className="py-4 flex flex-col items-center justify-center md:space-x-4 md:flex-row">
       <StyledLink
         target="_blank"
         rel="noopener noreferrer"
         href={'./join-us'}
       >
         Dołącz do nas
+      </StyledLink>
+      <StyledLink
+        target="_blank"
+        rel="noopener noreferrer"
+        href={'./regulamin'}
+      >
+        Regulamin
       </StyledLink>
       <StyledLink
         target="_blank"

@@ -12,6 +12,7 @@ export default function SignInPage () {
       appearance={{
         layout: {
           privacyPageUrl: './polityka-prywatnosci',
+          termsPageUrl: './regulamin',
         } }
       }
     />

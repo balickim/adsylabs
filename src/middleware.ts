@@ -8,6 +8,7 @@ export const publicRoutes = [
   '/faq',
   '/polityka-prywatnosci',
   '/polityka-cookies',
+  '/regulamin',
 ];
 
 export default authMiddleware({
