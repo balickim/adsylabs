@@ -53,6 +53,7 @@ const Top = () => {
         <Image
           fill
           priority
+          quality={50}
           src={LANDING_IMAGES_PATH.STAIN_1}
           alt="stain"
           style={{ objectFit: 'contain' }}
@@ -60,6 +61,7 @@ const Top = () => {
         <Image
           fill
           priority
+          quality={60}
           src={LANDING_IMAGES_PATH.ROB_KATARZYNA}
           alt="how it works"
           style={{ objectFit: 'contain' }}
