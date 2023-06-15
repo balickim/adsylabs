@@ -37,11 +37,18 @@ const Mobile = ({ variant }: IMobile) => {
     case store.step === 0:
       return (
         <MobileMainContainer>
-          <WelcomeIn subtitle={
-            variant === 'customer'
-              ? 'i rozwinie marketing w Twoim Biznesie.'
-              : 'poszukiwanie Klientów i zautomatyzuje Waszą współpracę.'
-          } />
+          <WelcomeIn
+            mobileText={variant === 'customer'
+              ? <>
+                Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy, <b>skorzystaj z
+                wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji AdsBridge i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
+              </>
+              : <>
+                Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy i skorzystaj z
+                <b> 35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge</b>.
+              </>
+            }
+          />
           {variant === 'customer' ? <CustomerFormComponent /> : <SpecialistFormComponent />}
           <StyledImage
             src={LANDING_IMAGES_PATH.SHAPE_2}
@@ -56,11 +63,17 @@ const Mobile = ({ variant }: IMobile) => {
         <MobileSecondaryContainer>
           <Motion>
             <JoinUs
-              subtitle={
-                variant === 'customer'
-                  ? '10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.'
-                  : '35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge.'
-              } />
+              mobileText={variant === 'customer'
+                ? <>
+                  Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy, <b>skorzystaj z
+                  wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji AdsBridge i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
+                </>
+                : <>
+                  Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy i skorzystaj z
+                  <b> 35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge</b>.
+                </>
+              }
+            />
             <SignUpContainer>
               <SignUp
                 routing={'virtual'}

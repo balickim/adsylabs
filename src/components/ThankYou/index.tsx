@@ -24,8 +24,15 @@ const ThankYouComponent = () => {
       <Container>
         <h2 className={'text-4xl mb-3 pt-8'}>Dziękujemy!</h2>
         <p>Ogromnie dziękujemy za Twoje zaufanie!</p>
-        <p className={'max-w-[14rem] ml-auto mr-auto'}>Oto Twój kod na 10% zniżkę na 2 miesiące subskrypcji:</p>
-        <p className={'font-bold'}>10ADSBRIDGE</p>
+        <p className={'max-w-[14rem] ml-auto mr-auto'}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://miro.com/app/board/uXjVM_rJSCI=/?share_link_id=903127860568'}
+          >
+            Kliknij w ten link
+          </a>
+          {' '}i odbierz swój planer treści social media</p>
 
         <p className={'mt-16'}>Pozostańmy w kontakcie, zaobserwuj nas na socialach:</p>
 

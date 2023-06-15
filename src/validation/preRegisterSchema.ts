@@ -20,7 +20,7 @@ const props = {
 
 export const preRegisterSchema = z.object({
   name: props.name,
-  companyName: props.companyName,
+  email: z.string({ required_error: 'To pole jest wymagane' }).email('Nieprawidłowy adres email'),
   payPlan: props.payPlan,
   role: props.role,
 });

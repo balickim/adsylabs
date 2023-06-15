@@ -30,11 +30,11 @@ export const SpecialistFormComponent = () => {
           })
             .then((profileId) => {
               store.setProfileId(profileId);
+              resetForm();
               store.setStep(1);
             })
             .catch((reason) => console.error(reason))
             .finally(() => {
-              resetForm();
               setSubmitting(false);
             });
         }}
@@ -46,10 +46,11 @@ export const SpecialistFormComponent = () => {
           isSubmitting,
         }) => (
           <Form>
-            <div className="mt-3 grid gap-6 mb-6">
+            <div className="mt-3 grid gap-6 mb-6 lg:w-4/5">
               <Input
                 label={'Imię'}
                 labelClasses={'text-white sm:text-black'}
+                inputClasses={'lg:!w-3/4'}
                 error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />

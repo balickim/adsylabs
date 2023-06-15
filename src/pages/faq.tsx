@@ -54,7 +54,7 @@ export default function FaqPage () {
         odsubskrybowań, ROI, udostępnienia/przekazania wiadomości.
       </Item>
 
-      <Banner text_1={'Gotowy na level-up Twojego marketingu?'} text_2={'Znajdź specjalistę'} text_3={'Odkryj naszą 60-dniową gwarancję'} link={'/#pricing'} />
+      <Banner text_1={'Gotowy na level-up Twojego marketingu?'} text_2={'Uzyskaj wczesny dostęp'} text_3={'Odkryj naszą 60-dniową gwarancję'} link={'./pre-register'} />
 
       <Item
         index={'5.'}
@@ -98,7 +98,7 @@ export default function FaqPage () {
         sprawnie, służąc pomocą i odpowiadając na pytania.
       </Item>
 
-      <Banner text_1={'Gotowy na level-up Twojego marketingu?'} text_2={'Znajdź specjalistę'} text_3={'Odkryj naszą 60-dniową gwarancję'} link={'/#pricing'} />
+      <Banner text_1={'Gotowy na level-up Twojego marketingu?'} text_2={'Uzyskaj wczesny dostęp'} text_3={'Odkryj naszą 60-dniową gwarancję'} link={'./pre-register'} />
     </div>
 
     <Footer />

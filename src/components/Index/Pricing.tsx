@@ -60,7 +60,7 @@ const Price = styled.span<IVariant>(
 const ButtonContainer = tw.div`flex justify-center px-16 mt-4 justify-self-end`;
 const Button = styled.button<IVariant>(
   ({ variant }) => [
-    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
+    tw`rounded-lg text-lg py-4 px-2 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
     variant === 'primary'
       ? tw`bg-white text-primary`
       : tw`bg-primary text-white hover:brightness-150`,
@@ -109,7 +109,8 @@ const PricingItem = ({
         <ButtonContainer>
           <Link href={`/pre-register?payPlan=${payPlan}`}>
             <Button variant={variant}>
-              Zarejestruj się za darmo
+              Odbierz zniżkę i uzyskaj
+              wczesny dostep
             </Button>
           </Link>
         </ButtonContainer>

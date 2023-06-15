@@ -34,7 +34,7 @@ export const Banner = ({ text_1, text_2, text_3, link }: IBanner) => {
             <CtaButton
               version={'secondary'}
               type={'button'}
-              className={'w-40'}
+              className={'w-52'}
             >
               <p className={'text-primary'}>{text_2}</p>
             </CtaButton>

@@ -41,7 +41,7 @@ model profile_customer {
     profile                     profile     @relation(fields: [profile_id], references: [id])
     profile_id                  String      @id
     company_name                String?
-    pay_plan                    PAY_PLANS   @default(BASIC)
+    pay_plan                    PAY_PLANS?
     updated_at                  DateTime    @updatedAt
 }
 

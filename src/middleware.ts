@@ -6,6 +6,7 @@ export const publicRoutes = [
   '/join-us(.*)',
   '/pre-register',
   '/faq',
+  '/thank-you',
   '/polityka-prywatnosci',
   '/polityka-cookies',
   '/regulamin',

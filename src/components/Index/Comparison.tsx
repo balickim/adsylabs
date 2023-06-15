@@ -127,13 +127,13 @@ const Comparison = () => {
 
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-r-4 border-b-4 rounded-b-xl'}>
-            <Link href="/#pricing">
+            <Link href="./pre-register">
               <CtaButton
                 version={'primary'}
                 type="button"
-                className={'text-[11px] xl:p-4 xl:text-lg'}
+                className={'text-[11px] xl:text-base'}
               >
-                Znajdź specjalistę
+                Uzyskaj <br /> wczesny dostęp
               </CtaButton>
             </Link>
           </ColumnAsset>

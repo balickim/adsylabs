@@ -64,13 +64,13 @@ const Statistics = () => {
           Gwałtowny wzrost branży marketingu Internetowego w Polsce sprawia, że konkurencja staje się co raz silniejsza.
           Nie trać czasu i pieniędzy na niesprawadzone metody - zainwestuj w zweryfikowanego specjalistę marketingu.
         </SubTitle>
-        <Link href="/#pricing">
+        <Link href="./pre-register">
           <div className={'flex justify-center md:justify-start'}>
             <CtaButton
               version={'primary'}
               type={'button'}
             >
-              Znajdź specjalistę
+              Uzyskaj wczesny dostęp
             </CtaButton>
           </div>
         </Link>

@@ -55,11 +55,18 @@ const Desktop = ({ variant }: IDesktop) => {
             width={100}
             height={100}
           />
-          <WelcomeIn subtitle={
-            variant === 'customer'
-              ? 'i rozwinie marketing w Twoim Biznesie.'
-              : 'poszukiwanie Klientów i zautomatyzuje Waszą współpracę.'
-          } />
+          <WelcomeIn
+            desktopText={variant === 'customer'
+              ? <>
+                Nasza platforma jest wciąż w fazie rozwoju i testów. Cały nasz zespół ciężko pracuje,
+                aby dostarczyć produkt, który przyspieszy i rozwinie marketing w Twoim Biznesie.
+              </>
+              : <>
+                Nasza platforma jest wciąż w fazie rozwoju i testów. Cały nasz zespół ciężko pracuje,
+                aby dostarczyć produkt, który przyspieszy poszukiwanie Klientów i zautomatyzuje Waszą współpracę.
+              </>
+            }
+          />
           <AboutUs />
           <StyledBottomImage
             src={LANDING_IMAGES_PATH.SHAPE_2}
@@ -70,11 +77,18 @@ const Desktop = ({ variant }: IDesktop) => {
         </Left>
         <Right>
           <JoinUs
-            subtitle={
-              variant === 'customer'
-                ? '10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.'
-                : '35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge.'
-            } />
+            desktopText={variant === 'customer'
+              ? <>
+                Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy,
+                <b> skorzystaj z wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji AdsBridge
+                i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
+              </>
+              : <>
+                Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy
+                i skorzystaj z <b>35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge</b>.
+              </>
+            }
+          />
           {store.step === 0
             ? <>{variant === 'customer' ? <CustomerFormComponent /> : <SpecialistFormComponent />}</>
             : <SignUpContainer>

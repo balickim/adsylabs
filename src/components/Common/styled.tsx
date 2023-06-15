@@ -86,10 +86,11 @@ export const Number = tw.p`flex items-center justify-center text-2xl rounded-ful
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   labelClasses?: string;
+  inputClasses?: string;
   error?: any;
 }
 
-export const Input = ({ label, labelClasses, error, ...rest }: IInput) => {
+export const Input = ({ label, labelClasses, inputClasses, error, ...rest }: IInput) => {
   return <div>
     <label
       htmlFor="input"
@@ -100,7 +101,7 @@ export const Input = ({ label, labelClasses, error, ...rest }: IInput) => {
     <input
       type="text"
       id={'input'}
-      className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 
+      className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 ${inputClasses}
                     ${error && 'border-2 border-red-600'}
                   `}
       {...rest}

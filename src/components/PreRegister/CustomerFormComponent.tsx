@@ -14,30 +14,30 @@ const StyledMain = tw.main`p-4 mt-8`;
 export const CustomerFormComponent = () => {
   const store = usePreRegistrationStore();
   const { mutateAsync, error } = api.profile.insertCustomer.useMutation();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
   return (
     <StyledMain>
       <Formik
         initialValues={{
           name: '',
-          companyName: '',
+          email: '',
         }}
         validationSchema={toFormikValidationSchema(preRegisterSchema)}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           mutateAsync({
             name: values.name,
-            companyName: values.companyName,
+            email: values.email,
             payPlan: query.payPlan as PAY_PLANS,
             role: ROLES.CUSTOMER,
           })
             .then((profileId) => {
               store.setProfileId(profileId);
-              store.setStep(1);
+              resetForm();
+              push('./thank-you');
             })
             .catch((reason) => console.error(reason))
             .finally(() => {
-              resetForm();
               setSubmitting(false);
             });
         }}
@@ -49,7 +49,7 @@ export const CustomerFormComponent = () => {
           isSubmitting,
         }) => (
           <Form>
-            <div className="mt-3 grid gap-6 mb-6">
+            <div className="mt-3 grid gap-6 mb-6 lg:w-4/5">
               <Input
                 label={'Imię'}
                 labelClasses={'text-white sm:text-black'}
@@ -57,10 +57,10 @@ export const CustomerFormComponent = () => {
                 {...getFieldProps('name')}
               />
               <Input
-                label={'Nazwa Twojej firmy'}
+                label={'Email'}
                 labelClasses={'text-white sm:text-black'}
-                error={(touched.companyName && errors.companyName) ? errors.companyName : null}
-                {...getFieldProps('companyName')}
+                error={(touched.email && errors.email) ? errors.email : null}
+                {...getFieldProps('email')}
               />
             </div>
             <LoadingCtaButton

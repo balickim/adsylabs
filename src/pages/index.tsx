@@ -10,7 +10,6 @@ import Video from 'components/Index/Video';
 import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
 import Pricing from 'components/Index/Pricing';
 import Comparison from 'components/Index/Comparison';
-import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'utils/hooks/useRect';
 import { Motion } from 'utils/helpers/framerMotion';
 import { HotJarScript } from 'components/Common/externalScripts';
@@ -21,6 +20,7 @@ const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 const ExcerptContainer = tw.div`h-[400px]`;
 
 export default function HomePage () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [rect, ref] = useRect<HTMLDivElement>();
 
   return (
@@ -70,7 +70,7 @@ export default function HomePage () {
 
       </Main>
       <Footer />
-      <FloatingButton pricingPosition={rect} />
+      {/*<FloatingButton pricingPosition={rect} />*/}
     </>
   );
 };

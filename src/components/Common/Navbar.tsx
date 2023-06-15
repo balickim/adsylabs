@@ -93,13 +93,13 @@ const DashboardButton = () => (
 );
 
 const SpecialistButton = () => (
-  <Link href="/#pricing">
+  <Link href="./pre-register">
     <CtaButton
       className={'hidden md:block'}
       version={'primary'}
       type="button"
     >
-      Znajdź specjalistę
+      Uzyskaj wczesny dostęp
     </CtaButton>
   </Link>
 );
@@ -124,15 +124,15 @@ export const Navbar = () => {
   const MenuItems = () => (
     <>
       <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
-      <MenuItem text={'Cennik'} link={'/#pricing'} />
+      <MenuItem text={'Cennik'} link={'./pre-register'} />
       <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
-      <Link href="/#pricing">
+      <Link href="./pre-register">
         <CtaButton
           version={'primary'}
           type="button"
           className={'md:hidden'}
         >
-          Znajdź specjalistę
+          Uzyskaj wczesny dostęp
         </CtaButton>
       </Link>
     </>

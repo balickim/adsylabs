@@ -39,13 +39,13 @@ const Video = () => {
           strategie marketingowe, metodologię testów A/B i wiele innych kryteriów. Tylko eksperci,
           którzy osiągnęli ponadprzeciętne wyniki mają szansę zostać członkami platformy AdsBridge.
         </SubTitle>
-        <Link href="/#pricing">
+        <Link href="./pre-register">
           <div className={'flex justify-center xl:justify-start'}>
             <CtaButton
               version={'primary'}
               type={'button'}
             >
-            Znajdź specjalistę
+              Uzyskaj wczesny dostęp
             </CtaButton>
           </div>
         </Link>

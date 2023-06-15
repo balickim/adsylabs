@@ -14,22 +14,21 @@ const SubTitle = tw.p`
 `;
 
 interface IJoinUs {
-  subtitle: string
+  mobileText?: string | JSX.Element
+  desktopText?: string | JSX.Element
 }
 
-export const JoinUs = ({ subtitle }: IJoinUs) => {
+export const JoinUs = ({ mobileText, desktopText }: IJoinUs) => {
   return (
     <Container>
       <Title>
         Dołącz do nas
       </Title>
       <SubTitle className={'sm:hidden'}>
-        Nasza platforma jest wciąż w fazie rozwoju i testów.
-        Cały nasz zespół ciężko pracuje, aby dostarczyć produkt, który przyspieszy i rozwinie marketing w Twoim Biznesie.
+        {mobileText}
       </SubTitle>
       <SubTitle className={'hidden sm:block'}>
-        Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy
-        i skorzystaj z <b>{subtitle}</b>
+        {desktopText}
       </SubTitle>
     </Container>
   );

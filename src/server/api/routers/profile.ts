@@ -32,13 +32,12 @@ export const profileRouter = createTRPCRouter({
     .input(preRegisterSchema)
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.$transaction(async (tx) => {
-        const profile = await tx.profile.create({ data: { name: input.name, role: input.role } });
+        const profile = await tx.profile.create({ data: { name: input.name, role: input.role, email: input.email } });
         await tx.profile_customer.create(
           {
             data:
               {
                 profile_id: profile.id,
-                company_name: input.companyName,
                 pay_plan: input.payPlan,
               },
           }

@@ -14,22 +14,21 @@ const SubTitle = tw.div`
 `;
 
 interface IWelcomeIn {
-  subtitle: string
+  mobileText?: string | JSX.Element
+  desktopText?: string | JSX.Element
 }
 
-export const WelcomeIn = ({ subtitle }: IWelcomeIn) => {
+export const WelcomeIn = ({ mobileText, desktopText }: IWelcomeIn) => {
   return (
     <Container>
       <Title>
         Witaj w AdsBridge!
       </Title>
       <SubTitle className={'sm:hidden'}>
-        Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy i
-        skorzystaj z <span className={'font-bold'}>10% rabatu na pierwsze 2 miesiące subskrypcji AdsBridge.</span>
+        {mobileText}
       </SubTitle>
       <SubTitle className={'hidden sm:block'}>
-        Nasza platforma jest wciąż w fazie rozwoju i testów. Cały nasz zespół ciężko pracuje,
-        aby dostarczyć produkt, który przyspieszy {subtitle}
+        {desktopText}
       </SubTitle>
     </Container>
   );
