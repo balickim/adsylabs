@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { BsArrowRight } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { Spinner, CtaButton } from 'components/Common/styled';
@@ -92,20 +93,9 @@ const DashboardButton = () => (
   </Link>
 );
 
-const SpecialistButton = () => (
-  <Link href="./pre-register">
-    <CtaButton
-      className={'hidden md:block'}
-      version={'primary'}
-      type="button"
-    >
-      Uzyskaj wczesny dostęp
-    </CtaButton>
-  </Link>
-);
-
 export const Navbar = () => {
   const { isLoaded, isSignedIn, signOut } = useAuth();
+  const { pathname } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { wasOnboarded } = useLocalStorageStore();
   const {
@@ -121,18 +111,30 @@ export const Navbar = () => {
     </Link>
   );
 
+  const SpecialistButton = () => (
+    <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
+      <CtaButton
+        className={'hidden md:block'}
+        version={'primary'}
+        type="button"
+      >
+        {pathname.includes('join-us') ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
+      </CtaButton>
+    </Link>
+  );
+
   const MenuItems = () => (
     <>
       <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
       <MenuItem text={'Cennik'} link={'./pre-register'} />
       <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
-      <Link href="./pre-register">
+      <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
         <CtaButton
           version={'primary'}
           type="button"
           className={'md:hidden'}
         >
-          Uzyskaj wczesny dostęp
+          {pathname.includes('join-us') ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
         </CtaButton>
       </Link>
     </>
