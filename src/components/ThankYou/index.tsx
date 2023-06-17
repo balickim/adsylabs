@@ -29,6 +29,7 @@ const ThankYouComponent = () => {
             target="_blank"
             rel="noopener noreferrer"
             href={'https://miro.com/app/board/uXjVM_rJSCI=/?share_link_id=903127860568'}
+            className={'underline'}
           >
             Kliknij w ten link
           </a>
