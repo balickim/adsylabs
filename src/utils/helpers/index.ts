@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export const isBrowser = () => typeof window !== 'undefined';
 
@@ -26,3 +28,7 @@ export const FadeGradientContainer = styled.div<IFadeGradientContainer>(
     `,
   ]
 );
+
+export function cn (...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

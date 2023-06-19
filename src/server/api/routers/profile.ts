@@ -15,9 +15,12 @@ import {
 } from 'validation/SettingsSchema';
 
 export const profileRouter = createTRPCRouter({
-  getUsers: publicProcedure
+  getUsers: protectedProcedure
     .query( ({ ctx }) => {
-      return ctx.prisma.profile.findMany();
+      return ctx.prisma.profile.findMany({
+        select: { name: true, surname: true, clerk_user_id: true, email: true, role: true, created_at: true },
+        orderBy: [{ created_at: 'desc' }],
+      });
     }),
 
   getRole: protectedProcedure
