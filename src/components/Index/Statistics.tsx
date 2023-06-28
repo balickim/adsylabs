@@ -10,7 +10,7 @@ import { LANDING_IMAGES_PATH } from 'utils/constants';
 const StyledSection = tw.section`grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
 const StatsItem = styled.div`
-  ${tw`flex flex-col z-1 p-8 text-left lg:py-5 lg:pl-14`}
+  ${tw`flex flex-col z-1 p-7 text-left lg:py-4 lg:pl-14`}
   background: rgba( 255, 255, 255, 0.7 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 20px );
@@ -18,10 +18,10 @@ const StatsItem = styled.div`
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 `;
-const TitleLeft = tw.h1`text-4xl lg:text-5xl xl:text-6xl tracking-tight text-gray-900`;
+const TitleLeft = tw.h1`text-3xl lg:text-4xl xl:text-5xl tracking-tight text-gray-900`;
 const TextContainer = tw.div`flex flex-col justify-center gap-6`;
 const Title = tw.h1`text-3xl xl:text-4xl tracking-tight text-gray-900 text-center mx-auto lg:mx-0 lg:text-left`;
-const SubTitle = tw.h3`text-lg text-center text-gray-500 lg:text-left lg:mt-8 lg:mb-6`;
+const SubTitle = tw.h3`text-lg text-center text-textBase lg:text-left lg:mt-10 lg:mb-6`;
 
 const Statistics = () => {
   return (

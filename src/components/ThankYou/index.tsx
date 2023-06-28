@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { LANDING_IMAGES_PATH } from 'utils/constants';
+import { LANDING_IMAGES_PATH, SOCIAL_LINKS } from 'utils/constants';
 
 const Container = tw.div`
   bg-primary h-screen w-screen relative text-white text-center overflow-hidden
@@ -41,7 +41,7 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://www.facebook.com/profile.php?id=100090247710645'}
+            href={SOCIAL_LINKS.FACEBOOK}
             className="text-white hover:text-gray-900"
           >
             <AiFillFacebook size={ICON_SIZE} />
@@ -49,7 +49,7 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://instagram.com/adsbridge_pl?igshid=YmMyMTA2M2Y='}
+            href={SOCIAL_LINKS.INSTAGRAM}
             className="text-white hover:text-gray-900"
           >
             <AiFillInstagram size={ICON_SIZE} />
@@ -57,7 +57,7 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://www.linkedin.com/company/ads-bridge/'}
+            href={SOCIAL_LINKS.LINKEDIN}
             className="text-white hover:text-gray-900"
           >
             <AiFillLinkedin size={ICON_SIZE} />
@@ -70,13 +70,13 @@ const ThankYouComponent = () => {
         <div className={'flex justify-center text-left gap-2'}>
           <Image
             src={LANDING_IMAGES_PATH.JAKUB_JANIAK}
-            alt="Jakub Janiak Co-Founder AdsBridge"
+            alt="Jakub Janiak Co-Founder Adsylabs"
             width={50}
             height={50}
           />
           <div>
             <p className={'font-bold'}>Jakub Janiak</p>
-            <p className={'!text-gray-300'}>Co-Founder of AdsBridge</p>
+            <p className={'!text-gray-300'}>Co-Founder of Adsylabs</p>
           </div>
         </div>
         <StyledImage

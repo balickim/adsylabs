@@ -40,7 +40,7 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
     <>
       <style jsx global>{`body a button { cursor: ${loading ? 'wait !important' : 'unset'}}`}</style>
       <Head>
-        <title>AdsBridge - automatyzujemy współprace marketingowe</title>
+        <title>Adsylabs - automatyzujemy współprace marketingowe</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"

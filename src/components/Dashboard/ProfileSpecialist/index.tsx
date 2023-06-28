@@ -130,7 +130,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
               <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
             </EditButtonContainer>
           </h2>
-          <span className={'flex justify-center text-gray-500 text-center'}>
+          <span className={'flex justify-center text-textBase text-center'}>
             <EditButtonContainer>{dataProfileSpecialist.title
               ? dataProfileSpecialist.title
               : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
@@ -163,7 +163,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                   <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
                 </EditButtonContainer>
               </h2>
-              <div className={'flex justify-center text-gray-500 text-center max-w-2xl md:justify-start md:text-left'}>
+              <div className={'flex justify-center text-textBase text-center max-w-2xl md:justify-start md:text-left'}>
                 <EditButtonContainer>{dataProfileSpecialist.title
                   ? dataProfileSpecialist.title
                   : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
@@ -188,7 +188,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
               <EditButton modalTitle={'Ustawi swój opis'} modalBody={<DescriptionForm setShow={setShowModal} refetch={refetchProfileSpecialist} /> } />
             </EditButtonContainer>
           </div>
-          <div className={'text-gray-500 max-w-4xl'}>
+          <div className={'text-textBase max-w-4xl'}>
             {dataProfileSpecialist.description
               ? dataProfileSpecialist.description
               : `Np. Jestem doświadczonym specjalistą Facebook Ads z ponad 5 latami

@@ -33,8 +33,8 @@ export default function CookiePolicy () {
         dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy KRS pod
         numerem 0000442857; NIP: 5213641211; REGON: 146433467, dane kontaktowe:
         numer telefonu (537896221), adres e-mail:
-        (<a href="mailto:kontakt@adsbridge.pl">kontakt@adsbridge.pl</a>) w związku z
-        realizowanąprzez Jakuba Janiakazorganizowaną częścią przedsiębiorstwa o nazwie AdsBridge.</p>
+        (<a href="mailto:contact@adsylabs.com">contact@adsylabs.com</a>) w związku z
+        realizowaną przez Jakuba Janiaka zorganizowaną częścią przedsiębiorstwa o nazwie Adsylabs.</p>
 
       <ItemTitle>Rodzaje plik&oacute;w cookies</ItemTitle>
       <p>W ramach naszych stron internetowych wykorzystujemy następujące rodzaje plik&oacute;w cookies:</p>
@@ -125,7 +125,7 @@ export default function CookiePolicy () {
       <ItemTitle>Kontakt</ItemTitle>
       <p>W przypadku pytań dotyczących przetwarzania danych osobowych lub woli skorzystania z
         przysługujących praw, można skontaktować się z nami pod adresami wskazanymi w punkcie &ldquo;<strong>Administrator danych</strong>&rdquo;</p>
-      <p>Ponadto informacje o nas i przysługujących Tobie prawach, można znaleźć pod wskazanym adresem: (adsbridge.pl/polityka-cookies)</p>
+      <p>Ponadto informacje o nas i przysługujących Tobie prawach, można znaleźć pod wskazanym adresem: (adsylabs.com/polityka-cookies)</p>
       <p>W przypadku naruszenia przepis&oacute;w o ochronie danych osobowych, masz prawo do zgłoszenia skargi do Prezesa Urzędu Ochrony Danych Osobowych pod adresem
         <a href="https://uodo.gov.pl/">https://uodo.gov.pl/</a>
       </p>
@@ -139,7 +139,7 @@ CookiePolicy.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge - polityka cookies',
+        title: 'Adsylabs - polityka cookies',
         description: 'Nasza polityka cookies',
       }}
     >

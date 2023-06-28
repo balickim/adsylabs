@@ -8,7 +8,7 @@ import { PAY_PLANS } from '@prisma/client';
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
 const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;
 const Title = tw.div`text-2xl lg:text-3xl xl:text-4xl`;
-const SubTitle = tw.h3`text-sm text-gray-500`;
+const SubTitle = tw.h3`text-sm text-textBase`;
 const Grid = tw.div`grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
 
 interface IPricingItem {
@@ -45,7 +45,7 @@ const Text = styled.div<IVariant>(
     tw`flex justify-center text-center`,
     variant === 'primary'
       ? tw`text-gray-100`
-      : tw`text-gray-500`,
+      : tw`text-textBase`,
   ]
 );
 const Price = styled.span<IVariant>(
@@ -171,7 +171,7 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           <p>Dostęp do wszystkich specjalistów</p>
           <p>Indywidualna ilość godzin wsparcia</p>
           <p>Automatyczny system raportowania</p>
-          <p className={'font-bold text-lg'}>60 dniowa gwarancja AdsBridge = brak wyników, nie płacisz</p>
+          <p className={'font-bold text-lg'}>60 dniowa gwarancja Adsylabs = brak wyników, nie płacisz</p>
         </PricingItem>
       </Grid>
     </StyledSection>

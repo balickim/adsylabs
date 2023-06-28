@@ -50,7 +50,7 @@ const Sidebar = ({ open, setOpen }: ISidebar) => {
       <div className={'h-28 ml-6 flex items-center'}>
         <Image
           src={LANDING_IMAGES_PATH.LOGO}
-          alt="AdsBridge Logo"
+          alt="Adsylabs Logo"
           width={200}
           height={100}
           priority

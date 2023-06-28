@@ -18,18 +18,18 @@ const StyledLi = tw.li`pl-4`;
 export default function PrivacyPolicy () {
   return (
     <Container>
-      <Title>POLITYKA PRYWATNOŚCI AdsBridge</Title>
+      <Title>POLITYKA PRYWATNOŚCI Adsylabs</Title>
       <ItemTitle>Kto jest administratorem państwa danych?</ItemTitle>
       <p>Administratorem Pani/ Pana danych osobowych jest <strong>FUNDACJA ROZWOJU
         PRZEDSIĘBIORCZOŚCI &bdquo;TW&Oacute;J STARTUP&rdquo;</strong> z siedzibą w Warszawie (adres siedziby: <br /> ul. Żurawia 6/12, lok. 766, 00-503 Warszawa).</p>
       <p>Powyższa polityka prywatności dotyczy usług Fundacji świadczonych
-        przezzorganizowaną część przedsiębiorstwa AdsBridgedane kontaktowe:
-        numer telefonu 537896221, adres e-mail: <a href="mailto:kontakt@adsbridge.pl">kontakt@adsbridge.pl</a> realizowanychprzez Jakuba Janiaka.</p>
+        przezzorganizowaną część przedsiębiorstwa Adsylabsdane kontaktowe:
+        numer telefonu 537896221, adres e-mail: <a href="mailto:contact@adsylabs.com">contact@adsylabs.com</a> realizowanychprzez Jakuba Janiaka.</p>
 
       <ItemTitle>Dlaczego przetwarzamy Państwa Dane?</ItemTitle>
       <StyledUl>
-        <StyledLi>W związku z usługami świadczonymi za pośrednictwem AdsBridge polegającymi na
-          udzielaniu dostępu do platformy AdsBridge Tj. w celu zawarcia lub wykonania umowy
+        <StyledLi>W związku z usługami świadczonymi za pośrednictwem Adsylabs polegającymi na
+          udzielaniu dostępu do platformy Adsylabs Tj. w celu zawarcia lub wykonania umowy
           (art.6 ust. 1 lit.b Rozporządzenia), Państwa dane będą przechowywane do czasu wykonania umowy</StyledLi>
         <StyledLi>W celach marketingowych i promocji produkt&oacute;w oferowanych przez Fundację
           Rozwoju Przedsiębiorczości &bdquo;Tw&oacute;j StartUp&rdquo; z siedzibą w Warszawie
@@ -109,7 +109,7 @@ export default function PrivacyPolicy () {
           na przetwarzanie danych osobowych, kt&oacute;re przetwarzamy na podstawie zgody &ndash; art. 7 ust. 3 Rozporządzenia.
           Cofnięcie zgody nie będzie wpływać na zgodność z prawem przetwarzania, kt&oacute;rego dokonano na podstawie zgody
           przed jej wycofaniem. Cofnięcie zgody występuje poprzez wysłanie wiadomości mailowej na adres:
-        <a href="mailto:kontakt@adsbridge.pl">kontakt@adsbridge.pl</a> Prawo do sprzeciwu - może Pan/Pani wnieść
+        <a href="mailto:contact@adsylabs.com">contact@adsylabs.com</a> Prawo do sprzeciwu - może Pan/Pani wnieść
           sprzeciw wobec przetwarzania Pana/Pani danych, jeśli podstawą wykorzystania danych jest nasz prawnie uzasadniony
           interes - art. 21 Rozporządzenia. W takiej sytuacji, po rozpatrzeniu Państwa wniosku, nie będziemy już mogli
           przetwarzać danych osobowych objętych sprzeciwem na tej podstawie, chyba, że wykażemy, istnienie prawnie uzasadnionych
@@ -134,7 +134,7 @@ PrivacyPolicy.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge - polityka prywatności',
+        title: 'Adsylabs - polityka prywatności',
         description: 'Nasza polityka prywatności',
       }}
     >

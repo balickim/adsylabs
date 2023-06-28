@@ -4,12 +4,12 @@ import { Number } from 'components/Common/styled';
 
 const StyledSection = tw.section`px-6 mt-16 md:mt-32 flex flex-col gap-8`;
 const Title = tw.h1`text-center text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900`;
-const SubTitle = tw.h2`text-center font-light text-gray-500 sm:text-base xl:px-52`;
+const SubTitle = tw.h2`text-center font-light text-textBase sm:text-base xl:px-52`;
 const StyledStepsContainer = tw.div`grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-6 lg:gap-24 text-center`;
 const StyledStep = tw.div`flex flex-col gap-2`;
 const StyledIconContainer = tw.div`flex justify-center`;
-const StyledText = tw.div`font-light text-gray-500 text-base`;
-const StyledHeaderText = tw.span`text-lg lg:text-2xl`;
+const StyledText = tw.div`font-light text-textBase text-base`;
+const StyledHeaderText = tw.span`text-xl`;
 
 const HowItWorks = () => {
   return (
@@ -46,7 +46,7 @@ const HowItWorks = () => {
           </StyledIconContainer>
           <StyledHeaderText>Zarządzaj specjalistami</StyledHeaderText>
           <StyledText>
-            Trzymaj rękę na pulsie dzięki łatwym w nawigacji pulpicie i automatycznym systemie raportowania wyników kampanii wbudowanym w platformę AdsBridge
+            Trzymaj rękę na pulsie dzięki łatwym w nawigacji pulpicie i automatycznym systemie raportowania wyników kampanii wbudowanym w platformę Adsylabs
           </StyledText>
         </StyledStep>
       </StyledStepsContainer>

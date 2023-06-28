@@ -81,7 +81,7 @@ const HowItWorks = () => {
             </ItemTop>
             <ItemText>
               Utrzymuj kontakt ze swoim Klientem i oszczędź czas na manualne raportowanie -
-              nasza platforma pozwala na ponad 75 integracji z najpopularniejszymi kanałami marketingowymi.
+              nasza platforma pozwala na integrację z najpopularniejszymi kanałami marketingowymi.
             </ItemText>
           </ItemContainer>
           <ItemContainer>

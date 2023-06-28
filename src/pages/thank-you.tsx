@@ -7,7 +7,7 @@ const ThankYou: FC = () => {
   return (
     <main>
       <Head>
-        <title>AdsBridge | Dziękujemy!</title>
+        <title>Adsylabs | Dziękujemy!</title>
       </Head>
 
       <ThankYouComponent />

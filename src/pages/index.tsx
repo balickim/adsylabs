@@ -79,7 +79,7 @@ HomePage.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge - automatyzujemy współprace marketingowe',
+        title: 'Adsylabs - automatyzujemy współprace marketingowe',
         description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
       }}
     >

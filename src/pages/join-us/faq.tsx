@@ -48,7 +48,7 @@ export default function FaqPage () {
         których używam w mojej działalności marketingowej, a jeśli tak, to jaki jest proces integracji?`
         }
       >
-        Oczywiście! Platformę AdsBridge zintegrujesz z Meta Business Managerem (Facebookiem oraz Instagramem),
+        Oczywiście! Platformę Adsylabs zintegrujesz z Meta Business Managerem (Facebookiem oraz Instagramem),
         Google Ads oraz TikTokiem. Wszystkie integracje odbywają się za pomocą kilku kliknięć na
         pulpicie użytkownika a w razie jakichkolwiek problemów nasz zespół jest do dyspozycji aby
         rozwiać wszystkie wątpliwości i przygotować system do pracy.
@@ -82,7 +82,7 @@ FaqPage.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge - automatyzujemy współprace marketingowe',
+        title: 'Adsylabs - automatyzujemy współprace marketingowe',
         description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
       }}
     >

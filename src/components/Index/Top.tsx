@@ -18,7 +18,7 @@ const Top = () => {
           Zatrudnij specjalistów marketingu <br className={'hidden xl:block'}/>i śledź wyniki kampanii w czasie rzeczywistym!
         </Title>
         <SubTitleLeft>
-          Adsbridge.pl pomoże Ci znaleźć zweryfikowanych specjalistów marketingu i
+          Adsylabs.com pomoże Ci znaleźć zweryfikowanych specjalistów marketingu i
           śledzić wyniki prowadzonych przez nich kampanii reklamowych w czasie rzeczywistym, bez ryzyka.
         </SubTitleLeft>
 
@@ -52,7 +52,7 @@ const Top = () => {
           </span>
         </div>
       </div>
-      <div className='flex my-6 justify-center relative h-96 lg:h-auto lg:scale-75 lg:mt-20'>
+      <div className='flex my-6 justify-center relative h-96 lg:min-w-[500px] lg:h-auto lg:scale-90 lg:mt-20 xl:ml-20'>
         <Image
           fill
           priority

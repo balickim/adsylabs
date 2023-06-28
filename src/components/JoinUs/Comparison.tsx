@@ -43,7 +43,7 @@ const Comparison = () => {
 
               </Th>
               <Th className={'font-bold'}>
-                AdsBridge
+                Adsylabs
               </Th>
             </HeaderRow>
           </Thead>

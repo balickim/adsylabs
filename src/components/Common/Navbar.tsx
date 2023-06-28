@@ -9,7 +9,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 
 import { LANDING_IMAGES_PATH } from 'utils/constants';
-import { Spinner, CtaButton } from 'components/Common/styled';
+import { CtaButton } from 'components/Common/styled';
 import React from 'react';
 import { useLocalStorageStore } from 'store';
 import { api } from 'utils/api';
@@ -29,6 +29,7 @@ const Container = tw.div`
   flex-wrap
   justify-between 
   items-center
+  h-14
   2xl:max-w-[1200px] 2xl:ml-auto 2xl:mr-auto 2xl:left-0 2xl:right-0
 `;
 
@@ -46,12 +47,12 @@ const End = tw.div`
 `;
 
 const Logo = () => (
-  <Link href="/" className="flex mr-4">
+  <Link href="/" className="flex mr-8">
     <Image
       src={LANDING_IMAGES_PATH.LOGO}
-      alt="AdsBridge Logo"
-      width={100}
-      height={50}
+      alt="Adsylabs Logo"
+      width={120}
+      height={30}
       priority
     />
   </Link>
@@ -170,7 +171,7 @@ export const Navbar = () => {
       </Start>
       <End>
         {!isLoaded || (isLoaded && isSignedIn ? isLoading : false)
-          ? <Spinner />
+          ? null
           : isSignedIn
             ? data && data.role === ROLES.SPECIALIST
               ? <DashboardButton />

@@ -18,13 +18,13 @@ export const AboutUs = () => {
         <BottomContainer>
           <Image
             src={LANDING_IMAGES_PATH.JAKUB_JANIAK}
-            alt="Jakub Janiak Co-Founder AdsBridge"
+            alt="Jakub Janiak Co-Founder Adsylabs"
             width={50}
             height={50}
           />
           <div>
             <p className={'font-bold'}>Jakub Janiak</p>
-            <p className={'text-gray-300'}>Co-Founder of AdsBridge</p>
+            <p className={'text-gray-300'}>Co-Founder of Adsylabs</p>
           </div>
         </BottomContainer>
       </Wrapper>

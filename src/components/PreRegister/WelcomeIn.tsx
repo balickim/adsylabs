@@ -22,7 +22,7 @@ export const WelcomeIn = ({ mobileText, desktopText }: IWelcomeIn) => {
   return (
     <Container>
       <Title>
-        Witaj w AdsBridge!
+        Witaj w Adsylabs!
       </Title>
       <SubTitle className={'sm:hidden'}>
         {mobileText}

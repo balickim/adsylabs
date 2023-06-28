@@ -41,11 +41,11 @@ const Mobile = ({ variant }: IMobile) => {
             mobileText={variant === 'customer'
               ? <>
                 Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy, <b>skorzystaj z
-                wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji AdsBridge i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
+                wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji Adsylabs i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
               </>
               : <>
                 Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy i skorzystaj z
-                <b> 35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge</b>.
+                <b> 35% rabatu na pierwsze 3 miesiące subskrypcji Adsylabs</b>.
               </>
             }
           />
@@ -66,11 +66,11 @@ const Mobile = ({ variant }: IMobile) => {
               mobileText={variant === 'customer'
                 ? <>
                   Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy, <b>skorzystaj z
-                  wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji AdsBridge i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
+                  wielkiego rabatu</b> na pierwsze 3 miesiące subskrypcji Adsylabs i <b>otrzymaj planer treści na Twoje social media za darmo</b>.
                 </>
                 : <>
                   Wypełnij formularz, jako pierwszy dowiedz się o starcie platformy i skorzystaj z
-                  <b> 35% rabatu na pierwsze 3 miesiące subskrypcji AdsBridge</b>.
+                  <b> 35% rabatu na pierwsze 3 miesiące subskrypcji Adsylabs</b>.
                 </>
               }
             />

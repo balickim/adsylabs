@@ -73,7 +73,7 @@ JoinUsPage.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge | Zostań specjalistą',
+        title: 'Adsylabs | Zostań specjalistą',
         description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
       }}
     >

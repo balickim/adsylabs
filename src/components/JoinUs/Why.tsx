@@ -18,7 +18,7 @@ const Why = () => {
   return (
     <StyledSection id={'why'}>
       <StyledBasicTitle>
-        Dlaczego najlepsi specjaliści wybierają AdsBridge?
+        Dlaczego najlepsi specjaliści wybierają Adsylabs?
       </StyledBasicTitle>
 
       <VideoContainer className={'!pb-[30%] 2xl:!pb-[25%]'}>

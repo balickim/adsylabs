@@ -16,13 +16,13 @@ const Video = () => {
   return (
     <VideoContainer className={'mt-11'}>
       <LocalStyledVideo
-        title="adsbridge automates"
+        title="adsylabs automates"
         loop
         playsInline
         autoPlay
         muted
       >
-        <source src={MEDIA_PATH.ADSBRIDGE_AUTOMATES} type={'video/mp4'} />
+        <source src={MEDIA_PATH.AUTOMATES} type={'video/mp4'} />
             Your browser does not support the video tag.
       </LocalStyledVideo>
     </VideoContainer>

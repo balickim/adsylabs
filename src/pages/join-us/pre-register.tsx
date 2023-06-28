@@ -11,7 +11,7 @@ const PreRegister: NextPage = () => {
   return (
     <main>
       <Head>
-        <title>AdsBridge | Dołącz do nas</title>
+        <title>Adsylabs | Dołącz do nas</title>
       </Head>
 
       <div className={'sm:hidden'}><Mobile variant={'specialist'} /></div>

@@ -1,8 +1,9 @@
 import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 import Link from 'next/link';
 import tw from 'twin.macro';
+import { SOCIAL_LINKS } from 'utils/constants';
 
-const StyledLink = tw(Link)`text-xs text-gray-500 hover:text-gray-900 md:text-base`;
+const StyledLink = tw(Link)`text-xs text-textBase hover:text-gray-900 md:text-base`;
 
 function Links () {
   return (
@@ -45,24 +46,24 @@ function Icons () {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={'https://www.facebook.com/profile.php?id=100090247710645'}
-        className="text-gray-500 hover:text-gray-900"
+        href={SOCIAL_LINKS.FACEBOOK}
+        className="text-textBase hover:text-gray-900"
       >
         <AiFillFacebook />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={'https://instagram.com/adsbridge_pl?igshid=YmMyMTA2M2Y='}
-        className="text-gray-500 hover:text-gray-900"
+        href={SOCIAL_LINKS.INSTAGRAM}
+        className="text-textBase hover:text-gray-900"
       >
         <AiFillInstagram />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={'https://www.linkedin.com/company/ads-bridge/'}
-        className="text-gray-500 hover:text-gray-900"
+        href={SOCIAL_LINKS.LINKEDIN}
+        className="text-textBase hover:text-gray-900"
       >
         <AiFillLinkedin />
       </a>
@@ -76,9 +77,9 @@ const Footer = () => {
     <footer className="bg-white">
       <div className="mx-auto max-w-screen-xl">
         <hr className="my-2 mx-auto border-gray-200" />
-        <span className="flex justify-center gap-2 text-center text-sm text-gray-500">
+        <span className="flex justify-center gap-2 text-center text-sm text-textBase">
           © {new Date().getFullYear()}{' '}
-          AdsBridge
+          Adsylabs
         </span>
 
         <Links />

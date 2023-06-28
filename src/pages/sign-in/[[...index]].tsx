@@ -23,7 +23,7 @@ SignInPage.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge | Logowanie',
+        title: 'Adsylabs | Logowanie',
         description: 'Zatrudnij sprawdzonych marketerów do Twojego Biznesu.',
       }}
     >

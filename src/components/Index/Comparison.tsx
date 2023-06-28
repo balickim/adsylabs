@@ -34,7 +34,7 @@ const Comparison = () => {
   return (
     <StyledSection id={'comparison'}>
       <Title>
-        AdsBridge vs tradycyjne rozwiązania
+        Adsylabs vs tradycyjne rozwiązania
       </Title>
 
       <div className={'flex justify-center'}>
@@ -43,9 +43,9 @@ const Comparison = () => {
           <ColumnAsset className={'border-primary border-l-4 border-t-4 border-r-4 rounded-t-xl'}>
             <Image
               src={LANDING_IMAGES_PATH.LOGO}
-              alt="AdsBridge Logo"
-              width={100}
-              height={50}
+              alt="Adsylabs Logo"
+              width={120}
+              height={30}
             />
           </ColumnAsset>
           <HeaderContainer>

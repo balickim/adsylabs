@@ -20,11 +20,11 @@ export function CustomerExcerpt () {
       <Item
         index={'1.'}
         title={`
-          Jakich specjalistów ds. marketingu mogę znaleźć za pomocą AdsBridge i jak mogę się upewnić, 
+          Jakich specjalistów ds. marketingu mogę znaleźć za pomocą Adsylabs i jak mogę się upewnić, 
           że ich umiejętności i doświadczenie odpowiadają moim potrzebom?
         `}
       >
-        W AdsBridge możesz znaleźć i zatrudnić sprawdzonych specjalistów ds. marketingu, którzy posiadają
+        W Adsylabs możesz znaleźć i zatrudnić sprawdzonych specjalistów ds. marketingu, którzy posiadają
         szeroki zakres umiejętności, sprawdzony w trakcie restrykcyjnego procesu rekrutacji, który przechodzi
         jedynie niewielki odsetek kandydatów. Na platformie możesz znaleźć specjalistów w dziedzinach
         takich jak PPC, SEO, social media marketing, email marketing, content marketing i wiele innych.
@@ -35,7 +35,7 @@ export function CustomerExcerpt () {
 
       <Item
         index={'2.'}
-        title={'W jaki sposób rozwiązanie AdBridge dopasowuje mnie do specjalistów ds. marketingu?'}
+        title={'W jaki sposób rozwiązanie Adsylabs dopasowuje mnie do specjalistów ds. marketingu?'}
       >
         Nasza platforma na podstawie wywiadu przeprowadzonego przy pierwszym logowaniu rekomenduje
         najlepszych specjalistów dla Twojego Biznesu, mając na uwadze wszystkie najważniejsze paremetry

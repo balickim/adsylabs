@@ -1,6 +1,12 @@
+export const SOCIAL_LINKS = {
+  LINKEDIN: '',
+  FACEBOOK: 'https://www.facebook.com/profile.php?id=100094147950487',
+  INSTAGRAM: 'https://instagram.com/adsylabs?igshid=OGQ5ZDc2ODk2ZA==',
+} as const;
+
 export const LANDING_IMAGES_PATH = {
-  LOGO: '/static/image/landing/logo.png',
-  ROB_KATARZYNA: '/static/image/landing/rob_katarzyna.png',
+  LOGO: '/static/image/landing/logo.webp',
+  ROB_KATARZYNA: '/static/image/landing/rob_katarzyna.webp',
   STAIN_1: '/static/image/landing/stain_1.png',
   STAIN_2: '/static/image/landing/stain_2.png',
   BRAND_ICON: '/static/image/landing/brand_icon.png',
@@ -35,5 +41,5 @@ export const DASHBOARD_IMAGES_PATH = {
 export const MEDIA_PATH = {
   HOW_WE_VERIFY: '/static/media/how_we_verify.mp4',
   SPECIALISTS: '/static/media/specialists.mp4',
-  ADSBRIDGE_AUTOMATES: '/static/media/adsbridge_automates.mp4',
+  AUTOMATES: '/static/media/automates.mp4',
 } as const;

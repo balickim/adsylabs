@@ -13,7 +13,7 @@ export const Item = ({ index, title, children }: IItem) => {
         <p>{index}</p>
         <p>{title}</p>
       </h2>
-      <span className={'text-gray-500'}>
+      <span className={'text-textBase'}>
         {children}
       </span>
     </section>

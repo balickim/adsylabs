@@ -10,7 +10,7 @@ export default function Menu ({ item, setItem }: IMenu) {
     <div className={'flex flex-wrap gap-2 mb-6'}>
       <button
         onClick={() => setItem(0)}
-        className={`${item === 0 ? 'text-primary font-bold' : 'text-gray-500'}`}
+        className={`${item === 0 ? 'text-primary font-bold' : 'text-textBase'}`}
       >
         | Twój profil specjalisty
       </button>
@@ -18,14 +18,14 @@ export default function Menu ({ item, setItem }: IMenu) {
       <button
         disabled
         onClick={() => setItem(1)}
-        className={`blur-[2px] ${item === 1 ? 'text-primary font-bold' : 'text-gray-500'}`}
+        className={`blur-[2px] ${item === 1 ? 'text-primary font-bold' : 'text-textBase'}`}
       >
         | Konto
       </button>
 
       <button
         onClick={() => setItem(2)}
-        className={`${item === 2 ? 'text-primary font-bold' : 'text-gray-500'}`}
+        className={`${item === 2 ? 'text-primary font-bold' : 'text-textBase'}`}
       >
         | Bezpieczeństwo
       </button>
@@ -33,7 +33,7 @@ export default function Menu ({ item, setItem }: IMenu) {
       <button
         disabled
         onClick={() => setItem(3)}
-        className={`blur-[2px] ${item === 3 ? 'text-primary font-bold' : 'text-gray-500'}`}
+        className={`blur-[2px] ${item === 3 ? 'text-primary font-bold' : 'text-textBase'}`}
       >
         | Powiadomienia
       </button>

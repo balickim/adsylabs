@@ -22,7 +22,7 @@ export default function FaqPage () {
 
       <Item
         index={'3.'}
-        title={'Jakie narzędzia i funkcje zapewnia rozwiązanie AdsBridge do zarządzania specjalistami marketingu i jak mogą one usprawnić mój biznes?'}
+        title={'Jakie narzędzia i funkcje zapewnia rozwiązanie Adsylabs do zarządzania specjalistami marketingu i jak mogą one usprawnić mój biznes?'}
       >
       Nasza platforma dostarcza rozbudowaną wyszukiwarkę zweryfikowanych specjalistów,
       łatwy system rekrutacji, automatyczny system raportowania wyników kampanii marketingowych,
@@ -60,7 +60,7 @@ export default function FaqPage () {
         index={'5.'}
         title={'Czy platformę można zintegrować z najpopularniejszymi serwisami społecznościowymi i wyszukiwarkami oraz jaki jest proces integracji?'}
       >
-        Oczywiście! Platformę AdsBridge zintegrujesz z Meta Business Managerem (Facebookiem oraz Instagramem),
+        Oczywiście! Platformę Adsylabs zintegrujesz z Meta Business Managerem (Facebookiem oraz Instagramem),
         Google Ads oraz TikTokiem. Wszystkie integracje odbywają się za pomocą kilku kliknięć na pulpicie
         użytkownika a w razie jakichkolwiek problemów nasz zespół jest do dyspozycji aby rozwiać wszelkie
         wątpliwości i przygotować system do pracy.
@@ -70,7 +70,7 @@ export default function FaqPage () {
         index={'6.'}
         title={'Jaki jest model cenowy i jak wypada w porównaniu z innymi rozwiązaniami na rynku?'}
       >
-        AdsBridge jest pierwszym tego typu rozwiązaniem łączącym możliwość wyszukania,
+        Adsylabs jest pierwszym tego typu rozwiązaniem łączącym możliwość wyszukania,
         zatrudnienia, komunikacji i zarządzania specjalistami marketingu. Nasze systemy
         oszczędzają czas Twojej firmy a zweryfikowani specjaliści rozwijają jej
         sprzedaż i marketing. Subskrypcje zaczynają się od 200 zł netto za miesiąc w
@@ -109,7 +109,7 @@ FaqPage.getLayout = function getLayout (page: ReactElement) {
   return (
     <Layout
       meta={{
-        title: 'AdsBridge - automatyzujemy współprace marketingowe',
+        title: 'Adsylabs - automatyzujemy współprace marketingowe',
         description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
       }}
     >

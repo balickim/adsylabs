@@ -8,7 +8,7 @@ export const TitleLeft = tw(Title)`
 `;
 
 export const SubTitle = tw.h2`
-  text-center font-light text-gray-500
+  text-center font-light text-textBase
 `;
 export const SubTitleLeft = tw(SubTitle)`
   text-base text-start
