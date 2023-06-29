@@ -1,22 +1,38 @@
-import { getAuth, withClerkMiddleware } from '@clerk/nextjs/server';
-import { NextRequest, NextResponse } from 'next/server';
-import { isPublic } from 'utils/helpers';
+import { authMiddleware } from '@clerk/nextjs';
+import { clerkClient } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
-export default withClerkMiddleware((request: NextRequest) => {
-  if (isPublic(request.nextUrl.pathname)) {
+export const publicRoutes = [
+  '/',
+  '/api/(.*)',
+  '/join-us(.*)',
+  '/pre-register',
+  '/faq',
+  '/thank-you',
+  '/polityka-prywatnosci',
+  '/polityka-cookies',
+  '/regulamin',
+];
+
+export default authMiddleware({
+  publicRoutes,
+  afterAuth (auth, req) {
+    if (req.nextUrl.pathname.includes('admin-panel')) {
+      const home = new URL('/', req.url);
+      if (!auth.userId) return NextResponse.rewrite(home);
+
+      return clerkClient.users.getUser(auth.userId)
+        .then((user) => {
+          if (!user) return NextResponse.rewrite(home);
+          if (user.publicMetadata.role !== 'admin') return NextResponse.redirect(home);
+        })
+        .catch(() => NextResponse.rewrite(home));
+    }
+
     return NextResponse.next();
-  }
-  // if the user is not signed in redirect them to the sign in page.
-  const { userId } = getAuth(request);
-
-  if (!userId) {
-    // redirect the users to /pages/sign-in/[[...index]].ts
-
-    const signInUrl = new URL('/sign-in', request.url);
-    signInUrl.searchParams.set('redirect_url', request.url);
-    return NextResponse.redirect(signInUrl);
-  }
-  return NextResponse.next();
+  },
 });
 
-export const config = { matcher: ['/((?!.*\\..*|_next).*)', '/\''] };
+export const config = {
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+};

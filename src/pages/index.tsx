@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
-
-import type { NextPage } from 'next';
 
 import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
@@ -12,23 +10,21 @@ import Video from 'components/Index/Video';
 import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
 import Pricing from 'components/Index/Pricing';
 import Comparison from 'components/Index/Comparison';
-import FloatingButton from 'components/Common/FloatingButton';
 import { useRect } from 'utils/hooks/useRect';
 import { Motion } from 'utils/helpers/framerMotion';
 import { HotJarScript } from 'components/Common/externalScripts';
+import { CustomerExcerpt, ExcerptCta } from 'components/Faq/Excerpts';
+import { FadeGradientContainer } from 'utils/helpers';
 
-export const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
+const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
+const ExcerptContainer = tw.div`h-[400px]`;
 
-const HomePage: NextPage = () => {
+export default function HomePage () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [rect, ref] = useRect<HTMLDivElement>();
 
   return (
-    <Layout
-      meta={{
-        title: 'AdsBridge - automatyzujemy współprace marketingowe',
-        description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
-      }}
-    >
+    <>
       <HotJarScript />
       <Main>
         <Motion>
@@ -41,6 +37,19 @@ const HomePage: NextPage = () => {
 
         <Motion>
           <HowItWorks />
+        </Motion>
+
+        <Motion>
+          <FadeGradientContainer
+            fadeHeight={300}
+            fadeFrom={1.5}
+            fadeTo={0}
+          >
+            <ExcerptContainer>
+              <CustomerExcerpt />
+            </ExcerptContainer>
+          </FadeGradientContainer>
+          <ExcerptCta href={'faq'} />
         </Motion>
 
         <Motion>
@@ -61,9 +70,20 @@ const HomePage: NextPage = () => {
 
       </Main>
       <Footer />
-      <FloatingButton pricingPosition={rect} />
-    </Layout>
+      {/*<FloatingButton pricingPosition={rect} />*/}
+    </>
   );
 };
 
-export default HomePage;
+HomePage.getLayout = function getLayout (page: ReactElement) {
+  return (
+    <Layout
+      meta={{
+        title: 'Adsylabs - automatyzujemy współprace marketingowe',
+        description: 'Sprawdź jak automatyzujemy zatrudnianie i zarządzanie sprawdzonymi specjalistami marketingu. Nie znajdziemy kandydata? Nie płacisz.',
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};

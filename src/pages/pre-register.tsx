@@ -11,11 +11,11 @@ const PreRegister: NextPage = () => {
   return (
     <main>
       <Head>
-        <title>AdsBridge | Dołącz do nas</title>
+        <title>Adsylabs | Dołącz do nas</title>
       </Head>
 
-      <div className={'sm:hidden'}><Mobile variant={'user'} /></div>
-      <div className={'hidden sm:block'}><Desktop variant={'user'} /></div>
+      <div className={'sm:hidden'}><Mobile variant={'customer'} /></div>
+      <div className={'hidden sm:block'}><Desktop variant={'customer'} /></div>
 
     </main>
   );

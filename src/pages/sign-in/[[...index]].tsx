@@ -1,18 +1,33 @@
+import React, { ReactElement } from 'react';
 import { SignIn } from '@clerk/nextjs';
 
 import Layout from 'components/Common/Layout';
 
-const SignInPage = () => (
-  <Layout
-    meta={{
-      title: 'AdsBridge | Logowanie',
-      description: 'Zatrudnij sprawdzonych marketerów do Twojego Biznesu.',
-    }}
-  >
-    <main className='h-screen flex items-center justify-center'>
-      <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
-    </main>
-  </Layout>
-);
+export default function SignInPage () {
+  return <main className='h-screen flex items-center justify-center'>
+    <SignIn
+      path="/sign-in"
+      routing="path"
+      signUpUrl={undefined}
+      appearance={{
+        layout: {
+          privacyPageUrl: './polityka-prywatnosci',
+          termsPageUrl: './regulamin',
+        } }
+      }
+    />
+  </main>;
+};
 
-export default SignInPage;
+SignInPage.getLayout = function getLayout (page: ReactElement) {
+  return (
+    <Layout
+      meta={{
+        title: 'Adsylabs | Logowanie',
+        description: 'Zatrudnij sprawdzonych marketerów do Twojego Biznesu.',
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};

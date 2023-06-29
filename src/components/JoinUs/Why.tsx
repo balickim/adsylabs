@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 import { BasicTitle, StyledVideo, VideoContainer } from 'components/Common/styled';
-import { STATIC } from 'utils/constants/index';
+import { MEDIA_PATH } from 'utils/constants';
 
 const StyledSection = tw.section`mt-10 md:mt-16 md:px-10 grid grid-cols-1 items-center`;
 const StyledBasicTitle = tw(BasicTitle)`text-center mb-4 md:mb-0`;
@@ -18,7 +18,7 @@ const Why = () => {
   return (
     <StyledSection id={'why'}>
       <StyledBasicTitle>
-        Dlaczego najlepsi specjaliści wybierają AdsBridge?
+        Dlaczego najlepsi specjaliści wybierają Adsylabs?
       </StyledBasicTitle>
 
       <VideoContainer className={'!pb-[30%] 2xl:!pb-[25%]'}>
@@ -29,7 +29,7 @@ const Why = () => {
           autoPlay
           muted
         >
-          <source src={STATIC.SPECIALISTS} type={'video/mp4'} />
+          <source src={MEDIA_PATH.SPECIALISTS} type={'video/mp4'} />
             Your browser does not support the video tag.
         </LocalStyledVideo>
       </VideoContainer>

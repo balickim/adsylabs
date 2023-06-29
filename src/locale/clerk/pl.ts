@@ -445,7 +445,8 @@ export const pl: LocalizationResource = {
       subtitle__unavailablePhoneNumbers:
         'Nie ma dostępnych numerów telefonów do zarejestrowania weryfikacji dwustopniowej kodem SMS.',
       successMessage:
-        'Dwustopniowa weryfikacja kodem SMS jest teraz włączona dla tego numeru telefonu. Podczas logowania będziesz musiał wprowadzić kod weryfikacyjny wysłany na ten numer telefonu jako dodatkowy krok.',
+        'Dwustopniowa weryfikacja kodem SMS jest teraz włączona dla tego numeru telefonu. ' +
+        'Podczas logowania będziesz musiał wprowadzić kod weryfikacyjny wysłany na ten numer telefonu jako dodatkowy krok.',
       removeResource: {
         title: 'Usuń dwustopniową weryfikację',
         messageLine1: '{{identifier}} nie będzie już otrzymywał kodów weryfikacyjnych podczas logowania.',
@@ -463,7 +464,8 @@ export const pl: LocalizationResource = {
       successSubtitle:
         'Możesz użyć jednego z nich, aby zalogować się do swojego konta, jeśli stracisz dostęp do swojego urządzenia uwierzytelniającego.',
       successMessage:
-        'Kody zapasowe są teraz włączone. Możesz użyć jednego z nich, aby zalogować się do swojego konta, jeśli stracisz dostęp do swojego urządzenia uwierzytelniającego. Każdy kod może być użyty tylko raz.',
+        'Kody zapasowe są teraz włączone. Możesz użyć jednego z nich, aby zalogować się do swojego konta, ' +
+        'jeśli stracisz dostęp do swojego urządzenia uwierzytelniającego. Każdy kod może być użyty tylko raz.',
       actionLabel__copy: 'Skopiuj wszystkie',
       actionLabel__copied: 'Skopiowano!',
       actionLabel__download: 'Pobierz .txt',

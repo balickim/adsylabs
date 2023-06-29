@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
-
-import type { NextPage } from 'next';
 
 import { Motion } from 'utils/helpers/framerMotion';
 import Layout from 'components/Common/Layout';
@@ -14,17 +12,15 @@ import Comparison from 'components/JoinUs/Comparison';
 import Bottom from 'components/JoinUs/Bottom';
 import Video from 'components/JoinUs/Video';
 import { HotJarScript } from 'components/Common/externalScripts';
+import { FadeGradientContainer } from 'utils/helpers';
+import { ExcerptCta, SpecialistExcerpt } from 'components/Faq/Excerpts';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
+const ExcerptContainer = tw.div`h-[500px]`;
 
-const JoinUsPage: NextPage = () => {
+export default function JoinUsPage () {
   return (
-    <Layout
-      meta={{
-        title: 'AdsBridge | Zostań specjalistą',
-        description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
-      }}
-    >
+    <>
       <HotJarScript />
       <Main>
         <Motion>
@@ -48,6 +44,19 @@ const JoinUsPage: NextPage = () => {
         </Motion>
 
         <Motion>
+          <FadeGradientContainer
+            fadeHeight={300}
+            fadeFrom={1.5}
+            fadeTo={0}
+          >
+            <ExcerptContainer>
+              <SpecialistExcerpt />
+            </ExcerptContainer>
+          </FadeGradientContainer>
+          <ExcerptCta href={'join-us/faq'} />
+        </Motion>
+
+        <Motion>
           <Comparison />
         </Motion>
 
@@ -56,8 +65,19 @@ const JoinUsPage: NextPage = () => {
         </Motion>
       </Main>
       <Footer />
-    </Layout>
+    </>
   );
 };
 
-export default JoinUsPage;
+JoinUsPage.getLayout = function getLayout (page: ReactElement) {
+  return (
+    <Layout
+      meta={{
+        title: 'Adsylabs | Zostań specjalistą',
+        description: 'Sprawdź jak automatyzujemy pozyskiwanie nowych klientów na usługi marketingowe i zarządzanie projektami. Skorzystaj z 14 dniowego okresu próbnego.',
+      }}
+    >
+      {page}
+    </Layout>
+  );
+};

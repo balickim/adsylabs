@@ -23,7 +23,7 @@ const MoreBenefits = () => {
         <ItemContainer>
           <AiOutlineCheckCircle size={ICON_SIZE} color={twConfig?.theme?.colors?.primary as string} />
           <p>
-            <b>AdsBridge to najbardziej przystępna cenowo platforma na rynku.</b>
+            <b>Adsylabs to najbardziej przystępna cenowo platforma na rynku.</b>
             {' '}Cenimy Wasze doświadczenie, czas i niesamowite wyniki reklamowe.
           </p>
         </ItemContainer>

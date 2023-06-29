@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH, SOCIAL_LINKS } from 'utils/constants';
 
 const Container = tw.div`
   bg-primary h-screen w-screen relative text-white text-center overflow-hidden
@@ -24,8 +24,16 @@ const ThankYouComponent = () => {
       <Container>
         <h2 className={'text-4xl mb-3 pt-8'}>Dziękujemy!</h2>
         <p>Ogromnie dziękujemy za Twoje zaufanie!</p>
-        <p className={'max-w-[14rem] ml-auto mr-auto'}>Oto Twój kod na 10% zniżkę na 2 miesiące subskrypcji:</p>
-        <p className={'font-bold'}>10ADSBRIDGE</p>
+        <p className={'max-w-[14rem] ml-auto mr-auto'}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://miro.com/app/board/uXjVM_rJSCI=/?share_link_id=903127860568'}
+            className={'underline'}
+          >
+            Kliknij w ten link
+          </a>
+          {' '}i odbierz swój planer treści social media</p>
 
         <p className={'mt-16'}>Pozostańmy w kontakcie, zaobserwuj nas na socialach:</p>
 
@@ -33,7 +41,7 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://www.facebook.com/profile.php?id=100090247710645'}
+            href={SOCIAL_LINKS.FACEBOOK}
             className="text-white hover:text-gray-900"
           >
             <AiFillFacebook size={ICON_SIZE} />
@@ -41,7 +49,7 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://instagram.com/adsbridge_pl?igshid=YmMyMTA2M2Y='}
+            href={SOCIAL_LINKS.INSTAGRAM}
             className="text-white hover:text-gray-900"
           >
             <AiFillInstagram size={ICON_SIZE} />
@@ -49,30 +57,30 @@ const ThankYouComponent = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={'https://www.linkedin.com/company/ads-bridge/'}
+            href={SOCIAL_LINKS.LINKEDIN}
             className="text-white hover:text-gray-900"
           >
             <AiFillLinkedin size={ICON_SIZE} />
           </a>
         </div>
 
-        <p className={'mt-40 mb-6 sm:mt-28'}>
+        <p className={'mt-36 mb-6 sm:mt-24 w-4/5 mx-auto'}>
         &quot;Dziękuję za Państwa kredyt zaufania. Razem tworzymy produkt, który na zawsze zmieni obraz marketingu w Polsce.&quot;
         </p>
         <div className={'flex justify-center text-left gap-2'}>
           <Image
-            src={STATIC.JAKUB_JANIAK}
-            alt="Jakub Janiak Co-Founder AdsBridge"
+            src={LANDING_IMAGES_PATH.JAKUB_JANIAK}
+            alt="Jakub Janiak Co-Founder Adsylabs"
             width={50}
             height={50}
           />
           <div>
             <p className={'font-bold'}>Jakub Janiak</p>
-            <p className={'!text-gray-300'}>Co-Founder of AdsBridge</p>
+            <p className={'!text-gray-300'}>Co-Founder of Adsylabs</p>
           </div>
         </div>
         <StyledImage
-          src={STATIC.SHAPE_2}
+          src={LANDING_IMAGES_PATH.SHAPE_2}
           alt="shape"
           width={400}
           height={400}

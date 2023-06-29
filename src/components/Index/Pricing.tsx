@@ -1,15 +1,14 @@
 import React, { Children, LegacyRef } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import { usePreRegistrationStore } from 'store';
-import { PAY_PLANS } from 'utils/constants/index';
+import { PAY_PLANS } from '@prisma/client';
 
 const StyledSection = tw.section`md:px-12 mt-16 lg:px-6`;
 const TextContainer = tw.div`flex flex-col gap-6 mb-7 text-center`;
-const Title = tw.div`text-3xl`;
-const SubTitle = tw.h3`text-sm text-gray-500 text-lg`;
+const Title = tw.div`text-2xl lg:text-3xl xl:text-4xl`;
+const SubTitle = tw.h3`text-sm text-textBase`;
 const Grid = tw.div`grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
 
 interface IPricingItem {
@@ -17,7 +16,7 @@ interface IPricingItem {
   title: string;
   subtitle: string;
   price: string;
-  payPlan: 'basic' | 'standard' | 'premium_guarantee'; // use PAY_PLANS constant here somehow
+  payPlan: PAY_PLANS;
   children: React.ReactNode;
 }
 
@@ -35,7 +34,7 @@ const PricingItemContainer = styled.div<IVariant>(
 );
 const TitleContainer = styled.div<IVariant>(
   ({ variant }) => [
-    tw`flex justify-center text-center text-2xl`,
+    tw`flex justify-center text-center text-xl`,
     variant === 'primary'
       ? tw`text-white`
       : tw`text-black`,
@@ -46,46 +45,31 @@ const Text = styled.div<IVariant>(
     tw`flex justify-center text-center`,
     variant === 'primary'
       ? tw`text-gray-100`
-      : tw`text-gray-500`,
+      : tw`text-textBase`,
   ]
 );
 const Price = styled.span<IVariant>(
   ({ variant }) => [
-    tw`text-5xl font-bold`,
+    tw`text-4xl font-bold h-14`,
     variant === 'primary'
       ? tw`text-white`
       : tw`text-black`,
   ]
 );
 
-const ButtonContainer = styled.div<IVariant>(
-  ({ variant }) => [
-    tw`flex justify-center px-16 mt-4 justify-self-end`,
-    variant === 'primary'
-      ? tw``
-      : tw``,
-  ]
-);
+const ButtonContainer = tw.div`flex justify-center px-16 mt-4 justify-self-end`;
 const Button = styled.button<IVariant>(
   ({ variant }) => [
-    tw`rounded-lg text-lg py-6 px-4 md:px-12 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
+    tw`rounded-lg text-lg py-4 px-2 transition hover:-translate-y-1 focus:outline-none focus:ring-4`,
     variant === 'primary'
       ? tw`bg-white text-primary`
       : tw`bg-primary text-white hover:brightness-150`,
   ]
 );
 
-const PriceContainer = tw.div`relative flex justify-center items-end gap-2`;
-const ChildrenContainer = styled.div<IVariant>(
-  ({ variant }) => [
-    tw`flex flex-col grow px-4 space-y-4 justify-between`,
-    variant === 'primary'
-      ? tw``
-      : tw``,
-  ]
-);
-
-const TopContainer = tw.div`flex flex-col gap-6 px-4 justify-between h-52 sm:h-40 xl:h-52`;
+const PriceContainer = tw.div`relative flex h-5 justify-center items-end gap-2`;
+const ChildrenContainer = tw.div`flex flex-col grow px-4 space-y-4 justify-between`;
+const TopContainer = tw.div`flex flex-col gap-6 px-4 justify-between h-40 xl:h-52`;
 
 const PricingItem = ({
   variant,
@@ -96,16 +80,6 @@ const PricingItem = ({
   payPlan,
 }: IPricingItem) => {
   const arrayChildren = Children.toArray(children);
-  const router = useRouter();
-  const store = usePreRegistrationStore();
-
-  const handleClick = () => {
-    if (!store.puuid) store.setPuuid();
-    store.setPayPlan(payPlan);
-    return router.push({
-      pathname: '/pre-register',
-    });
-  };
 
   return (
     <PricingItemContainer variant={variant}>
@@ -123,7 +97,7 @@ const PricingItem = ({
 
         <hr/>
 
-        <ChildrenContainer variant={variant}>
+        <ChildrenContainer>
           {Children.map(arrayChildren, (child, index) => {
             return (
               <Text variant={variant} key={index}>
@@ -132,10 +106,13 @@ const PricingItem = ({
             );
           })}
         </ChildrenContainer>
-        <ButtonContainer variant={variant}>
-          <Button variant={variant} onClick={() => handleClick()}>
-            Zarejestruj się za darmo
-          </Button>
+        <ButtonContainer>
+          <Link href={`/pre-register?payPlan=${payPlan}`}>
+            <Button variant={variant}>
+              Odbierz zniżkę i uzyskaj
+              wczesny dostep
+            </Button>
+          </Link>
         </ButtonContainer>
       </div>
     </PricingItemContainer>
@@ -194,7 +171,7 @@ const Pricing = ({ innerRef }: { innerRef: LegacyRef<HTMLDivElement>}) => {
           <p>Dostęp do wszystkich specjalistów</p>
           <p>Indywidualna ilość godzin wsparcia</p>
           <p>Automatyczny system raportowania</p>
-          <p className={'font-bold text-lg'}>60 dniowa gwarancja AdsBridge = brak wyników, nie płacisz</p>
+          <p className={'font-bold text-lg'}>60 dniowa gwarancja Adsylabs = brak wyników, nie płacisz</p>
         </PricingItem>
       </Grid>
     </StyledSection>

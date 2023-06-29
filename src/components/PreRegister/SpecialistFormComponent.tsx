@@ -1,17 +1,18 @@
 import { Form, Formik } from 'formik';
 import tw from 'twin.macro';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
 
 import { Input, LoadingCtaButton } from 'components/Common/styled';
 import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
 import { preRegisterSpecialistSchema } from 'validation/preRegisterSchema';
-import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { ROLES } from '@prisma/client';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
 export const SpecialistFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync } = api.profile.insertSpecialist.useMutation();
+  const { mutateAsync, error } = api.profile.insertSpecialist.useMutation();
 
   return (
     <StyledMain>
@@ -25,13 +26,15 @@ export const SpecialistFormComponent = () => {
           mutateAsync({
             name: values.name,
             linkedinUrl: values.linkedinUrl,
+            role: ROLES.SPECIALIST,
           })
-            .then(() => {
+            .then((profileId) => {
+              store.setProfileId(profileId);
+              resetForm();
               store.setStep(1);
             })
             .catch((reason) => console.error(reason))
             .finally(() => {
-              resetForm();
               setSubmitting(false);
             });
         }}
@@ -43,15 +46,18 @@ export const SpecialistFormComponent = () => {
           isSubmitting,
         }) => (
           <Form>
-            <div className="mt-3 grid gap-6 mb-6">
+            <div className="mt-3 grid gap-6 mb-6 lg:w-4/5">
               <Input
                 label={'Imię'}
-                error={(touched.name && errors.name) ? 'Pole nie może być puste' : null}
+                labelClasses={'text-white sm:text-black'}
+                inputClasses={'lg:!w-3/4'}
+                error={(touched.name && errors.name) ? errors.name : null}
                 {...getFieldProps('name')}
               />
               <Input
                 label={'Link do Twojego profilu LinkedIn'}
-                error={(touched.linkedinUrl && errors.linkedinUrl) ? 'Pole nie może być puste' : null}
+                labelClasses={'text-white sm:text-black'}
+                error={(touched.linkedinUrl && errors.linkedinUrl) ? errors.linkedinUrl : null}
                 {...getFieldProps('linkedinUrl')}
               />
             </div>
@@ -67,6 +73,12 @@ export const SpecialistFormComponent = () => {
           </Form>
         )}
       </Formik>
+      {!!error ?
+        <div className={'w-72 mt-8 bg-red-400 rounded-xl p-2 text-white'}>
+          Wystąpił błąd. Spróbuj ponownie.
+        </div>
+        : null
+      }
     </StyledMain>
   );
 };

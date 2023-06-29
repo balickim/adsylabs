@@ -5,18 +5,18 @@ import { FaCheck } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
 import Link from 'next/link';
 
-import { STATIC } from 'utils/constants/index';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { CtaButton } from 'components/Common/styled';
 import styled from 'styled-components';
 import { twConfig } from 'utils/helpers/tailwind';
 
 const StyledSection = tw.section`mt-16 md:mt-32`;
 const Title = tw.h1`text-2xl lg:text-3xl xl:text-4xl tracking-tight text-gray-900 text-center mb-16`;
-const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center text-sm xl:text-base`;
+const HeaderContainer = tw.span`flex flex-col gap-2 justify-center items-center text-xs text-center md:text-left xl:text-base`;
 const PinkText = tw.p`text-pink-400`;
 const ColumnAsset = tw.div`flex justify-center items-center`;
 const ColumnText = tw.p`flex justify-center items-center`;
-const LeftColumnText = tw.p`flex items-center text-xs xl:text-base`;
+const LeftColumnText = tw.p`flex items-center text-[11px] xl:text-sm`;
 const Grid = styled.div`
   ${tw`grid gap-x-4 h-[34rem] grid-rows-6 overflow-x-auto`}
   grid-template-columns:
@@ -34,7 +34,7 @@ const Comparison = () => {
   return (
     <StyledSection id={'comparison'}>
       <Title>
-        AdsBridge vs tradycyjne rozwiązania
+        Adsylabs vs tradycyjne rozwiązania
       </Title>
 
       <div className={'flex justify-center'}>
@@ -42,10 +42,10 @@ const Comparison = () => {
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-t-4 border-r-4 rounded-t-xl'}>
             <Image
-              src={STATIC.LOGO}
-              alt="AdsBridge Logo"
-              width={100}
-              height={50}
+              src={LANDING_IMAGES_PATH.LOGO}
+              alt="Adsylabs Logo"
+              width={120}
+              height={30}
             />
           </ColumnAsset>
           <HeaderContainer>
@@ -127,13 +127,13 @@ const Comparison = () => {
 
           <div></div>
           <ColumnAsset className={'border-primary border-l-4 border-r-4 border-b-4 rounded-b-xl'}>
-            <Link href="/#pricing">
+            <Link href="./pre-register">
               <CtaButton
                 version={'primary'}
                 type="button"
-                className={'text-xs xl:p-4 xl:text-lg'}
+                className={'text-[11px] xl:text-base'}
               >
-                Znajdź specjalistę
+                Uzyskaj <br /> wczesny dostęp
               </CtaButton>
             </Link>
           </ColumnAsset>

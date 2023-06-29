@@ -1,3 +1,5 @@
+import { ReactElement, ReactNode, useState } from 'react';
+import { NextPage } from 'next';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -6,16 +8,39 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 
 import 'styles/main.css';
+import '@uploadthing/react/styles.css';
 import { twConfig } from 'utils/helpers/tailwind';
-import { pl } from 'locale/clerk/pl';
+import { pl as clerkPl } from 'locale/clerk/pl';
+import pl from 'locale/pl.json';
 import { api } from 'utils/api';
+import { isBrowser } from 'utils/helpers';
+import { IntlProvider } from 'react-intl';
 
-const _App: AppType = ({ Component, pageProps }: AppProps) => {
-  const { push } = useRouter();
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const messages = {
+  pl,
+};
+
+const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const { push, events, locale } = useRouter();
+  const [ loading, setLoading ] = useState(false);
+  isBrowser() && events.on('routeChangeStart', () => setLoading(true));
+  isBrowser() && events.on('routeChangeComplete', () => setLoading(false));
+  isBrowser() && events.on('routeChangeError', () => setLoading(false));
+
+  const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <>
+      <style jsx global>{`body a button { cursor: ${loading ? 'wait !important' : 'unset'}}`}</style>
       <Head>
-        <title>AdsBridge - automatyzujemy współprace marketingowe</title>
+        <title>Adsylabs - automatyzujemy współprace marketingowe</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
@@ -27,7 +52,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
 
       <Analytics />
       <ClerkProvider
-        localization={pl}
+        localization={clerkPl}
         appearance={{
           variables: {
             colorPrimary: twConfig?.theme?.colors?.primary,
@@ -36,7 +61,12 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         navigate={(to) => push(to)}
         {...pageProps}
       >
-        <Component {...pageProps} />
+        {getLayout(
+          // @ts-ignore
+          <IntlProvider locale={locale} messages={messages[locale]}>
+            <Component {...pageProps} />
+          </IntlProvider>
+        )}
       </ClerkProvider>
     </>
   );
