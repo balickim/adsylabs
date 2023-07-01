@@ -69,7 +69,9 @@ export default function HomePage () {
         </Motion>
 
       </Main>
-      <Footer />
+      <Motion>
+        <Footer />
+      </Motion>
       {/*<FloatingButton pricingPosition={rect} />*/}
     </>
   );
