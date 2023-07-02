@@ -46,7 +46,7 @@ export default function AllInOne () {
   const [step, setStep] = useState(1);
   return (
     <StyledSection id={'all-in-one'}>
-      <Title>Adsylabs to rozwiązanie all-in-one</Title>
+      <Title>Adsylabs to rozwiązanie <span className={'whitespace-nowrap'}>all-in-one</span></Title>
       <SubTitle>
         W Adsylabs pomożemy zbadać Twoje potrzeby marketingowe, wybrać eksperta,
         nawiązać współpracę i monitorować rezultaty Twoich kampanii reklamowych w jednym miejscu.
