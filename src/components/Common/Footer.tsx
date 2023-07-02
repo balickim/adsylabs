@@ -23,7 +23,7 @@ const StyledBottomImage = styled(Image)`
   object-fit: cover;
   margin-left: 85%;
 `;
-const InfoContainer = tw.p`
+const InfoContainer = tw.div`
   flex h-full justify-center items-center flex flex-col text-white text-lg
   lg:relative lg:items-start lg:text-2xl lg:w-full
 `;
@@ -33,25 +33,25 @@ function Banner () {
     <BannerContainer>
       <div className={'lg:hidden flex justify-center h-full items-center'}>
         <InfoContainer>
-          <p className={'text-xl mb-2 lg:text-4xl'}>Bezpośredni <b>kontakt</b></p>
-          <p className={'flex items-center gap-2'}><BsSend /> contact@adsylabs.com</p>
-          <p className={'flex items-center gap-2'}><BsPhone />537 896 221</p>
-          <p>NIP: 5213641211</p>
-          <p>Działamy na terenie całej Polski</p>
+          <div className={'text-xl mb-2 lg:text-4xl'}>Bezpośredni <b>kontakt</b></div>
+          <div className={'flex items-center gap-2'}><BsSend /> contact@adsylabs.com</div>
+          <div className={'flex items-center gap-2'}><BsPhone />537 896 221</div>
+          <div>NIP: 5213641211</div>
+          <div>Działamy na terenie całej Polski</div>
         </InfoContainer>
       </div>
 
       <div className={'hidden lg:block'}>
         <InfoContainer>
-          <p className={'text-4xl ml-[15%] mt-8'}>Bezpośredni <b>kontakt</b></p>
+          <div className={'text-4xl ml-[15%] mt-8'}>Bezpośredni <b>kontakt</b></div>
           <div className={'grid ml-[20%] grid-cols-2 gap-y-11 gap-x-10 mt-6'}>
-            <p className={'flex items-center gap-2'}>
+            <div className={'flex items-center gap-2'}>
               <BsSend />
               <a className={'underline'} href="mailto:contact@adsylabs.com">contact@adsylabs.com</a>
-            </p>
-            <p className={'flex items-center gap-2'}>
+            </div>
+            <div className={'flex items-center gap-2'}>
               <BsPhone />537 896 221
-            </p>
+            </div>
             <p className={'min-w-max'}>
               Działamy na terenie całej Polski
             </p>
@@ -187,7 +187,7 @@ function Icons () {
 
 const Footer = () => {
   return (
-    <footer className={'overflow-hidden'}>
+    <footer className={'overflow-hidden mt-16 lg:mt-0'}>
       <Banner />
       <div className="mx-auto max-w-screen-xl">
         <div className={'flex flex-col items-center lg:items-start lg:gap-40 lg:flex-row'}>
