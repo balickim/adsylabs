@@ -10,7 +10,7 @@ import { LANDING_IMAGES_PATH } from 'utils/constants';
 const StyledSection = tw.section`grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-36 relative`;
 const StatsContainer = tw.div`flex flex-col gap-0.5 relative`;
 const StatsItem = styled.div`
-  ${tw`flex flex-col z-1 p-7 text-left lg:py-4 lg:pl-14`}
+  ${tw`flex flex-col z-1 p-4 text-left lg:py-4 lg:pl-14`}
   background: rgba( 255, 255, 255, 0.7 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 20px );

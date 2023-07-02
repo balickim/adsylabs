@@ -1,5 +1,5 @@
 export const SOCIAL_LINKS = {
-  LINKEDIN: '',
+  LINKEDIN: 'https://www.linkedin.com/company/adsylabs',
   FACEBOOK: 'https://www.facebook.com/profile.php?id=100094147950487',
   INSTAGRAM: 'https://instagram.com/adsylabs?igshid=OGQ5ZDc2ODk2ZA==',
 } as const;

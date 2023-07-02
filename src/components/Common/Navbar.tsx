@@ -127,7 +127,7 @@ export const Navbar = () => {
   const MenuItems = () => (
     <>
       <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
-      <MenuItem text={'Cennik'} link={'./pre-register'} />
+      <MenuItem text={'Cennik'} link={'/#pricing'} />
       <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
       <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
         <CtaButton
