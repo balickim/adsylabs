@@ -60,6 +60,7 @@ export const CustomerFormComponent = () => {
                 label={'Email'}
                 labelClasses={'text-white sm:text-black'}
                 error={(touched.email && errors.email) ? errors.email : null}
+                type={'email'}
                 {...getFieldProps('email')}
               />
             </div>
