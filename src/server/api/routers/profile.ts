@@ -23,7 +23,7 @@ export const profileRouter = createTRPCRouter({
       });
     }),
 
-  getRole: protectedProcedure
+  getRole: publicProcedure
     .query( ({ ctx }) => {
       return ctx.prisma.profile.findFirst({
         select: { role: true },
