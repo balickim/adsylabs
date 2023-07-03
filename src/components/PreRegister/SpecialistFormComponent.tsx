@@ -12,7 +12,7 @@ const StyledMain = tw.main`p-4 mt-8`;
 
 export const SpecialistFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync, error } = api.profile.insertSpecialist.useMutation();
+  const { mutateAsync, error } = api.profile.insertSpecialist.useMutation({ retry: 5 });
 
   return (
     <StyledMain>

@@ -12,7 +12,7 @@ interface IThankYouProps {
   primaryEmailAddress: string | undefined
 }
 export default function ClerkAction ({ userId, primaryEmailAddress }: IThankYouProps) {
-  const { mutateAsync } = api.profile.updateClerkUserId.useMutation();
+  const { mutateAsync } = api.profile.updateClerkUserId.useMutation({ retry: 5 });
   const { query, push } = useRouter();
   const { setWasOnboarded } = useLocalStorageStore();
 

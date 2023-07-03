@@ -102,7 +102,7 @@ export const Navbar = () => {
   const {
     data,
     isLoading,
-  } = api.profile.getRole.useQuery(undefined, { enabled: isLoaded && isSignedIn });
+  } = api.profile.getRole.useQuery(undefined, { enabled: isLoaded });
 
   const MenuItem = ({ text, link }: { text: string; link: string }) => (
     <Link href={link} onClick={() => setIsMobileMenuOpen(false)}>

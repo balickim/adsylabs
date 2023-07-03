@@ -13,7 +13,7 @@ const StyledMain = tw.main`p-4 mt-8`;
 
 export const CustomerFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync, error } = api.profile.insertCustomer.useMutation();
+  const { mutateAsync, error } = api.profile.insertCustomer.useMutation({ retry: 5 });
   const { query, push } = useRouter();
 
   return (

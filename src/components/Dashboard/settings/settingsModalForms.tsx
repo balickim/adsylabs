@@ -54,7 +54,7 @@ interface INameSurnameForm {
 }
 
 export function NameSurnameForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync, error } = api.profile.updateSpecialistNameSurname.useMutation();
+  const { mutateAsync, error } = api.profile.updateSpecialistNameSurname.useMutation({ retry: 5 });
 
   return (
     <StyledMain>
@@ -117,7 +117,7 @@ export function NameSurnameForm ({ setShow, refetch }: INameSurnameForm) {
 }
 
 export function TitleForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync, error } = api.profile.updateSpecialistTitle.useMutation();
+  const { mutateAsync, error } = api.profile.updateSpecialistTitle.useMutation({ retry: 5 });
 
   return (
     <StyledMain>
@@ -170,7 +170,7 @@ export function TitleForm ({ setShow, refetch }: INameSurnameForm) {
 }
 
 export function DescriptionForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync, error } = api.profile.updateSpecialistDescription.useMutation();
+  const { mutateAsync, error } = api.profile.updateSpecialistDescription.useMutation({ retry: 5 });
 
   return (
     <StyledMain>
@@ -224,7 +224,7 @@ export function DescriptionForm ({ setShow, refetch }: INameSurnameForm) {
 }
 
 export function ProfileImageForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync } = api.profile.updateProfileImage.useMutation();
+  const { mutateAsync } = api.profile.updateProfileImage.useMutation({ retry: 5 });
 
   return (
     <UploadDropzone<OurFileRouter>
@@ -245,7 +245,7 @@ export function ProfileImageForm ({ setShow, refetch }: INameSurnameForm) {
 }
 
 export function BackgroundImageForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync } = api.profile.updateBackgroundImage.useMutation();
+  const { mutateAsync } = api.profile.updateBackgroundImage.useMutation({ retry: 5 });
 
   return (
     <UploadDropzone<OurFileRouter>
@@ -266,7 +266,7 @@ export function BackgroundImageForm ({ setShow, refetch }: INameSurnameForm) {
 }
 
 export function CaseStudiesForm ({ setShow, refetch }: INameSurnameForm) {
-  const { mutateAsync } = api.profile.updateCaseStudies.useMutation();
+  const { mutateAsync } = api.profile.updateCaseStudies.useMutation({ retry: 5 });
   const { data } = api.profile.getProfileSpecialist.useQuery();
 
   return (
@@ -317,9 +317,9 @@ interface ITagsSpecializationsForm {
 }
 
 export function TagsSpecializationsForm ({ setShow, refetch, selectedTags, customTags }: ITagsSpecializationsForm) {
-  const { mutateAsync, error } = api.profile.updateTagsSpecializations.useMutation();
+  const { mutateAsync, error } = api.profile.updateTagsSpecializations.useMutation({ retry: 5 });
   const { data } = api.profile.getTagsSpecializations.useQuery();
-  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagSpecialization.useMutation();
+  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagSpecialization.useMutation({ retry: 5 });
   const { formatMessage: t } = useIntl();
 
   const selectedOptions = selectedTags.map(obj => obj.tagsspecialization);
@@ -431,8 +431,8 @@ interface ITagsLanguagesForm {
 }
 
 export function TagsLanguagesForm ({ setShow, refetch, selectedTags, customTags }: ITagsLanguagesForm) {
-  const { mutateAsync, error } = api.profile.updateTagsLanguages.useMutation();
-  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagLanguage.useMutation();
+  const { mutateAsync, error } = api.profile.updateTagsLanguages.useMutation({ retry: 5 });
+  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagLanguage.useMutation({ retry: 5 });
   const { data } = api.profile.getTagsLanguages.useQuery();
   const { formatMessage: t } = useIntl();
 
@@ -543,8 +543,8 @@ interface ITagsIndustriesForm {
 }
 
 export function TagsIndustriesForm ({ setShow, refetch, selectedTags, customTags }: ITagsIndustriesForm) {
-  const { mutateAsync, error } = api.profile.updateTagsIndustries.useMutation();
-  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagIndustry.useMutation();
+  const { mutateAsync, error } = api.profile.updateTagsIndustries.useMutation({ retry: 5 });
+  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagIndustry.useMutation({ retry: 5 });
   const { data } = api.profile.getTagsIndustries.useQuery();
   const { formatMessage: t } = useIntl();
 
@@ -655,8 +655,8 @@ interface ITagsPlatformsForm {
 }
 
 export function TagsPlatformsForm ({ setShow, refetch, selectedTags, customTags }: ITagsPlatformsForm) {
-  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagPlatform.useMutation();
-  const { mutateAsync, error } = api.profile.updateTagsPlatforms.useMutation();
+  const { mutate: mutateCustomTags } = api.profile.updateSpecialistCustomTagPlatform.useMutation({ retry: 5 });
+  const { mutateAsync, error } = api.profile.updateTagsPlatforms.useMutation({ retry: 5 });
   const { data } = api.profile.getTagsPlatforms.useQuery();
 
   const selectedOptions = selectedTags.map(obj => obj.tagsplatform);
