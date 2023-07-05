@@ -15,6 +15,7 @@ import pl from 'locale/pl.json';
 import { api } from 'utils/api';
 import { isBrowser } from 'utils/helpers';
 import { IntlProvider } from 'react-intl';
+import { MetaPixelScript } from 'components/Common/externalScripts';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -50,6 +51,7 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
         <meta name="theme-color" content="#000000" />
       </Head>
 
+      <MetaPixelScript />
       <Analytics />
       <ClerkProvider
         localization={clerkPl}
