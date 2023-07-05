@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 import { LANDING_IMAGES_PATH } from 'utils/constants';
-import { SubTitleLeft } from 'components/Index/styled';
 import { CtaButton } from 'components/Common/styled';
 
 const StyledSection = tw.section`mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0`;
 const Title = tw.h1`text-2xl tracking-tight text-gray-900 lg:text-3xl xl:text-4xl xl:w-[690px]`;
+const SubTitle = tw.h3`text-lg text-textBase mt-2 lg:w-[550px]`;
 
 const Top = () => {
   return (
@@ -17,10 +17,10 @@ const Top = () => {
         <Title>
           Zatrudnij specjalistów marketingu <br className={'hidden xl:block'}/>i śledź wyniki kampanii w czasie rzeczywistym!
         </Title>
-        <SubTitleLeft>
+        <SubTitle>
           Adsylabs.com pomoże Ci znaleźć zweryfikowanych specjalistów marketingu i
           śledzić wyniki prowadzonych przez nich kampanii reklamowych w czasie rzeczywistym, bez ryzyka.
-        </SubTitleLeft>
+        </SubTitle>
 
         <Link href="./pre-register">
           <div className={'flex justify-start'}>
