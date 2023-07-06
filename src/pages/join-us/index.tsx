@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
+import Head from 'next/head';
 
 import { Motion } from 'utils/helpers/framerMotion';
 import Layout from 'components/Common/Layout';
@@ -14,6 +15,7 @@ import Video from 'components/JoinUs/Video';
 import { HotJarScript } from 'components/Common/externalScripts';
 import { FadeGradientContainer } from 'utils/helpers';
 import { ExcerptCta, SpecialistExcerpt } from 'components/Faq/Excerpts';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-8 flex flex-col`;
 const ExcerptContainer = tw.div`h-[500px]`;
@@ -21,6 +23,9 @@ const ExcerptContainer = tw.div`h-[500px]`;
 export default function JoinUsPage () {
   return (
     <>
+      <Head>
+        <meta property="og:image" content={LANDING_IMAGES_PATH.SPECIALISTS_CTA_2} />
+      </Head>
       <HotJarScript />
       <Main>
         <Motion>
