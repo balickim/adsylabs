@@ -30,6 +30,8 @@ export default function HomePage () {
     <>
       <Head>
         <meta property="og:title" content={'Twój marketing w jednym miejscu'} key="title" />
+      </Head>
+      <Head>
         <meta property="og:image" content={LANDING_IMAGES_PATH.ALL_IN_ONE_1} key="image" />
       </Head>
       <HotJarScript />
