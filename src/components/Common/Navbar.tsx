@@ -47,7 +47,7 @@ const End = tw.div`
 `;
 
 const Logo = () => (
-  <Link href="/" className="flex mr-8">
+  <Link href="/" className="flex pb-2 mr-8">
     <Image
       src={LANDING_IMAGES_PATH.LOGO}
       alt="Adsylabs Logo"
