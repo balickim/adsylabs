@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import tw from 'twin.macro';
+import Head from 'next/head';
 
 import Layout from 'components/Common/Layout';
 import Footer from 'components/Common/Footer';
@@ -16,6 +17,7 @@ import { HotJarScript } from 'components/Common/externalScripts';
 import { CustomerExcerpt, ExcerptCta } from 'components/Faq/Excerpts';
 import { FadeGradientContainer } from 'utils/helpers';
 import AllInOne from 'components/Index/AllInOne';
+import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
 const ExcerptContainer = tw.div`h-[400px]`;
@@ -26,6 +28,10 @@ export default function HomePage () {
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content={'Twój marketing w jednym miejscu'} key="title" />
+        <meta property="og:image" content={LANDING_IMAGES_PATH.ALL_IN_ONE_1} key="image" />
+      </Head>
       <HotJarScript />
       <Main>
         <Motion>
