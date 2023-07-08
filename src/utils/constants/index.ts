@@ -26,10 +26,7 @@ export const LANDING_IMAGES_PATH = {
   SHAPE_2: '/static/image/landing/shape_2.png',
   FAQ: '/static/image/landing/faq.png',
   WAVING_HAND: '/static/image/landing/waving_hand.png',
-  ALL_IN_ONE_1: '/static/image/landing/all_in_one_1.webp',
-  ALL_IN_ONE_2: '/static/image/landing/all_in_one_2.webp',
-  ALL_IN_ONE_3: '/static/image/landing/all_in_one_3.webp',
-  ALL_IN_ONE_4: '/static/image/landing/all_in_one_4.webp',
+  ALL_IN_ONE_1_COMPRESSED: '/static/image/landing/all_in_one_1_compressed.webp',
 } as const;
 
 export const DASHBOARD_IMAGES_PATH = {
