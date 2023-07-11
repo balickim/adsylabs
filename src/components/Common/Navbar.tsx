@@ -11,7 +11,6 @@ import { useRouter } from 'next/router';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { CtaButton } from 'components/Common/styled';
 import React from 'react';
-import { useLocalStorageStore } from 'store';
 import { api } from 'utils/api';
 import { ROLES } from '@prisma/client';
 
@@ -98,11 +97,11 @@ export const Navbar = () => {
   const { isLoaded, isSignedIn, signOut } = useAuth();
   const { pathname } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const { wasOnboarded } = useLocalStorageStore();
   const {
     data,
     isLoading,
   } = api.profile.getRole.useQuery(undefined, { enabled: isLoaded });
+  const isJoinUs = pathname.includes('join-us');
 
   const MenuItem = ({ text, link }: { text: string; link: string }) => (
     <Link href={link} onClick={() => setIsMobileMenuOpen(false)}>
@@ -119,7 +118,7 @@ export const Navbar = () => {
         version={'primary'}
         type="button"
       >
-        {pathname.includes('join-us') ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
+        {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
       </CtaButton>
     </Link>
   );
@@ -135,7 +134,7 @@ export const Navbar = () => {
           type="button"
           className={'md:hidden'}
         >
-          {pathname.includes('join-us') ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
+          {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
         </CtaButton>
       </Link>
     </>
@@ -176,7 +175,7 @@ export const Navbar = () => {
             ? data && data.role === ROLES.SPECIALIST
               ? <DashboardButton />
               : <LogoutButton signOut={signOut} />
-            : wasOnboarded
+            : isJoinUs
               ? <LoginButton />
               : null
         }

@@ -1,5 +1,5 @@
 import tw from 'twin.macro';
-import { SignUp } from '@clerk/nextjs';
+import { SignUp, useAuth } from '@clerk/nextjs';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -44,6 +44,7 @@ export function getRedirectUrl (variant: IDesktop['variant'], profileId: string)
 
 const Desktop = ({ variant }: IDesktop) => {
   const store = usePreRegistrationStore();
+  const { isSignedIn } = useAuth();
 
   return (
     <MainContainer>
@@ -89,15 +90,13 @@ const Desktop = ({ variant }: IDesktop) => {
               </>
             }
           />
-          {store.step === 0
-            ? <>{variant === 'customer' ? <CustomerFormComponent /> : <SpecialistFormComponent />}</>
-            : <SignUpContainer>
-              <SignUp
-                routing={'virtual'}
-                redirectUrl={getRedirectUrl(variant, store.profileId)}
-              />
-            </SignUpContainer>
-          }
+          {store.step === 0 ? <>{variant === 'customer' ? <CustomerFormComponent /> : <SpecialistFormComponent />}</> : null}
+          {(store.step === 1 && !isSignedIn) ? <SignUpContainer>
+            <SignUp
+              routing={'virtual'}
+              redirectUrl={getRedirectUrl(variant, store.profileId)}
+            />
+          </SignUpContainer> : null}
         </Right>
       </Container>
     </MainContainer>

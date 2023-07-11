@@ -1,6 +1,8 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import tw from 'twin.macro';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 import { Motion } from 'utils/helpers/framerMotion';
 import Layout from 'components/Common/Layout';
@@ -21,6 +23,17 @@ export const Main = tw.main`min-h-screen px-6 sm:px-10 md:px-16 lg:px-24 xl:px-3
 const ExcerptContainer = tw.div`h-[500px]`;
 
 export default function JoinUsPage () {
+  const { query } = useRouter();
+  useEffect(() => {
+    if (query.error) {
+      if (query.error === 'P2002') {
+        toast('To konto jest już w użyciu.', { duration: 6000, icon: '👏' });
+      } else {
+        toast(query.error as string);
+      }
+    }
+  }, [query]);
+
   return (
     <>
       <Head>

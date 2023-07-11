@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
-import { SignIn } from '@clerk/nextjs';
+import { SignUp } from '@clerk/nextjs';
 
 import Layout from 'components/Common/Layout';
 
 export default function SignInPage () {
   return <main className='h-screen flex items-center justify-center'>
-    <SignIn
-      path="/sign-in"
+    <SignUp
+      path="/sign-up"
       routing="path"
       afterSignUpUrl={'/join-us/pre-register?onboarding=1'}
       afterSignInUrl={'/dashboard'}

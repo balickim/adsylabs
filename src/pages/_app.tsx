@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
 
 import 'styles/main.css';
 import '@uploadthing/react/styles.css';
@@ -29,7 +30,7 @@ const messages = {
   pl,
 };
 
-const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
+const App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { push, events, locale } = useRouter();
   const [ loading, setLoading ] = useState(false);
   isBrowser() && events.on('routeChangeStart', () => setLoading(true));
@@ -53,6 +54,8 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
 
       <MetaPixelScript />
       <Analytics />
+      <Toaster/>
+
       <ClerkProvider
         localization={clerkPl}
         appearance={{
@@ -74,4 +77,4 @@ const _App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
   );
 };
 
-export default api.withTRPC(_App);
+export default api.withTRPC(App);

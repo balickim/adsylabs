@@ -7,12 +7,20 @@ import { usePreRegistrationStore } from 'store';
 import { api } from 'utils/api';
 import { preRegisterSpecialistSchema } from 'validation/preRegisterSchema';
 import { ROLES } from '@prisma/client';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 const StyledMain = tw.main`p-4 mt-8`;
 
 export const SpecialistFormComponent = () => {
   const store = usePreRegistrationStore();
-  const { mutateAsync, error } = api.profile.insertSpecialist.useMutation({ retry: 5 });
+  const { push } = useRouter();
+  const { user } = useUser();
+  const { mutateAsync, error, isLoading } = api.profile.insertSpecialist.useMutation({
+    onError: (e) => toast.error(`Wystąpił błąd ${e.message}`),
+    retry: 3,
+  });
 
   return (
     <StyledMain>
@@ -22,28 +30,23 @@ export const SpecialistFormComponent = () => {
           linkedinUrl: '',
         }}
         validationSchema={toFormikValidationSchema(preRegisterSpecialistSchema)}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
+        onSubmit={async (values, { resetForm }) => {
           mutateAsync({
             name: values.name,
             linkedinUrl: values.linkedinUrl,
             role: ROLES.SPECIALIST,
-          })
-            .then((profileId) => {
-              store.setProfileId(profileId);
-              resetForm();
-              store.setStep(1);
-            })
-            .catch((reason) => console.error(reason))
-            .finally(() => {
-              setSubmitting(false);
-            });
+            clerk_user_id: user?.id,
+          }).then((profileId) => {
+            store.setProfileId(profileId);
+            resetForm();
+            user?.id ? push('/dashboard/settings') : store.setStep(1);
+          }).catch((reason) => console.error(reason));
         }}
       >
         {({
           touched,
           errors,
           getFieldProps,
-          isSubmitting,
         }) => (
           <Form>
             <div className="mt-3 grid gap-6 mb-6 lg:w-4/5">
@@ -65,7 +68,7 @@ export const SpecialistFormComponent = () => {
               version={'primary'}
               type={'submit'}
               className={'!rounded-md !bg-white !text-primary sm:!bg-primary sm:!text-white'}
-              isLoading={isSubmitting}
+              isLoading={isLoading}
             >
               <p className={'sm:hidden'}>Dalej →</p>
               <p className={'hidden sm:block'}>Zapisz się</p>
