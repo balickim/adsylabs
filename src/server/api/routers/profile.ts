@@ -55,7 +55,10 @@ export const profileRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       return ctx.prisma.profile.update({
         where: { id: input.profile_id },
-        data: { clerk_user_id: input.clerk_user_id, email: input.email },
+        data: {
+          clerk_user_id: input.clerk_user_id || ctx.auth.userId,
+          email: input.email || ctx.auth.user?.emailAddresses[0]?.emailAddress,
+        },
       });
     }),
 
@@ -63,16 +66,16 @@ export const profileRouter = createTRPCRouter({
     .input(preRegisterSpecialistSchema)
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.$transaction(async (tx) => {
-        const profile = await tx.profile.create({ data: { name: input.name, role: input.role } });
-        await tx.profile_specialist.create(
-          {
-            data:
-              {
-                profile_id: profile.id,
-                linkedin_url: input.linkedinUrl,
-              },
-          }
-        );
+        const profile = await tx.profile.create({ data: {
+          name: input.name,
+          role: input.role,
+          clerk_user_id: input.clerk_user_id,
+        } });
+
+        await tx.profile_specialist.create({ data: {
+          profile_id: profile.id,
+          linkedin_url: input.linkedinUrl,
+        } });
 
         return profile.id;
       });

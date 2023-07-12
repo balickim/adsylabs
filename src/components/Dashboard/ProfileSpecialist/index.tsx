@@ -1,4 +1,4 @@
-import React, { HTMLProps, useState } from 'react';
+import React, { HTMLProps, useEffect, useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
 import tw from 'twin.macro';
 import Image from 'next/image';
@@ -24,6 +24,7 @@ import { api } from 'utils/api';
 import { DASHBOARD_IMAGES_PATH } from 'utils/constants';
 import { openLink } from 'utils/helpers';
 import { ProfileLoader } from 'utils/helpers/skeletonLoaders';
+import toast from 'react-hot-toast';
 
 const StyledTagSpan = tw.span`flex justify-center items-center text-white p-2 text-xxs w-fit rounded-xl md:text-sm`;
 
@@ -44,14 +45,20 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
     data: dataProfile,
     refetch: refetchProfile,
     isLoading,
-    error: errorProfile,
-  } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded });
+    isError,
+  } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded, retry: 3 });
   const {
     data: dataProfileSpecialist,
     refetch: refetchProfileSpecialist,
     isLoading: isLoadingSpecialist,
-    error: errorProfileSpecialist,
-  } = api.profile.getProfileSpecialist.useQuery(undefined, { enabled: isLoaded });
+    isError: isErrorSpecialist,
+  } = api.profile.getProfileSpecialist.useQuery(undefined, { enabled: isLoaded, retry: 3 });
+
+  useEffect(() => {
+    if (isError || isErrorSpecialist) {
+      toast.error('Wystąpił błąd. Odśwież stronę lub skontaktuj się z z nami na contact@adsylabs.com');
+    }
+  }, [isError, isErrorSpecialist]);
 
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState<JSX.Element>();
@@ -73,8 +80,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
       : null
   );
 
-  if (errorProfile || errorProfileSpecialist) return <div className={'text-red-500'}>{JSON.stringify(errorProfile)} {JSON.stringify(errorProfileSpecialist)}</div>;
-  if (isLoading || isLoadingSpecialist || !dataProfile || !dataProfileSpecialist) return <ProfileLoader />;
+  if (isLoading || isLoadingSpecialist) return <ProfileLoader />;
 
   return (
     <>
@@ -111,7 +117,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex justify-center'}>
             <EditButtonContainer>
               <Image
-                src={dataProfile.image_url ? dataProfile.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
+                src={dataProfile!.image_url ? dataProfile!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
                 alt="profile image"
                 width={80}
                 height={80}
@@ -126,13 +132,13 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
 
           <h2 className={'flex justify-center text-dashboardPrimary text-lg text-center my-2 font-bold'}>
-            <EditButtonContainer>{dataProfile.name} {dataProfile.surname}
+            <EditButtonContainer>{dataProfile!.name} {dataProfile!.surname}
               <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
             </EditButtonContainer>
           </h2>
           <span className={'flex justify-center text-textBase text-center'}>
-            <EditButtonContainer>{dataProfileSpecialist.title
-              ? dataProfileSpecialist.title
+            <EditButtonContainer>{dataProfileSpecialist!.title
+              ? dataProfileSpecialist!.title
               : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
             }
             <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetchProfileSpecialist} />} />
@@ -144,7 +150,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex justify-start md:ml-14'}>
             <EditButtonContainer>
               <Image
-                src={dataProfile.image_url ? dataProfile.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
+                src={dataProfile!.image_url ? dataProfile!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
                 alt="profile image"
                 width={150}
                 height={150}
@@ -159,13 +165,13 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
 
             <div className={'flex flex-col ml-4 mt-8'}>
               <h2 className={'flex text-dashboardPrimary text-lg text-center my-2 font-bold'}>
-                <EditButtonContainer>{dataProfile.name} {dataProfile.surname}
+                <EditButtonContainer>{dataProfile!.name} {dataProfile!.surname}
                   <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
                 </EditButtonContainer>
               </h2>
               <div className={'flex justify-center text-textBase text-center max-w-2xl md:justify-start md:text-left'}>
-                <EditButtonContainer>{dataProfileSpecialist.title
-                  ? dataProfileSpecialist.title
+                <EditButtonContainer>{dataProfileSpecialist!.title
+                  ? dataProfileSpecialist!.title
                   : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
                 }
                 <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetchProfileSpecialist} />} />
@@ -189,8 +195,8 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
             </EditButtonContainer>
           </div>
           <div className={'text-textBase max-w-4xl'}>
-            {dataProfileSpecialist.description
-              ? dataProfileSpecialist.description
+            {dataProfileSpecialist!.description
+              ? dataProfileSpecialist!.description
               : `Np. Jestem doświadczonym specjalistą Facebook Ads z ponad 5 latami
                   doświadczenia w branży reklamowej. Moja pasja do marketingu online i
                   analizy danych pozwala mi na tworzenie kampanii reklamowych,
@@ -210,9 +216,9 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
               <EditButton classes={'mt-0'} modalTitle={'Zamieść swoje Case Studies'} modalBody={<CaseStudiesForm refetch={refetchProfileSpecialist} setShow={setShowModal} /> } />
             </EditButtonContainer>
           </div>
-          {dataProfileSpecialist.case_studies_urls.length
+          {dataProfileSpecialist!.case_studies_urls.length
             ? <ul>
-              {dataProfileSpecialist.case_studies_urls.map((e, i) =>
+              {dataProfileSpecialist!.case_studies_urls.map((e, i) =>
                 <li key={i} className={'inline items-center'}>
                   <button onClick={() => openLink(e)}>
                     <AiOutlineFilePdf className={'md:hidden'} size={48} />
@@ -233,10 +239,10 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 classes={'mt-0'}
                 modalTitle={'Ustaw specjalizacje'}
                 modalBody={<TagsSpecializationsForm
-                  setShow={setShowModal} 
+                  setShow={setShowModal}
                   refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist.tagsspecialization}
-                  customTags={dataProfileSpecialist.custom_tags_specialization}
+                  selectedTags={dataProfileSpecialist!.tagsspecialization}
+                  customTags={dataProfileSpecialist!.custom_tags_specialization}
                 />
                 }
               />
@@ -244,16 +250,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist.tagsspecialization.length || dataProfileSpecialist.custom_tags_specialization.length
-            ? dataProfileSpecialist.tagsspecialization.map((e) =>
+          {dataProfileSpecialist!.tagsspecialization.length || dataProfileSpecialist!.custom_tags_specialization.length
+            ? dataProfileSpecialist!.tagsspecialization.map((e) =>
               <StyledTagSpan key={e.tagsspecialization.id} className={'bg-green-500'}>
                 {t({ id: `dashboard.settings.specialization.${e.tagsspecialization.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist.custom_tags_specialization.length
-            ? dataProfileSpecialist.custom_tags_specialization.map((e) =>
+          {dataProfileSpecialist!.custom_tags_specialization.length
+            ? dataProfileSpecialist!.custom_tags_specialization.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -272,8 +278,8 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalBody={<TagsIndustriesForm
                   setShow={setShowModal}
                   refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist.tagsindustry}
-                  customTags={dataProfileSpecialist.custom_tags_industry}
+                  selectedTags={dataProfileSpecialist!.tagsindustry}
+                  customTags={dataProfileSpecialist!.custom_tags_industry}
                 />
                 }
               />
@@ -281,16 +287,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist.tagsindustry.length || dataProfileSpecialist.custom_tags_industry.length
-            ? dataProfileSpecialist.tagsindustry.map((e) =>
+          {dataProfileSpecialist!.tagsindustry.length || dataProfileSpecialist!.custom_tags_industry.length
+            ? dataProfileSpecialist!.tagsindustry.map((e) =>
               <StyledTagSpan key={e.tagsindustry.id} className={'bg-fuchsia-600'}>
                 {t({ id: `dashboard.settings.industry.${e.tagsindustry.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist.custom_tags_industry.length
-            ? dataProfileSpecialist.custom_tags_industry.map((e) =>
+          {dataProfileSpecialist!.custom_tags_industry.length
+            ? dataProfileSpecialist!.custom_tags_industry.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -309,8 +315,8 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalBody={<TagsLanguagesForm
                   setShow={setShowModal}
                   refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist.tagslanguage}
-                  customTags={dataProfileSpecialist.custom_tags_language}
+                  selectedTags={dataProfileSpecialist!.tagslanguage}
+                  customTags={dataProfileSpecialist!.custom_tags_language}
                 />
                 }
               />
@@ -318,16 +324,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist.tagslanguage.length || dataProfileSpecialist.custom_tags_language.length
-            ? dataProfileSpecialist.tagslanguage.map((e) =>
+          {dataProfileSpecialist!.tagslanguage.length || dataProfileSpecialist!.custom_tags_language.length
+            ? dataProfileSpecialist!.tagslanguage.map((e) =>
               <StyledTagSpan key={e.tagslanguage.id} className={'bg-blue-800'}>
                 {t({ id: `dashboard.settings.language.${e.tagslanguage.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist.custom_tags_language.length
-            ? dataProfileSpecialist.custom_tags_language.map((e) =>
+          {dataProfileSpecialist!.custom_tags_language.length
+            ? dataProfileSpecialist!.custom_tags_language.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -346,8 +352,8 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalBody={<TagsPlatformsForm
                   setShow={setShowModal}
                   refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist.tagsplatform}
-                  customTags={dataProfileSpecialist.custom_tags_platform}
+                  selectedTags={dataProfileSpecialist!.tagsplatform}
+                  customTags={dataProfileSpecialist!.custom_tags_platform}
                 />
                 }
               />
@@ -355,16 +361,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist.tagsplatform.length || dataProfileSpecialist.custom_tags_platform.length
-            ? dataProfileSpecialist.tagsplatform.map((e) =>
+          {dataProfileSpecialist!.tagsplatform.length || dataProfileSpecialist!.custom_tags_platform.length
+            ? dataProfileSpecialist!.tagsplatform.map((e) =>
               <StyledTagSpan key={e.tagsplatform.id} className={'bg-orange-600'}>
                 {e.tagsplatform.name.charAt(0).toUpperCase() + e.tagsplatform.name.slice(1)}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist.custom_tags_platform.length
-            ? dataProfileSpecialist.custom_tags_platform.map((e) =>
+          {dataProfileSpecialist!.custom_tags_platform.length
+            ? dataProfileSpecialist!.custom_tags_platform.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>

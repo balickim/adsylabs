@@ -33,6 +33,7 @@ model profile {
     updated_at                  DateTime    @updatedAt
     deleted_at                  DateTime?
 
+    // TODO fix this to not be an array
     profiles_customers          profile_customer[]
     profiles_specialists        profile_specialist[]
 }

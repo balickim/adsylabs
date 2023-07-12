@@ -1,11 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import type { NextPage } from 'next';
-import { getAuth } from '@clerk/nextjs/server';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 
 import Mobile from 'components/PreRegister/Mobile';
 import Desktop from 'components/PreRegister/Desktop';
+import { getAuth } from '@clerk/nextjs/server';
 
 const PreRegister: NextPage = () => {
   return (
@@ -23,12 +22,15 @@ const PreRegister: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { userId } = getAuth(ctx.req);
+  const { onboarding } = ctx.query;
 
-  if (userId) {
+  // TODO jeśli jest specjalistą to redirect na /dashboard
+
+  if (userId && !onboarding) {
     return {
       redirect: {
         permanent: false,
-        destination: '/thank-you',
+        destination: encodeURI('/join-us?error=Jesteś już zalogowany :)'),
       },
       props:{},
     };

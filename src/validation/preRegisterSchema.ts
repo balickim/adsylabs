@@ -29,10 +29,11 @@ export const preRegisterSpecialistSchema = z.object({
   name: props.name,
   linkedinUrl: props.linkedinUrl,
   role: props.role,
+  clerk_user_id: z.string().optional(),
 });
 
 export const preRegisterUserClerkSchema = z.object({
   profile_id: z.string(),
-  clerk_user_id: z.string(),
+  clerk_user_id: z.string().optional(),
   email: z.string().optional(),
 });

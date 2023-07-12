@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 export const publicRoutes = [
   '/',
-  '/api/(.*)',
+  '/api(.*)',
   '/join-us(.*)',
   '/pre-register',
   '/faq',
@@ -17,16 +17,19 @@ export const publicRoutes = [
 export default authMiddleware({
   publicRoutes,
   afterAuth (auth, req) {
+    const home = new URL('/', req.url);
+    if (!auth.userId && !auth.isPublicRoute) {
+      return NextResponse.redirect(home);
+    }
     if (req.nextUrl.pathname.includes('admin-panel')) {
-      const home = new URL('/', req.url);
-      if (!auth.userId) return NextResponse.rewrite(home);
+      if (!auth.userId) return NextResponse.redirect(home);
 
       return clerkClient.users.getUser(auth.userId)
         .then((user) => {
-          if (!user) return NextResponse.rewrite(home);
+          if (!user) return NextResponse.redirect(home);
           if (user.publicMetadata.role !== 'admin') return NextResponse.redirect(home);
         })
-        .catch(() => NextResponse.rewrite(home));
+        .catch(() => NextResponse.redirect(home));
     }
 
     return NextResponse.next();

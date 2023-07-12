@@ -39,7 +39,7 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Role" />
     ),
-    cell: ({ row }) => <div className="w-[50px]">{row.getValue('role')}</div>,
+    cell: ({ row }) => <div className="w-[90px]">{row.getValue('role')}</div>,
   },
   {
     accessorKey: 'created_at',
