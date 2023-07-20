@@ -21,7 +21,7 @@ enum ROLES {
 }
 
 model profile {
-    id                          String      @id @default(cuid())
+    id                          String      @id @unique @default(cuid())
     role                        ROLES       @default(CUSTOMER)
     clerk_user_id               String?     @unique
     email                       String?
@@ -33,22 +33,21 @@ model profile {
     updated_at                  DateTime    @updatedAt
     deleted_at                  DateTime?
 
-    // TODO fix this to not be an array
-    profiles_customers          profile_customer[]
-    profiles_specialists        profile_specialist[]
+    profile_customer            profile_customer?    @relation("profile_customer_profile", map: "profile_profile_customer")
+    profile_specialist          profile_specialist?  @relation("profile_specialist_profile", map: "profile_profile_specialist")
 }
 
 model profile_customer {
-    profile                     profile     @relation(fields: [profile_id], references: [id])
-    profile_id                  String      @id
+    profile                     profile     @relation("profile_customer_profile", fields: [profile_id], references: [id])
+    profile_id                  String      @id @unique
     company_name                String?
     pay_plan                    PAY_PLANS?
     updated_at                  DateTime    @updatedAt
 }
 
 model profile_specialist {
-    profile                     profile     @relation(fields: [profile_id], references: [id])
-    profile_id                  String      @id
+    profile                     profile     @relation("profile_specialist_profile", fields: [profile_id], references: [id])
+    profile_id                  String      @id @unique
     linkedin_url                String?
     title                       String?     @db.VarChar(100)
     description                 String?     @db.VarChar(500)
@@ -127,4 +126,21 @@ model profile_specialist_tagsplatform {
     tagsplatform_id             String
 
     @@id([profile_id, tagsplatform_id])
+}
+
+enum PosterSource {
+    RAW
+    GITHUB
+}
+
+model message {
+    id     String       @id @default(uuid())
+    name   String
+    text   String
+    source PosterSource @default(RAW)
+
+    // To return `Date`s intact through the API we need to add data transformers
+    // https://trpc.io/docs/data-transformers
+    createdAt DateTime @unique @default(now())
+    updatedAt DateTime @unique @default(now())
 }

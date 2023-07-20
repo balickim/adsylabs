@@ -1,12 +1,13 @@
 import { z } from 'zod';
 
-export const schema = z.object({
-  name: z.string().optional(),
-  surname: z.string().optional(),
-  clerk_user_id: z.string().optional(),
-  email: z.string().optional(),
-  created_at: z.string().optional(),
-  role: z.any(),
+export const userSchema = z.object({
+  id: z.any().optional(),
+  name: z.any().optional(),
+  surname: z.any().optional(),
+  clerk_user_id: z.any().optional(),
+  email: z.any().optional(),
+  created_at: z.any().optional(),
+  role: z.any().optional(),
 });
 
-export type Task = z.infer<typeof schema>
+export type User = z.infer<typeof userSchema>

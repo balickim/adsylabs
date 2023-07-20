@@ -25,6 +25,7 @@ import { DASHBOARD_IMAGES_PATH } from 'utils/constants';
 import { openLink } from 'utils/helpers';
 import { ProfileLoader } from 'utils/helpers/skeletonLoaders';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 const StyledTagSpan = tw.span`flex justify-center items-center text-white p-2 text-xxs w-fit rounded-xl md:text-sm`;
 
@@ -41,24 +42,20 @@ interface IEditButton {
 
 export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
   const { isLoaded } = useAuth();
+  const { query } = useRouter();
+  const { id } = query;
   const {
-    data: dataProfile,
-    refetch: refetchProfile,
+    data,
+    refetch,
     isLoading,
     isError,
-  } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded, retry: 3 });
-  const {
-    data: dataProfileSpecialist,
-    refetch: refetchProfileSpecialist,
-    isLoading: isLoadingSpecialist,
-    isError: isErrorSpecialist,
-  } = api.profile.getProfileSpecialist.useQuery(undefined, { enabled: isLoaded, retry: 3 });
+  } = api.profile.getProfile.useQuery({ id: id as string }, { enabled: isLoaded, retry: 3 });
 
   useEffect(() => {
-    if (isError || isErrorSpecialist) {
+    if (isError) {
       toast.error('Wystąpił błąd. Odśwież stronę lub skontaktuj się z z nami na contact@adsylabs.com');
     }
-  }, [isError, isErrorSpecialist]);
+  }, [isError]);
 
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState<JSX.Element>();
@@ -68,6 +65,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
   const EditButtonContainer = canEdit
     ? tw.div`flex items-start justify-end gap-x-1`
     : tw.div``;
+
   const EditButton = ({ classes, size, modalBody, modalTitle }: IEditButton) => (
     canEdit
       ? <button onClick={() => {
@@ -80,7 +78,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
       : null
   );
 
-  if (isLoading || isLoadingSpecialist) return <ProfileLoader />;
+  if (isLoading) return <ProfileLoader />;
 
   return (
     <>
@@ -91,25 +89,25 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
         show={showModal}
         setShow={setShowModal}
       />
-      <main className={'bg-white rounded-3xl p-4'}>
+      <main className={'bg-white rounded-3xl p-4 min-h-screen'}>
         <EditButtonContainer>
           <div className={'flex bg-gray-200 rounded-3xl justify-center items-center w-full h-60 text-gray-400 font-bold'}>
-            {dataProfile && dataProfile.background_image_url
+            {data && data.background_image_url
               ? <div className={'relative h-full w-full left-0 top-0'}>
                 <Image
-                  src={dataProfile.background_image_url}
+                  src={data.background_image_url}
                   alt="profile background image"
                   fill
                   style={{ objectFit: 'contain' }}
                 />
               </div> : <p>
-                Kliknij i ustaw swoje zdjęcie w tle
+                {canEdit ? <>Kliknij i ustaw swoje zdjęcie w tle</> : null}
               </p>}
           </div>
           <EditButton
             classes={'mt-[0px]'}
             modalTitle={'Ustaw zdjęcie w tle'}
-            modalBody={<BackgroundImageForm setShow={setShowModal} refetch={refetchProfile} /> }
+            modalBody={<BackgroundImageForm setShow={setShowModal} refetch={refetch} /> }
           />
         </EditButtonContainer>
 
@@ -117,7 +115,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex justify-center'}>
             <EditButtonContainer>
               <Image
-                src={dataProfile!.image_url ? dataProfile!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
+                src={data!.image_url ? data!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
                 alt="profile image"
                 width={80}
                 height={80}
@@ -126,22 +124,22 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
               <EditButton
                 classes={'mt-[-60px]'}
                 modalTitle={'Ustaw zdjęcie profilowe'}
-                modalBody={<ProfileImageForm setShow={setShowModal} refetch={refetchProfile} /> }
+                modalBody={<ProfileImageForm setShow={setShowModal} refetch={refetch} /> }
               />
             </EditButtonContainer>
           </div>
 
           <h2 className={'flex justify-center text-dashboardPrimary text-lg text-center my-2 font-bold'}>
-            <EditButtonContainer>{dataProfile!.name} {dataProfile!.surname}
-              <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
+            <EditButtonContainer>{data!.name} {data!.surname}
+              <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetch} />} modalTitle={'Ustaw imię i nazwisko'} />
             </EditButtonContainer>
           </h2>
           <span className={'flex justify-center text-textBase text-center'}>
-            <EditButtonContainer>{dataProfileSpecialist!.title
-              ? dataProfileSpecialist!.title
+            <EditButtonContainer>{data!.profile_specialist!.title
+              ? data!.profile_specialist!.title
               : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
             }
-            <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetchProfileSpecialist} />} />
+            <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetch} />} />
             </EditButtonContainer>
           </span>
         </div>
@@ -150,7 +148,7 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex justify-start md:ml-14'}>
             <EditButtonContainer>
               <Image
-                src={dataProfile!.image_url ? dataProfile!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
+                src={data!.image_url ? data!.image_url : DASHBOARD_IMAGES_PATH.AVATAR}
                 alt="profile image"
                 width={150}
                 height={150}
@@ -159,22 +157,22 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
               <EditButton
                 classes={'mt-[-40px]'}
                 modalTitle={'Ustaw zdjęcie profilowe'}
-                modalBody={<ProfileImageForm setShow={setShowModal} refetch={refetchProfile} /> }
+                modalBody={<ProfileImageForm setShow={setShowModal} refetch={refetch} /> }
               />
             </EditButtonContainer>
 
             <div className={'flex flex-col ml-4 mt-8'}>
               <h2 className={'flex text-dashboardPrimary text-lg text-center my-2 font-bold'}>
-                <EditButtonContainer>{dataProfile!.name} {dataProfile!.surname}
-                  <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetchProfile} />} modalTitle={'Ustaw imię i nazwisko'} />
+                <EditButtonContainer>{data!.name} {data!.surname}
+                  <EditButton modalBody={<NameSurnameForm setShow={setShowModal} refetch={refetch} />} modalTitle={'Ustaw imię i nazwisko'} />
                 </EditButtonContainer>
               </h2>
               <div className={'flex justify-center text-textBase text-center max-w-2xl md:justify-start md:text-left'}>
-                <EditButtonContainer>{dataProfileSpecialist!.title
-                  ? dataProfileSpecialist!.title
+                <EditButtonContainer>{data!.profile_specialist!.title
+                  ? data!.profile_specialist!.title
                   : 'Np. Jestem specjalistą Facebook Ads z 5 letnim doswiadczeniem.'
                 }
-                <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetchProfileSpecialist} />} />
+                <EditButton classes={'mt-[-5px]'} modalTitle={'Ustaw swój tytuł'} modalBody={<TitleForm setShow={setShowModal} refetch={refetch} />} />
                 </EditButtonContainer>
               </div>
             </div>
@@ -191,12 +189,12 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex'}>
             <EditButtonContainer>
               <div className={'flex text-dashboardPrimary font-bold text-lg my-2'}>O mnie</div>
-              <EditButton modalTitle={'Ustawi swój opis'} modalBody={<DescriptionForm setShow={setShowModal} refetch={refetchProfileSpecialist} /> } />
+              <EditButton modalTitle={'Ustawi swój opis'} modalBody={<DescriptionForm setShow={setShowModal} refetch={refetch} /> } />
             </EditButtonContainer>
           </div>
           <div className={'text-textBase max-w-4xl'}>
-            {dataProfileSpecialist!.description
-              ? dataProfileSpecialist!.description
+            {data!.profile_specialist!.description
+              ? data!.profile_specialist!.description
               : `Np. Jestem doświadczonym specjalistą Facebook Ads z ponad 5 latami
                   doświadczenia w branży reklamowej. Moja pasja do marketingu online i
                   analizy danych pozwala mi na tworzenie kampanii reklamowych,
@@ -213,12 +211,12 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           <div className={'flex'}>
             <EditButtonContainer>
               <div className={'flex text-dashboardPrimary font-bold text-lg mt-2'}>Case studies</div>
-              <EditButton classes={'mt-0'} modalTitle={'Zamieść swoje Case Studies'} modalBody={<CaseStudiesForm refetch={refetchProfileSpecialist} setShow={setShowModal} /> } />
+              <EditButton classes={'mt-0'} modalTitle={'Zamieść swoje Case Studies'} modalBody={<CaseStudiesForm refetch={refetch} setShow={setShowModal} /> } />
             </EditButtonContainer>
           </div>
-          {dataProfileSpecialist!.case_studies_urls.length
+          {data!.profile_specialist!.case_studies_urls.length
             ? <ul>
-              {dataProfileSpecialist!.case_studies_urls.map((e, i) =>
+              {data!.profile_specialist!.case_studies_urls.map((e, i) =>
                 <li key={i} className={'inline items-center'}>
                   <button onClick={() => openLink(e)}>
                     <AiOutlineFilePdf className={'md:hidden'} size={48} />
@@ -240,9 +238,9 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalTitle={'Ustaw specjalizacje'}
                 modalBody={<TagsSpecializationsForm
                   setShow={setShowModal}
-                  refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist!.tagsspecialization}
-                  customTags={dataProfileSpecialist!.custom_tags_specialization}
+                  refetch={refetch}
+                  selectedTags={data!.profile_specialist!.tagsspecialization}
+                  customTags={data!.profile_specialist!.custom_tags_specialization}
                 />
                 }
               />
@@ -250,16 +248,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist!.tagsspecialization.length || dataProfileSpecialist!.custom_tags_specialization.length
-            ? dataProfileSpecialist!.tagsspecialization.map((e) =>
+          {data!.profile_specialist!.tagsspecialization.length || data!.profile_specialist!.custom_tags_specialization.length
+            ? data!.profile_specialist!.tagsspecialization.map((e) =>
               <StyledTagSpan key={e.tagsspecialization.id} className={'bg-green-500'}>
                 {t({ id: `dashboard.settings.specialization.${e.tagsspecialization.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist!.custom_tags_specialization.length
-            ? dataProfileSpecialist!.custom_tags_specialization.map((e) =>
+          {data!.profile_specialist!.custom_tags_specialization.length
+            ? data!.profile_specialist!.custom_tags_specialization.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -277,9 +275,9 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalTitle={'Ustaw branże'}
                 modalBody={<TagsIndustriesForm
                   setShow={setShowModal}
-                  refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist!.tagsindustry}
-                  customTags={dataProfileSpecialist!.custom_tags_industry}
+                  refetch={refetch}
+                  selectedTags={data!.profile_specialist!.tagsindustry}
+                  customTags={data!.profile_specialist!.custom_tags_industry}
                 />
                 }
               />
@@ -287,16 +285,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist!.tagsindustry.length || dataProfileSpecialist!.custom_tags_industry.length
-            ? dataProfileSpecialist!.tagsindustry.map((e) =>
+          {data!.profile_specialist!.tagsindustry.length || data!.profile_specialist!.custom_tags_industry.length
+            ? data!.profile_specialist!.tagsindustry.map((e) =>
               <StyledTagSpan key={e.tagsindustry.id} className={'bg-fuchsia-600'}>
                 {t({ id: `dashboard.settings.industry.${e.tagsindustry.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist!.custom_tags_industry.length
-            ? dataProfileSpecialist!.custom_tags_industry.map((e) =>
+          {data!.profile_specialist!.custom_tags_industry.length
+            ? data!.profile_specialist!.custom_tags_industry.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -314,9 +312,9 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalTitle={'Ustaw języki'}
                 modalBody={<TagsLanguagesForm
                   setShow={setShowModal}
-                  refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist!.tagslanguage}
-                  customTags={dataProfileSpecialist!.custom_tags_language}
+                  refetch={refetch}
+                  selectedTags={data!.profile_specialist!.tagslanguage}
+                  customTags={data!.profile_specialist!.custom_tags_language}
                 />
                 }
               />
@@ -324,16 +322,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist!.tagslanguage.length || dataProfileSpecialist!.custom_tags_language.length
-            ? dataProfileSpecialist!.tagslanguage.map((e) =>
+          {data!.profile_specialist!.tagslanguage.length || data!.profile_specialist!.custom_tags_language.length
+            ? data!.profile_specialist!.tagslanguage.map((e) =>
               <StyledTagSpan key={e.tagslanguage.id} className={'bg-blue-800'}>
                 {t({ id: `dashboard.settings.language.${e.tagslanguage.name}` })}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist!.custom_tags_language.length
-            ? dataProfileSpecialist!.custom_tags_language.map((e) =>
+          {data!.profile_specialist!.custom_tags_language.length
+            ? data!.profile_specialist!.custom_tags_language.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>
@@ -351,9 +349,9 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
                 modalTitle={'Ustaw platformy'}
                 modalBody={<TagsPlatformsForm
                   setShow={setShowModal}
-                  refetch={refetchProfileSpecialist}
-                  selectedTags={dataProfileSpecialist!.tagsplatform}
-                  customTags={dataProfileSpecialist!.custom_tags_platform}
+                  refetch={refetch}
+                  selectedTags={data!.profile_specialist!.tagsplatform}
+                  customTags={data!.profile_specialist!.custom_tags_platform}
                 />
                 }
               />
@@ -361,16 +359,16 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           </div>
         </div>
         <div className={'max-w-4xl flex flex-wrap gap-2 md:ml-14'}>
-          {dataProfileSpecialist!.tagsplatform.length || dataProfileSpecialist!.custom_tags_platform.length
-            ? dataProfileSpecialist!.tagsplatform.map((e) =>
+          {data!.profile_specialist!.tagsplatform.length || data!.profile_specialist!.custom_tags_platform.length
+            ? data!.profile_specialist!.tagsplatform.map((e) =>
               <StyledTagSpan key={e.tagsplatform.id} className={'bg-orange-600'}>
                 {e.tagsplatform.name.charAt(0).toUpperCase() + e.tagsplatform.name.slice(1)}
               </StyledTagSpan>
             )
             : <p className={'font-bold'}>Brak</p>
           }
-          {dataProfileSpecialist!.custom_tags_platform.length
-            ? dataProfileSpecialist!.custom_tags_platform.map((e) =>
+          {data!.profile_specialist!.custom_tags_platform.length
+            ? data!.profile_specialist!.custom_tags_platform.map((e) =>
               <StyledTagSpan key={e} className={'shadow !text-black'}>
                 {e}
               </StyledTagSpan>

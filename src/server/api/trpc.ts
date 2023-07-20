@@ -53,7 +53,6 @@ const createInnerTRPCContext = (_opts: AuthContext) => {
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const createTRPCContext = (_opts: CreateNextContextOptions) => {
-  console.log('createInnerTRPCContext');
   return createInnerTRPCContext({ auth: getAuth(_opts.req) });
 };
 

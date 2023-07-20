@@ -13,12 +13,13 @@ import {
   specialistTagsSchema,
   specialistTitleSchema,
 } from 'validation/SettingsSchema';
+import { z } from 'zod';
 
 export const profileRouter = createTRPCRouter({
   getUsers: protectedProcedure
     .query( ({ ctx }) => {
       return ctx.prisma.profile.findMany({
-        select: { name: true, surname: true, clerk_user_id: true, email: true, role: true, created_at: true },
+        select: { id: true, name: true, surname: true, clerk_user_id: true, email: true, role: true, created_at: true },
         orderBy: [{ created_at: 'desc' }],
       });
     }),
@@ -82,32 +83,34 @@ export const profileRouter = createTRPCRouter({
     }),
 
   getProfile: protectedProcedure
-    .query(async ({ ctx }) => {
+    .input(z.object({
+      id: z.string().optional(),
+    }))
+    .query(async ({ ctx, input }) => {
+      const id = input.id;
       return ctx.prisma.profile.findFirst({
-        select: { name: true, surname: true, email: true, role: true, image_url: true, background_image_url: true, profiles_specialists: true, profiles_customers: true },
-        where: { clerk_user_id: ctx.auth.userId },
-      });
-    }),
-
-  getProfileSpecialist: protectedProcedure
-    .query(async ({ ctx }) => {
-      const profile = await ctx.prisma.profile.findFirst({
-        select: { id: true },
-        where: { clerk_user_id: ctx.auth.userId },
-      });
-
-      if (!profile) throw new Error('profile not found');
-
-      return ctx.prisma.profile_specialist.findFirst({
-        where: { profile_id: profile.id },
-        include: {
-          tagsspecialization: { include: { tagsspecialization: true } },
-          tagslanguage: { include: { tagslanguage: true } },
-          tagsindustry: { include: { tagsindustry: true } },
-          tagsplatform: { include: { tagsplatform: true } },
+        select: {
+          name: true,
+          surname: true,
+          email: true,
+          role: true,
+          image_url: true,
+          background_image_url: true,
+          profile_customer: true,
+          profile_specialist: {
+            include: {
+              tagsspecialization: { include: { tagsspecialization: true } },
+              tagslanguage: { include: { tagslanguage: true } },
+              tagsindustry: { include: { tagsindustry: true } },
+              tagsplatform: { include: { tagsplatform: true } },
+            },
+          },
         },
-      }
-      );
+        where: { ...id
+          ? { id } 
+          : { clerk_user_id: ctx.auth.userId },
+        },
+      });
     }),
 
   updateSpecialistNameSurname: protectedProcedure

@@ -71,7 +71,10 @@ const Tasks = () => {
 
 const DashboardMainPage = () => {
   const { isLoaded } = useAuth();
-  const { data, isLoading } = api.profile.getProfile.useQuery(undefined, { enabled: isLoaded });
+  const {
+    data,
+    isLoading,
+  } = api.profile.getProfile.useQuery({ id: undefined }, { enabled: isLoaded });
 
   const navText = <>{!isLoading && data ? `Dzień Dobry, ${data?.name}` : <SingleTextLine />}</>;
   return (
