@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import 'styles/main.css';
 import '@uploadthing/react/styles.css';
@@ -71,6 +72,11 @@ const App: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
           <IntlProvider locale={locale} messages={messages[locale]}>
             <Component {...pageProps} />
           </IntlProvider>
+        )}
+        {process.env.NODE_ENV !== 'production' && (
+          <div className="hidden md:block">
+            <ReactQueryDevtools initialIsOpen={false} />
+          </div>
         )}
       </ClerkProvider>
     </>

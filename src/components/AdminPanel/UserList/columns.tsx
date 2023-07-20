@@ -1,11 +1,12 @@
 import { ColumnDef } from '@tanstack/react-table';
+import dayjs from 'dayjs';
+import { AiOutlineCheck } from 'react-icons/ai';
 
 import { DataTableColumnHeader } from './data-table-column-header';
-import { Task } from 'components/AdminPanel/UserList/schema';
-import { AiOutlineCheck } from 'react-icons/ai';
-import dayjs from 'dayjs';
+import { User } from 'components/AdminPanel/UserList/schema';
+import { DataTableRowActions } from 'components/AdminPanel/UserList/data-table-row-actions';
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
@@ -48,5 +49,9 @@ export const columns: ColumnDef<Task>[] = [
     ),
     // @ts-ignore
     cell: ({ row }) => <div className="w-[250px]">{dayjs(row.getValue('created_at').toString()).format('YYYY-MM-DD HH:mm:ss')}</div>,
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];

@@ -267,14 +267,14 @@ export function BackgroundImageForm ({ setShow, refetch }: INameSurnameForm) {
 
 export function CaseStudiesForm ({ setShow, refetch }: INameSurnameForm) {
   const { mutateAsync } = api.profile.updateCaseStudies.useMutation({ retry: 5 });
-  const { data } = api.profile.getProfileSpecialist.useQuery();
+  const { data } = api.profile.getProfile.useQuery({ id: undefined });
 
   return (
     <div className={'p-2'}>
-      Zamieszczono: {data && data.case_studies_urls.length}
-      {data && data.case_studies_urls.length
+      Zamieszczono: {data && data.profile_specialist?.case_studies_urls.length}
+      {data && data.profile_specialist?.case_studies_urls.length
         ? <><ul>
-          {data.case_studies_urls.map((e, i) =>
+          {data.profile_specialist?.case_studies_urls.map((e, i) =>
             <li key={i} className={'inline items-center'}>
               <button onClick={() => openLink(e)}>
                 <AiOutlineFilePdf size={48} />
