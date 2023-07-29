@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import 'styles/main.css';
 import '@uploadthing/react/styles.css';
+import 'react-image-crop/dist/ReactCrop.css';
 import { twConfig } from 'utils/helpers/tailwind';
 import { pl as clerkPl } from 'locale/clerk/pl';
 import pl from 'locale/pl.json';

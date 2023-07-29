@@ -1,146 +1,129 @@
 generator client {
-    provider = "prisma-client-js"
-    previewFeatures = ["jsonProtocol"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
-    shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 enum PAY_PLANS {
-    BASIC
-    STANDARD
-    PREMIUM_GUARANTEE
+  BASIC
+  STANDARD
+  PREMIUM_GUARANTEE
 }
 
 enum ROLES {
-    CUSTOMER
-    SPECIALIST
+  CUSTOMER
+  SPECIALIST
 }
 
 model profile {
-    id                          String      @id @unique @default(cuid())
-    role                        ROLES       @default(CUSTOMER)
-    clerk_user_id               String?     @unique
-    email                       String?
-    name                        String?     @db.VarChar(50)
-    surname                     String?     @db.VarChar(50)
-    image_url                   String?
-    background_image_url        String?
-    created_at                  DateTime    @default(now())
-    updated_at                  DateTime    @updatedAt
-    deleted_at                  DateTime?
+  id                   String    @id @unique @default(cuid())
+  role                 ROLES     @default(CUSTOMER)
+  clerk_user_id        String?   @unique
+  email                String?
+  name                 String?   @db.VarChar(50)
+  surname              String?   @db.VarChar(50)
+  image_url            String?
+  background_image_url String?
+  created_at           DateTime  @default(now())
+  updated_at           DateTime  @updatedAt
+  deleted_at           DateTime?
 
-    profile_customer            profile_customer?    @relation("profile_customer_profile", map: "profile_profile_customer")
-    profile_specialist          profile_specialist?  @relation("profile_specialist_profile", map: "profile_profile_specialist")
+  profile_customer   profile_customer?   @relation("profile_customer_profile", map: "profile_profile_customer")
+  profile_specialist profile_specialist? @relation("profile_specialist_profile", map: "profile_profile_specialist")
 }
 
 model profile_customer {
-    profile                     profile     @relation("profile_customer_profile", fields: [profile_id], references: [id])
-    profile_id                  String      @id @unique
-    company_name                String?
-    pay_plan                    PAY_PLANS?
-    updated_at                  DateTime    @updatedAt
+  profile      profile    @relation("profile_customer_profile", fields: [profile_id], references: [id])
+  profile_id   String     @id @unique
+  company_name String?
+  pay_plan     PAY_PLANS?
+  updated_at   DateTime   @updatedAt
 }
 
 model profile_specialist {
-    profile                     profile     @relation("profile_specialist_profile", fields: [profile_id], references: [id])
-    profile_id                  String      @id @unique
-    linkedin_url                String?
-    title                       String?     @db.VarChar(100)
-    description                 String?     @db.VarChar(500)
-    case_studies_urls           String[]
-    custom_tags_specialization  String[]
-    custom_tags_language        String[]
-    custom_tags_industry        String[]
-    custom_tags_platform        String[]
-    updated_at                  DateTime    @updatedAt
+  profile                    profile  @relation("profile_specialist_profile", fields: [profile_id], references: [id])
+  profile_id                 String   @id @unique
+  linkedin_url               String?
+  title                      String?  @db.VarChar(100)
+  description                String?  @db.VarChar(500)
+  case_studies_urls          String[]
+  custom_tags_specialization String[]
+  custom_tags_language       String[]
+  custom_tags_industry       String[]
+  custom_tags_platform       String[]
+  updated_at                 DateTime @updatedAt
 
-    tagsspecialization          profile_specialist_tagsspecialization[]
-    tagslanguage                profile_specialist_tagslanguage[]
-    tagsindustry                profile_specialist_tagsindustry[]
-    tagsplatform                profile_specialist_tagsplatform[]
+  tagsspecialization profile_specialist_tagsspecialization[]
+  tagslanguage       profile_specialist_tagslanguage[]
+  tagsindustry       profile_specialist_tagsindustry[]
+  tagsplatform       profile_specialist_tagsplatform[]
 }
 
 model tagsspecialization {
-    id                          String      @id @default(cuid())
-    name                        String      @unique
+  id   Int @id @default(autoincrement())
+  name String @unique
 
-    profile_specialists         profile_specialist_tagsspecialization[]
+  profile_specialists profile_specialist_tagsspecialization[]
 }
 
 model tagslanguage {
-    id                          String      @id @default(cuid())
-    name                        String      @unique
+  id   Int @id @default(autoincrement())
+  name String @unique
 
-    profile_specialists         profile_specialist_tagslanguage[]
+  profile_specialists profile_specialist_tagslanguage[]
 }
 
 model tagsindustry {
-    id                          String      @id @default(cuid())
-    name                        String      @unique
+  id   Int @id @default(autoincrement())
+  name String @unique
 
-    profile_specialists         profile_specialist_tagsindustry[]
+  profile_specialists profile_specialist_tagsindustry[]
 }
 
 model tagsplatform {
-    id                          String      @id @default(cuid())
-    name                        String      @unique
+  id   Int @id @default(autoincrement())
+  name String @unique
 
-    profile_specialists         profile_specialist_tagsplatform[]
+  profile_specialists profile_specialist_tagsplatform[]
 }
 
 model profile_specialist_tagsspecialization {
-    profile                     profile_specialist @relation(fields: [profile_id], references: [profile_id])
-    profile_id                  String
-    tagsspecialization          tagsspecialization @relation(fields: [tagsspecialization_id], references: [id])
-    tagsspecialization_id       String
+  profile               profile_specialist @relation(fields: [profile_id], references: [profile_id])
+  profile_id            String
+  tagsspecialization    tagsspecialization @relation(fields: [tagsspecialization_id], references: [id])
+  tagsspecialization_id Int
 
-    @@id([profile_id, tagsspecialization_id])
+  @@id([profile_id, tagsspecialization_id])
 }
 
 model profile_specialist_tagslanguage {
-    profile                     profile_specialist @relation(fields: [profile_id], references: [profile_id])
-    profile_id                  String
-    tagslanguage                tagslanguage @relation(fields: [tagslanguage_id], references: [id])
-    tagslanguage_id             String
+  profile         profile_specialist @relation(fields: [profile_id], references: [profile_id])
+  profile_id      String
+  tagslanguage    tagslanguage       @relation(fields: [tagslanguage_id], references: [id])
+  tagslanguage_id Int
 
-    @@id([profile_id, tagslanguage_id])
+  @@id([profile_id, tagslanguage_id])
 }
 
 model profile_specialist_tagsindustry {
-    profile                     profile_specialist @relation(fields: [profile_id], references: [profile_id])
-    profile_id                  String
-    tagsindustry                tagsindustry @relation(fields: [tagsindustry_id], references: [id])
-    tagsindustry_id             String
+  profile         profile_specialist @relation(fields: [profile_id], references: [profile_id])
+  profile_id      String
+  tagsindustry    tagsindustry       @relation(fields: [tagsindustry_id], references: [id])
+  tagsindustry_id Int
 
-    @@id([profile_id, tagsindustry_id])
+  @@id([profile_id, tagsindustry_id])
 }
 
 model profile_specialist_tagsplatform {
-    profile                     profile_specialist @relation(fields: [profile_id], references: [profile_id])
-    profile_id                  String
-    tagsplatform                tagsplatform @relation(fields: [tagsplatform_id], references: [id])
-    tagsplatform_id             String
+  profile         profile_specialist @relation(fields: [profile_id], references: [profile_id])
+  profile_id      String
+  tagsplatform    tagsplatform       @relation(fields: [tagsplatform_id], references: [id])
+  tagsplatform_id Int
 
-    @@id([profile_id, tagsplatform_id])
-}
-
-enum PosterSource {
-    RAW
-    GITHUB
-}
-
-model message {
-    id     String       @id @default(uuid())
-    name   String
-    text   String
-    source PosterSource @default(RAW)
-
-    // To return `Date`s intact through the API we need to add data transformers
-    // https://trpc.io/docs/data-transformers
-    createdAt DateTime @unique @default(now())
-    updatedAt DateTime @unique @default(now())
+  @@id([profile_id, tagsplatform_id])
 }

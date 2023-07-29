@@ -30,14 +30,12 @@ const routes: Array<IRoutesItem> = [
     name: 'Wiadomości',
     path: '/messages',
     icon: <TiMessages size={32} />,
-    disabled: true,
     notifications: '0',
   },
   {
     name: 'Społeczność',
     path: '/community',
     icon: <IoIosPeople size={32} />,
-    disabled: true,
   },
   {
     name: 'Zadania',
