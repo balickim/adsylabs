@@ -7,7 +7,6 @@ import { useIntl } from 'react-intl';
 import { useAuth } from '@clerk/nextjs';
 
 import { CtaButton } from 'components/Common/styled';
-import Modal from 'components/Common/Modal';
 import {
   BackgroundImageForm,
   CaseStudiesForm,
@@ -26,6 +25,8 @@ import { openLink } from 'utils/helpers';
 import { ProfileLoader } from 'utils/helpers/skeletonLoaders';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/router';
+import Modal from 'components/Common/Modal';
+import Tooltip from 'components/Common/Tooltip';
 
 const StyledTagSpan = tw.span`flex justify-center items-center text-white p-2 text-xxs w-fit rounded-xl md:text-sm`;
 
@@ -217,12 +218,14 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
           {data!.profile_specialist!.case_studies_urls.length
             ? <ul>
               {data!.profile_specialist!.case_studies_urls.map((e, i) =>
-                <li key={i} className={'inline items-center'}>
-                  <button onClick={() => openLink(e)}>
-                    <AiOutlineFilePdf className={'md:hidden'} size={48} />
-                    <AiOutlineFilePdf className={'hidden md:block'} size={84} />
-                  </button>
-                </li>
+                <Tooltip key={i} message={'Pobierz'}>
+                  <li className={'inline items-center'}>
+                    <button onClick={() => openLink(e)}>
+                      <AiOutlineFilePdf className={'md:hidden'} size={40} />
+                      <AiOutlineFilePdf className={'hidden md:block'} size={60} />
+                    </button>
+                  </li>
+                </Tooltip>
               )}
             </ul>
             : <p className={'font-bold'}>Brak</p>
@@ -376,6 +379,8 @@ export default function ProfileSpecialist ({ canEdit }: IProfileSpecialist) {
             : null
           }
         </div>
+
+        <div className={'h-52'} />
       </main>
     </>
   );

@@ -18,7 +18,7 @@ import {
   specialistTitleSchema,
 } from 'validation/SettingsSchema';
 
-const StyledMain = tw.main`p-4 mt-8`;
+const StyledMain = tw.main`mt-4`;
 
 interface IFooter {
   setShow: Dispatch<SetStateAction<boolean>>
@@ -27,7 +27,7 @@ interface IFooter {
 
 function Footer ({ setShow, isSubmitting }: IFooter) {
   return (
-    <div className="flex items-center justify-end gap-2 p-3 border-t border-solid border-slate-200 rounded-b">
+    <div className="flex items-center justify-end gap-2 px-3 pt-3 border-t border-solid border-slate-200 rounded-b">
       <CtaButton
         version={'secondary'}
         type="button"
@@ -367,7 +367,7 @@ export function TagsSpecializationsForm ({ setShow, refetch, selectedTags, custo
           });
 
           mutateCustomTags({ tagNames: customTagNames as unknown as string[] });
-          mutateAsync({ tagIds: tagIds as unknown as string[] })
+          mutateAsync({ tagIds: tagIds as unknown as number[] })
           .then(() => {
             resetForm();
             refetch();
@@ -480,7 +480,7 @@ export function TagsLanguagesForm ({ setShow, refetch, selectedTags, customTags 
           });
 
           mutateCustomTags({ tagNames: customTagNames as unknown as string[] });
-          mutateAsync({ tagIds: tagIds as unknown as string[] })
+          mutateAsync({ tagIds: tagIds as unknown as number[] })
             .then(() => {
               resetForm();
               refetch();
@@ -591,7 +591,7 @@ export function TagsIndustriesForm ({ setShow, refetch, selectedTags, customTags
           });
 
           mutateCustomTags({ tagNames: customTagNames as unknown as string[] });
-          mutateAsync({ tagIds: tagIds as unknown as string[] })
+          mutateAsync({ tagIds: tagIds as unknown as number[] })
             .then(() => {
               resetForm();
               refetch();
@@ -703,7 +703,7 @@ export function TagsPlatformsForm ({ setShow, refetch, selectedTags, customTags 
           });
 
           mutateCustomTags({ tagNames: customTagNames as unknown as string[] });
-          mutateAsync({ tagIds: tagIds as unknown as string[] })
+          mutateAsync({ tagIds: tagIds as unknown as number[] })
             .then(() => {
               resetForm();
               refetch();

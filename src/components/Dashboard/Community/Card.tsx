@@ -10,7 +10,7 @@ import { CtaButton } from 'components/Common/styled';
 type RouterOutput = inferRouterOutputs<AppRouter>;
 
 interface ICard {
-  specialist: RouterOutput['community']['getSpecialists'][0],
+  specialist: RouterOutput['community']['getSpecialists']['data'][0],
 }
 
 
@@ -29,7 +29,7 @@ export default function Card ({ specialist }: ICard) {
       rel="noopener noreferrer"
       href={`./community/${specialist.id}`}
     >
-      <div className={'flex w-full h-48 bg-white shadow-2xl rounded-2xl transition-colors hover:bg-primaryLighten'}>
+      <div className={'flex mx-auto w-11/12 h-48 bg-white shadow-2xl rounded-2xl transition-colors hover:bg-gray-100'}>
         <div className={'w-1/6 h-full flex justify-center items-center'}>
           <Image
             src={specialist?.image_url ? specialist.image_url : DASHBOARD_IMAGES_PATH.AVATAR}

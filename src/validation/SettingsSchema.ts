@@ -23,7 +23,7 @@ export const specialistFormTagsSchema = z.object({
   tagIds: z.object({}).array(),
 });
 export const specialistTagsSchema = z.object({
-  tagIds: z.array(z.string()),
+  tagIds: z.array(z.number()),
 });
 export const specialistCustomTagsSchema = z.object({
   tagNames: z.array(z.string()),

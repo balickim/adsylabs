@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 import Links from './components/Links';
-import routes from 'components/Dashboard/Layout/routes';
+import { getRoutes } from 'components/Dashboard/Layout/routes';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
 import { MdLogout } from 'react-icons/md';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 import { twConfig } from 'utils/helpers/tailwind';
+import { api } from 'utils/api';
 
 interface ISidebar {
   open: boolean
@@ -37,6 +38,7 @@ const Sidebar = ({ open, setOpen }: ISidebar) => {
   const { signOut } = useAuth();
   const { push } = useRouter();
   const ICON_COLOR = twConfig?.theme?.colors?.secondary as string;
+  const { data } = api.profile.getRole.useQuery(undefined);
 
   return (
     <SidebarContainer open={open}>
@@ -60,7 +62,7 @@ const Sidebar = ({ open, setOpen }: ISidebar) => {
       <div className="mb-7 h-px bg-gray-100" />
 
       <ul className="mb-auto pt-1">
-        <Links routes={routes} />
+        <Links routes={getRoutes({ role: data?.role, messages: 0 })} />
       </ul>
       <button
         onClick={() => signOut().then(() => push('./join-us'))}

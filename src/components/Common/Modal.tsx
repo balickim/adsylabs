@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import React, { Dispatch, Fragment, SetStateAction, useRef } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 
 interface IModal {
   title: string
@@ -14,32 +14,51 @@ export default function Modal ({
   show,
   setShow,
 }: IModal) {
+  const cancelButtonRef = useRef(null);
   return (
-    <>
-      {show ? (
-        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-          <div className="w-full relative mx-auto max-w-3xl">
-            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-              <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                <h3 className="text-xl font-semibold">
-                  {title}
-                </h3>
-                <button
-                  className="p-1 ml-auto border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                  onClick={() => setShow(false)}
-                >
-                  <span className="h-6 w-6 text-2xl block outline-none focus:outline-none">
-                    <AiFillCloseCircle />
-                  </span>
-                </button>
-              </div>
-              
-              {body}
+    <Transition.Root show={show} as={Fragment}>
+      <Dialog as="div" className="relative z-10 rounded-xl" initialFocus={cancelButtonRef} onClose={setShow}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </Transition.Child>
 
-            </div>
+        <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterTo="opacity-100 translate-y-0 sm:scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            >
+
+              <Dialog.Panel className="relative transform bg-white rounded-2xl text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                <div className="bg-white px-4 rounded-2xl pb-4 pt-5 sm:p-6 sm:pb-4">
+                  <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                      {title}
+                    </Dialog.Title>
+                    <div className="mt-2">
+                      {body}
+                    </div>
+                  </div>
+                </div>
+              </Dialog.Panel>
+
+            </Transition.Child>
           </div>
         </div>
-      ) : null}
-    </>
+      </Dialog>
+    </Transition.Root>
   );
 }
