@@ -4,8 +4,8 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 const StyledSection = tw.section`flex relative max-w-[1476px] mx-auto flex-col items-center mb-20 mt-16 md:mt-32`;
-const Title = tw.h1`text-2xl tracking-tight text-gray-900 text-center lg:text-3xl xl:text-4xl`;
-const SubTitle = tw.h3`text-lg text-center text-textBase mt-2 lg:w-[600px]`;
+const Title = tw.h1`text-2xl tracking-tight text-white text-center lg:text-3xl xl:text-4xl`;
+const SubTitle = tw.h3`text-lg text-center text-white mx-2 mt-2 lg:w-[600px]`;
 const SwitchRow = tw.div`w-full flex flex-col items-center justify-evenly space-y-2 my-4 lg:space-y-0 lg:my-10 lg:flex-row`;
 const ImageContainer = styled('div')`
   ${tw`drop-shadow-2xl w-[330px] h-[255px] sm:w-[440px] sm:h-[340px] md:w-[770px] md:h-[595px] lg:w-[1100px] lg:h-[850px]`} 

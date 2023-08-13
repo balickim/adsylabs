@@ -112,15 +112,18 @@ export const Navbar = () => {
   );
 
   const SpecialistButton = () => (
-    <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
-      <CtaButton
-        className={'hidden md:block'}
-        version={'primary'}
-        type="button"
-      >
-        {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
-      </CtaButton>
-    </Link>
+    <>
+      {isJoinUs
+        ? <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
+          <CtaButton
+            className={'hidden md:block'}
+            version={'primary'}
+            type="button"
+          >
+            {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
+          </CtaButton>
+        </Link> : null}
+    </>
   );
 
   const MenuItems = () => (
@@ -128,15 +131,16 @@ export const Navbar = () => {
       <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
       <MenuItem text={'Cennik'} link={'/#pricing'} />
       <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
-      <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
-        <CtaButton
-          version={'primary'}
-          type="button"
-          className={'md:hidden'}
-        >
-          {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
-        </CtaButton>
-      </Link>
+      {isJoinUs
+        ? <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
+          <CtaButton
+            version={'primary'}
+            type="button"
+            className={'md:hidden'}
+          >
+          Aplikuj teraz
+          </CtaButton>
+        </Link> : null}
     </>
   );
 

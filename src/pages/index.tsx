@@ -1,30 +1,30 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import tw from 'twin.macro';
 import Head from 'next/head';
 
 import Layout from 'components/Common/Layout';
-import Footer from 'components/Common/Footer';
-import Top from 'components/Index/Top';
-import Statistics from 'components/Index/Statistics';
-import HowItWorks from 'components/Index/HowItWorks';
-import Video from 'components/Index/Video';
-import ExpertSocialMedia from 'components/Index/ExpertSocialMedia';
-import Pricing from 'components/Index/Pricing';
-import Comparison from 'components/Index/Comparison';
 import { useRect } from 'utils/hooks/useRect';
-import { Motion } from 'utils/helpers/framerMotion';
-import { HotJarScript } from 'components/Common/externalScripts';
-import { CustomerExcerpt, ExcerptCta } from 'components/Faq/Excerpts';
-import { FadeGradientContainer } from 'utils/helpers';
-import AllInOne from 'components/Index/AllInOne';
 import { LANDING_IMAGES_PATH } from 'utils/constants';
+import { HotJarScript } from 'components/Common/externalScripts';
+import Hero from 'components/Index/Hero';
+import Panels from 'components/Index/Panels';
+import Cards from 'components/Index/Cards';
+import AllInOne from 'components/Index/AllInOne';
+import Faq from 'components/Index/Faq';
+import AdditionalCTA from 'components/Index/AdditionalCTA';
+import Footer from 'components/Index/Footer';
 
-const Main = tw.main`flex flex-col px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32`;
-const ExcerptContainer = tw.div`h-[400px]`;
+const Main = tw.main`flex flex-col bg-[#1C1C28] text-white`;
 
 export default function HomePage () {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [rect, ref] = useRect<HTMLDivElement>();
+  useEffect( () => {
+    document?.querySelector('body')?.classList.add('home-background');
+    return () => {
+      document?.querySelector('body')?.classList.remove('home-background');
+    };
+  }, []);
 
   return (
     <>
@@ -35,57 +35,22 @@ export default function HomePage () {
         <meta property="og:image" content={LANDING_IMAGES_PATH.ALL_IN_ONE_1_COMPRESSED} key="image" />
       </Head>
       <HotJarScript />
+
       <Main>
-        <Motion>
-          <Top />
-        </Motion>
+        <Hero />
 
-        <Motion>
-          <AllInOne />
-        </Motion>
+        <Panels />
 
-        <Motion>
-          <Statistics />
-        </Motion>
+        <Cards />
 
-        <Motion>
-          <HowItWorks />
-        </Motion>
+        <AllInOne />
 
-        <Motion>
-          <FadeGradientContainer
-            fadeHeight={300}
-            fadeFrom={1.5}
-            fadeTo={0}
-          >
-            <ExcerptContainer>
-              <CustomerExcerpt />
-            </ExcerptContainer>
-          </FadeGradientContainer>
-          <ExcerptCta href={'faq'} />
-        </Motion>
+        <AdditionalCTA />
 
-        <Motion>
-          <ExpertSocialMedia />
-        </Motion>
+        <Faq />
 
-        <Motion>
-          <Video />
-        </Motion>
-
-        <Motion>
-          <Comparison />
-        </Motion>
-
-        <Motion>
-          <Pricing innerRef={ref} />
-        </Motion>
-
-      </Main>
-      <Motion>
         <Footer />
-      </Motion>
-      {/*<FloatingButton pricingPosition={rect} />*/}
+      </Main>
     </>
   );
 };
