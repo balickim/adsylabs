@@ -30,7 +30,7 @@ const Panels = () => {
       <PanelContainer>
 
         <Panel className={'lg:col-span-4'}>
-          <p className={'text-[#676DFC]'}>Jak możemy Ci pomóc</p>
+          <p className={'text-[#676DFC]'}>Jak możemy Ci pomóc?</p>
 
           <h3 className={'text-lg my-5'}>
             <p>Zautomatyzuj swój marketing,</p>

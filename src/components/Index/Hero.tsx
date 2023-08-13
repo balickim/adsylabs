@@ -122,7 +122,7 @@ const Hero = () => {
         <p className={'text-center'}>Zwiększ sprzedaż i zyskaj większą kontrolę.</p>
 
         <p className={'text-xs text-gray-500 text-center'}>
-          Adsylabs Ci zatrudnić zweryfikowanych specjalistów marketingu i śledzić
+          Adsylabs pomoże Ci zatrudnić zweryfikowanych specjalistów marketingu i śledzić
           wyniki kampanii reklamowych w jednym miejscu.
         </p>
       </div>
