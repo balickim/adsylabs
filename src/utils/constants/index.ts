@@ -5,6 +5,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const LANDING_IMAGES_PATH = {
+  LIGHT_LOGO: '/static/image/light_logo.png',
   LOGO: '/static/image/logo.svg',
   ROB_KATARZYNA: '/static/image/landing/rob_katarzyna.webp',
   STAIN_1: '/static/image/landing/stain_1.png',

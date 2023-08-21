@@ -59,43 +59,34 @@ export default function Faq () {
   const qa = [
     {
       question: 'Jakich specjalistów ds. marketingu mogę znaleźć za pomocą Adsylabs?',
-      answer: `W Adsylabs możesz znaleźć i zatrudnić sprawdzonych specjalistów ds. marketingu, którzy posiadają
-        szeroki zakres umiejętności, sprawdzony w trakcie restrykcyjnego procesu rekrutacji, który przechodzi
-        jedynie niewielki odsetek kandydatów. Na platformie możesz znaleźć specjalistów w dziedzinach
-        takich jak PPC, SEO, social media marketing, email marketing, content marketing i wiele innych.
-        Każdy specjalista jest przez nas rzetelnie sprawdzany pod kątem doswiadczenia i realnych umiejętności
-        wykorzystanych w poprzednich projektach. Więcej o procesie weryfikacji piszemy w tej sekcji strony.`,
+      answer: `W Adsylabs współpracujemy tylko ze sprawdzonymi specjalistami ds. marketingu, o średnim stażu 10 lat w branży. 
+      Na platformie są specjaliści PPC, SEO, social media marketing, email marketing, content marketing i wiele innych. 
+      Każdy specjalista jest przez nas rzetelnie sprawdzany pod kątem doswiadczenia i realnych umiejętnosci wykorzystanych w poprzednich projektach.`,
     },
     {
       question: 'W jaki sposób Adsylabs dopasuje mnie do specjalisty?',
-      answer: '',
+      answer: 'Nasza platforma na podstawie wywiadu przeprowadzonego przy pierwszym logowaniu rekomenduje najlepszych specjalistów dla ' +
+        'Twojego Biznesu, mając na uwadze wszystkie najważniejsze paremetry takie jak cel kampanii, budżet, ' +
+        'specyfika Twojej branży, wymagania dotyczące rodzaju współpracy ze specjalistą, przybliżone terminy rozpoczęcia i ' +
+        'realizacji projektów. Każdego naszego użytkownika wyposażamy w rozbudowane funkcje filtrowania i dedykowanego eksperta, ' +
+        'który w razie potrzeby poprowadzi proces rekrutacji i rozpoczęcia współpracy.',
     },
     {
       question: 'Co jeśli nie będę zadowolony z Adsylabs?',
-      answer: '',
+      answer: 'Udzielamy 60-dniowej gwarancji sukcesu - jestesmy pewni jakosci naszych uslug i ' +
+        'umiejetnosci specjalistow dlatego jesli w ciągu pierwszych dwóch miesięcy uznasz, ze ' +
+        'platforma nie jest dla Ciebie, zwrócimy Ci pieniądze za subskrypcję naszej platformy ' +
+        '(wynagrodzenie specjalistów jest ustalane pomiędzy naszymi klientami a specjalistami).',
     },
     {
       question: 'Czy współpracujecie tylko z agencjami marketingowymi?',
-      answer: '',
+      answer: 'Nie tylko! Na platformie zrzeszamy również freelancerów ora niezależnych ekspertów ' +
+        'tworząc wachlarz możliwości współprac, które dopasują się do potrzeb Twojego Biznesu.',
     },
   ];
 
   return (
-    <section className="max-w-6xl mx-auto text-center">
-
-      {/*<h3 className={'text-xl mt-5 flex flex-col justify-center text-center font-bold lg:hidden'}>*/}
-      {/*  <span>Często zadawane pytania*/}
-      {/*    <div className={'flex justify-end items-start mr-5 mt-[-10px]'}>*/}
-      {/*      <Overline />*/}
-      {/*    </div>*/}
-      {/*  </span>*/}
-      {/*</h3>*/}
-
-      {/*<span className={'justify-center gap-x-2 hidden lg:flex lg:text-5xl'}>*/}
-      {/*  <p>Często zadawane</p>*/}
-      {/*  <div className={'w-[12rem]'}>pytania <Overline /></div>*/}
-      {/*</span>*/}
-
+    <section id={'faq'} className="max-w-6xl mx-auto text-center">
       <div className={'flex items-center justify-center text-xl mt-3 mb-6 h-6 md:text-5xl md:mb-12'}>
         <p>Często zadawane</p>
         <div>pytania <Overline /></div>

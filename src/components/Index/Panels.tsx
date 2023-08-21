@@ -26,7 +26,7 @@ const Panel = styled.div`
 
 const Panels = () => {
   return (
-    <StyledSection id={'panels'}>
+    <StyledSection id={'how-it-works'}>
       <PanelContainer>
 
         <Panel className={'lg:col-span-4'}>

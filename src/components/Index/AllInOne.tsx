@@ -73,6 +73,7 @@ export default function AllInOne () {
             alt="adsylabs to rozwiązanie wszystko w jednym"
             src={`/static/image/landing/all_in_one_${step}.webp`}
             fill
+            quality={100}
             sizes="(min-width: 808px) 50vw, 100vw"
             style={{ objectFit: 'fill' }}
           />
