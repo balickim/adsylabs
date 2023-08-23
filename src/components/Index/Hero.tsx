@@ -119,12 +119,16 @@ const Hero = () => {
       </div>
 
       <div className={'flex flex-col gap-3 justify-center mt-5'}>
-        <p className={'text-center'}>Zwiększ sprzedaż i zyskaj większą kontrolę.</p>
+        <p className={'text-center lg:text-2xl'}>Zwiększ sprzedaż i zyskaj większą kontrolę.</p>
 
-        <p className={'text-xs text-gray-500 text-center'}>
+        <p className={'text-xs text-gray-400 text-center lg:hidden'}>
           Adsylabs pomoże Ci zatrudnić zweryfikowanych specjalistów marketingu i śledzić
           wyniki kampanii reklamowych w jednym miejscu.
         </p>
+        <div className={'hidden text-gray-400 text-center lg:block'}>
+          <p>Adsylabs pomoże Ci zatrudnić zweryfikowanych specjalistów marketingu i śledzić</p>
+          <p>wyniki kampanii reklamowych w jednym miejscu.</p>
+        </div>
       </div>
     </StyledSection>
   );
