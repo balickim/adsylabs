@@ -5,10 +5,6 @@ import { LANDING_IMAGES_PATH } from 'utils/constants';
 
 const StyledSection = styled.div`
   ${tw`px-5`}
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><line x1='0' y1='10' x2='20' y2='10' stroke='gray' stroke-width='0.1' /><line x1='10' y1='0' x2='10' y2='20' stroke='gray' stroke-width='0.1' /></svg>");
-  background-repeat: repeat;
-  background-size: 20px 20px;
-  margin: 0;
 `;
 
 const PanelContainer = styled.div`
