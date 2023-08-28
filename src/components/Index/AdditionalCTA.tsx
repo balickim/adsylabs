@@ -83,7 +83,7 @@ const AdditionalCTA = () => {
                 isLoading={isSubmitting}
                 placeholder={'Adres e-mail'}
               >
-                Poproś o dostęp
+                Uzyskaj wczesny dostęp
               </StyledLoadingCtaButton>
             </div>
           </Form>

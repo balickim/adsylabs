@@ -34,10 +34,8 @@ const Panels = () => {
           </h3>
 
           <p className={'text-gray-400'}>
-          Pomyśl jak wyglądałby Twój biznes gdyby średnio 30 godzin tygodniowo spędzane na marketing Twoich produktów
-          i usług zostałyby przeznaczone na rozwój firmy i ulepszanie Twojej oferty? Twoja firma zaliczyłaby ogromny wzrost!
-          Dlatego Adsylabs stawia na automatyzację Twojego marketingu przez dostarczenie Ci współprac z najlepszymi ekspertami
-          w branży i wyposażenie Cię w jeden panel do śledzenia wszystkich kampanii marketingowych.
+            W Adsylabs pomagamy Ci nawiązać współpracę z topowymi ekspertami marketingu i reklamy oraz zapewniamy wygodny
+            panel do śledzenia wyników wszystkich Twoich kampanii. Zyskaj większą kontrolę, oszczędź czas i skaluj swój biznes!
           </p>
         </Panel>
 
