@@ -80,7 +80,7 @@ export default function Faq () {
     },
     {
       question: 'Czy współpracujecie tylko z agencjami marketingowymi?',
-      answer: 'Nie tylko! Na platformie zrzeszamy również freelancerów ora niezależnych ekspertów ' +
+      answer: 'Nie tylko! Na platformie zrzeszamy również freelancerów oraz niezależnych ekspertów ' +
         'tworząc wachlarz możliwości współprac, które dopasują się do potrzeb Twojego Biznesu.',
     },
   ];
