@@ -5,6 +5,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const LANDING_IMAGES_PATH = {
+  LIGHT_LOGO: '/static/image/light_logo.png',
   LOGO: '/static/image/logo.svg',
   ROB_KATARZYNA: '/static/image/landing/rob_katarzyna.webp',
   STAIN_1: '/static/image/landing/stain_1.png',
@@ -27,6 +28,8 @@ export const LANDING_IMAGES_PATH = {
   FAQ: '/static/image/landing/faq.png',
   WAVING_HAND: '/static/image/landing/waving_hand.png',
   ALL_IN_ONE_1_COMPRESSED: '/static/image/landing/all_in_one_1_compressed.png',
+  PANEL_1: '/static/image/landing/panel-1.png',
+  PANEL_2: '/static/image/landing/panel-2.png',
 } as const;
 
 export const DASHBOARD_IMAGES_PATH = {

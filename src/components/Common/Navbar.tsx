@@ -13,15 +13,17 @@ import { CtaButton } from 'components/Common/styled';
 import React from 'react';
 import { api } from 'utils/api';
 import { ROLES } from '@prisma/client';
+import styled from 'styled-components';
 
-const Nav = tw.nav`
-  bg-white 
-  border-gray-200 
-  px-4 
-  lg:px-6 
-  py-2.5 
-  border-b-2
-`;
+const Nav = styled.nav<{ variant?: 'light' | 'dark' }>(
+  ({ variant }) => [
+    tw`bg-white border-gray-200 px-4 lg:px-6 py-2.5 border-b-2`,
+    variant === 'dark' ? `
+      background: #1C1C28;
+      border-bottom-width: 0;
+    ` : null,
+  ]
+);
 
 const Container = tw.div`
   flex
@@ -44,18 +46,6 @@ const End = tw.div`
   md:gap-2
   items-center
 `;
-
-const Logo = () => (
-  <Link href="/" className="flex pb-2 mr-8">
-    <Image
-      src={LANDING_IMAGES_PATH.LOGO}
-      alt="Adsylabs Logo"
-      width={120}
-      height={30}
-      priority
-    />
-  </Link>
-);
 
 const LoginButton = () => (
   <Link href="/sign-in">
@@ -105,38 +95,54 @@ export const Navbar = () => {
 
   const MenuItem = ({ text, link }: { text: string; link: string }) => (
     <Link href={link} onClick={() => setIsMobileMenuOpen(false)}>
-      <span className="text-black hover:text-primary">
+      <span className={`text-black hover:text-primary ${isJoinUs ? '' : 'md:text-white'}`}>
         {text}
       </span>
     </Link>
   );
 
-  const SpecialistButton = () => (
-    <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
-      <CtaButton
-        className={'hidden md:block'}
-        version={'primary'}
-        type="button"
-      >
-        {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
-      </CtaButton>
+  const Logo = () => (
+    <Link href="/" className="flex pb-2 mr-8">
+      <Image
+        src={isJoinUs ? LANDING_IMAGES_PATH.LOGO : LANDING_IMAGES_PATH.LIGHT_LOGO}
+        alt="Adsylabs Logo"
+        width={120}
+        height={30}
+        priority
+      />
     </Link>
+  );
+
+  const SpecialistButton = () => (
+    <>
+      {isJoinUs
+        ? <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
+          <CtaButton
+            className={'hidden md:block'}
+            version={'primary'}
+            type="button"
+          >
+            {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
+          </CtaButton>
+        </Link> : null}
+    </>
   );
 
   const MenuItems = () => (
     <>
       <MenuItem text={'Dołącz jako specjalista'} link={'/join-us'} />
-      <MenuItem text={'Cennik'} link={'/#pricing'} />
+      <MenuItem text={'Często zadawane pytania'} link={'/#faq'} />
       <MenuItem text={'Jak to działa?'} link={'#how-it-works'} />
-      <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
-        <CtaButton
-          version={'primary'}
-          type="button"
-          className={'md:hidden'}
-        >
-          {isJoinUs ? 'Aplikuj teraz' : 'Uzyskaj wczesny dostęp'}
-        </CtaButton>
-      </Link>
+      {isJoinUs
+        ? <Link href={pathname.includes('join-us') ? './join-us/pre-register' : './pre-register'}>
+          <CtaButton
+            version={'primary'}
+            type="button"
+            className={'md:hidden'}
+          >
+          Aplikuj teraz
+          </CtaButton>
+        </Link> : null}
     </>
   );
 
@@ -147,7 +153,7 @@ export const Navbar = () => {
   );
 
   const MobileMenuItems = () => (
-    <div className="md:hidden absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
+    <div className="md:hidden !text-black absolute right-4 top-14 flex flex-col w-3/5 rounded-md p-4 gap-4 bg-white shadow-2xl">
       <MenuItems />
     </div>
   );
@@ -157,11 +163,11 @@ export const Navbar = () => {
       onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       className={'md:hidden'}
     >
-      <AiOutlineMenu size={24} />
+      <AiOutlineMenu size={24} color={isJoinUs ? 'black' : 'white'} />
     </button>
   );
 
-  return <Nav>
+  return <Nav variant={isJoinUs ? 'light' : 'dark'}>
     <Container>
       <Start>
         <Logo />
